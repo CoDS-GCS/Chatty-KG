@@ -36,7 +36,7 @@ import kgqan.sparqls as sparqls
 
 from kgqan.question import Question
 from kgqan.nlp.utils import remove_duplicates
-from kgqan.nlp.models import cons_parser
+# from kgqan.nlp.models import cons_parser
 from nltk.stem import WordNetLemmatizer
 import logging
 from kgqan.logger import logger
@@ -273,36 +273,37 @@ class KGQAn:
             pass  # 11,13,75
 
         # Which Trial
-        if self.question.text.lower().startswith(
-            "which "
-        ) or self.question.text.lower().startswith(" in which "):
-            allennlp_dep_output = cons_parser.predict(sentence=self.question.text)
-            for tag in zip(
-                allennlp_dep_output["pos_tags"], allennlp_dep_output["tokens"]
-            ):
-                if tag[0] in ["NN", "NNS"]:
-                    self.question.set_answer_type(self.lemmatizer.lemmatize(tag[1]))
-                    break
-        if (
-            self.knowledge_graph == "lc_quad"
-            or self.knowledge_graph == "dblp"
-            or self.knowledge_graph == "microsoft_academic"
-        ):
-            if (
-                self.question.text.lower().startswith("to which ")
-                or self.question.text.lower().startswith("under which ")
-                or self.question.text.lower().startswith("what ")
-                or self.question.text.lower().startswith("give ")
-                or self.question.text.lower().startswith("name ")
-                or self.question.text.lower().startswith("list ")
-            ):
-                allennlp_dep_output = cons_parser.predict(sentence=self.question.text)
-                for tag in zip(
-                    allennlp_dep_output["pos_tags"], allennlp_dep_output["tokens"]
-                ):
-                    if tag[0] in ["NN", "NNS"]:
-                        self.question.set_answer_type(self.lemmatizer.lemmatize(tag[1]))
-                        break
+        #  This was used for detecting answer type for string questions, it is not needed since our new filtration technique does not use these types
+        # if self.question.text.lower().startswith(
+        #     "which "
+        # ) or self.question.text.lower().startswith(" in which "):
+        #     allennlp_dep_output = cons_parser.predict(sentence=self.question.text)
+        #     for tag in zip(
+        #         allennlp_dep_output["pos_tags"], allennlp_dep_output["tokens"]
+        #     ):
+        #         if tag[0] in ["NN", "NNS"]:
+        #             self.question.set_answer_type(self.lemmatizer.lemmatize(tag[1]))
+        #             break
+        # if (
+        #     self.knowledge_graph == "lc_quad"
+        #     or self.knowledge_graph == "dblp"
+        #     or self.knowledge_graph == "microsoft_academic"
+        # ):
+        #     if (
+        #         self.question.text.lower().startswith("to which ")
+        #         or self.question.text.lower().startswith("under which ")
+        #         or self.question.text.lower().startswith("what ")
+        #         or self.question.text.lower().startswith("give ")
+        #         or self.question.text.lower().startswith("name ")
+        #         or self.question.text.lower().startswith("list ")
+        #     ):
+        #         allennlp_dep_output = cons_parser.predict(sentence=self.question.text)
+        #         for tag in zip(
+        #             allennlp_dep_output["pos_tags"], allennlp_dep_output["tokens"]
+        #         ):
+        #             if tag[0] in ["NN", "NNS"]:
+        #                 self.question.set_answer_type(self.lemmatizer.lemmatize(tag[1]))
+        #                 break
 
     def update_connected_predicate_count(self, uri):
         count_response = self.sparql_end_point.evaluate_SPARQL_query(

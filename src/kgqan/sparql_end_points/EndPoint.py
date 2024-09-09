@@ -107,6 +107,7 @@ class EndPoint:
         return False
 
     def extract_resource_name(self, result_bindings):
+        uri_name_to_value = dict()
         resource_names = list()
         resource_URIs = list()
         for binding in result_bindings:
@@ -122,8 +123,11 @@ class EndPoint:
             # TODO: check for URI validity
             if not resource_name.strip():
                 continue
+            if resource_URI in uri_name_to_value and uri_name_to_value[resource_URI] == resource_name:
+                continue
             resource_URIs.append(resource_URI)
             resource_names.append(resource_name)
+            uri_name_to_value[resource_URI] = resource_name
         return resource_URIs, resource_names
 
     def extract_resource_name_dbpedia(self, binding):
