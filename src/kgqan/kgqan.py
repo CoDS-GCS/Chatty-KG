@@ -47,7 +47,7 @@ from kgqan.langchain_filtration import choose_question_from_keywords
 from termcolor import cprint
 import networkx as nx
 import datetime
-from kgqan.linking.llm_linking import vertex_linking
+from kgqan.linking.llm_linking import vertex_linking, relation_linking
 
 import logging
 
@@ -163,6 +163,7 @@ class KGQAn:
             return [], [], [], understanding_end - understanding_start, 0, 0, 0, 0
         linking_start = time.time()
         self.extract_possible_V_and_E()
+        # return [], [], [], understanding_end - understanding_start, 0, 0, 0, 0
         linking_end = time.time()
         execution_start = time.time()
         query_selection_start = time.time()
@@ -386,6 +387,7 @@ class KGQAn:
                     uris.extend(uris_destination)
                     names.extend(names_destination)
 
+            # Reham: Replace with relation linking
             URIs_chosen = self.__get_chosen_URIs_for_relation(relation, uris, names)
             # print("Edges CHosen")
             # print(URIs_chosen)
@@ -420,9 +422,10 @@ class KGQAn:
         if not uris:
             return uris
 
-        scores = self.__class__.__compute_semantic_similarity_between_single_word_and_word_list(
-            relation, names
-        )
+        # scores = self.__class__.__compute_semantic_similarity_between_single_word_and_word_list(
+        #     relation, names
+        # )
+        scores = relation_linking(relation, names)
         # (uri, vetrex, True) ===>  (uri, vertex, True, score)
         l1, l2, l3 = list(zip(*uris))
         URIs_with_scores = list(zip(l1, l2, l3, scores))

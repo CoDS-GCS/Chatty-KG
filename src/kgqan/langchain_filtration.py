@@ -72,6 +72,11 @@ def choose_question_from_keywords(question, query_list, triples_list):
     print(final_prompt)
     llm = get_openAI_llm()
     chain = prompt | llm
+
+    retry = 0
+
+    # while retry < 3 and len(return_result) == 0:
+    #     print("Trial #:  ", retry)
     output = chain.invoke({"question": question, "predicate_list": predicate_list})
     output = output.content
     print(output)
@@ -87,5 +92,6 @@ def choose_question_from_keywords(question, query_list, triples_list):
             return_result.extend(predicate_to_query_id[k])
         else:
             print(f"Error {k} not in input list")
+        # retry = retry + 1
 
     return list(set(return_result))
