@@ -36,17 +36,18 @@ import kgqan.sparqls as sparqls
 
 from kgqan.question import Question
 from kgqan.nlp.utils import remove_duplicates
-from kgqan.nlp.models import cons_parser
+# from kgqan.nlp.models import cons_parser
 from nltk.stem import WordNetLemmatizer
 import logging
 from kgqan.logger import logger
 
 import time
 from kgqan.langchain_filtration import choose_question_from_keywords
-import kgqan.filteration as filteration
+# import kgqan.filteration as filteration
 from termcolor import cprint
 import networkx as nx
 import datetime
+from kgqan.linking.llm_linking import vertex_linking
 
 import logging
 
@@ -273,36 +274,37 @@ class KGQAn:
             pass  # 11,13,75
 
         # Which Trial
-        if self.question.text.lower().startswith(
-            "which "
-        ) or self.question.text.lower().startswith(" in which "):
-            allennlp_dep_output = cons_parser.predict(sentence=self.question.text)
-            for tag in zip(
-                allennlp_dep_output["pos_tags"], allennlp_dep_output["tokens"]
-            ):
-                if tag[0] in ["NN", "NNS"]:
-                    self.question.set_answer_type(self.lemmatizer.lemmatize(tag[1]))
-                    break
-        if (
-            self.knowledge_graph == "lc_quad"
-            or self.knowledge_graph == "dblp"
-            or self.knowledge_graph == "microsoft_academic"
-        ):
-            if (
-                self.question.text.lower().startswith("to which ")
-                or self.question.text.lower().startswith("under which ")
-                or self.question.text.lower().startswith("what ")
-                or self.question.text.lower().startswith("give ")
-                or self.question.text.lower().startswith("name ")
-                or self.question.text.lower().startswith("list ")
-            ):
-                allennlp_dep_output = cons_parser.predict(sentence=self.question.text)
-                for tag in zip(
-                    allennlp_dep_output["pos_tags"], allennlp_dep_output["tokens"]
-                ):
-                    if tag[0] in ["NN", "NNS"]:
-                        self.question.set_answer_type(self.lemmatizer.lemmatize(tag[1]))
-                        break
+        #  This was used for detecting answer type for string questions, it is not needed since our new filtration technique does not use these types
+        # if self.question.text.lower().startswith(
+        #     "which "
+        # ) or self.question.text.lower().startswith(" in which "):
+        #     allennlp_dep_output = cons_parser.predict(sentence=self.question.text)
+        #     for tag in zip(
+        #         allennlp_dep_output["pos_tags"], allennlp_dep_output["tokens"]
+        #     ):
+        #         if tag[0] in ["NN", "NNS"]:
+        #             self.question.set_answer_type(self.lemmatizer.lemmatize(tag[1]))
+        #             break
+        # if (
+        #     self.knowledge_graph == "lc_quad"
+        #     or self.knowledge_graph == "dblp"
+        #     or self.knowledge_graph == "microsoft_academic"
+        # ):
+        #     if (
+        #         self.question.text.lower().startswith("to which ")
+        #         or self.question.text.lower().startswith("under which ")
+        #         or self.question.text.lower().startswith("what ")
+        #         or self.question.text.lower().startswith("give ")
+        #         or self.question.text.lower().startswith("name ")
+        #         or self.question.text.lower().startswith("list ")
+        #     ):
+        #         allennlp_dep_output = cons_parser.predict(sentence=self.question.text)
+        #         for tag in zip(
+        #             allennlp_dep_output["pos_tags"], allennlp_dep_output["tokens"]
+        #         ):
+        #             if tag[0] in ["NN", "NNS"]:
+        #                 self.question.set_answer_type(self.lemmatizer.lemmatize(tag[1]))
+        #                 break
 
     def update_connected_predicate_count(self, uri):
         count_response = self.sparql_end_point.evaluate_SPARQL_query(
@@ -334,24 +336,20 @@ class KGQAn:
                 logger.log_error(
                     f"Error at 'extract_possible_V_and_E' method with v_query value of {entity_query} "
                 )
+                # traceback.print_exc()
                 continue
+            if len(uris) == 0:
+                continue
+            elif len(uris) == 1:
+                chosen_vertex_index = 0
+            else:
+                chosen_vertex_index = vertex_linking(entity, names)
+                if chosen_vertex_index is None:
+                    continue
 
-            scores = (
-                self.__compute_semantic_similarity_between_single_word_and_word_list(
-                    entity, names
-                )
-            )
-
-            URIs_with_scores = list(zip(uris, scores))
-            URIs_with_scores.sort(key=operator.itemgetter(1), reverse=True)
-            # print("Vertex with scores")
-            # print(URIs_with_scores)
-            self.v_uri_scores.update(URIs_with_scores)
-            URIs_sorted = []
-            if len(list(zip(*URIs_with_scores))) > 0:
-                URIs_sorted = list(zip(*URIs_with_scores))[0]
+            chosen_uri = [uris[chosen_vertex_index]]
             updated_vertex = Vertex(
-                self.n_max_Vs, URIs_sorted, self.sparql_end_point, self.n_limit_EQuery
+                self.n_max_Vs, chosen_uri, self.sparql_end_point, self.n_limit_EQuery
             )
             URIs_chosen = updated_vertex.get_vertex_uris()
             # URIs_chosen = remove_duplicates(URIs_sorted)[:self.n_max_Vs]
@@ -785,6 +783,7 @@ class KGQAn:
             self.target_variable = (
                 candidate_targets[0] if len(candidate_targets) > 0 else "?var1"
             )
+            # select_query.add_variables(variables=[self.target_variable, "?type"])
             select_query.add_variables(variables=[self.target_variable])
             # remove the question mark for further use
             self.target_variable = self.target_variable[1:]
@@ -798,6 +797,7 @@ class KGQAn:
                     )
                 ]
             )
+            # where_pattern.add_nested_graph_pattern(optional_pattern)
             select_query.set_where_pattern(graph_pattern=where_pattern)
             return select_query.get_text(), node_uris, relation_uris, triples
 
@@ -862,27 +862,32 @@ class KGQAn:
         self.query_selection_end = time.time()
         self.num_queries_executed = len(queries_indices)
         for index in queries_indices:
-            result = self.sparql_end_point.evaluate_SPARQL_query(sparqls[index])
-            v_result = json.loads(result)
-            if "results" in v_result:
-                v_result = self.postprocess_answer_if_needed(v_result)
-                self.question.possible_answers[index].update(
-                    results=v_result["results"], vars=v_result["head"]["vars"]
-                )
-            else:
-                self.question.possible_answers[index].update(results=[], boolean=v_result["boolean"])
-            answers = list()
-            if "results" in v_result:
-                for binding in v_result["results"]["bindings"]:
-                    answer = self.__class__.extract_resource_name_from_uri(
-                        binding[self.target_variable]["value"]
-                    )[0]
-                    answers.append(answer)
+            try:
+                result = self.sparql_end_point.evaluate_SPARQL_query(sparqls[index])
+                v_result = json.loads(result)
+                if "results" in v_result:
+                    v_result = self.postprocess_answer_if_needed(v_result)
+                    self.question.possible_answers[index].update(
+                        results=v_result["results"], vars=v_result["head"]["vars"]
+                    )
                 else:
-                    if v_result["results"]["bindings"]:
-                        logger.log_info(f"[POSSIBLE ANSWER {i}:] {answers}")
-            else:
-                answers.append(v_result["boolean"])
+                    self.question.possible_answers[index].update(results=[], boolean=v_result["boolean"])
+                answers = list()
+                target = self.target_variable[1:] if self.target_variable.startswith('?') else self.target_variable
+                if "results" in v_result:
+                    for binding in v_result["results"]["bindings"]:
+                        answer = self.__class__.extract_resource_name_from_uri(
+                            binding[target]["value"]
+                        )[0]
+                        answers.append(answer)
+                    else:
+                        if v_result["results"]["bindings"]:
+                            logger.log_info(f"[POSSIBLE ANSWER {i}:] {answers}")
+                else:
+                    answers.append(v_result["boolean"])
+            except:
+                print("Error while executing SPARQL query: ", sparqls[index])
+                # traceback.print_exc()
 
     def evaluate_star_queries(self):
         self.question.possible_answers.sort(reverse=True)
@@ -891,6 +896,7 @@ class KGQAn:
         for i, possible_answer in enumerate(
             self.question.possible_answers[: self._n_max_answers]
         ):
+            self.num_queries_executed += 1
             logger.log_info(f"[EVALUATING SPARQL:] {possible_answer.sparql}")
             result = self.sparql_end_point.evaluate_SPARQL_query(possible_answer.sparql)
             logger.log_info(
@@ -950,7 +956,8 @@ class KGQAn:
             self.question.sparqls = sparqls
 
     def is_variable(self, label):
-        return "var" in label
+        return "var" in label or label.startswith('?')
+        # return "var" in label
 
     @property
     def question(self):
@@ -1004,12 +1011,13 @@ class KGQAn:
         return resource_URI, resource_name
 
     def postprocess_answer_if_needed(self, v_result):
+        target = self.target_variable[1: ] if self.target_variable.startswith('?') else self.target_variable
         for binding in v_result["results"]["bindings"]:
-            if "datatype" in binding[self.target_variable]:
-                if "gYear" in binding[self.target_variable]["datatype"]:
-                    if int(binding[self.target_variable]["value"]) > 0:
-                        obj = datetime.datetime.strptime(binding[self.target_variable]["value"], "%Y")
-                        binding[self.target_variable]["value"] = str(obj.date())
+            if "datatype" in binding[target]:
+                if "gYear" in binding[target]["datatype"]:
+                    if int(binding[target]["value"]) > 0:
+                        obj = datetime.datetime.strptime(binding[target]["value"], "%Y")
+                        binding[target]["value"] = str(obj.date())
         return v_result
 
 if __name__ == "__main__":

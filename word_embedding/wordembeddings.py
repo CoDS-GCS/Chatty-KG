@@ -3,7 +3,8 @@ import os
 import sys
 import numpy as np
 import statistics
-import chars2vec
+from transformers import BertTokenizer, BertModel
+import torch
 
 
 
@@ -14,7 +15,8 @@ class WordEmbeddings:
         self.vocab = None
         self.ivocab = None
         self.vector_feature_size = 0
-        self.char2vec = chars2vec.load_model("eng_300")
+        self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+        self.model = BertModel.from_pretrained('bert-base-uncased')
 
     def load_model(self):
         self.w, self.vocab, self.ivocab = self.load_vocab()
@@ -90,27 +92,44 @@ class WordEmbeddings:
             if w in self.vocab:
                 mwe_vecs.append(self.w[self.vocab[w], :])
             else:
-                vec = self.char2vec.vectorize_words([w])
-                vec = vec.astype(float)
-                mwe_vecs.append(vec[0])
+                vec = self.get_bert_embedding(w)[:300]
+                vec.astype(float)
+                mwe_vecs.append(vec)
         else:
             return mwe_vecs
+
+    def get_bert_embedding(self, text):
+        # Tokenize the input text and convert to input IDs
+        inputs = self.tokenizer(text, return_tensors='pt', truncation=True, max_length=128)
+
+        # Get the embeddings from BERT
+        with torch.no_grad():
+            outputs = self.model(**inputs)
+
+        # The embeddings are the outputs from the last hidden state of the model
+        # We take the mean of the embeddings of all tokens for simplicity
+        embeddings = outputs.last_hidden_state.mean(dim=1)
+        embeddings = np.array(embeddings.numpy().squeeze(), dtype=np.float64)
+        return embeddings
 
 
 
 
 if __name__ == "__main__":
+    # get_embedding_for_mwe: Gets embeddings of words
+    # mwe_semantic_distance: Gets semantic similarity between two vectors
+    wiki_word_embed_path = os.path.join("data", "wiki-news-300d-1M.txt")
     wiki_model = WordEmbeddings(
-        r"/home/disooqi/projects/wise/word_embedding/wiki-news-300d-1M.txt"
+        f'/home/rehamomar/Project/KGQAn-chatbot/data/wiki-news-300d-1M.txt'
     )
     wiki_model.load_model()
     print("Done loading")
     print(
         "ss: "
         + str(
-            wiki_model.semantic_distance(
-                wiki_model.get_embedding_for_word("wife"),
-                wiki_model.get_embedding_for_word("spouse"),
+            wiki_model.mwe_semantic_distance(
+                wiki_model.get_embedding_for_mwe('wife'),
+                wiki_model.get_embedding_for_mwe('spouse'),
+            )
             )
         )
-    )
