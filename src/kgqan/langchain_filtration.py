@@ -53,6 +53,8 @@ def prepare_keywords_list(triples_list):
 
 
 def choose_question_from_keywords(question, query_list, triples_list):
+    return_result = list()
+
     # 45 on qald, # best reults for solution 13(m)
     template = ("Task: Select all keywords from the provided list below that are relevant to answer the question: "
                 "{question}\nList of Keywords:\n{predicate_list}\nInstructions: Please choose only the keywords from "
@@ -64,6 +66,8 @@ def choose_question_from_keywords(question, query_list, triples_list):
         template=template,
     )
     predicate_list, predicate_to_query_id = prepare_keywords_list(triples_list)
+    if len(predicate_list) == 0:
+        return list()
     final_prompt = prompt.format(question=question, predicate_list=predicate_list)
     print(final_prompt)
     llm = get_openAI_llm()
@@ -72,7 +76,7 @@ def choose_question_from_keywords(question, query_list, triples_list):
     output = output.content
     print(output)
     output = postprocess_result(output)
-    return_result = list()
+
     # Parsing for solution 13 -m
     keywords = output.split(',')
     for k in keywords:

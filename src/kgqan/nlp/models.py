@@ -12,7 +12,7 @@ __maintainer__ = "CODS Lab"
 __email__ = "essam.mansour@concordia.ca"
 __status__ = "debug"
 __created__ = "2020-02-07"
-from allennlp.predictors.predictor import Predictor
+# from allennlp.predictors.predictor import Predictor
 
 
 # oie = Predictor.from_path("https://s3-us-west-2.amazonaws.com/allennlp/models/openie-model.2018-08-20.tar.gz")
@@ -29,7 +29,7 @@ from allennlp.predictors.predictor import Predictor
 #    "https://storage.googleapis.com/allennlp-public-models/biaffine-dependency-parser-ptb-2020.04.06.tar.gz"
 #)
 #
-cons_parser = Predictor.from_path(
-    "https://storage.googleapis.com/allennlp-public-models/elmo-constituency-parser-2020.02.10.tar.gz"
-)
+# cons_parser = Predictor.from_path(
+#     "https://storage.googleapis.com/allennlp-public-models/elmo-constituency-parser-2020.02.10.tar.gz"
+# )
 #lemmatizer = WordNetLemmatizer()
