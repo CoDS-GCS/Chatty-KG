@@ -437,12 +437,26 @@ class KGQAn:
         ):
             source_URIs = self.question.query_graph.nodes[source]["uris"]
             destination_URIs = self.question.query_graph.nodes[destination]["uris"]
-            node1_uris = ["?" + source] if self.is_variable(source) else source_URIs
-            node2_uris = (
-                ["?" + destination]
-                if self.is_variable(destination)
-                else destination_URIs
-            )
+            if not self.is_variable(source):
+                node1_uris = source_URIs
+            elif source.startswith('?'):
+                node1_uris = [source]
+            else:
+                node1_uris = ["?" + source]
+
+            if not self.is_variable(destination):
+                node2_uris = destination_URIs
+            elif destination.startswith('?'):
+                node2_uris = [destination]
+            else:
+                node2_uris = ["?" + destination]
+
+            # node1_uris = ["?" + source] if self.is_variable(source) else source_URIs
+            # node2_uris = (
+            #     ["?" + destination]
+            #     if self.is_variable(destination)
+            #     else destination_URIs
+            # )
             possible_triples = self.get_all_possible_triples_for_edge(
                 edge_info, node1_uris, node2_uris
             )
@@ -643,18 +657,19 @@ class KGQAn:
         score_count = 0
         for q in star_query:
             if len(q) == 2:
-                score += self.v_uri_scores[q[0]]
+                # score += self.v_uri_scores[q[0]]
                 score += q[1][2]
-                score_count += 2
+                # score_count += 2
+                score_count += 1
             elif len(q) == 3:
-                if not self.is_variable(q[0]):
-                    score += self.v_uri_scores[q[0]]
-                    score_count += 1
+                # if not self.is_variable(q[0]):
+                #     score += self.v_uri_scores[q[0]]
+                #     score_count += 1
                 score += q[1][1]
                 score_count += 1
-                if not self.is_variable(q[2]):
-                    score += self.v_uri_scores[q[2]]
-                    score_count += 1
+                # if not self.is_variable(q[2]):
+                #     score += self.v_uri_scores[q[2]]
+                #     score_count += 1
         return score / score_count if score_count > 0 else score
 
     # Edge is an array of (predicate, vertex, orientation, score), orientation = false -> vertex is subject,
