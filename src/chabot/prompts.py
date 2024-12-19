@@ -46,6 +46,27 @@ CONTEXT_CLASSIFY_QUESTION_PROMPT = PromptTemplate(
         Classification:""",
 )
 
+CONTEXT_CLASSIFY_QUESTION_PROMPT_2 = PromptTemplate(
+    input_variables=["chat_history", "question"],
+    template="""Classify a given question as either 'self-contained' or 'non-self-contained' while considering the context of resolving pronouns and references. 
+        In this task, 'self-contained' questions are those that can be understood and answered without needing additional context or information, even when they refer to entities or concepts mentioned in prior conversation. 'Non-self-contained' questions are those that, due to the presence of pronouns or references to prior conversation, require additional context or information to be answered correctly.
+
+        Examples:
+        Question: 'Name the author of the paper of title "MIMO Systems with Intentional Timing Offset"'
+        Classification: self-contained
+
+        Question: 'What was published by him in 1995?'
+        Classification: non-self-contained
+
+        Do not respond with more than one word.
+
+        <chat_history>
+        {chat_history}
+        </chat_history>
+        Question: '{question}'
+        Classification:""",
+)
+
 CONDENSE_QUESTION_PROMPT_CUSTOM = PromptTemplate(
     input_variables=["chat_history", "question"],
     template="""Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question. Preserve the original question in the answer setiment during rephrasing.
