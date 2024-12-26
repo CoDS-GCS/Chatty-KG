@@ -2,7 +2,7 @@ import json
 import os
 import time
 import requests
-from chabot.KGChatbot import KGChatbot
+from chatbot.KGChatbot import KGChatbot
 import urllib.parse
 
 
@@ -79,14 +79,14 @@ def compute_results(results):
     return measures
 
 def process_answers_user(answers_user):
-    print(answers_user)
     result = set()
+    print(answers_user)
     for answer in answers_user:
-        for key, value in answer.items():
-            result.add(normalize(value["value"]))
-    # for inst in answers_user:
-    #     for value in inst["answer"]:
-    #         result.add(normalize(value))
+        result.add(normalize(answer))
+    # for answer in answers_user:
+    #     for key, value in answer.items():
+    #         result.add(normalize(value["value"]))
+
     return list(result)
 
 def process_gold_answers(golden_answer):
@@ -161,18 +161,18 @@ if __name__ == '__main__':
         chatbot = KGChatbot(kg_name, '')
 
         for dialogue_question, golden_answer in zip(dialogue, answers):
-            answer = chatbot.ask_question(dialogue_question)
-            result = compare_single_answer(answer, golden_answer)
+            answer, values = chatbot.ask_question("1", dialogue_question)
+            result = compare_single_answer(values, golden_answer)
             results.append(result)
             question_output = {"question": dialogue_question, "queries": queries, "golden_answer": golden_answer,
                                "answer": answer, "result": result}
             output.append(question_output)
-        break
 
     evaluation_metrics = compute_results(results)
     output = {"Output": output, "Metrics": evaluation_metrics}
     timestr = time.strftime("%Y%m%d-%H%M%S")
-    output_file_name = f'output/{kg_name}_answers_{timestr}.json'
+    output_file_name = f'output/{kg_name}_dialogue_answers_{timestr}.json'
+    # output_file_name = f'output/{kg_name}_answers_{timestr}.json'
     with open(output_file_name, encoding='utf-8', mode='w') as rfobj:
         json.dump(output, rfobj, indent=4)
         rfobj.write('\n')

@@ -95,9 +95,9 @@ while question:
 
 
     st.session_state["conv_startwith_dependent_q"] = False
-    answer = kgchatbot.run_query(question)
-    kgchatbot.update_context(session_id, question, answer)
-    utils.display_msg(f"Answer: {answer}", "assistant")
+    answer, user_answer = kgchatbot.run_query(question)
+    kgchatbot.update_context(session_id, question, user_answer)
+    utils.display_msg(f"Answer: {user_answer}", "assistant")
 
     question = None
 

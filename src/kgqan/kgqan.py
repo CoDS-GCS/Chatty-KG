@@ -13,6 +13,7 @@ __email__ = "essam.mansour@concordia.ca"
 __status__ = "debug"
 __created__ = "2020-02-07"
 
+import itertools
 import sys
 
 # sys.path.append('.')
@@ -160,7 +161,7 @@ class KGQAn:
         # if no named entity you should return here
         if len(self.question.query_graph) == 0:
             logger.log_info("[NO Named-entity or NO Relation Detected]")
-            return [], [], [], understanding_end - understanding_start, 0, 0, 0, 0
+            return [], [], [], understanding_end - understanding_start, 0, 0, 0, 0, self.question.answer_datatype == "boolean"
         linking_start = time.time()
         self.extract_possible_V_and_E()
         linking_end = time.time()
@@ -184,7 +185,8 @@ class KGQAn:
             linking_end - linking_start,
             execution_end - execution_start,
             self.query_selection_end - query_selection_start if self.query_selection_end != 0 else 0,
-            self.num_queries_executed
+            self.num_queries_executed,
+            self.question.answer_datatype == "boolean"
         )
 
     def detect_question_and_answer_type(self):
@@ -524,6 +526,9 @@ class KGQAn:
             connected_node = next(iter(connected_node))
 
             if self.is_variable(connected_node):
+                if type(bgps) is type(itertools.product()):
+                    bgps = list(bgps)
+
                 bgps = (
                     product(bgps, current_triples)
                     if len(bgps) != 0

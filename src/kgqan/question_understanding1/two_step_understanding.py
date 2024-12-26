@@ -1,9 +1,28 @@
+from langchain.chains.constitutional_ai.prompts import examples
 from langchain_core.prompts.prompt import PromptTemplate
 from langchain_openai import ChatOpenAI
 
 import os
 
 os.environ["OPENAI_API_KEY"] = ""
+
+# examples corresponds to lines 157,568,726,933,1086,697,1161,1367,45,83,134,219,478,604,765,933,136,340, 1134 in train.json dataset manually created by us from lcquad2.0 dataset
+def get_examples(number):
+    examples = ['- Which political figures were awarded Screen Actors Guild Life Achievement Award?: [(Screen Actors Guild Life Achievement Award, award, ?var1)]',
+                '- Where is the tombstone of the successor of Edward Wolcott?: [(?var1, tombstone, ?var2), (Edward Wolcott, successor of, ?var2)]',
+                '- How many different kinds of games are published by Interplay Entertainment?: [(?var1, kinds, ?var2), (Interplay Entertainment, publish, ?var1)]',
+                '- What sports can be played in institutions in Bataan?: [(?var1, play, ?var2), (Bataan, institutions in, ?var2)]',
+                '- In which ice hockey league, did the team coached by Joel Quenneville win?: [(?var1, win, ?var2), (Joel Quenneville, coach, ?var1)]',
+                '- What is the location of Sam Sen Railway Station ?: [(Sam Sen Railway Station, location of, ?var1)]',
+                '- What is the common nickname given both to Harding academy and Lyons township high school?: [(Harding academy, nickname, ?var1), (Lyons township high school, nickname, ?var1)]',
+                '- Mike Shinoda is in which band?: [(Mike Shinoda, to be in, ?var1 )]',
+                '- Name the F1 racer with relative as Ralf Schumacher and has child named Mick Schumacher?: [(Ralf Schumacher, relative, ?var1), (Mick Schumacher, child, ?var1)]',
+                '- Who have children named James Roosevelt and Franklin Delano Roosevelt, Jr.?: [(James Roosevelt, children, ?var1), (Franklin Delano Roosevelt Jr., children , ?var1)]',
+                # '- How many other ingredient are there in the foods whihh have one of the ingredient as Potato ?: [(<s> var1 <p> ingredient <o> var2|<s> Potato <p> ingredient <o> var1")]',
+                # '- Who is the father of Barbara Ann Crancer?: [(<s> Barbara Ann Crancer <p> father <o> var1)]',
+                # '- '
+                ]
+    return '\n'.join(examples[:number])
 
 def get_openAI_llm():
     # Choose from [gpt-3.5-turbo, 'gpt-4', 'gpt-4-turbo', 'gpt-4o']
@@ -71,6 +90,7 @@ def extract_triples_from_question(question):
         Question: {question}
         Output:  
         """
+    # Original Template
     template = """
     Identify the triples within the provided question. Follow these guidelines:
 
@@ -82,7 +102,7 @@ def extract_triples_from_question(question):
     6. Variables must be returned as ?var followed by a unique id (e.g., ?var1, ?var2, ...).
     7. Each question must contain at least one triple and one variable.
     8. Predicates should be extracted from the question if possible.
-    
+
     Examples:
     - Who wrote the book Pride and Prejudice?: (?author, wrote, Pride and Prejudice)
     - When was the Eiffel Tower built?:  (Eiffel Tower, built in, ?year)
@@ -90,14 +110,40 @@ def extract_triples_from_question(question):
     Question: {question}
     Output:
     """
+    # template = """
+    # Identify the triples within the provided question. Follow these guidelines:
+    #
+    # 1. Prioritize the answer to the question in the first triple.
+    # 2. Each triple should follow this format: (<subject>, <predicate>, <object>)
+    # 3. Each fact should be included in only 1 triple.
+    # 4. Return a list of triples in this format: [(), ()]
+    # 5. Entities can be extracted from the question or represented as variables.
+    # 6. Variables must be returned as ?var followed by a unique id (e.g., ?var1, ?var2, ...).
+    # 7. Each question must contain at least one triple and one variable.
+    # 8. Predicates should be extracted from the question if possible.
+    #
+    # Examples:
+    # {examples}
+    #
+    # Question: {question}
+    # Output:
+    # """
+    #
+    # examples = get_examples(10)
+    # prompt = PromptTemplate(
+    #     input_variables=["question", "examples"],
+    #     template=template,
+    # )
     prompt = PromptTemplate(
         input_variables=["question"],
         template=template,
     )
+    # final_prompt = prompt.format(question=question, examples=examples)
     final_prompt = prompt.format(question=question)
     print(final_prompt)
     llm = get_openAI_llm()
     chain = prompt | llm
+    # output = chain.invoke({"question": question, "examples": examples})
     output = chain.invoke({"question": question})
     print(output.content)
     output = output.content

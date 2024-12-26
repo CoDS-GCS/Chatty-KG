@@ -83,7 +83,7 @@ if __name__ == '__main__':
 
         st = time.time()
         try:
-            answers, _, _, understanding_time, linking_time, execution_time, query_selection_time, num_queries_executed\
+            answers, _, _, understanding_time, linking_time, execution_time, query_selection_time, num_queries_executed, _\
                 = MyKGQAn.ask(question_text=question_text, answer_type=question['answertype'],
                               question_id=question['id'], knowledge_graph='dbpedia')
         except Exception as e:

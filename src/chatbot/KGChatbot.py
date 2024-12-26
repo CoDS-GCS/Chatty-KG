@@ -10,10 +10,10 @@ from typing import List
 from langchain_core.messages import BaseMessage, AIMessage
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
-from chabot.prompts import CLASSIFY_QUESTION_PROMPT_2, CONTEXT_CLASSIFY_QUESTION_PROMPT, CONDENSE_QUESTION_PROMPT_CUSTOM, CONTEXT_CLASSIFY_QUESTION_PROMPT_2
+from chatbot.prompts import CLASSIFY_QUESTION_PROMPT_2, CONTEXT_CLASSIFY_QUESTION_PROMPT, CONDENSE_QUESTION_PROMPT_CUSTOM, CONTEXT_CLASSIFY_QUESTION_PROMPT_2
 from kgqan.kgqan import KGQAn
 
-set_debug(True)
+# set_debug(True)
 
 max_Vs = 1
 max_Es = 21
@@ -43,16 +43,16 @@ class KGChatbot:
         self.store = {}
 
     def ask_question(self, session_id, question):
-        q_type = self.classify_question(question)
+        q_type = self.classify_question(session_id, question)
         print(f"q_type : {q_type}")
         if "non-self-contained" in q_type.lower():
             self.update_chat_summary(session_id)
-            question = self.rephrase_question(question)
-            q_type = self.classify_question(question)
+            question = self.rephrase_question(session_id, question)
+            q_type = self.classify_question(session_id, question)
 
-        answer = self.run_query(question)
-        self.update_context(session_id, question, answer)
-        return answer
+        answer, values_answer = self.run_query(question)
+        self.update_context(session_id, question, values_answer)
+        return answer, values_answer
 
     # def setup_kgqan(_self, kg_name):
     #     return KGQAn(_self.host, kg_name)
@@ -133,6 +133,7 @@ class KGChatbot:
         )
         return q_type
 
+    # Generate a new Chat summary after adding the last question-answer pair to the context
     def update_chat_summary(self,session_id):
         # self.chat_summary = self.conv_buff_memory.predict_new_summary(
         #     self.conv_buff_memory.chat_memory.messages, ""
@@ -147,21 +148,40 @@ class KGChatbot:
         )
         return question
 
+    # returns the structured output for evaluation and user values for history and chatbot interface
     def run_query(self, question):
-        answers, _, _, understanding_time, linking_time, execution_time, query_selection_time, num_queries_executed \
+        answers, _, _, understanding_time, linking_time, execution_time, query_selection_time, num_queries_executed, is_boolean \
             = self.kgqan_instance.ask(question_text=question,
                           question_id=0, knowledge_graph=self.kg_name)
-        all_bindings = list()
-        for answer in answers:
-            if answer['results'] and answer['results']['bindings']:
-                all_bindings.extend(answer['results']['bindings'])
-        return all_bindings
+        if is_boolean:
+            bool_value = False
+            for answer in answers:
+                bool_value = answer['boolean'] or bool_value
+            user_values = [bool_value]
+            output = [{'boolean': bool_value}]
+        else:
+            all_bindings = list()
+            user_values = set()
+            for answer in answers:
+                if answer['results'] and answer['results']['bindings']:
+                    all_bindings.extend(answer['results']['bindings'])
+
+            for binding in all_bindings:
+                key = list(binding.keys())[0]
+                user_values.add(binding[key]['value'])
+            user_values = list(user_values)
+            print(user_values)
+            output = [{'results': {'bindings': all_bindings}}]
+        return output, user_values
 
     def update_context(self, session_id, question, answer):
         # self.conv_buff_memory.save_context(
         #     {"input": f"#Question: {question}"}, {"output": f"#Answer: {answer}"}
         # )
         history = self.get_by_session_id(session_id)
+        # Add a sample from the answer to prevent overflowing the context length of the LLM.
+        if len(answer) > 100:
+            answer = answer[:100]
         history.add_messages([{"input": f"#Question: {question}"}, {"output": f"#Answer: {answer}"}])
         print("\n\n====HISTORY:====\n\n")
         print(f"{self.store}")

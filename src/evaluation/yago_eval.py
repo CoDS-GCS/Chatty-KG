@@ -77,7 +77,7 @@ if __name__ == '__main__':
         # question_text = 'Which movies starring Brad Pitt were directed by Guy Ritchie?'
         # question_text = 'When did the Boston Tea Party take place and led by whom?'
         try:
-            answers, _, _, understanding_time, linking_time, execution_time, query_selection_time, num_queries_executed\
+            answers, _, _, understanding_time, linking_time, execution_time, query_selection_time, num_queries_executed, _\
                 = MyKGQAn.ask(question_text=question_text,
                               question_id=question['id'], knowledge_graph='yago')
         except Exception as e:
