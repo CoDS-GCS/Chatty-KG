@@ -13,6 +13,7 @@ __email__ = "essam.mansour@concordia.ca"
 __status__ = "debug"
 __created__ = "2020-02-07"
 
+import itertools
 import sys
 
 # sys.path.append('.')
@@ -160,7 +161,7 @@ class KGQAn:
         # if no named entity you should return here
         if len(self.question.query_graph) == 0:
             logger.log_info("[NO Named-entity or NO Relation Detected]")
-            return [], [], [], understanding_end - understanding_start, 0, 0, 0, 0
+            return [], [], [], understanding_end - understanding_start, 0, 0, 0, 0, self.question.answer_datatype == "boolean"
         linking_start = time.time()
         self.extract_possible_V_and_E()
         linking_end = time.time()
@@ -184,7 +185,8 @@ class KGQAn:
             linking_end - linking_start,
             execution_end - execution_start,
             self.query_selection_end - query_selection_start if self.query_selection_end != 0 else 0,
-            self.num_queries_executed
+            self.num_queries_executed,
+            self.question.answer_datatype == "boolean"
         )
 
     def detect_question_and_answer_type(self):
@@ -437,12 +439,26 @@ class KGQAn:
         ):
             source_URIs = self.question.query_graph.nodes[source]["uris"]
             destination_URIs = self.question.query_graph.nodes[destination]["uris"]
-            node1_uris = ["?" + source] if self.is_variable(source) else source_URIs
-            node2_uris = (
-                ["?" + destination]
-                if self.is_variable(destination)
-                else destination_URIs
-            )
+            if not self.is_variable(source):
+                node1_uris = source_URIs
+            elif source.startswith('?'):
+                node1_uris = [source]
+            else:
+                node1_uris = ["?" + source]
+
+            if not self.is_variable(destination):
+                node2_uris = destination_URIs
+            elif destination.startswith('?'):
+                node2_uris = [destination]
+            else:
+                node2_uris = ["?" + destination]
+
+            # node1_uris = ["?" + source] if self.is_variable(source) else source_URIs
+            # node2_uris = (
+            #     ["?" + destination]
+            #     if self.is_variable(destination)
+            #     else destination_URIs
+            # )
             possible_triples = self.get_all_possible_triples_for_edge(
                 edge_info, node1_uris, node2_uris
             )
@@ -510,6 +526,9 @@ class KGQAn:
             connected_node = next(iter(connected_node))
 
             if self.is_variable(connected_node):
+                if type(bgps) is type(itertools.product()):
+                    bgps = list(bgps)
+
                 bgps = (
                     product(bgps, current_triples)
                     if len(bgps) != 0
@@ -643,18 +662,19 @@ class KGQAn:
         score_count = 0
         for q in star_query:
             if len(q) == 2:
-                score += self.v_uri_scores[q[0]]
+                # score += self.v_uri_scores[q[0]]
                 score += q[1][2]
-                score_count += 2
+                # score_count += 2
+                score_count += 1
             elif len(q) == 3:
-                if not self.is_variable(q[0]):
-                    score += self.v_uri_scores[q[0]]
-                    score_count += 1
+                # if not self.is_variable(q[0]):
+                #     score += self.v_uri_scores[q[0]]
+                #     score_count += 1
                 score += q[1][1]
                 score_count += 1
-                if not self.is_variable(q[2]):
-                    score += self.v_uri_scores[q[2]]
-                    score_count += 1
+                # if not self.is_variable(q[2]):
+                #     score += self.v_uri_scores[q[2]]
+                #     score_count += 1
         return score / score_count if score_count > 0 else score
 
     # Edge is an array of (predicate, vertex, orientation, score), orientation = false -> vertex is subject,

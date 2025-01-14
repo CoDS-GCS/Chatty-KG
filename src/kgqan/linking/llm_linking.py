@@ -6,6 +6,8 @@ import os
 os.environ["OPENAI_API_KEY"] = ""
 torch.set_default_tensor_type(torch.DoubleTensor)
 
+model_to_token_length = {'gpt-3.5-turbo': 16000}
+
 def remove_unneeded_chars(text):
     text = text.strip().strip("\'").strip('\"')
     return text
@@ -14,7 +16,8 @@ def get_openAI_llm():
     # Choose from [gpt-3.5-turbo, 'gpt-4', 'gpt-4-turbo', 'gpt-4o']
     model_name = "gpt-4o"
     llm = ChatOpenAI(model=model_name, temperature=0)
-    return llm
+    max_tokens = model_to_token_length.get(llm.model_name, None)
+    return llm, max_tokens
 
 
 def validate_vertex_linking(input_list, output):
@@ -50,10 +53,15 @@ List of labels: {vertex_label_list}
         input_variables=["entity", "vertex_label_list"],
         template=template,
     )
-    # final_prompt = prompt.format(entity=entity, vertex_label_list=vertex_label_list)
+    final_prompt = prompt.format(entity=entity, vertex_label_list=vertex_label_list)
     # print(final_prompt)
-    llm = get_openAI_llm()
+    llm, max_tokens = get_openAI_llm()
     chain = prompt | llm
+    if max_tokens is not None:
+        while len(final_prompt) > max_tokens:
+            vertex_label_list = vertex_label_list[:-50]
+            final_prompt = prompt.format(entity=entity, vertex_label_list=vertex_label_list)
+
     output = chain.invoke({"entity": entity, "vertex_label_list": vertex_label_list})
     print(output.content)
     output = output.content

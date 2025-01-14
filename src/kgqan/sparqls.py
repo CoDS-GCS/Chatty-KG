@@ -78,7 +78,7 @@ def make_keyword_unordered_search_query_with_type(keywords_string: str, limit=50
     keywords_string = keywords_string.replace('\'s', '')
     keywords_string = keywords_string.replace('\'', '')
     # for cases such as "Angela Merkel ’s"
-    escape = ['’s', 'and']
+    escape = ['’s', 'and', 'not']
     kwlist = []
     for w in keywords_string.strip().split():
         if w not in escape:

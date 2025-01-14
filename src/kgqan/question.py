@@ -18,8 +18,9 @@ import os
 import networkx as nx
 from termcolor import cprint
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
-from kgqan.seq2seq import seq2seq_model 
+# from kgqan.seq2seq import seq2seq_model
 from kgqan.logger import logger
+from kgqan.question_understanding1.two_step_understanding import extract_triples
 
 model = None
 tokenizer = None
@@ -58,7 +59,8 @@ class Question:
         self.triple_list = list()
         self.logger = logger
 
-        self.__process()
+        self.process()
+        # self.__process()
 
     def add_possible_answer(self, **kwargs):
         # bisect.insort(self._possible_answers, Answer(**kwargs))  # it is not going to work because some answers are
@@ -111,16 +113,20 @@ class Question:
         self._answer_type.clear()
         self._answer_type.append(answer_type)
 
-    def __process(self):
-        self.__find_possible_relations()
+    # def __process(self):
+    #     self.__find_possible_relations()
+    #     self.__build_graph_from_triples()
+
+    def process(self):
+        self.triple_list = extract_triples(self._question_text)
         self.__build_graph_from_triples()
 
-    def __find_possible_relations(self):
-        inputs = seq2seq_model.tokenizer.encode(self._question_text, return_tensors="pt")
-        outputs = seq2seq_model.model.generate(inputs, max_length=300)
-        outputs = seq2seq_model.tokenizer.batch_decode(outputs)
-        for output in outputs:
-            self.__parse_triple(output)
+    # def __find_possible_relations(self):
+    #     inputs = seq2seq_model.tokenizer.encode(self._question_text, return_tensors="pt")
+    #     outputs = seq2seq_model.model.generate(inputs, max_length=300)
+    #     outputs = seq2seq_model.tokenizer.batch_decode(outputs)
+    #     for output in outputs:
+    #         self.__parse_triple(output)
 
     # Parses the triple strings given to create the graph
     # In case there is a missing part of the triple, the triple is bypassed

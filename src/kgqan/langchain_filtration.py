@@ -55,11 +55,16 @@ def prepare_keywords_list(triples_list):
 def choose_question_from_keywords(question, query_list, triples_list):
     return_result = list()
 
+    # No none
+    # template = ("Task: Select all keywords from the provided list below that are relevant to answer the question: "
+    #             "{question}\nList of Keywords:\n{predicate_list}\nInstructions: Please choose only the keywords from "
+    #             "the list above that you believe are relevant to answering the question accurately. Ensure that the "
+    #             "selected keywords belong to the provided list. If none of the keywords is relevant, choose the most similar one. Do not return any explanations. \nOutput: ")
     # 45 on qald, # best reults for solution 13(m)
     template = ("Task: Select all keywords from the provided list below that are relevant to answer the question: "
                 "{question}\nList of Keywords:\n{predicate_list}\nInstructions: Please choose only the keywords from "
                 "the list above that you believe are relevant to answering the question accurately. Ensure that the "
-                "selected keywords belong to the provided list. If none of the keywords are applicable, return None.")
+                "selected keywords belong to the provided list. If none of the keywords are applicable, return None. \nOutput: ")
 
     prompt = PromptTemplate(
         input_variables=["question", "predicate_list"],
