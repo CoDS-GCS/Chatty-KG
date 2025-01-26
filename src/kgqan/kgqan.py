@@ -219,6 +219,12 @@ class KGQAn:
         elif self.question.text.lower().startswith("does "):
             self.question.answer_type = "boolean"
             self.question.answer_datatype = "boolean"
+        elif self.question.text.lower().startswith("was "):
+            self.question.answer_type = "boolean"
+            self.question.answer_datatype = "boolean"
+        elif self.question.text.lower().startswith("were "):
+            self.question.answer_type = "boolean"
+            self.question.answer_datatype = "boolean"
         elif self.question.text.lower().startswith("who are "):
             self.question.answer_type = "person"
             self.question.answer_datatype = "list"
@@ -496,6 +502,15 @@ class KGQAn:
         #     self.question.add_possible_answer(question=self.question.text, sparql=query, score=score)
         #
 
+    def merge_tuples(self, product, tuple_list):
+        final_list = list()
+        for instance in product:
+            for item in tuple_list:
+                temp = instance
+                temp = temp + (item,)
+                final_list.append(temp)
+        return final_list
+
     def get_possible_combinations(self):
         edges = list(nx.dfs_edges(self.question.query_graph))
         bgps = []
@@ -524,16 +539,24 @@ class KGQAn:
             if len(connected_node) == 0:
                 continue
             connected_node = next(iter(connected_node))
-
             if self.is_variable(connected_node):
-                if type(bgps) is type(itertools.product()):
+                if len(bgps) == 0:
+                    bgps = current_triples
+                elif handled_edges == 1:
+                    bgps = product(bgps, current_triples)
                     bgps = list(bgps)
-
-                bgps = (
-                    product(bgps, current_triples)
-                    if len(bgps) != 0
-                    else current_triples
-                )
+                else:
+                    bgps = self.merge_tuples(bgps, current_triples)
+                # if isinstance(bgps, itertools.product):
+                #     intermediate_product = list(bgps)
+                #     intermediate_product = ((x + (y,)) for x, y in intermediate_product)
+                #     bgps = product(intermediate_product, current_triples)
+                # else:
+                #     bgps = (
+                #         product(bgps, current_triples)
+                #         if len(bgps) != 0
+                #         else current_triples
+                #     )
             else:
                 connected_node_vertices = self.question.query_graph.nodes[
                     connected_node
@@ -752,11 +775,25 @@ class KGQAn:
             for n1_uri, predicate, n2_uri in star_query:
                 # direction was decided in generation of BGP step
                 #print(predicate)
-                ask_triple.append(f"<{n1_uri}> <{predicate[0]}> <{n2_uri}>")
+                if self.is_variable(n1_uri):
+                    uri1 = n1_uri
+                else:
+                    uri1 = f"<{n1_uri}>"
+                if self.is_variable(n2_uri):
+                    uri2 = n2_uri
+                else:
+                    uri2 = f"<{n2_uri}>"
+                if predicate[0] == '?p':
+                    p = predicate[0]
+                else:
+                    p =  f'<{predicate[0]}>'
+
+                ask_triple.append(f"{uri1} {p} {uri2}")
                 # if predicate[1]:
                 #     ask_triple.append(f"<{n2_uri}> <{predicate[0]}> <{n1_uri}>")
                 # else:
                 #     ask_triple.append(f"<{n1_uri}> <{predicate[0]}> <{n2_uri}>")
+
                 node1_uris.append(n1_uri)
                 node2_uris.append(n2_uri)
                 relation_uris.append(predicate[0])
@@ -765,7 +802,10 @@ class KGQAn:
             # ask_query, node1_uris,node2_uris, relation_uris = self.generate_sparql_query(query)
             # ask_query = query.replace("\n", " ")
             # return query, node1_uris, node2_uris, relation_uris
-            return query, node1_uris, node2_uris, triples
+            node_uris = list()
+            node_uris.append(node1_uris)
+            node_uris.append(node2_uris)
+            return query, node_uris, relation_uris, triples
         else:
             select_query = SparqlQB.SPARQLSelectQuery()
             where_pattern = SparqlQB.SPARQLGraphPattern()
