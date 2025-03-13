@@ -57,7 +57,7 @@ if __name__ == '__main__':
     max_Vs = 1
     max_Es = 21
     max_answers = 41
-    limit_VQuery = 400
+    limit_VQuery = 600
     limit_EQuery = 25
 
     with open(file_name) as f:

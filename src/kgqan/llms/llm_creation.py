@@ -9,8 +9,8 @@ from langchain_ollama import ChatOllama
 # Possible Selections
 # openai, -> gpt-3.5-turbo, gpt-4, gpt-4-turbo, gpt-4o
 # google -> gemini-1.5-flash
-# deepseek -> deepseek-chat
-# vllm -> llama3.1_local, qwen2.5_local, phi_local
+# deepseek -> deepseek-chat, deepseek-reasoner
+# vllm -> llama3.1_local, qwen2.5_local, phi_local, llama3.1_instruct_local, mistral_local, codellama_local
 
 llm_type = "openai" # Choose From (openai, vllm, google, deepseek)
 model_name = "gpt-4o"
@@ -38,6 +38,7 @@ def get_vllm_llm():
         openai_api_base="http://localhost:5000/v1",
         model_name=model_name,
         model_kwargs={"stop": ["```"]},
+        temperature=0,
     )
     return llm
 

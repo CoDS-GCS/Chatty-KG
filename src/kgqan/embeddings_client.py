@@ -80,6 +80,7 @@ def n_similarity(mwe1, mwe2):
                         "main: error: exception for",
                         f"{message.addr}:\n{traceback.format_exc()}",
                     )
+                    print(f"Words to compare: {mwe1}, {mwe2}")
                     message.close()
             # Check for a socket being monitored to continue.
             if not sel.get_map():

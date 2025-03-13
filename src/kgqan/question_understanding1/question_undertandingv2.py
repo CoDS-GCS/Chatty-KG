@@ -1,11 +1,33 @@
 import json
 import time
 import re
+import traceback
 
 from langchain_core.prompts.prompt import PromptTemplate
 
 from kgqan.llms.llm_creation import get_llm, llm_type
 from kgqan.llms.prompts import question_understanding_template_v3_cot
+
+def remove_duplicate_triples(input):
+    triples = input["triples"]
+    filtered_triples = []
+    serialized_triples = set()
+    for triple in triples:
+        new_triple = []
+        s = ""
+        for item in triple:
+            if item.startswith("?"):
+
+                s += 'variable'
+            else:
+                s += item
+            if item == '?':
+                item = '?var'
+            new_triple.append(item)
+        if s not in serialized_triples:
+            serialized_triples.add(s)
+            filtered_triples.append(new_triple)
+    return {"triples": filtered_triples}
 
 
 def is_camel_case(s):
@@ -18,6 +40,8 @@ def camel_to_normal(s):
 def validate_output(llm_output, question):
     # 1. JSON needs to be valid
     # 2. for non-boolean questions a variable must exist
+
+    # 3. Questions contains at least one entity.
     try:
         json_output = json.loads(llm_output)
     except:
@@ -27,19 +51,29 @@ def validate_output(llm_output, question):
 
     question_word = question.split()[0]
     is_boolean = question_word.lower() in ['is', 'are', 'does', 'was', 'did', 'has', 'can']
+    num_variables = 0
+    num_entities = 0
     variable_exist = False
+
     for triple in json_output["triples"]:
         # print(f'The length of triple {triple} is: {len(triple)}')
         if len(triple) != 3:
             return False
-        for item in triple:
-            try:
-                if item.startswith("?"):
-                    variable_exist = True
-                    break
-            except:
-                print(f"Error: Item {item} is not a string")
-    if not is_boolean and not variable_exist:
+        try:
+            if triple[0].startswith("?"):
+                num_variables += 1
+            else:
+                num_entities += 1
+
+            if triple[2].startswith("?"):
+                num_variables += 1
+            else:
+                num_entities += 1
+        except:
+                print(f"Error in pocessing Triple {triple}")
+
+    if num_entities == 0 or (not is_boolean and num_variables == 0):
+    # if not is_boolean and not variable_exist:
         return False
     else:
         return True
@@ -68,6 +102,7 @@ def prepare_output_list(llm_output):
     triple_list = list()
     try:
        json_output = json.loads(llm_output)
+       json_output = remove_duplicate_triples(json_output)
        for triple in json_output["triples"]:
            triple_list.append({"subject": remove_spaces_if_variable(triple[0]), "predicate": clean_predicate(triple[1]),
                                "object": remove_spaces_if_variable(triple[2])})
@@ -94,17 +129,19 @@ def get_understanding(question, json_logger):
     final_prompt = prompt.format(question=question)
     # print(final_prompt)
     chain = prompt | llm
+    output, metadata = None, None
     while retry < 3:
         if retry > 0:
             print("Retrying...")
-        output = chain.invoke({"question": question})
-        if llm_type == 'google':
-            time.sleep(30)
-        metadata = output.usage_metadata
-        # print(metadata)
-        if llm_type != 'vllm':
-            output = output.content
         try:
+            output = chain.invoke({"question": question})
+            if llm_type == 'google':
+                time.sleep(30)
+
+            # print(metadata)
+            if llm_type != 'vllm':
+                metadata = output.usage_metadata
+                output = output.content
             output = extract_json_from_output(output)
             if validate_output(output, question):
                 break
@@ -115,8 +152,10 @@ def get_understanding(question, json_logger):
 
         retry += 1
     if json_logger is not None:
-        json_logger.set("Understanding", output)
-        json_logger.add_cost("Understanding" ,metadata)
+        if output is not None:
+            json_logger.set("Understanding", output)
+        if metadata is not None:
+            json_logger.add_cost("Understanding" ,metadata)
     print("Understanding OUTPUT======")
     print(output)
 

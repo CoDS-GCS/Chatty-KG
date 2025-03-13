@@ -6,13 +6,16 @@ import torch
 from langchain_core.prompts.prompt import PromptTemplate
 
 from kgqan.llms.llm_creation import get_llm, llm_type
-from kgqan.llms.prompts import vertex_linking_template_v2
+from kgqan.llms.prompts import vertex_linking_template_v2, vertex_linking_template_v3
 
 torch.set_default_tensor_type(torch.DoubleTensor)
 
 def extract_json_from_output(llm_output):
     if '### Instruction' in llm_output:
         index = llm_output.index('### Instruction')
+        llm_output = llm_output[:index]
+    elif '###' in llm_output:
+        index = llm_output.index('###')
         llm_output = llm_output[:index]
     llm_output = llm_output.replace('\n', '')
     start_index = llm_output.index("{")
@@ -33,7 +36,7 @@ def validate_vertex_linking(input_list, output):
 
 def vertex_linking(entity, vertex_label_list, json_logger):
     retry = 0
-    template = vertex_linking_template_v2
+    template = vertex_linking_template_v3
     prompt = PromptTemplate(
         input_variables=["entity", "vertex_label_list"],
         template=template,
@@ -49,30 +52,34 @@ def vertex_linking(entity, vertex_label_list, json_logger):
     while retry < 3:
         if retry > 0:
             print("Retrying...")
+        output1 = ""
+        metadata = None
         try:
             output1 = chain.invoke({"entity": entity, "vertex_label_list": vertex_label_list})
             if llm_type == 'google':
                 time.sleep(30)
             # print(output.content)
-            metadata = output1.usage_metadata
             # print(metadata)
             if llm_type != 'vllm':
+                metadata = output1.usage_metadata
                 output1 = output1.content
             output = extract_json_from_output(output1)
             json_logger.set("Linking", output)
-            json_logger.add_cost("Linking", metadata)
+            if metadata:
+                json_logger.add_cost("Linking", metadata)
             print("Linking OUTPUT======")
             print(output)
             output = json.loads(output)["value"]
+            retry += 1
+            output = remove_unneeded_chars(output)
+            if output in vertex_label_list:
+                break
         except:
             traceback.print_exc()
             print("============Start Parsing Error")
             print(output1)
             print("============End")
-        retry += 1
-        output = remove_unneeded_chars(output)
-        if output in vertex_label_list:
-            break
+
 
     vertex = vertex_label_list.index(output) if output in vertex_label_list else None
     return vertex

@@ -939,8 +939,8 @@ class KGQAn:
                 else:
                     self.question.possible_answers[index].update(results=[], boolean=v_result["boolean"])
                 answers = list()
-                target = self.target_variable[1:] if self.target_variable.startswith('?') else self.target_variable
                 if "results" in v_result:
+                    target = self.target_variable[1:] if self.target_variable.startswith('?') else self.target_variable
                     for binding in v_result["results"]["bindings"]:
                         answer = self.__class__.extract_resource_name_from_uri(
                             binding[target]["value"]

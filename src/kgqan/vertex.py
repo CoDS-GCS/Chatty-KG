@@ -17,6 +17,23 @@ class Vertex:
 
         self.process_all_vertices()
 
+    def process_all_vertices_v2(self):
+        processed = 0
+        counter = 0
+        while processed < self.max_num and counter < len(self.candidate_uris):
+            current_uri = self.candidate_uris[counter]
+            redirect_uri_if_any = self.get_redirected_uri(current_uri)
+            uri = redirect_uri_if_any if redirect_uri_if_any else current_uri
+            uris, names = self.process_vertex(uri)
+            if len(uris) > 0:
+                self.vertices.append(uri)
+                self.predicates_names.append(names)
+                self.predicates_uris.append(uris)
+                processed = processed + 1
+            counter = counter + 1
+
+
+
     def process_all_vertices(self):
         processed = 0
         counter = 0
@@ -86,7 +103,8 @@ class Vertex:
             'debug': 'on',
             'run': '+Run+Query+',
         }
-        query_response = requests.get("https://dbpedia.org/sparql", params=payload)
+        # query_response = requests.get("https://dbpedia.org/sparql", params=payload)
+        query_response = requests.get(self.sparql_end_point.link, params=payload)
         response = json.loads(query_response.text)
         if len(response['results']['bindings']) == 0:
             return None
