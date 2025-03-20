@@ -2537,33 +2537,2325 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "What was awarded to Stefano Ceri?"
+                    "string": "Which publications were authored by Stefano Ceri?"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> select distinct  ?p where { ?s <http://www.w3.org/2000/01/rdf-schema#label> \"Stefano Ceri\" ; <https://dblp.org/rdf/schema#creatorNote> ?p }"
+                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> select distinct  ?p where { ?p <https://dblp.org/rdf/schema#authoredBy> <https://dblp.org/pid/c/StefanoCeri> }"
             },
             "answers": [
-                {
-                    "head": {
-                        "link": [],
-                        "vars": [
-                            "p"
-                        ]
-                    },
-                    "results": {
-                        "distinct": false,
-                        "ordered": true,
-                        "bindings": [
-                            {
-                                "p": {
-                                    "type": "literal",
-                                    "value": "award (2013): SIGMOD Edgar F. Codd Innovations Award"
-                                }
-                            }
-                        ]
-                    }
-                }
+               {
+                  "head": {
+                    "link": [],
+                    "vars": [
+                      "p"
+                    ]
+                  },
+                  "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icoodb/CeriBCGV10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/iceis/KusterTZKCVBCFT07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/otm/Ceri05"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/esws/BarbieriBCVG10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/esws/CeriBV07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigmod/BozzonBBCCFV11"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigmod/BragaCCR05"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigmod/BrambillaCFAB05"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigmod/CacaceCCFPT93"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigmod/CacaceCCTZ90"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigmod/CattaniCKP17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigmod/CeriFP98"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigmod/CeriNP82"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigmod/NanniPCC18"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigmod/RaffioBCPH08"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sac/CeriCDFT00"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/birthday/BatiniC17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/birthday/CeriBF09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/cikm/CeriCGKMNP18"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/conversations/CrovariPGC20"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/data/Ceri17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/data/CeriCKMP17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/daisd/CeriFPT92"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ictai/BragaCCKL02"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/adb/BaralisCMP94"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ecmdafa/TisiJFCB09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/webi/Ceri09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/bncod/Ceri07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/0001CDG0R18"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/0001CVVS17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/BozzonBC12"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/BrambillaC0V15"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/BrambillaCCT05"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/bibe/CanakogluMCTGC13"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/bibe/PinoliSCP19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/dood/BaralisCP95"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/dood/CeriBFP95"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/dood/CeriFPP97"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/rules/BaralisCP95"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/rules/BaralisCW93"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/berkeley/CeriO82"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/caise/CacaceCCGLLTZ89"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/caise/Ceri97"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/caise/CeriB10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/db-workshops/CacaceCH90"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/coopis/Ceri99"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/tes/BonifatiCP00"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigada/MaioCC85"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/bda/Ceri90"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/bda/Ceri99"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/edoc/ScavuzzoNC14"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ecss/Ceri15"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/vlds/BrambillaCFG12"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/semweb/BrambillaCCCVF06"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icwsm/Brena0CGPR19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ruleml/BellomariniBCGL20"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/websci/0001CDV16"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/views/BaralisCP96"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/wmrd/CeriHKS92"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/infocom/PavolvLAC98"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ride/CeriGS97"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ride/ZicariCT91"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/rcis/KhalafAC021"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/mfdbs/CacaceCT91"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icde/BonifatiBCC02"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icde/GulinoCGSB21"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icde/RaffioBCPH08"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/wise/0001CL0V16"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/wise/CeriDM03"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/xp/CeriGP83"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/reference/sp/ValleC11"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icws/BrambillaCPR04"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/dexa/CasatiCPP96"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sebd/BaralisCMPRR97"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sebd/BragaBCCVFMT09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sebd/BragaCCCDMMT08"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sebd/BrambillaCCT05"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sebd/Ceri21"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sebd/CeriAHBBBCCVEFGMRTV10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sebd/CeriCFPTD99"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sebd/CeriFPT93"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sebd/MontanariBCPCM16"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sebd/MostardiCS93"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/iscis/CeriB11"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/swat4ls/0002CCC18"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/cibcb/CeddiaPCM19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/BarbieriBCVG09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/BozzonBCM13"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/BrambillaCCFM03"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/BrambillaCMV14"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/seco/Baeza-YatesBBBCP10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/seco/BozzonBCCFM10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/seco/BozzonBCCG09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/seco/BozzonBCF10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/seco/BozzonBCFM09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/seco/BozzonBCM12"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/seco/BozzonCZ12"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/seco/BragaCCG09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/seco/BragaCG09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/seco/BrambillaCCQ10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/seco/BrambillaCCSFQ12"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/seco/CampiCGMR09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/seco/Ceri09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/gi/Ceri88"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigmod/BrambillaCCDFM04"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ectel/AsteBCFMR07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ectel/BongioBCCDHMMTZZ06"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ectel/CeriDMRS07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ectel/CeriMRS07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/iwbbio/CanakogluCM16"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ieeehpcs/KaitouaGMPC17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/iceis/MargariaWKSBCCVFT07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/iceis/ZarembaVMBCCVFT07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/dils/MasseroliCC09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/rcdl/Ceri0CGKMNP17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/rcdl/CeriCKMP17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/eds/CeriGW86"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/emisa/BatiniC87"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigmod/BatiniC85"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigmod/CeriFPP95"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icmt/BrambillaCT10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/bigdataconf/BertoniCKP15"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/vldb/BaldisseraCPB79"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/vldb/CeriCW00"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/vldb/CeriFP99"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/vldb/CeriGL86"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/vldb/CeriM03"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/vldb/CeriT87"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/vldb/CeriW90"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/vldb/CeriW91"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/vldb/CeriW92"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/vldb/CeriW93"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/vldb/HoutsmaAC90"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/vldb/MeoPC96"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/vldb/ReuterCGSW95"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/tools/AcerbisBBBCF08"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/iat/BrambillaCFTCCVT07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/sp/12/0001C12"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/sp/18/0001C18"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/daglib/0032309"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/jwe/BozzonBC0V15"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/jwe/BrambillaCCFM03"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/jwe/CeriDMN05"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ds/CeriHKS92"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/0001CDD17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/BonifatiCP01"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/BozzonBCF10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/BozzonBCFV11"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/BragaCCA03"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/FaccaCAD05"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/www/ManolescuCBFC03"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/cidr/CeriFBBATTCECG03"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/webdb/BongioCFM00"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/webdb/BongioCFM00a"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/webdb/CeriFMP99"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/edbt/BarbieriBCG10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/edbt/BozzonBCSV13"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/edbt/BragaCC04"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/edbt/CasatiCPP96"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/edbt/CeriCGLLTZ88"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/edbt/CeriFP00"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/edbt/CeriKMPV16"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/edbt/MeoPC96"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/sp/92/CeriC92"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/sp/CeriGT90"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/titb/CeddiaPCM20"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/health/CrovariPPBCGC22"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/debu/BrambillaCCFM02"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/debu/CeriFP94"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/debu/CeriFPT92"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/debu/CeriPPS82"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/debu/CeriPW84"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/jods/BrambillaCCCVFTT08"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/corr/abs-2002-12612"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/ipl/CeriGTW89"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/gpb/PernaPCW18"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/amia/CaironiPCPC97"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ifip/Ceri86"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ifip/CeriPB80"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/cibb/CanakogluNSC18"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/mascots/GulinoCCA20"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/psb/StamoulakatouPC20"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/bcb/DissezCPCM19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/pdis/HoutsmaCC91"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/cui/CrovariCPRSGC20"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/bigdataconf/Giovanni0CDR18"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sac/AugurusaBCC03"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sac/BragaCCKL03"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sac/Ramponi0CDG19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/fis/ValleCBBC08"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icde/BragaCCCDMMT08"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icde/Ceri09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icde/Ceri92"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icde/CeriFP97"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icde/HorlovaKC20"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icde/HorlovaKMC19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icde/MeoPC98"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icde/SmedtCNSA93"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/edbtw/BragaCC04"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/biodb/BernasconiCKACP21"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/biodb/CanakogluBCMC19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/dlib/TernierDMCGC08"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tcbb/FernandezLMVC16"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tcbb/MasseroliCC16"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tse/CeriCML88"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tse/CeriG85"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tse/CeriGW89"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/corr/cs-DB-9912015"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/corr/cs-DB-0310006"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/cacm/CeriG86"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/cacm/CeriMRD07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/bmcbi/CeolMBCCPM20"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/bmcbi/CumboFCMW17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/bmcbi/JaliliMMC17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/bmcbi/NanniPCC19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/jib/MasseroliGC11"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/sigsoft/CeriC83"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/pvldb/BragaCDM08"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icdt/HoutsmaAC90"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ijcai/BozzonBCVQ11"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/nar/CanakogluP0AMC21"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/corr/abs-1907-08170"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/corr/abs-1902-07539"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/jpdc/CeriG86"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/jiis/BaralisCFP96"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/spe/MateraMCF03"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/ijsc/BarbieriBCVG10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/bib/BernasconiCMPC21"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/bib/CanakogluPGNMC21"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tosem/BonifatiCCFP01"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tosem/BrambillaCFM06"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tc/GulinoKC19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/iastedSE/BrambillaCCT06"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/mk/ZanioloCFSSZ97"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/mk/widomC96/CeriFPT96"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/mk/widomC96/WidomC96"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/mk/widomC96/WidomC96a"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/mk/widomC96/WidomC96b"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/mk/widomC96/WidomC96c"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tse/CacaceCTC92"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tse/CeriNW83"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/semweb/ValleSKBCH13"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tweb/QuarteroniBC13"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/bioinformatics/MasseroliCPKGHN19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/bioinformatics/MasseroliPVKJPM15"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/is/BarbicCBM85"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/is/BragaCCR08"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/is/CeriGP86"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/is/CeriPB81"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/is/CeriPW89"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/is/CeriW94"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/is/GozziLC90"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/is/PinoliCMN19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/lncs/ArtaleBCCCFLGMM93"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/lncs/AtzeniCCT93"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/lncs/CeriT93"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/lncs/LugliNC93"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tc/CeriP82"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tc/KaitouaPBC17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/dbcrowd/Ceri13"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/bc/BatiniCN92"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/crc/tucker97/CeriR97"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/mg/AtzeniCPT99"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/mg/CeriP84"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/mit/papazoglouST2000/CasatiCPP00"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/jsi/BaralisCP97"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/software/CeriCZLL90"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/internet/BozzonBCQ11"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/internet/BragaCDM08"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/internet/BrambillaC0V15"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/internet/CeriAHBBBBCCVEFGMRTV10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/internet/CeriFGP98"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/internet/CeriFM02"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/isci/JaliliMMC17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/www/BatiniBCMMP07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/www/CeriDFM07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/sigplan/CeriC83"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/ipm/RamponiBCDG20"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/bmcbi/PinoliSWC21"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/bioinformatics/CilibrasiPBCCC22"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/toit/BrambillaCFCCV07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/toit/CeriDMF07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/toit/ManolescuBCCF05"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tkde/CeriGPS03"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tkde/MontanariBCPCM16"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/dagstuhl/StuckenschmidtC10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/aw/CeriF97"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/el/alba85/CeriP85"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/el/ceri83/BracchiCP83"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/el/ceri83/BussolatiCAZ83"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/el/ceri83/Ceri83"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tcbb/BernasconiCMC22"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tcbb/CeriKMPV17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/corr/abs-2101-03757"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/cn/BonifatiCP02"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/cn/CeriDF06"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/cn/CeriPM82"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/cn/CeriCDFPT99"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/cn/CeriFB00"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/sigmod/0002C19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/sigmod/BarbieriBCVG10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/sigmod/BernsteinBCDFGGHHJLMNPSU98"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/sigmod/BonifatiC00"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/sigmod/BragaCCS07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/sigmod/CeriBBBCCFLMMNPPQST07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/sigmod/CeriFP99"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/sigmod/CeriKKLOSV00"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/sigmod/CeriPVPFT13"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/sigmod/RossCGLLM01"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/dke/CasatiCPP98"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/ijwet/BrambillaCCF06"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/csur/CeriR96"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/expert/BarbieriBCVHTRW10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/expert/CeriT90"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/expert/ValleCHF09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tkde/BaralisCP98"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tkde/CeriDMR09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tkde/CeriGT89"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tkde/JaliliMGDC19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tkde/NejdlCW93"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icwe/0001CDD17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icwe/AcerbisBBCCCFT04"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icwe/AcerbisBBTCT07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icwe/BarbieriBBCPTVVZ11"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icwe/BozzonBCCCFV10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icwe/BozzonBCMV14"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icwe/Caielli0CD17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icwe/CampiCMR10"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icwe/CattaniCKP17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icwe/CeriBB11"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icwe/CeriDDF05"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icwe/CeriDMN04"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icwe/CeriDMR06"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/er/0002CC19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/er/0002CC19a"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/er/0002CPC20"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/er/BaralisCP94"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/er/BernasconiCCM17"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/er/BonifatiCFM00"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/er/CasatiCPP95"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/er/CasatiCPP96"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/er/CeriVPT12"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ewdw/CeriCT90"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/ewdw/CeriM94"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icod/CeriMP80"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/w3c/CeriCDFPT98"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/sigsoft/BrambillaC09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/asunam/GaspariniR0C19"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/sp/09/0001CVFT09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/sp/09/BrambillaCVFKMSW09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/books/sp/09/ZarembaZT0VC09"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/ijcis/BrodieC92"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/corr/cs-DB-9811013"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/ipl/BonifatiCP05"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tods/BaralisCP96"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tods/BragaCC05"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tods/CasatiCPP99"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tods/CeriFPT94"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tods/CeriFPT95"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tods/CeriGL07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tods/CeriP83"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/tods/NavatheCWD84"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/procedia/MasseroliGC11"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/corr/abs-2001-10926"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/ipl/CeriP81"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/ipl/CeriP82"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/vldb/ApersCS02"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/vldb/BonifatiCP01"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/vldb/BozzonBCM13"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/vldb/BrambillaCH13"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/bmcbi/MasseroliMBCKRLR14"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/bmcbi/MasseroliPGC14"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/corr/abs-1905-03043"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/dpd/CacaceCH93"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/dpd/CeriHKS95"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/network/PavlovLAC98"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/datamine/MeoPC98"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/cacm/AbiteboulABCCCDFGGGHHHIKPLMNSSSSSUWWZ05"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/cacm/WiederholdWC92"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/epjds/PierriPC20"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/ijlt/DologKCBBCDHLMMNSSSST07"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/bib/BernasconiCMC21"
+                        }
+                      },
+                      {
+                        "p": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/journals/sncs/CeriP20"
+                        }
+                      }
+                    ]
+                  }
+                               }
             ]
         },
         {
@@ -5182,50 +7474,38 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "What was awarded to Herbert A. Simon?"
+                    "string": "Which awards has Herbert A. Simon received?"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#>  select distinct ?a where { ?t xd:label \"Herbert A. Simon\"; xsd:creatorNote ?a.}"
+                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#>  select distinct ?a where { <https://dblp.org/pid/16/6065> xsd:awardWebpage ?a.}"
             },
             "answers": [
                 {
                     "head": {
-                        "link": [],
-                        "vars": [
-                            "a"
-                        ]
-                    },
-                    "results": {
-                        "distinct": false,
-                        "ordered": true,
-                        "bindings": [
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1975): Turing Award"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1986): National Medal of Science"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1988): John von Neumann Theory Prize"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1978): Prize in Economic Sciences in Memory of Alfred Nobel"
-                                }
-                            }
-                        ]
-                    }
+                    "link": [],
+                    "vars": [
+                      "a"
+                    ]
+                  },
+                  "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                      {
+                        "a": {
+                          "type": "uri",
+                          "value": "http://amturing.acm.org/award_winners/simon_1031467.cfm"
+                        }
+                      },
+                      {
+                        "a": {
+                          "type": "uri",
+                          "value": "https://www.nobelprize.org/prizes/economic-sciences/1978/simon/facts/"
+                        }
+                      }
+                    ]
+                  }
                 }
             ]
         },
@@ -6876,38 +9156,32 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "What type of work does Ursula Hinkel do?"
+                    "string": "Which university is Ursula Hinkel affiliated with?"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> select distinct ?t where { ?p xd:label \"Ursula Hinkel\" ; <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?t}"
+                "sparql": "PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> select distinct ?t where {<https://dblp.org/pid/h/UrsulaHinkel> <https://dblp.org/rdf/schema#primaryAffiliation> ?t}"
             },
             "answers": [
                 {
-                    "head": {
-                        "link": [],
-                        "vars": [
-                            "t"
-                        ]
-                    },
-                    "results": {
-                        "distinct": false,
-                        "ordered": true,
-                        "bindings": [
-                            {
-                                "t": {
-                                    "type": "uri",
-                                    "value": "https://dblp.org/rdf/schema#Creator"
-                                }
-                            },
-                            {
-                                "t": {
-                                    "type": "uri",
-                                    "value": "https://dblp.org/rdf/schema#Person"
-                                }
-                            }
-                        ]
-                    }
+                  "head": {
+                    "link": [],
+                    "vars": [
+                      "t"
+                    ]
+                  },
+                  "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                      {
+                        "t": {
+                          "type": "literal",
+                          "value": "Technical University Munich, Germany"
+                        }
+                      }
+                    ]
+                  }
                 }
             ]
         },
@@ -7008,11 +9282,11 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "What was edited by Francisco Castells?"
+                    "string": "What was authored by Francisco Castells?"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> PREFIX xsd:<https://dblp.org/rdf/schema#> SELECT distinct ?t WHERE { ?e xd:label \"Francisco Castells\". ?t xsd:authoredBy ?e}"
+                "sparql": "PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> PREFIX xsd:<https://dblp.org/rdf/schema#> SELECT distinct ?t WHERE { ?t xsd:authoredBy <https://dblp.org/pid/93/6962>}"
             },
             "answers": [
                 {
@@ -7414,32 +9688,32 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "Name the award presented to David W. Embley."
+                    "string": "What is the primary affiliation of David W. Embley?"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#>  select distinct ?a where { ?p xd:label \"David W. Embley\" ;  xsd:creatorNote ?a}"
+                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> select distinct ?a where { <https://dblp.org/pid/e/DWEmbley> xsd:primaryAffiliation ?a}   "
             },
             "answers": [
-                {
-                    "head": {
-                        "link": [],
-                        "vars": [
-                            "a"
-                        ]
-                    },
-                    "results": {
-                        "distinct": false,
-                        "ordered": true,
-                        "bindings": [
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award: Peter P. Chen Award, 2009"
-                                }
-                            }
-                        ]
-                    }
+               {
+                  "head": {
+                    "link": [],
+                    "vars": [
+                      "a"
+                    ]
+                  },
+                  "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                      {
+                        "a": {
+                          "type": "literal",
+                          "value": "Brigham Young University, Provo, Utah, USA"
+                        }
+                      }
+                    ]
+                  }
                 }
             ]
         },
@@ -7483,38 +9757,32 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "Name the awards bestowed to Pierre Wolper."
+                    "string": "What is the homepage of Pierre Wolper?"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#>  select distinct ?a where { ?p xd:label \"Pierre Wolper\" ;  xsd:creatorNote ?a}"
+                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> select distinct ?a where { <https://dblp.org/pid/w/PierreWolper> xsd:primaryHomepage ?a}"
             },
             "answers": [
                 {
-                    "head": {
-                        "link": [],
-                        "vars": [
-                            "a"
-                        ]
-                    },
-                    "results": {
-                        "distinct": false,
-                        "ordered": true,
-                        "bindings": [
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2000): Gödel Prize"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2005): Paris Kanellakis Award"
-                                }
-                            }
-                        ]
-                    }
+                  "head": {
+                    "link": [],
+                    "vars": [
+                      "a"
+                    ]
+                  },
+                  "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                      {
+                        "a": {
+                          "type": "uri",
+                          "value": "http://www.montefiore.ulg.ac.be/~pw/"
+                        }
+                      }
+                    ]
+                  }
                 }
             ]
         },
@@ -7625,7 +9893,7 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "Name the school that published the concept of Error-free source and channel coding with lists."
+                    "string": "Name the school that published Error-free source and channel coding with lists."
                 }
             ],
             "query": {
@@ -7659,44 +9927,62 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "What was bestowed to Ronald Fagin?"
+                    "string": "What has Ronald Fagin edited?"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> select distinct ?a where { ?p xd:label \"Ronald Fagin\" ;  xsd:creatorNote ?a}"
+                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> select distinct ?a where { ?a xsd:editedBy <https://dblp.org/pid/f/RonaldFagin>}"
             },
             "answers": [
                 {
-                    "head": {
-                        "link": [],
-                        "vars": [
-                            "a"
-                        ]
-                    },
-                    "results": {
-                        "distinct": false,
-                        "ordered": true,
-                        "bindings": [
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2012): W. Wallace McDowell Award"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2014): Gödel Prize"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2004): SIGMOD Edgar F. Codd Innovations Award"
-                                }
-                            }
-                        ]
-                    }
+                  "head": {
+                    "link": [],
+                    "vars": [
+                      "a"
+                    ]
+                  },
+                  "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                      {
+                        "a": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/tark/1994"
+                        }
+                      },
+                      {
+                        "a": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/pods/83"
+                        }
+                      },
+                      {
+                        "a": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/pods/84"
+                        }
+                      },
+                      {
+                        "a": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/stoc/2005"
+                        }
+                      },
+                      {
+                        "a": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/stoc/STOC15"
+                        }
+                      },
+                      {
+                        "a": {
+                          "type": "uri",
+                          "value": "https://dblp.org/rec/conf/icdt/2009"
+                        }
+                      }
+                    ]
+                  }
                 }
             ]
         },
@@ -7705,32 +9991,32 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "What is the name of the awards bestowed to Chuchu Fan?"
+                    "string": "List the awards given to Chuchu Fan?"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> select distinct ?a where { ?p xd:label \"Chuchu Fan\" ;  xsd:creatorNote ?a}"
+                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> select distinct ?a where { <https://dblp.org/pid/127/1756>  xsd:awardWebpage ?a}"
             },
             "answers": [
                 {
-                    "head": {
-                        "link": [],
-                        "vars": [
-                            "a"
-                        ]
-                    },
-                    "results": {
-                        "distinct": false,
-                        "ordered": true,
-                        "bindings": [
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2020): ACM Doctoral Dissertation Award"
-                                }
-                            }
-                        ]
-                    }
+                   "head": {
+                    "link": [],
+                    "vars": [
+                      "a"
+                    ]
+                  },
+                  "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                      {
+                        "a": {
+                          "type": "uri",
+                          "value": "https://awards.acm.org/award_winners/fan_5134071"
+                        }
+                      }
+                    ]
+                  }
                 }
             ]
         },
@@ -7887,68 +10173,32 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "What is the name of the awards presented to Richard Karp?"
+                    "string": "What awards was Richard M. Karp recognized with?"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> select distinct ?a where { ?p xd:label \"Richard M. Karp\" ;  xsd:creatorNote ?a}"
+                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> select distinct ?a where { <https://dblp.org/pid/k/RichardMKarp>  xsd:awardWebpage ?a}"
             },
             "answers": [
                 {
                     "head": {
                         "link": [],
                         "vars": [
-                            "a"
+                          "a"
                         ]
-                    },
-                    "results": {
+                      },
+                      "results": {
                         "distinct": false,
                         "ordered": true,
                         "bindings": [
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1977): Frederick W. Lanchester Prize"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1979): Fulkerson Prize"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1985): Turing Award"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1990): John von Neumann Theory Prize"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1996): National Medal of Science"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2004): Benjamin Franklin Medal"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2008): Kyoto Prize"
-                                }
+                          {
+                            "a": {
+                              "type": "uri",
+                              "value": "http://amturing.acm.org/award_winners/karp_3256708.cfm"
                             }
+                          }
                         ]
-                    }
+                      }
                 }
             ]
         },
@@ -8233,7 +10483,7 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "What was IEEE 802 listed on?"
+                    "string": "What was IEEE 802 organization listed on?"
                 }
             ],
             "query": {
@@ -8375,32 +10625,32 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "State the issue name that published the Green extension of OpenFlow."
+                    "string": "State the book that published the Green extension of OpenFlow"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xsd:<https://dblp.org/rdf/schema#> SELECT distinct ?u WHERE { ?p xsd:title \"Green extension of OpenFlow.\" ;  xsd:publishedAsPartOf ?u}"
+                "sparql": "PREFIX xsd:<https://dblp.org/rdf/schema#> SELECT distinct ?u WHERE { <https://dblp.org/rec/conf/teletraffic/BruschiLMRBDL14>  xsd:publishedInBook ?u}"
             },
             "answers": [
                 {
-                    "head": {
-                        "link": [],
-                        "vars": [
-                            "u"
-                        ]
-                    },
-                    "results": {
-                        "distinct": false,
-                        "ordered": true,
-                        "bindings": [
-                            {
-                                "u": {
-                                    "type": "uri",
-                                    "value": "https://dblp.org/rec/conf/teletraffic/2014"
-                                }
-                            }
-                        ]
-                    }
+                  "head": {
+                    "link": [],
+                    "vars": [
+                      "u"
+                    ]
+                  },
+                  "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                      {
+                        "u": {
+                          "type": "literal",
+                          "value": "International Teletraffic Congress"
+                        }
+                      }
+                    ]
+                  }
                 }
             ]
         },
@@ -13420,7 +15670,7 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "Give the authors of Dual Discriminator Generative Adversarial Networks?"
+                    "string": "Give the authors of Dual Discriminator Generative Adversarial Networks for Video Anomaly Detection?"
                 }
             ],
             "query": {
@@ -13484,32 +15734,32 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "What award was given to K. Mani Chandy?"
+                    "string": "What other names has K. Mani Chandy published under?"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#>  select distinct ?a where { ?p xd:label \"K. Mani Chandy\" ;  xsd:creatorNote ?a}"
+                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#>  select distinct ?a where { <https://dblp.org/pid/c/KManiChandy>  xsd:otherFullCreatorName ?a}"
             },
             "answers": [
                 {
-                    "head": {
-                        "link": [],
-                        "vars": [
-                            "a"
-                        ]
-                    },
-                    "results": {
-                        "distinct": false,
-                        "ordered": true,
-                        "bindings": [
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2014): Dijkstra Prize"
-                                }
-                            }
-                        ]
-                    }
+                  "head": {
+                    "link": [],
+                    "vars": [
+                      "a"
+                    ]
+                  },
+                  "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                      {
+                        "a": {
+                          "type": "literal",
+                          "value": "Kanianthra Mani Chandy"
+                        }
+                      }
+                    ]
+                  }
                 }
             ]
         },
@@ -13518,50 +15768,38 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "Give all awards presented to Thomas Kailath."
+                    "string": "Which webpage contain information about Thomas Kailath?"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#>  select distinct ?a where { ?p xd:label \"Thomas Kailath\";  xsd:creatorNote ?a}"
+                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#>  select distinct ?a where { <https://dblp.org/pid/k/ThomasKailath> xsd:webpage ?a}"
             },
             "answers": [
                 {
-                    "head": {
-                        "link": [],
-                        "vars": [
-                            "a"
-                        ]
-                    },
-                    "results": {
-                        "distinct": false,
-                        "ordered": true,
-                        "bindings": [
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2012): National Medal of Science"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2007): IEEE Medal of Honor"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2009): BBVA Foundation Frontiers of Knowledge Award"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1995): IEEE James H. Mulligan, Jr. Education Medal"
-                                }
-                            }
-                        ]
-                    }
+                  "head": {
+                    "link": [],
+                    "vars": [
+                      "a"
+                    ]
+                  },
+                  "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                      {
+                        "a": {
+                          "type": "uri",
+                          "value": "https://mathgenealogy.org/id.php?id=41399"
+                        }
+                      },
+                      {
+                        "a": {
+                          "type": "uri",
+                          "value": "https://zbmath.org/authors/?q=ai:kailath.thomas"
+                        }
+                      }
+                    ]
+                  }
                 }
             ]
         },
@@ -13614,64 +15852,28 @@
                 }
             ],
             "query": {
-                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> select distinct ?a where { ?p xd:label \"Richard M. Karp\" ;  xsd:creatorNote ?a}"
+                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> select distinct ?a where { <https://dblp.org/pid/k/RichardMKarp>  xsd:awardWebpage ?a}"
             },
             "answers": [
-                {
+               {
                     "head": {
                         "link": [],
                         "vars": [
-                            "a"
+                          "a"
                         ]
-                    },
-                    "results": {
+                      },
+                      "results": {
                         "distinct": false,
                         "ordered": true,
                         "bindings": [
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1977): Frederick W. Lanchester Prize"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1979): Fulkerson Prize"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1985): Turing Award"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1990): John von Neumann Theory Prize"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (1996): National Medal of Science"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2004): Benjamin Franklin Medal"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2008): Kyoto Prize"
-                                }
+                          {
+                            "a": {
+                              "type": "uri",
+                              "value": "http://amturing.acm.org/award_winners/karp_3256708.cfm"
                             }
+                          }
                         ]
-                    }
+                      }
                 }
             ]
         },
@@ -13680,44 +15882,32 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "Name the awards that were granted to Sanjeev Arora?"
+                    "string": "Name all awards granted to Sanjeev Arora?"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> select distinct ?a where { ?p xd:label \"Sanjeev Arora\";  xsd:creatorNote ?a}"
+                "sparql": "PREFIX xsd: <https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> select distinct ?a where { <https://dblp.org/pid/a/SArora>  xsd:awardWebpage ?a}"
             },
             "answers": [
                 {
-                    "head": {
+                     "head": {
                         "link": [],
                         "vars": [
-                            "a"
+                          "a"
                         ]
-                    },
-                    "results": {
+                      },
+                      "results": {
                         "distinct": false,
                         "ordered": true,
                         "bindings": [
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2001, 2010): Gödel Prize"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2011): ACM Prize in Computing"
-                                }
-                            },
-                            {
-                                "a": {
-                                    "type": "literal",
-                                    "value": "award (2012): Fulkerson Prize"
-                                }
+                          {
+                            "a": {
+                              "type": "uri",
+                              "value": "http://awards.acm.org/award_winners/arora_N027029"
                             }
+                          }
                         ]
-                    }
+                      }
                 }
             ]
         },
@@ -13726,7 +15916,7 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "Name the school that published Software-defined middlebox."
+                    "string": "Name the school that published Software-defined middlebox networking."
                 }
             ],
             "query": {
@@ -13828,38 +16018,32 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "What is the type of work of Michael I. Jordan?"
+                    "string": "What is the orcid number of Michael I. Jordan?"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> select distinct ?t where { ?p xd:label \"Michael I. Jordan\" ; <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?t}"
+                "sparql": "PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> select distinct ?t where { <https://dblp.org/pid/j/MichaelIJordan> <https://dblp.org/rdf/schema#orcid> ?t}"
             },
             "answers": [
                 {
-                    "head": {
-                        "link": [],
-                        "vars": [
-                            "t"
-                        ]
-                    },
-                    "results": {
-                        "distinct": false,
-                        "ordered": true,
-                        "bindings": [
-                            {
-                                "t": {
-                                    "type": "uri",
-                                    "value": "https://dblp.org/rdf/schema#Creator"
-                                }
-                            },
-                            {
-                                "t": {
-                                    "type": "uri",
-                                    "value": "https://dblp.org/rdf/schema#Person"
-                                }
-                            }
-                        ]
-                    }
+                  "head": {
+                    "link": [],
+                    "vars": [
+                      "t"
+                    ]
+                  },
+                  "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                      {
+                        "t": {
+                          "type": "uri",
+                          "value": "https://orcid.org/0000-0001-8935-817X"
+                        }
+                      }
+                    ]
+                  }
                 }
             ]
         },
@@ -13936,32 +16120,32 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "Crowds, not Drones: Modeling Human Factors in Interactive Crowdsourcing was published in which session?"
+                    "string": "Crowds, not Drones: Modeling Human Factors in Interactive Crowdsourcing was published in which book?"
                 }
             ],
             "query": {
-                "sparql": "PREFIX xsd:<https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> SELECT distinct ?s WHERE {?g xsd:title \"Crowds, not Drones: Modeling Human Factors in Interactive Crowdsourcing.\" ; xsd:publishedAsPartOf ?s} "
+                "sparql": "PREFIX xsd:<https://dblp.org/rdf/schema#> PREFIX xd:<http://www.w3.org/2000/01/rdf-schema#> SELECT distinct ?s WHERE {<https://dblp.org/rec/conf/dbcrowd/RoyLTAD13> xsd:publishedInBook ?s}"
             },
             "answers": [
                 {
-                    "head": {
-                        "link": [],
-                        "vars": [
-                            "s"
-                        ]
-                    },
-                    "results": {
-                        "distinct": false,
-                        "ordered": true,
-                        "bindings": [
-                            {
-                                "s": {
-                                    "type": "uri",
-                                    "value": "https://dblp.org/rec/conf/dbcrowd/2013"
-                                }
-                            }
-                        ]
-                    }
+                  "head": {
+                    "link": [],
+                    "vars": [
+                      "s"
+                    ]
+                  },
+                  "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                      {
+                        "s": {
+                          "type": "literal",
+                          "value": "DBCrowd"
+                        }
+                      }
+                    ]
+                  }
                 }
             ]
         },
