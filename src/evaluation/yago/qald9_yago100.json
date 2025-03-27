@@ -350,25 +350,22 @@
             ],
             "onlydbo": true,
             "query": {
-                "sparql": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX schema: <http://schema.org/> SELECT ?place WHERE { ?person rdfs:label \"Abraham Lincoln\"@en . ?person schema:deathPlace ?place}  "
+                "sparql": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX schema: <http://schema.org/> SELECT ?place WHERE { <http://yago-knowledge.org/resource/Abraham_Lincoln> schema:deathPlace ?place}"
             },
             "answers": [
                 {
                     "head": {
+                        "link": [],
                         "vars": [
-                            "uri"
+                            "place"
                         ]
                     },
                     "results": {
+                        "distinct": false,
+                        "ordered": true,
                         "bindings": [
                             {
-                                "uri": {
-                                    "type": "uri",
-                                    "value": "http://yago-knowledge.org/resource/Jefferson_County,_Kentucky"
-                                }
-                            },
-                            {
-                                "uri": {
+                                "place": {
                                     "type": "uri",
                                     "value": "http://yago-knowledge.org/resource/Petersen_House"
                                 }
@@ -1261,7 +1258,7 @@
             "hybrid": "false",
             "question": [
                 {
-                    "string": "Give me the homepage of Acer.?",
+                    "string": "Give me the homepage of Acer.",
                     "language": "en"
                 }
             ],
@@ -4453,7 +4450,7 @@
                 }
             ],
             "query": {
-                "sparql": "PREFIX schema: <http://schema.org/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> SELECT distinct ?p WHERE {<http://yago-knowledge.org/resource/Eagle_Mountain_(Minnesota)> rdfs:label \"Eagle Mountain (bukid sa Estados Unidos, Minnesota, Cook County, lat 47,90, long -90,56)\"@ceb ; schema:containedInPlace ?p}"
+                "sparql": "PREFIX schema: <http://schema.org/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> SELECT distinct ?p WHERE {?e rdfs:label \"Eagle Mountain\"@en ; schema:containedInPlace ?p}"
             },
             "answers": [
                 {
@@ -4470,6 +4467,30 @@
                             {
                                 "p": {
                                     "type": "uri",
+                                    "value": "http://yago-knowledge.org/resource/Utah_County,_Utah"
+                                }
+                            },
+                            {
+                                "p": {
+                                    "type": "uri",
+                                    "value": "http://yago-knowledge.org/resource/Catskill_Mountains"
+                                }
+                            },
+                            {
+                                "p": {
+                                    "type": "uri",
+                                    "value": "http://yago-knowledge.org/resource/Ulster_County,_New_York"
+                                }
+                            },
+                            {
+                                "p": {
+                                    "type": "uri",
+                                    "value": "http://yago-knowledge.org/resource/Tarrant_County,_Texas"
+                                }
+                            },
+                            {
+                                "p": {
+                                    "type": "uri",
                                     "value": "http://yago-knowledge.org/resource/Cook_County,_Minnesota"
                                 }
                             },
@@ -4477,6 +4498,24 @@
                                 "p": {
                                     "type": "uri",
                                     "value": "http://yago-knowledge.org/resource/Misquah_Hills"
+                                }
+                            },
+                            {
+                                "p": {
+                                    "type": "uri",
+                                    "value": "http://yago-knowledge.org/resource/British_Columbia"
+                                }
+                            },
+                            {
+                                "p": {
+                                    "type": "uri",
+                                    "value": "http://yago-knowledge.org/resource/Pacific_Ranges"
+                                }
+                            },
+                            {
+                                "p": {
+                                    "type": "uri",
+                                    "value": "http://yago-knowledge.org/resource/Riverside_County,_California"
                                 }
                             }
                         ]
@@ -4733,7 +4772,7 @@
             "question": [
                 {
                     "language": "en",
-                    "string": "Where is Acer Inc located?"
+                    "string": "Where is Acer Inc founded?"
                 }
             ],
             "query": {
@@ -6860,7 +6899,7 @@
                 }
             ],
             "query": {
-                "sparql": "PREFIX schema:<http://schema.org/> PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#> SELECT distinct ?g WHERE {?a rdfs:label \"Alaska Range\"@en; schema:geo ?g}"
+                "sparql": "PREFIX schema:<http://schema.org/> PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#> SELECT distinct ?g WHERE {<http://yago-knowledge.org/resource/Alaska> schema:geo ?g}"
             },
             "answers": [
                 {
@@ -6877,7 +6916,7 @@
                             {
                                 "g": {
                                     "type": "uri",
-                                    "value": "geo:63.0694,-151.007"
+                                    "value": "geo:64,-150"
                                 }
                             }
                         ]

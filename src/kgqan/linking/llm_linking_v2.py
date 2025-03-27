@@ -2,6 +2,7 @@ import json
 import time
 import traceback
 import torch
+import re
 
 from langchain_core.prompts.prompt import PromptTemplate
 
@@ -33,8 +34,86 @@ def validate_vertex_linking(input_list, output):
         return False
     return True
 
+def gets_indices_for_label(label, vertex_label_list):
+    target_index = []
+    if label in vertex_label_list:
+        count = vertex_label_list.count(label)
+        if count == 1:
+            target_index.append(vertex_label_list.index(label))
+        else:
+            index = 0
+            for item in vertex_label_list:
+                if item == label:
+                    target_index.append(index)
+                index += 1
+        return target_index
+    else:
+        return None
 
-def vertex_linking(entity, vertex_label_list, json_logger):
+def get_name(uri):
+    pattern = r'[#/]([^/#]+)$'
+    match = re.search(pattern, uri)
+    if match:
+        name = match.group(1)
+    else:
+        name = ""
+    p2 = re.compile(r"([a-z0-9])([A-Z])")
+    name = p2.sub(r"\1 \2", name)
+    name = name.replace("_", " ")
+    return name
+
+def extract_correct_uri(entity, candidate_indices, vertex_list):
+    updated_list = list()
+    new_names = list()
+    for index in candidate_indices:
+        uri = vertex_list[index]
+        name =get_name(uri)
+        updated_list.append(uri)
+        new_names.append(name)
+
+    template = vertex_linking_template_v3
+    prompt = PromptTemplate(
+        input_variables=["entity", "vertex_label_list"],
+        template=template,
+    )
+    final_prompt = prompt.format(entity=entity, vertex_label_list=new_names)
+    # print(final_prompt)
+    llm, max_tokens = get_llm(True)
+    chain = prompt | llm
+    output1 = ""
+    metadata = None
+    try:
+        output1 = chain.invoke({"entity": entity, "vertex_label_list": new_names})
+        if llm_type == 'google':
+            time.sleep(30)
+        if llm_type != 'vllm':
+            metadata = output1.usage_metadata
+            output1 = output1.content
+        output = extract_json_from_output(output1)
+        # json_logger.set("Linking", output)
+        # if metadata:
+            # json_logger.add_cost("Linking", metadata)
+        print("Linking OUTPUT======")
+        print(output)
+        output = json.loads(output)["value"]
+        output = remove_unneeded_chars(output)
+        if output in new_names:
+            index = new_names.index(output)
+            vertex = updated_list[index]
+            return [vertex]
+        else:
+            return None
+    except:
+        traceback.print_exc()
+        print("============Start Parsing Error")
+        print(output1)
+        print("============End")
+
+
+
+
+
+def vertex_linking(entity, vertex_label_list, vertex_list, json_logger):
     retry = 0
     template = vertex_linking_template_v3
     prompt = PromptTemplate(
@@ -80,9 +159,15 @@ def vertex_linking(entity, vertex_label_list, json_logger):
             print(output1)
             print("============End")
 
-
-    vertex = vertex_label_list.index(output) if output in vertex_label_list else None
-    return vertex
+    candidate_indices = gets_indices_for_label(output, vertex_label_list)
+    if candidate_indices is None:
+        return None
+    elif len(candidate_indices) == 1:
+        return [vertex_list[candidate_indices[0]]]
+    else:
+        vertex = extract_correct_uri(entity, candidate_indices, vertex_list)
+    # vertex = vertex_label_list.index(output) if output in vertex_label_list else None
+        return vertex
 
 
 if __name__ == '__main__':

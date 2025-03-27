@@ -127,6 +127,8 @@ class EndPoint:
                 continue
             resource_URIs.append(resource_URI)
             resource_names.append(resource_name)
+            # If a uri is associated with multiple labels only the last one will persist, in some cases, the label is non english characters
+            # TODO check if removing labels with non english characters has any effect.
             uri_name_to_value[resource_URI] = resource_name
         return resource_URIs, resource_names
 
@@ -179,7 +181,10 @@ class EndPoint:
             "comment",
             "same As",
             "different From",
-            "first"
+            "first",
+            "has identifier,"
+            "wikipedia",
+            "wikidata"
         ]
         filtered_uris = []
         filtered_names = []

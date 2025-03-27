@@ -327,19 +327,24 @@ class KGQAn:
         count = response_json["results"]["bindings"][0]["p_count"]["value"]
         return count
 
+    def get_entity_query_for_kg(self, entity):
+        if self.knowledge_graph in ["microsoft_academic", "bgee"]:
+            entity_query = sparqls.make_Ms_academic_query(
+                entity, limit=self.n_limit_VQuery
+            )
+        elif self.knowledge_graph in ['yago']:
+            entity_query = sparqls.make_keyword_unordered_search_query_with_type_yago(
+                entity, limit=self.n_limit_VQuery)
+        else:
+            entity_query = sparqls.make_keyword_unordered_search_query_with_type(
+                entity, limit=self.n_limit_VQuery
+            )
+        return entity_query
     def extract_possible_V_and_E(self):
         for entity in self.question.query_graph:
             if self.is_variable(entity):
-                # self.question.query_graph.add_node(entity, uris=[], answers=[])
                 continue
-            if self.knowledge_graph in ["microsoft_academic", "bgee"]:
-                entity_query = sparqls.make_Ms_academic_query(
-                    entity, limit=self.n_limit_VQuery
-                )
-            else:
-                entity_query = sparqls.make_keyword_unordered_search_query_with_type(
-                    entity, limit=self.n_limit_VQuery
-                )
+            entity_query = self.get_entity_query_for_kg(entity)
             # entity_query = make_keyword_unordered_search_query_with_type(entity, limit=self.n_limit_VQuery)
             cprint(f"== SPARQL Q Find V: {entity_query}")
 
@@ -355,12 +360,18 @@ class KGQAn:
                 continue
             elif len(uris) == 1:
                 chosen_vertex_index = 0
+                chosen_uri = uris
             else:
-                chosen_vertex_index = vertex_linking(entity, names, json_logger)
-                if chosen_vertex_index is None:
+                # chosen_vertex_index = vertex_linking(entity, names, uris, json_logger)
+                chosen_uri = vertex_linking(entity, names, uris, json_logger)
+                # if chosen_vertex_index is None:
+                if chosen_uri is None:
                     continue
+                # for i in chosen_vertex_index:
+                #     print(uris[i])
+                # chosen_vertex_index = chosen_vertex_index[0]
 
-            chosen_uri = [uris[chosen_vertex_index]]
+            # chosen_uri = [uris[chosen_vertex_index]]
             json_logger.set("Linking_vertex", chosen_uri)
             updated_vertex = Vertex(
                 self.n_max_Vs, chosen_uri, self.sparql_end_point, self.n_limit_EQuery
@@ -1022,7 +1033,8 @@ class KGQAn:
             self.question.sparqls = sparqls
 
     def is_variable(self, label):
-        return "var" in label or label.startswith('?')
+        # return "var" in label or label.startswith('?')
+        return label.startswith('?')
         # return "var" in label
 
     @property

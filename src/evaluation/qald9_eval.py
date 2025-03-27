@@ -29,7 +29,7 @@ from kgqan.kgqan import KGQAn
 
 file_dir = os.path.dirname(os.path.abspath(__file__))
 
-file_name = os.path.join(file_dir, "qald9/qald-9-test-multilingual.json")
+file_name = os.path.join(file_dir, "qald9/qald-9-test-multilingual_1.json")
 
 
 if __name__ == '__main__':
