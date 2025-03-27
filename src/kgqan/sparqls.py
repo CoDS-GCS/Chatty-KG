@@ -205,5 +205,8 @@ def process_SPARQL_query_result(query_response: requests.models.Response):
     pass
 
 
+def get_predicates_for_labels(entity_label):
+    return f"select distinct ?p where {{ ?uri ?p  \"{entity_label}\"@en . }}"
+
 if __name__ == '__main__':
     pass

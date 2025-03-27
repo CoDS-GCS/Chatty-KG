@@ -43,7 +43,7 @@ def get_vllm_llm():
     return llm
 
 def get_openAI_llm():
-    llm = ChatOpenAI(model=model_name, temperature=0)
+    llm = ChatOpenAI(model=model_name, temperature=0.5)
     return llm
 
 def get_google_llm():

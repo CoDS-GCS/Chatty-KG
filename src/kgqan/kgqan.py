@@ -44,7 +44,7 @@ from kgqan.logger import logger
 
 import time
 # from kgqan.langchain_filtration import choose_question_from_keywords
-from kgqan.filtration.llm_filtrationv2 import choose_question_from_keywords
+from kgqan.filtration.llm_filtrationv2 import choose_question_from_keywords, get_name
 # import kgqan.filteration as filteration
 from termcolor import cprint
 import networkx as nx
@@ -361,9 +361,10 @@ class KGQAn:
             elif len(uris) == 1:
                 chosen_vertex_index = 0
                 chosen_uri = uris
+                chosen_label = names
             else:
                 # chosen_vertex_index = vertex_linking(entity, names, uris, json_logger)
-                chosen_uri = vertex_linking(entity, names, uris, json_logger)
+                chosen_uri, chosen_label = vertex_linking(entity, names, uris, json_logger)
                 # if chosen_vertex_index is None:
                 if chosen_uri is None:
                     continue
@@ -374,7 +375,7 @@ class KGQAn:
             # chosen_uri = [uris[chosen_vertex_index]]
             json_logger.set("Linking_vertex", chosen_uri)
             updated_vertex = Vertex(
-                self.n_max_Vs, chosen_uri, self.sparql_end_point, self.n_limit_EQuery
+                self.n_max_Vs, chosen_uri, chosen_label, self.sparql_end_point, self.n_limit_EQuery
             )
             URIs_chosen = updated_vertex.get_vertex_uris()
             # URIs_chosen = remove_duplicates(URIs_sorted)[:self.n_max_Vs]
@@ -798,6 +799,8 @@ class KGQAn:
                     uri1 = f"<{n1_uri}>"
                 if self.is_variable(n2_uri):
                     uri2 = n2_uri
+                elif 'http' not in n2_uri:
+                    uri2 = f"\"{n2_uri}\"@en"
                 else:
                     uri2 = f"<{n2_uri}>"
                 if predicate[0] == '?p':
@@ -841,6 +844,9 @@ class KGQAn:
                 if self.is_variable(n2_uri):
                     uri2 = n2_uri
                     candidate_targets.append(uri2)
+                elif 'http' not in n2_uri:
+                    uri2 = f"\"{n2_uri}\"@en"
+                    node_uris.append(n2_uri)
                 else:
                     uri2 = f"<{n2_uri}>"
                     node_uris.append(n2_uri)
@@ -940,7 +946,8 @@ class KGQAn:
         self.num_queries_executed = len(queries_indices)
         for index in queries_indices:
             try:
-                result = self.sparql_end_point.evaluate_SPARQL_query(sparqls[index])
+                sparql_query = sparqls[index]
+                result = self.sparql_end_point.evaluate_SPARQL_query(sparql_query)
                 v_result = json.loads(result)
                 if "results" in v_result:
                     v_result = self.postprocess_answer_if_needed(v_result)

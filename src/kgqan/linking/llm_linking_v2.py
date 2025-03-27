@@ -161,13 +161,13 @@ def vertex_linking(entity, vertex_label_list, vertex_list, json_logger):
 
     candidate_indices = gets_indices_for_label(output, vertex_label_list)
     if candidate_indices is None:
-        return None
+        return None, None
     elif len(candidate_indices) == 1:
-        return [vertex_list[candidate_indices[0]]]
+        return [vertex_list[candidate_indices[0]]], [vertex_label_list[candidate_indices[0]]]
     else:
         vertex = extract_correct_uri(entity, candidate_indices, vertex_list)
     # vertex = vertex_label_list.index(output) if output in vertex_label_list else None
-        return vertex
+        return vertex, [output]
 
 
 if __name__ == '__main__':

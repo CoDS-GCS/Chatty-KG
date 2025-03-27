@@ -72,7 +72,7 @@ Extract triples from the given question by following these steps carefully. **Le
 
 ### **Step 2: Identify the Predicates**
 - **Prioritize nouns that represent the core relationship being questioned.** These nouns often describe the key property or attribute being asked about (e.g., "capital," "author," "moons").
-- **Explicitly exclude generic verbs like "has," "is," "are," "was," "were," "do," "does," "did" when a more specific noun or verb can express the relationship.**
+- Explicitly exclude generic verbs like "has," "is," "are," "was," "were," "do," "does," "did." Always prefer a specific noun or action verb. Do not use any form of "to be" ("is," "was," "were") as a predicate.
 - If no such core noun exists, then consider other verbs, excluding the helper verbs listed above.
 - Extract the most relevant predicate from the question.
 - The predicate should be specific and relates two entities.
