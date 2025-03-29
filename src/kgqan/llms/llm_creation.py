@@ -3,7 +3,7 @@ from langchain_deepseek import ChatDeepSeek
 from langchain_community.llms import VLLMOpenAI
 from langchain_openai import ChatOpenAI
 from langchain_google_vertexai import ChatVertexAI
-from langchain_ollama import ChatOllama
+#from langchain_ollama import ChatOllama
 
 
 # Possible Selections
@@ -43,7 +43,7 @@ def get_vllm_llm():
     return llm
 
 def get_openAI_llm():
-    llm = ChatOpenAI(model=model_name, temperature=0.5)
+    llm = ChatOpenAI(model=model_name, temperature=0)
     return llm
 
 def get_google_llm():

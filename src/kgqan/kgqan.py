@@ -364,7 +364,7 @@ class KGQAn:
                 chosen_label = names
             else:
                 # chosen_vertex_index = vertex_linking(entity, names, uris, json_logger)
-                chosen_uri, chosen_label = vertex_linking(entity, names, uris, json_logger)
+                chosen_uri, chosen_label = vertex_linking(entity, names, uris, json_logger, self.knowledge_graph)
                 # if chosen_vertex_index is None:
                 if chosen_uri is None:
                     continue

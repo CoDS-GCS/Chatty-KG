@@ -113,7 +113,7 @@ def extract_correct_uri(entity, candidate_indices, vertex_list):
 
 
 
-def vertex_linking(entity, vertex_label_list, vertex_list, json_logger):
+def vertex_linking(entity, vertex_label_list, vertex_list, json_logger, kg):
     retry = 0
     template = vertex_linking_template_v3
     prompt = PromptTemplate(
@@ -158,16 +158,19 @@ def vertex_linking(entity, vertex_label_list, vertex_list, json_logger):
             print("============Start Parsing Error")
             print(output1)
             print("============End")
-
-    candidate_indices = gets_indices_for_label(output, vertex_label_list)
-    if candidate_indices is None:
-        return None, None
-    elif len(candidate_indices) == 1:
-        return [vertex_list[candidate_indices[0]]], [vertex_label_list[candidate_indices[0]]]
+    if kg not in ['microsoft_academic']:
+        candidate_indices = gets_indices_for_label(output, vertex_label_list)
+        if candidate_indices is None:
+            return None, None
+        elif len(candidate_indices) == 1:
+            return [vertex_list[candidate_indices[0]]], [vertex_label_list[candidate_indices[0]]]
+        else:
+            vertex = extract_correct_uri(entity, candidate_indices, vertex_list)
+            return vertex, [output]
     else:
-        vertex = extract_correct_uri(entity, candidate_indices, vertex_list)
-    # vertex = vertex_label_list.index(output) if output in vertex_label_list else None
-        return vertex, [output]
+        vertex = vertex_label_list.index(output) if output in vertex_label_list else None
+        vertex = vertex_list[vertex]
+        return [vertex], [output]
 
 
 if __name__ == '__main__':

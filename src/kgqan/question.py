@@ -20,7 +20,7 @@ from termcolor import cprint
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 # from kgqan.seq2seq import seq2seq_model
 from kgqan.logger import logger
-from kgqan.question_understanding1.two_step_understanding import extract_triples
+#from kgqan.question_understanding1.two_step_understanding import extract_triples
 from kgqan.question_understanding1.question_undertandingv2 import get_understanding
 model = None
 tokenizer = None

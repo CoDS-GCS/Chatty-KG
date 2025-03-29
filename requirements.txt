@@ -18,3 +18,5 @@ traitlets
 setuptools
 langchain_community
 langchain-openai
+langchain_deepseek
+langchain_google_vertexai
