@@ -1,0 +1,2022 @@
+{
+    "dataset": {
+        "id": "dblp_e11_20_5_original_standalone"
+    },
+    "questions": [
+        {
+            "id": 0,
+            "question": "How many creators were involved in the publication of Systems of Logic Based on Ordinals.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "count"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "count": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "question": "Was Systems of Logic Based on Ordinals. accepted by a school for a thesis?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "question": "What is the primary electronic edition of Systems of Logic Based on Ordinals.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "edition"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "edition": {
+                                    "type": "uri",
+                                    "value": "https://doi.org/10.1112/plms/s2-45.1.161"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "question": "When was Systems of Logic Based on Ordinals. published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "1938"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "question": "Are there any electronic editions other than the primary one for Systems of Logic Based on Ordinals.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "question": "What is the bibliography type of Cooperative Situation Awareness in Transportation.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "bibtexType"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "bibtexType": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Phdthesis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "question": "Who is the author of Cooperative Situation Awareness in Transportation.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "author"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/31/1332"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "question": "Does Cooperative Situation Awareness in Transportation. have an ISBN?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "question": "How many creators were involved in Cooperative Situation Awareness in Transportation.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "countCreators"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "countCreators": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "question": "In which year was Cooperative Situation Awareness in Transportation. published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2010"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "question": "What is the bibtex Type of 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.'?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "bibtexType"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "bibtexType": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Phdthesis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "question": "Was 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.' authored by?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "question": "Is there an isbn for 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.'?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "question": "How many creators contributed to 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.'?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "numberOfCreators"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "numberOfCreators": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "question": "When was 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.' published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "date": {
+                                    "type": "literal",
+                                    "value": "2012"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "question": "What is the bibtex Type of Cluster abstraction of graph transformation systems.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Phdthesis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "question": "Who authored Cluster abstraction of graph transformation systems.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "author"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/115/6523"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "question": "How many creators were involved in Cluster abstraction of graph transformation systems.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "numCreators"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "numCreators": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "question": "Does Cluster abstraction of graph transformation systems. have any other Electronic Edition?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "question": "When was Cluster abstraction of graph transformation systems. published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2015"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "question": "What is the bibtex Type of 'New Data Based Matching Strategies for Visual Motion Estimation.'?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "bibtexType"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "bibtexType": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Phdthesis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "question": "Who is the author of 'New Data Based Matching Strategies for Visual Motion Estimation.'?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "author"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/119/1518"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "question": "Does 'New Data Based Matching Strategies for Visual Motion Estimation.' have any ISBN?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "question": "Is the pagination information available for 'New Data Based Matching Strategies for Visual Motion Estimation.'?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "question": "In which year was 'New Data Based Matching Strategies for Visual Motion Estimation.' published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2020"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "question": "What is the bibtex Type of Modellbasierte Energiekostenanalyse automatisierter Systeme.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Phdthesis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "question": "Who is the author of Modellbasierte Energiekostenanalyse automatisierter Systeme.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "authorName"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "authorName": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/32/4820-2"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "question": "Does Modellbasierte Energiekostenanalyse automatisierter Systeme. have an ISBN number?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 28,
+            "question": "Is there any information on the primary Electronic Edition of Modellbasierte Energiekostenanalyse automatisierter Systeme.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "question": "In which year was Modellbasierte Energiekostenanalyse automatisierter Systeme. published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2015"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 30,
+            "question": "What is the bibtex Type of Visual attention in primates and for machines - neuronal mechanisms.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Phdthesis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "question": "Does Visual attention in primates and for machines - neuronal mechanisms. have an isbn?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 32,
+            "question": "In what year was Visual attention in primates and for machines - neuronal mechanisms. published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2020"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 33,
+            "question": "What is the bibtex Type of 'Non-Volatile Processor Design for Self-Powered Embedded Systems.'?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Phdthesis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 34,
+            "question": "What is the ISBN number of the publication 'Non-Volatile Processor Design for Self-Powered Embedded Systems.'?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "isbn"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "isbn": {
+                                    "type": "uri",
+                                    "value": "urn:isbn:9783843949699"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 35,
+            "question": "What is the total number of creators involved in 'Non-Volatile Processor Design for Self-Powered Embedded Systems.'?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "total_creators"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "total_creators": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 36,
+            "question": "In which school was the thesis of 'Non-Volatile Processor Design for Self-Powered Embedded Systems.' accepted?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "school"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "school": {
+                                    "type": "literal",
+                                    "value": "University of Erlangen-Nuremberg, Germany"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 37,
+            "question": "What is the bibtex Type of 'Hybrid neural networks for gasoline blending system modeling.'?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Inproceedings"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 38,
+            "question": "Who authored 'Hybrid neural networks for gasoline blending system modeling.'?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "author"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/00/3356"
+                                }
+                            },
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/75/3061-1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 39,
+            "question": "In which year was 'Hybrid neural networks for gasoline blending system modeling.' published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2014"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 40,
+            "question": "Is 'Hybrid neural networks for gasoline blending system modeling.' listed on the Table of Contents page?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 41,
+            "question": "In which proceedings was 'Hybrid neural networks for gasoline blending system modeling.' published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "proceedings"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "proceedings": {
+                                    "type": "literal",
+                                    "value": "IJCNN"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 42,
+            "question": "What is the type of the publication related to 'Pruning Depthwise Separable Convolutions for MobileNet Compression.'?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Inproceedings"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 43,
+            "question": "Who authored 'Pruning Depthwise Separable Convolutions for MobileNet Compression.'?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "author"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/59/5103"
+                                }
+                            },
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/116/8913-1"
+                                }
+                            },
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/135/9205"
+                                }
+                            },
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/67/1007"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 44,
+            "question": "In which year was 'Pruning Depthwise Separable Convolutions for MobileNet Compression.' published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2020"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 45,
+            "question": "Was 'Pruning Depthwise Separable Convolutions for MobileNet Compression.' published in a book?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 46,
+            "question": "Where was 'Pruning Depthwise Separable Convolutions for MobileNet Compression.' listed?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "location"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "location": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/db/conf/ijcnn/ijcnn2020"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 47,
+            "question": "Who authored Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "author"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/05/6715-1"
+                                }
+                            },
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/07/3794"
+                                }
+                            },
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/62/2655-9"
+                                }
+                            },
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/275/7894"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 48,
+            "question": "Where was Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk. published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "publicationVenue"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "publicationVenue": {
+                                    "type": "literal",
+                                    "value": "IJCNN"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 49,
+            "question": "Is Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk. listed on the Table of Contents page?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 50,
+            "question": "Was Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk. published as part of a book?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 51,
+            "question": "In which year did the event related to \"More Realistic and Efficient Face-Based Mobile Authentication using CNNs.\" take place?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2018"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 52,
+            "question": "Is \"More Realistic and Efficient Face-Based Mobile Authentication using CNNs.\" listed on the table of contents page?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 53,
+            "question": "Where was \"More Realistic and Efficient Face-Based Mobile Authentication using CNNs.\" published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "publication"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "publication": {
+                                    "type": "literal",
+                                    "value": "IJCNN"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 54,
+            "question": "What electronic edition is primary for the paper \"More Realistic and Efficient Face-Based Mobile Authentication using CNNs.\"?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "edition"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "edition": {
+                                    "type": "uri",
+                                    "value": "https://doi.org/10.1109/IJCNN.2018.8489070"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 55,
+            "question": "What is the primary affiliation of Jiaxin Pan?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "affiliation"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "affiliation": {
+                                    "type": "literal",
+                                    "value": "NTNU - Norwegian University of Science and Technology, Trondheim, Norway"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 56,
+            "question": "Does Jiaxin Pan have an ORCID?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 57,
+            "question": "What is the primary homepage of Jiaxin Pan?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "homepage"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "homepage": {
+                                    "type": "uri",
+                                    "value": "https://sites.google.com/view/jiaxinpan/"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 58,
+            "question": "Is Jiaxin Pan associated with any other affiliation?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 59,
+            "question": "What is the webpage related to Jiaxin Pan?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "webpage"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "webpage": {
+                                    "type": "uri",
+                                    "value": "https://scholar.google.com/citations?user=n75HJecAAAAJ"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 60,
+            "question": "What is the ORCID of Marian Daun?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "orcid"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "orcid": {
+                                    "type": "uri",
+                                    "value": "https://orcid.org/0000-0002-9156-9731"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 61,
+            "question": "What is the primary full creator name of Marian Daun?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "primaryFullName"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "primaryFullName": {
+                                    "type": "literal",
+                                    "value": "Marian Daun"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 62,
+            "question": "Does Marian Daun have a primary homepage?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 63,
+            "question": "What is the webpage associated with Marian Daun?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "webpage"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "webpage": {
+                                    "type": "uri",
+                                    "value": "https://dl.acm.org/profile/99658708632"
+                                }
+                            },
+                            {
+                                "webpage": {
+                                    "type": "uri",
+                                    "value": "https://scholar.google.com/citations?user=srSPAToAAAAJ"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 64,
+            "question": "What is the bibtex type of Sparse Differential Resultant for Laurent Differential Polynomials.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Article"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 65,
+            "question": "In what year was Sparse Differential Resultant for Laurent Differential Polynomials. published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2015"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 66,
+            "question": "Was Sparse Differential Resultant for Laurent Differential Polynomials. published in a journal volume?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 67,
+            "question": "Under which tab was Sparse Differential Resultant for Laurent Differential Polynomials. listed on?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "tab"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "tab": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/db/journals/focm/focm15"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 68,
+            "question": "In which journal was 'Trust-Region Methods on Riemannian Manifolds.' published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "journal"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "journal": {
+                                    "type": "literal",
+                                    "value": "Found. Comput. Math."
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 69,
+            "question": "What is the pagination of 'Trust-Region Methods on Riemannian Manifolds.'?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "pagination"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "pagination": {
+                                    "type": "literal",
+                                    "value": "303-330"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 70,
+            "question": "In which year was 'Trust-Region Methods on Riemannian Manifolds.' published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2007"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 71,
+            "question": "What is the bibtex Type of Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "bibtexType"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "bibtexType": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Inproceedings"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 72,
+            "question": "In which year was Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning. published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2019"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 73,
+            "question": "Is Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning. listed on the Table of Content page?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 74,
+            "question": "In which publication was Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning. included as part of?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "publication"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "publication": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/rec/conf/nips/2019vigil"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 75,
+            "question": "What is the primary affiliation of Gerhard Kramer?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "affiliation"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "affiliation": {
+                                    "type": "literal",
+                                    "value": "Technical University Munich, Germany"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 76,
+            "question": "Is Gerhard Kramer associated with a homepage?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 77,
+            "question": "What is the full creator name for Gerhard Kramer?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "creatorFullname"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "creatorFullname": {
+                                    "type": "literal",
+                                    "value": "Gerhard Kramer"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 78,
+            "question": "Does Gerhard Kramer have a Wikidata entry?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 79,
+            "question": "What is the ORCID of Gerhard Kramer?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "orcid"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "orcid": {
+                                    "type": "uri",
+                                    "value": "https://orcid.org/0000-0002-3904-9181"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 80,
+            "question": "What is the ORCID of Yan Zhang 0054?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "orcid"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "orcid": {
+                                    "type": "uri",
+                                    "value": "https://orcid.org/0000-0001-6273-5334"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 81,
+            "question": "Does Yan Zhang 0054 have any other affiliation details?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 82,
+            "question": "Is there any primary affiliation associated with Yan Zhang 0054?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 83,
+            "question": "What is the full name of the primary creator linked to Yan Zhang 0054?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "name"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "name": {
+                                    "type": "literal",
+                                    "value": "Yan Zhang"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 84,
+            "question": "Does Yan Zhang 0054 have any homepage specified?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 85,
+            "question": "Who authored Infinite-Dimensional Compressed Sensing and Function Interpolation.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "author"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/24/8317"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 86,
+            "question": "In which journal was Infinite-Dimensional Compressed Sensing and Function Interpolation. published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "journal"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "journal": {
+                                    "type": "literal",
+                                    "value": "Found. Comput. Math."
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 87,
+            "question": "In what year was Infinite-Dimensional Compressed Sensing and Function Interpolation. published?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year_pub"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year_pub": {
+                                    "type": "literal",
+                                    "value": "2018"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 88,
+            "question": "Was Infinite-Dimensional Compressed Sensing and Function Interpolation. listed on Table of Contents (TOC) page?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 89,
+            "question": "What is the type of bibliography for Infinite-Dimensional Compressed Sensing and Function Interpolation.?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Article"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

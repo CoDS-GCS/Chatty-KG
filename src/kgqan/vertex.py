@@ -2,31 +2,58 @@ import json
 
 import requests
 
+from kgqan import sparqls
 from kgqan.sparql_end_points import EndPoint
 
 
 class Vertex:
-    def __init__(self, max_num: int, candidate_uris: list, sparql_end_point: EndPoint, n_limit_EQuery: int):
+    def __init__(self, max_num: int, candidate_uris: list, candidate_labels: list, sparql_end_point: EndPoint, n_limit_EQuery: int):
         self.max_num = max_num
         self.vertices = list()
         self.predicates_uris = list()
         self.predicates_names = list()
         self.candidate_uris = candidate_uris
+        self.candidate_labels = candidate_labels
         self.sparql_end_point = sparql_end_point
         self.n_limit_EQuery = n_limit_EQuery
 
         self.process_all_vertices()
+
+    def process_all_vertices_v2(self):
+        processed = 0
+        counter = 0
+        while processed < self.max_num and counter < len(self.candidate_uris):
+            current_uri = self.candidate_uris[counter]
+            redirect_uri_if_any = self.get_redirected_uri(current_uri)
+            uri = redirect_uri_if_any if redirect_uri_if_any else current_uri
+            uris, names = self.process_vertex(uri)
+            if len(uris) > 0:
+                self.vertices.append(uri)
+                self.predicates_names.append(names)
+                self.predicates_uris.append(uris)
+                processed = processed + 1
+            counter = counter + 1
+
+
+    def get_predicates_for_label(self, label):
+        query = sparqls.get_predicates_for_labels(label)
+        uris, names = self.sparql_end_point.execute_sparql_query_and_get_uri_and_name_lists(query)
+        uris = [(x, label, True) for x in uris]
+        return uris, names
+
 
     def process_all_vertices(self):
         processed = 0
         counter = 0
         while processed < self.max_num and counter < len(self.candidate_uris):
             current_uri = self.candidate_uris[counter]
+            current_label = self.candidate_labels[counter]
             uris, names = self.process_vertex(current_uri)
             if len(uris) == 0:
                 redirected_uri = self.get_redirected_uri(current_uri)
                 if redirected_uri is None:
-                    self.vertices.append(current_uri)
+                    uris, names = self.get_predicates_for_label(current_label)
+                    self.vertices.append(current_label)
                     self.predicates_names.append(names)
                     self.predicates_uris.append(uris)
                     processed = processed + 1
@@ -86,7 +113,8 @@ class Vertex:
             'debug': 'on',
             'run': '+Run+Query+',
         }
-        query_response = requests.get("https://dbpedia.org/sparql", params=payload)
+        # query_response = requests.get("https://dbpedia.org/sparql", params=payload)
+        query_response = requests.get(self.sparql_end_point.link, params=payload)
         response = json.loads(query_response.text)
         if len(response['results']['bindings']) == 0:
             return None

@@ -43,14 +43,15 @@ import logging
 from kgqan.logger import logger
 
 import time
-from kgqan.langchain_filtration import choose_question_from_keywords
+# from kgqan.langchain_filtration import choose_question_from_keywords
+from kgqan.filtration.llm_filtrationv2 import choose_question_from_keywords, get_name
 # import kgqan.filteration as filteration
 from termcolor import cprint
 import networkx as nx
 import datetime
-from kgqan.linking.llm_linking import vertex_linking
-
-import logging
+# from kgqan.linking.llm_linking import vertex_linking
+from kgqan.linking.llm_linking_v2 import vertex_linking
+from kgqan.json_logger import JsonLogger
 
 
 # TODO check best place to have these updates and send either uri or key according to usecase
@@ -66,6 +67,7 @@ knowledge_graph_to_uri = {
     "dblp": "http://206.12.95.86:8894/sparql",
 }
 
+json_logger = JsonLogger()
 
 class KGQAn:
     """A Natural Language Platform For Querying RDF-Based Graphs
@@ -138,6 +140,8 @@ class KGQAn:
         # to solve Memory Leak issue
         self.v_uri_scores = defaultdict(float)
         logger.log_info(f"Question: {question_text}")
+        json_logger.set("question_id", question_id)
+        json_logger.set("question_text", question_text)
         understanding_start = time.time()
         self.question = (question_text, question_id, logger)
         understanding_end = time.time()
@@ -177,6 +181,7 @@ class KGQAn:
         ]
         execution_end = time.time()
         logger.log_info(f"\n\n\n\n{'#' * 120}")
+        json_logger.log()
         return (
             answers,
             self.question.query_graph.nodes,
@@ -322,19 +327,24 @@ class KGQAn:
         count = response_json["results"]["bindings"][0]["p_count"]["value"]
         return count
 
+    def get_entity_query_for_kg(self, entity):
+        if self.knowledge_graph in ["microsoft_academic", "bgee"]:
+            entity_query = sparqls.make_Ms_academic_query(
+                entity, limit=self.n_limit_VQuery
+            )
+        elif self.knowledge_graph in ['yago']:
+            entity_query = sparqls.make_keyword_unordered_search_query_with_type_yago(
+                entity, limit=self.n_limit_VQuery)
+        else:
+            entity_query = sparqls.make_keyword_unordered_search_query_with_type(
+                entity, limit=self.n_limit_VQuery
+            )
+        return entity_query
     def extract_possible_V_and_E(self):
         for entity in self.question.query_graph:
             if self.is_variable(entity):
-                # self.question.query_graph.add_node(entity, uris=[], answers=[])
                 continue
-            if self.knowledge_graph in ["microsoft_academic", "bgee"]:
-                entity_query = sparqls.make_Ms_academic_query(
-                    entity, limit=self.n_limit_VQuery
-                )
-            else:
-                entity_query = sparqls.make_keyword_unordered_search_query_with_type(
-                    entity, limit=self.n_limit_VQuery
-                )
+            entity_query = self.get_entity_query_for_kg(entity)
             # entity_query = make_keyword_unordered_search_query_with_type(entity, limit=self.n_limit_VQuery)
             cprint(f"== SPARQL Q Find V: {entity_query}")
 
@@ -350,14 +360,22 @@ class KGQAn:
                 continue
             elif len(uris) == 1:
                 chosen_vertex_index = 0
+                chosen_uri = uris
+                chosen_label = names
             else:
-                chosen_vertex_index = vertex_linking(entity, names)
-                if chosen_vertex_index is None:
+                # chosen_vertex_index = vertex_linking(entity, names, uris, json_logger)
+                chosen_uri, chosen_label = vertex_linking(entity, names, uris, json_logger, self.knowledge_graph)
+                # if chosen_vertex_index is None:
+                if chosen_uri is None:
                     continue
+                # for i in chosen_vertex_index:
+                #     print(uris[i])
+                # chosen_vertex_index = chosen_vertex_index[0]
 
-            chosen_uri = [uris[chosen_vertex_index]]
+            # chosen_uri = [uris[chosen_vertex_index]]
+            json_logger.set("Linking_vertex", chosen_uri)
             updated_vertex = Vertex(
-                self.n_max_Vs, chosen_uri, self.sparql_end_point, self.n_limit_EQuery
+                self.n_max_Vs, chosen_uri, chosen_label, self.sparql_end_point, self.n_limit_EQuery
             )
             URIs_chosen = updated_vertex.get_vertex_uris()
             # URIs_chosen = remove_duplicates(URIs_sorted)[:self.n_max_Vs]
@@ -781,6 +799,8 @@ class KGQAn:
                     uri1 = f"<{n1_uri}>"
                 if self.is_variable(n2_uri):
                     uri2 = n2_uri
+                elif 'http' not in n2_uri:
+                    uri2 = f"\"{n2_uri}\"@en"
                 else:
                     uri2 = f"<{n2_uri}>"
                 if predicate[0] == '?p':
@@ -824,6 +844,9 @@ class KGQAn:
                 if self.is_variable(n2_uri):
                     uri2 = n2_uri
                     candidate_targets.append(uri2)
+                elif 'http' not in n2_uri:
+                    uri2 = f"\"{n2_uri}\"@en"
+                    node_uris.append(n2_uri)
                 else:
                     uri2 = f"<{n2_uri}>"
                     node_uris.append(n2_uri)
@@ -918,12 +941,13 @@ class KGQAn:
             sparqls_triples.append(possible_answer.triples)
         if len(sparqls) == 0:
             return
-        queries_indices = choose_question_from_keywords(self.question.text, sparqls, sparqls_triples)
+        queries_indices = choose_question_from_keywords(self.question.text, sparqls, sparqls_triples, json_logger)
         self.query_selection_end = time.time()
         self.num_queries_executed = len(queries_indices)
         for index in queries_indices:
             try:
-                result = self.sparql_end_point.evaluate_SPARQL_query(sparqls[index])
+                sparql_query = sparqls[index]
+                result = self.sparql_end_point.evaluate_SPARQL_query(sparql_query)
                 v_result = json.loads(result)
                 if "results" in v_result:
                     v_result = self.postprocess_answer_if_needed(v_result)
@@ -933,8 +957,8 @@ class KGQAn:
                 else:
                     self.question.possible_answers[index].update(results=[], boolean=v_result["boolean"])
                 answers = list()
-                target = self.target_variable[1:] if self.target_variable.startswith('?') else self.target_variable
                 if "results" in v_result:
+                    target = self.target_variable[1:] if self.target_variable.startswith('?') else self.target_variable
                     for binding in v_result["results"]["bindings"]:
                         answer = self.__class__.extract_resource_name_from_uri(
                             binding[target]["value"]
@@ -1016,7 +1040,8 @@ class KGQAn:
             self.question.sparqls = sparqls
 
     def is_variable(self, label):
-        return "var" in label or label.startswith('?')
+        # return "var" in label or label.startswith('?')
+        return label.startswith('?')
         # return "var" in label
 
     @property
@@ -1026,7 +1051,7 @@ class KGQAn:
     @question.setter
     def question(self, value: tuple):
         self._current_question = Question(
-            question_text=value[0], question_id=value[1], logger=value[2]
+            question_text=value[0], question_id=value[1], logger=value[2], json_logger=json_logger
         )
 
     @staticmethod

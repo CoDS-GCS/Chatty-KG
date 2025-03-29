@@ -179,3 +179,9 @@ src/kgqan/allen/*
 src/allen/*
 src/nltk_cache/
 src/evaluation/output/*
+
+# Old files to not affect the stashs
+src/kgqan/question_understanding1/two_step_understanding.py
+src/kgqan/linking/llm_linking.py
+src/kgqan/langchain_filtration.py
+

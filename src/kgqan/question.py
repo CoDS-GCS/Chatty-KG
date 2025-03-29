@@ -20,8 +20,8 @@ from termcolor import cprint
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 # from kgqan.seq2seq import seq2seq_model
 from kgqan.logger import logger
-from kgqan.question_understanding1.two_step_understanding import extract_triples
-
+#from kgqan.question_understanding1.two_step_understanding import extract_triples
+from kgqan.question_understanding1.question_undertandingv2 import get_understanding
 model = None
 tokenizer = None
 
@@ -46,7 +46,7 @@ class Question:
     datatypes = ("number", "date", "string", "boolean", "resource", "list")
 
     def __init__(
-        self, question_text, question_id=None, answer_datatype=None, logger=None
+        self, question_text, question_id=None, answer_datatype=None, logger=None, json_logger=None
     ):
         self.tokens = list()
         self._id = question_id
@@ -58,6 +58,7 @@ class Question:
         self._possible_answers = list()
         self.triple_list = list()
         self.logger = logger
+        self.json_logger = json_logger
 
         self.process()
         # self.__process()
@@ -118,7 +119,8 @@ class Question:
     #     self.__build_graph_from_triples()
 
     def process(self):
-        self.triple_list = extract_triples(self._question_text)
+        # self.triple_list = extract_triples(self._question_text)
+        self.triple_list = get_understanding(self._question_text, self.json_logger)
         self.__build_graph_from_triples()
 
     # def __find_possible_relations(self):

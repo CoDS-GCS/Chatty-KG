@@ -1,0 +1,2452 @@
+{
+    "dataset": {
+        "id": "dbpedia_e11_20_5_original_standalone"
+    },
+    "questions": [
+        {
+            "id": 0,
+            "question": "What is the birth place of Antony Cheng?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "birthPlace"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "birthPlace": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Vancouver, British Columbia, Canada"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "question": "How many former coaches does Antony Cheng have?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "count"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "count": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "question": "What is the gender of Antony Cheng?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "gender"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "gender": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "male"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "question": "What is the choreographer of Antony Cheng?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "choreographer"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "choreographer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Joanne_McLeod"
+                                }
+                            },
+                            {
+                                "choreographer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Myke_Gilman"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "question": "What is the country of residence of Antony Cheng?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "country"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "country": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Richmond_Hill,_Ontario"
+                                }
+                            },
+                            {
+                                "country": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Canada"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "question": "What is the description of Bello Babatounde?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "description"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "description": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "Footballer"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "question": "Is the gender of Bello Babatounde known?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "question": "When was Bello Babatounde born?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                    "value": "1989-10-6"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "question": "What is the surname of Bello Babatounde?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "surname"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "surname": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "Babatounde"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "question": "Where was Bello Babatounde born?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "birthPlace"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "birthPlace": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Esan_North-East"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "question": "What is Jeff Stinco's gender?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "gender"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "gender": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "male"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "question": "When was Jeff Stinco born?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                    "value": "1978-8-22"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "question": "What is Jeff Stinco's surname?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "surname"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "surname": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "Stinco"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "question": "Where was Jeff Stinco born?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "birthPlace"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "birthPlace": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Montreal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "question": "What is Jeff Stinco's given Name?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "givenName"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "givenName": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "Jeff"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "question": "What is the area associated with Michael Manning?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "area"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "area": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Writer, Artist"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "question": "When was Michael Manning born?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "birthDate"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "birthDate": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1963"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "question": "What is the nationality of Michael Manning?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "nationality"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "nationality": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "American"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "question": "Can you provide a description of Michael Manning?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "description"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "description": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "American artist"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "question": "What is the gender of Michael Manning?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "gender"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "gender": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "male"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "question": "What is the homepage of Bloomberg Radio?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "homepage"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "homepage": {
+                                    "type": "uri",
+                                    "value": "http://www.bloomberg.com/audio/"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "question": "How many areas does Bloomberg Radio cover?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "count"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "count": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "question": "Does Bloomberg Radio have a specific format?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "question": "Is Bloomberg Radio known by any alias?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "question": "Who is the licensee of Bloomberg Radio?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "licensee"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "licensee": {
+                                    "type": "literal",
+                                    "value": "Bloomberg Communications Inc."
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "question": "What is the address of Chapin School?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "address"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "address": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "100East End Avenue"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "question": "What type is Chapin School?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Private_school"
+                                }
+                            },
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/University-preparatory_school"
+                                }
+                            },
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Day_school"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "question": "In which city is Chapin School located?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "city"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "city": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/New_York_City"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 28,
+            "question": "When was Chapin School founded?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "foundingYear"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "foundingYear": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#gYear",
+                                    "value": "1901"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "question": "What is the motto of Chapin School?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "motto"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "motto": {
+                                    "type": "literal",
+                                    "value": "Bravely and Rightly"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 30,
+            "question": "What is the opening year of Abiko Station?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "openingYear"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "openingYear": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#gYear",
+                                    "value": "1896"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "question": "How many passengers does Abiko Station have per year?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "passengersPerYear"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "passengersPerYear": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "30995"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 32,
+            "question": "In which country is Abiko Station located?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "country"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "country": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Japan"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 33,
+            "question": "What is the address of Abiko Station?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "address"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "address": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "2 Honch\u014d, Abiko-shi, Chiba-ken 270-1151"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 34,
+            "question": "How many connections does Abiko Station have?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "numConnections"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "numConnections": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 35,
+            "question": "Is Ala located in any province?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 36,
+            "question": "What is the area code for Ala?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "areaCode"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "areaCode": {
+                                    "type": "literal",
+                                    "value": "0464"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 37,
+            "question": "Does Ala have a postal code?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 38,
+            "question": "In which country is Ala located?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "country"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "country": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Italy"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 39,
+            "question": "What is the homepage of Bussy-Chardonney?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "homepage"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "homepage": {
+                                    "type": "uri",
+                                    "value": "http://www.bussy-chardonney.ch"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 40,
+            "question": "How many places are associated with Bussy-Chardonney?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "count"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "count": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "2"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 41,
+            "question": "Is Bussy-Chardonney a twin town?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 42,
+            "question": "What is the total area of Bussy-Chardonney?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "area"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "area": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#double",
+                                    "value": "3.1e+06"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 43,
+            "question": "What type is Cascades?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "suburb"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 44,
+            "question": "Which state is Cascades located in?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "state"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "state": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "tas"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 45,
+            "question": "Is Cascades a city?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 46,
+            "question": "What is the postcode of Cascades?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "postcode"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "postcode": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "7004"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 47,
+            "question": "Is Cascades located near North East?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 48,
+            "question": "Who are the inkers of Batman: The Dark Knight?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "inkerName"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "inkerName": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Scott_Williams_(comics)"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 49,
+            "question": "How many editors worked on Batman: The Dark Knight?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "numEditors"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "numEditors": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "2"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 50,
+            "question": "Is Batman: The Dark Knight an ongoing series?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 51,
+            "question": "What is the schedule of Batman: The Dark Knight?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "schedule"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "schedule": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Monthly"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 52,
+            "question": "Who is the writer of Batman: The Dark Knight?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "writer"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "writer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Judd_Winick"
+                                }
+                            },
+                            {
+                                "writer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Paul_Jenkins_(writer)"
+                                }
+                            },
+                            {
+                                "writer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/David_Finch_(comics)"
+                                }
+                            },
+                            {
+                                "writer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Joe_Harris_(filmmaker)"
+                                }
+                            },
+                            {
+                                "writer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Gregg_Hurwitz"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 53,
+            "question": "What is the founding date of Naval Academy?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                    "value": "1881-11-06"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 54,
+            "question": "Can you provide the latitude of Naval Academy?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "latitude"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "latitude": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#float",
+                                    "value": "43.527"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 55,
+            "question": "Who is the officer in charge of Naval Academy?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "officer"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "officer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Divisional_admiral"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 56,
+            "question": "Does Naval Academy have a homepage?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 57,
+            "question": "In which region is Naval Academy located?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "region"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "region": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Livorno, Italy"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 58,
+            "question": "What is the nationality of Billy McNeill?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "nationality"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "nationality": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Ireland"
+                                }
+                            },
+                            {
+                                "nationality": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Scotland"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 59,
+            "question": "How many current members does Billy McNeill have on the squad?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "numPlayers"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "numPlayers": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "17"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 60,
+            "question": "In what position does Billy McNeill play?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "position"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "position": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "DF"
+                                }
+                            },
+                            {
+                                "position": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "FW"
+                                }
+                            },
+                            {
+                                "position": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "GK"
+                                }
+                            },
+                            {
+                                "position": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "MF"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 61,
+            "question": "Can Billy McNeill play as a left winger?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 62,
+            "question": "When was the squad number assigned to Billy McNeill?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "1"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "2"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "3"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "4"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "5"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "6"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "7"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "8"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "9"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "10"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "11"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "12"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 63,
+            "question": "What is the scientific classification of Eastern garter snake?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "class"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "class": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Thamnophis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 64,
+            "question": "How many subspecies does Eastern garter snake have?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "count"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "count": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 65,
+            "question": "Is there any conservation status information available for Eastern garter snake?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 66,
+            "question": "To which kingdom does Eastern garter snake belong?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "kingdom"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "kingdom": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Animal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 67,
+            "question": "What is the order of Eastern garter snake in the animal kingdom?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "order"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "order": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Serpentes"
+                                }
+                            },
+                            {
+                                "order": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Squamata"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 68,
+            "question": "Is Brown mastiff bat the kingdom sorted Animalia?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 69,
+            "question": "What is the binomial of Brown mastiff bat?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "binomial"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "binomial": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Promops nasutus"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 70,
+            "question": "How many species does Brown mastiff bat belong to?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "count"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "count": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 71,
+            "question": "What is the class of Brown mastiff bat?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "class"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "class": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Mammal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 72,
+            "question": "Does Brown mastiff bat have a conservation status?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 73,
+            "question": "What is the gender of Ron Newman (footballer)?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "gender"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "gender": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "male"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 74,
+            "question": "When was Ron Newman (footballer) born?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "birthDate"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "birthDate": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                    "value": "1934-1-19"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 75,
+            "question": "Where was Ron Newman (footballer) born?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "birthPlace"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "birthPlace": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Fareham"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 76,
+            "question": "What is the surname of Ron Newman (footballer)?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "surname"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "surname": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "Newman"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 77,
+            "question": "What is the given name of Ron Newman (footballer)?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "givenName"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "givenName": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "Ron"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 78,
+            "question": "What is the species of Diamond (comics)?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "species"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "species": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Human"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 79,
+            "question": "Who are the creators of Diamond (comics)?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "creator"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "creator": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Chris Matonti"
+                                }
+                            },
+                            {
+                                "creator": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "J.D. Matonti"
+                                }
+                            },
+                            {
+                                "creator": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Julia Coppola"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 80,
+            "question": "Is Diamond (comics) a hero?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 81,
+            "question": "When did Diamond (comics) debut?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "debut_date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "debut_date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "NEW-GEN #1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 82,
+            "question": "Who is the publisher of Diamond (comics)?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "publisher"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "publisher": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Marvel_Comics"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 83,
+            "question": "What is the map size of Chao District?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "mapsize"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "mapsize": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "frameless"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 84,
+            "question": "When was Chao District founded?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "founding_date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "founding_date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                    "value": "1995-01-04"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 85,
+            "question": "How many people live in Chao District?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "totalPopulation"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "totalPopulation": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "19220"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 86,
+            "question": "What is the type of Chao District?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Districts_of_Peru"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 87,
+            "question": "What country is Chao District located in?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "country"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "country": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Peru"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 88,
+            "question": "Is Brian Robertson a current member?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 89,
+            "question": "How many squad numbers does Brian Robertson have?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "count"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "count": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "17"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 90,
+            "question": "What position does Brian Robertson play?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "position"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "position": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "DF"
+                                }
+                            },
+                            {
+                                "position": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "FW"
+                                }
+                            },
+                            {
+                                "position": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "GK"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 91,
+            "question": "When was Granada District founded?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                    "value": "1933-11-03"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 92,
+            "question": "Is Granada District a part of any larger entity?",
+            "answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ]
+        },
+        {
+            "id": 93,
+            "question": "What type of area is Granada District?",
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Districts_of_Peru"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

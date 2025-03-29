@@ -78,7 +78,7 @@ def make_keyword_unordered_search_query_with_type(keywords_string: str, limit=50
     keywords_string = keywords_string.replace('\'s', '')
     keywords_string = keywords_string.replace('\'', '')
     # for cases such as "Angela Merkel ’s"
-    escape = ['’s', 'and', 'not']
+    escape = ['’s', 'and', 'not', 'of', 'by']
     kwlist = []
     for w in keywords_string.strip().split():
         if w not in escape:
@@ -89,9 +89,33 @@ def make_keyword_unordered_search_query_with_type(keywords_string: str, limit=50
                 kwlist.append(w)
     kws = ' AND '.join(kwlist)
     return f"prefix rdf: <http://www.w3.org/2000/01/rdf-schema#> " \
-           f"select distinct ?uri  ?label " \
+           f"select distinct ?uri ?label " \
            f"where {{ ?uri rdf:label ?label. ?label  <bif:contains> '{kws}' . }}  LIMIT {limit}"
 
+def make_keyword_unordered_search_query_with_type_yago(keywords_string: str, limit=500):
+    keywords_string = keywords_string.replace(',', '')
+    keywords_string = keywords_string.replace('.', '')
+    keywords_string = keywords_string.replace(':', '')
+    keywords_string = keywords_string.replace('&', '')
+    keywords_string = keywords_string.replace('\'s', '')
+    keywords_string = keywords_string.replace('\'', '')
+    # for cases such as "Angela Merkel ’s"
+    escape = ['’s', 'and', 'not', 'of', 'by']
+    kwlist = []
+    for w in keywords_string.strip().split():
+        if w not in escape:
+            if w.isnumeric():
+                w = '\\\'' + w + '\\\''
+                kwlist.append(w)
+            else:
+                kwlist.append(w)
+    kws = ' AND '.join(kwlist)
+    return f"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> " \
+           f"SELECT DISTINCT ?uri ?label WHERE {{ " \
+          f"{{ SELECT DISTINCT ?uri WHERE {{ "\
+          f" ?uri rdfs:label ?label. ?label  <bif:contains> '{kws}' ." \
+          f"}}  LIMIT {limit} }}  "\
+          f"?uri rdfs:label ?label.  }}"
 
 def make_Ms_academic_query(keywords_string: str, limit=500):
     keywords_string = keywords_string.replace(',', '')
@@ -180,6 +204,9 @@ def evaluate_SPARQL_query(query: str, fmt='application/json', knowledge_graph='h
 def process_SPARQL_query_result(query_response: requests.models.Response):
     pass
 
+
+def get_predicates_for_labels(entity_label):
+    return f"select distinct ?p where {{ ?uri ?p  \"{entity_label}\"@en . }}"
 
 if __name__ == '__main__':
     pass
