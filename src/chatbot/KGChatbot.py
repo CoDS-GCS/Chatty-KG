@@ -1,3 +1,5 @@
+import sys
+sys.path.append("..")
 from langchain.globals import set_debug
 from langchain.schema.output_parser import StrOutputParser
 from langchain.memory import ConversationSummaryBufferMemory
@@ -7,11 +9,13 @@ from langchain.chains import LLMChain
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 from typing import List
-from langchain_core.messages import BaseMessage, AIMessage
+from langchain_core.messages import BaseMessage, AIMessage, HumanMessage
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
-from chatbot.prompts import CLASSIFY_QUESTION_PROMPT_2, CONTEXT_CLASSIFY_QUESTION_PROMPT, CONDENSE_QUESTION_PROMPT_CUSTOM, CONTEXT_CLASSIFY_QUESTION_PROMPT_2
+from prompts import CLASSIFY_QUESTION_PROMPT_2, CONDENSE_QUESTION_PROMPT_CUSTOM
 from kgqan.kgqan import KGQAn
+import json
+import requests
 
 # set_debug(True)
 
@@ -20,6 +24,7 @@ max_Es = 21
 max_answers = 41
 limit_VQuery = 600
 limit_EQuery = 300
+kgqan_endpoint = "http://localhost:8899"
 
 class InMemoryHistory(BaseChatMessageHistory, BaseModel):
     """In memory implementation of chat message history."""
@@ -43,16 +48,24 @@ class KGChatbot:
         self.store = {}
 
     def ask_question(self, session_id, question):
-        q_type = self.classify_question(session_id, question)
-        print(f"q_type : {q_type}")
-        if "non-self-contained" in q_type.lower():
-            self.update_chat_summary(session_id)
-            question = self.rephrase_question(session_id, question)
-            q_type = self.classify_question(session_id, question)
+        retries = 3
+        original_question = question
 
-        answer, values_answer = self.run_query(question)
-        self.update_context(session_id, question, values_answer)
-        return answer, values_answer
+        while retries > 0:
+            q_type = self.classify_question(session_id, question)
+            print(f"predicted q_type : {q_type}")
+            if "non-self-contained" in q_type.lower():
+                question = self.rephrase_question(session_id, question)
+                retries -= 1
+                continue
+
+            answer, values_answer = self.run_query(question)
+            if not answer:
+                return None, None
+            chat_history = self.get_by_session_id(session_id)
+            chat_history.add_messages([HumanMessage(original_question), AIMessage(question)])
+            return answer, values_answer
+        return None, None
 
     # def setup_kgqan(_self, kg_name):
     #     return KGQAn(_self.host, kg_name)
@@ -81,34 +94,21 @@ class KGChatbot:
 
         # Cache the LLMChain objects
         self.classify_question_chain = CLASSIFY_QUESTION_PROMPT_2 | self.llm | string_output_parser
-        # self.classify_question_chain = LLMChain(
-        #     llm=self.llm,
-        #     prompt=CLASSIFY_QUESTION_PROMPT_2,
-        #     verbose=True,
-        #     output_parser=string_output_parser,
-        # )
-        self.classify_context_question_chain = CONTEXT_CLASSIFY_QUESTION_PROMPT_2 | self.llm | string_output_parser
-        self.classify_chain_with_history = RunnableWithMessageHistory(
-            self.classify_context_question_chain,
-            self.get_by_session_id,
-            input_messages_key="question",
-            history_messages_key="chat_history",
-        )
-        # self.classify_context_question_chain = LLMChain(
-        #     llm=self.llm,
-        #     prompt=CONTEXT_CLASSIFY_QUESTION_PROMPT,
-        #     memory=self.conv_buff_memory,
-        #     verbose=True,
-        #     output_parser=string_output_parser,
+        # self.classify_context_question_chain = CONTEXT_CLASSIFY_QUESTION_PROMPT_2 | self.llm | string_output_parser
+        # self.classify_chain_with_history = RunnableWithMessageHistory(
+        #     self.classify_context_question_chain,
+        #     self.get_by_session_id,
+        #     input_messages_key="question",
+        #     history_messages_key="chat_history",
         # )
 
         self.rephrase_question_chain = CONDENSE_QUESTION_PROMPT_CUSTOM | self.llm | string_output_parser
-        self.rephrase_question_with_history_chain = RunnableWithMessageHistory(
-            self.rephrase_question_chain,
-            self.get_by_session_id,
-            input_messages_key="question",
-            history_messages_key="chat_history",
-        )
+        # self.rephrase_question_with_history_chain = RunnableWithMessageHistory(
+        #     self.rephrase_question_chain,
+        #     self.get_by_session_id,
+        #     input_messages_key="question",
+        #     history_messages_key="chat_history",
+        # )
         # self.rephrase_chain = LLMChain(
         #     llm=self.llm,
         #     prompt=CONDENSE_QUESTION_PROMPT_CUSTOM,
@@ -127,9 +127,12 @@ class KGChatbot:
         # q_type = self.classify_question_chain.invoke(
         #     {"chat_history": self.chat_summary, "question": question}
         # )
-        q_type = self.classify_chain_with_history.invoke(
+        # q_type = self.classify_chain_with_history.invoke(
+        #     {"question": question},
+        #     config={'configurable': {'session_id': session_id}}
+        # )
+        q_type = self.classify_question_chain.invoke(
             {"question": question},
-            config={'configurable': {'session_id': session_id}}
         )
         return q_type
 
@@ -141,18 +144,34 @@ class KGChatbot:
         self.chat_summary = self.get_by_session_id(session_id)
 
     def rephrase_question(self, session_id, question):
-        # question = self.rephrase_chain.run(question=question)
-        question = self.rephrase_question_with_history_chain.invoke(
-            {"question": question},
-            config={'configurable': {'session_id': session_id}}
+        chat_history = self.get_by_session_id(session_id)
+        question = self.rephrase_question_chain.invoke(
+            {"question": question, "chat_history": chat_history},
         )
         return question
+    
+    def send_request(self, question, kg_name):
+        payload = {
+            "question": question,
+            "knowledge_graph": kg_name,
+            "max_answers": max_answers
+        }
+        resp = requests.post(kgqan_endpoint, data=json.dumps(payload))
+        if resp.status_code != 200:
+            print(f"ERROR: {resp.status_code}")
+            return None, None
+        else:
+            results = json.loads(resp.text)
+            print(results)
+            return results.get("answers"), None
+
 
     # returns the structured output for evaluation and user values for history and chatbot interface
     def run_query(self, question):
-        answers, _, _, understanding_time, linking_time, execution_time, query_selection_time, num_queries_executed, is_boolean \
-            = self.kgqan_instance.ask(question_text=question,
-                          question_id=0, knowledge_graph=self.kg_name)
+        answers, _, _, understanding_time, linking_time, execution_time, query_selection_time, num_queries_executed, is_boolean = self.kgqan_instance.ask(question_text=question, question_id=0, knowledge_graph=self.kg_name)
+
+        # answers, is_boolean = self.send_request(question, self.kg_name)
+        
         if is_boolean:
             bool_value = False
             for answer in answers:

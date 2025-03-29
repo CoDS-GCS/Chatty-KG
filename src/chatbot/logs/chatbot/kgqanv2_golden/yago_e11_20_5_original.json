@@ -1,0 +1,4377 @@
+[
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/1886_Wimbledon_Championships",
+        "seed_label": "1886 Wimbledon Championships",
+        "dialogue": [
+            "What event was the 1886 Wimbledon Championships a sub-event of?",
+            "What is an alternate name for it?",
+            "When did it start?",
+            "When did it end?"
+        ],
+        "original": [
+            "What event was the 1886 Wimbledon Championships a sub-event of?",
+            "What is an alternate name for the 1886 Wimbledon Championships?",
+            "When did the 1886 Wimbledon Championships start?",
+            "When did the 1886 Wimbledon Championships end?"
+        ],
+        "queries": [
+            "SELECT ?event WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> <http://schema.org/subEvent> ?event .}",
+            "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> <http://schema.org/alternateName> ?alternateName. }",
+            "SELECT ?startDate WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> <http://schema.org/startDate> ?startDate . }",
+            "SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> <http://schema.org/endDate> ?endDate . }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/1886_Wimbledon_Championships",
+                    "http://schema.org/subEvent",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/1886_Wimbledon_Championships",
+                    "http://schema.org/alternateName",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/1886_Wimbledon_Championships",
+                    "http://schema.org/startDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/1886_Wimbledon_Championships",
+                    "http://schema.org/endDate",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 2946,
+            "prompt_tokens": 2175,
+            "completion_tokens": 771
+        },
+        "query_status": {
+            "Correct": 4
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "event"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "event": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/1886_Wimbledon_Championships_\u2013_Gentlemen's_Doubles"
+                            }
+                        },
+                        {
+                            "event": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/1886_Wimbledon_Championships_\u2013_Gentlemen's_Singles"
+                            }
+                        },
+                        {
+                            "event": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/1886_Wimbledon_Championships_\u2013_Ladies'_Singles"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "alternateName"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "ar",
+                                "value": "\u0628\u0637\u0648\u0644\u0629 \u0648\u064a\u0645\u0628\u0644\u062f\u0648\u0646 \u0661\u0668\u0668\u0666"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "ar",
+                                "value": "\u0628\u0637\u0648\u0644\u0647 \u0648\u064a\u0645\u0628\u0644\u062f\u0648\u0646 1886"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "ar",
+                                "value": "\u0628\u0637\u0648\u0644\u0647 \u0648\u064a\u0645\u0628\u0644\u062f\u0648\u0646 \u0661\u0668\u0668\u0666"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "startDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "startDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "1886-07-03"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "endDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "endDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "1886-07-18"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "1886 Wimbledon Championships \u2013 Gentlemen's Doubles",
+                "1886 Wimbledon Championships \u2013 Gentlemen's Singles",
+                "1886 Wimbledon Championships \u2013 Ladies' Singles"
+            ],
+            [
+                "\u0628\u0637\u0648\u0644\u0629 \u0648\u064a\u0645\u0628\u0644\u062f\u0648\u0646 \u0661\u0668\u0668\u0666 (ar)",
+                "\u0628\u0637\u0648\u0644\u0647 \u0648\u064a\u0645\u0628\u0644\u062f\u0648\u0646 1886 (ar)",
+                "\u0628\u0637\u0648\u0644\u0647 \u0648\u064a\u0645\u0628\u0644\u062f\u0648\u0646 \u0661\u0668\u0668\u0666 (ar)"
+            ],
+            [
+                "1886-07-03"
+            ],
+            [
+                "1886-07-18"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/1970_Formula_One_season",
+        "seed_label": "1970 Formula One season",
+        "dialogue": [
+            "List all subevents of the 1970 Formula One season",
+            "When did it start?",
+            "When did it end?",
+            "Was there an alternative name for it?"
+        ],
+        "original": [
+            "List all subevents of the 1970 Formula One season",
+            "When did the 1970 Formula One season start?",
+            "When did the 1970 Formula One season end?",
+            "Was there an alternative name for the 1970 Formula One season?"
+        ],
+        "queries": [
+            "SELECT ?subevent WHERE { <http://yago-knowledge.org/resource/1970_Formula_One_season> <http://schema.org/subEvent> ?subevent . }",
+            "SELECT ?startDate WHERE {<http://yago-knowledge.org/resource/1970_Formula_One_season> <http://schema.org/startDate> ?startDate .}",
+            "SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/1970_Formula_One_season> <http://schema.org/endDate> ?endDate . }",
+            "ASK WHERE { <http://yago-knowledge.org/resource/1970_Formula_One_season>  <http://schema.org/alternateName>  ?altName . }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/1970_Formula_One_season",
+                    "http://schema.org/subEvent",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/1970_Formula_One_season",
+                    "http://schema.org/startDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/1970_Formula_One_season",
+                    "http://schema.org/endDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/1970_Formula_One_season",
+                    "http://schema.org/alternateName",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 1907,
+            "prompt_tokens": 1439,
+            "completion_tokens": 468
+        },
+        "query_status": {
+            "Correct": 4,
+            "In Correct": 1
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "subevent"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "subevent": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/1970_Belgian_Grand_Prix"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "startDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "startDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "1970-03-07"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "endDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "endDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "1970-10-25"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "1970 Belgian Grand Prix"
+            ],
+            [
+                "1970-03-07"
+            ],
+            [
+                "1970-10-25"
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience",
+        "seed_label": "2009 Andalucia Tennis Experience",
+        "dialogue": [
+            "What is the sub event of 2009 Andalucia Tennis Experience?",
+            "What are the start and end dates of it?",
+            "Does it have any alternate name?",
+            "When did it end?"
+        ],
+        "original": [
+            "What is the sub event of 2009 Andalucia Tennis Experience?",
+            "What are the start and end dates of 2009 Andalucia Tennis Experience?",
+            "Does 2009 Andalucia Tennis Experience have any alternate name?",
+            "When did the 2009 Andalucia Tennis Experience end?"
+        ],
+        "queries": [
+            "SELECT ?subEvent WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/subEvent> ?subEvent }",
+            "SELECT ?startDate ?endDate WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/startDate> ?startDate . <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/endDate> ?endDate . }",
+            "ASK {<http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/alternateName> ?alternateName}",
+            "SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/endDate> ?endDate . }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience",
+                    "http://schema.org/subEvent",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience",
+                    "http://schema.org/startDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience",
+                    "http://schema.org/alternateName",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience",
+                    "http://schema.org/endDate",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 2778,
+            "prompt_tokens": 1966,
+            "completion_tokens": 812
+        },
+        "query_status": {
+            "Correct": 4,
+            "In Correct": 1
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "subEvent"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "subEvent": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience_\u2013_Singles"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "startDate",
+                        "endDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "startDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2009-04-06"
+                            },
+                            "endDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2009-04-12"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "endDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "endDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2009-04-12"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "2009 Andalucia Tennis Experience \u2013 Singles"
+            ],
+            [
+                "2009-04-06",
+                "2009-04-12"
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ],
+            [
+                "2009-04-12"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/2010_Wimbledon_Championships",
+        "seed_label": "2010 Wimbledon Championships",
+        "dialogue": [
+            "What is the sub event of 2010 Wimbledon Championships?",
+            "Can you provide an alternate name for it?",
+            "When did it start?",
+            "When was the end date of it?"
+        ],
+        "original": [
+            "What is the sub event of 2010 Wimbledon Championships?",
+            "Can you provide an alternate name for 2010 Wimbledon Championships?",
+            "When did 2010 Wimbledon Championships start?",
+            "When was the end date of 2010 Wimbledon Championships?"
+        ],
+        "queries": [
+            "SELECT ?subEvent WHERE { <http://yago-knowledge.org/resource/2010_Wimbledon_Championships> <http://schema.org/subEvent> ?subEvent}",
+            "SELECT ?altName WHERE { <http://yago-knowledge.org/resource/2010_Wimbledon_Championships> <http://schema.org/alternateName> ?altName . }",
+            "SELECT ?date\nWHERE {\n  <http://yago-knowledge.org/resource/2010_Wimbledon_Championships> <http://schema.org/startDate> ?date .\n}",
+            "SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/2010_Wimbledon_Championships> <http://schema.org/endDate> ?endDate .}"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/2010_Wimbledon_Championships",
+                    "http://schema.org/subEvent",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2010_Wimbledon_Championships",
+                    "http://schema.org/alternateName",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2010_Wimbledon_Championships",
+                    "http://schema.org/startDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2010_Wimbledon_Championships",
+                    "http://schema.org/endDate",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 1664,
+            "prompt_tokens": 1291,
+            "completion_tokens": 373
+        },
+        "query_status": {
+            "Correct": 4
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "subEvent"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "subEvent": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/2010_Wimbledon_Championships_\u2013_Men's_Doubles"
+                            }
+                        },
+                        {
+                            "subEvent": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/2010_Wimbledon_Championships_\u2013_Men's_Singles"
+                            }
+                        },
+                        {
+                            "subEvent": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/2010_Wimbledon_Championships_\u2013_Mixed_Doubles"
+                            }
+                        },
+                        {
+                            "subEvent": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/2010_Wimbledon_Championships_\u2013_Women's_Doubles"
+                            }
+                        },
+                        {
+                            "subEvent": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/2010_Wimbledon_Championships_\u2013_Women's_Singles"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "altName"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "altName": {
+                                "type": "literal",
+                                "xml:lang": "zh",
+                                "value": "2010\u5e74\u6e29\u5e03\u5c14\u767b\u7f51\u7403\u516c\u5f00\u8d5b"
+                            }
+                        },
+                        {
+                            "altName": {
+                                "type": "literal",
+                                "xml:lang": "zh",
+                                "value": "2010\u5e74\u6e29\u5e03\u5c14\u767b\u7f51\u7403\u9526\u6807\u8d5b"
+                            }
+                        },
+                        {
+                            "altName": {
+                                "type": "literal",
+                                "xml:lang": "de",
+                                "value": "Wimbledon 2010"
+                            }
+                        },
+                        {
+                            "altName": {
+                                "type": "literal",
+                                "xml:lang": "ro",
+                                "value": "Wimbledon 2010"
+                            }
+                        },
+                        {
+                            "altName": {
+                                "type": "literal",
+                                "xml:lang": "it",
+                                "value": "Wimbledon 2010"
+                            }
+                        },
+                        {
+                            "altName": {
+                                "type": "literal",
+                                "xml:lang": "es",
+                                "value": "Wimbledon 2010"
+                            }
+                        },
+                        {
+                            "altName": {
+                                "type": "literal",
+                                "xml:lang": "fr",
+                                "value": "Wimbledon 2010"
+                            }
+                        },
+                        {
+                            "altName": {
+                                "type": "literal",
+                                "xml:lang": "ca",
+                                "value": "Wimbledon Championships 2010"
+                            }
+                        },
+                        {
+                            "altName": {
+                                "type": "literal",
+                                "xml:lang": "bg",
+                                "value": "\u041e\u0442\u043a\u0440\u0438\u0442\u043e \u043f\u044a\u0440\u0432\u0435\u043d\u0441\u0442\u0432\u043e \u043d\u0430 \u0412\u0435\u043b\u0438\u043a\u043e\u0431\u0440\u0438\u0442\u0430\u043d\u0438\u044f 2010"
+                            }
+                        },
+                        {
+                            "altName": {
+                                "type": "literal",
+                                "xml:lang": "ar",
+                                "value": "\u0628\u0637\u0648\u0644\u0629 \u0648\u064a\u0645\u0628\u0644\u062f\u0648\u0646 \u0662\u0660\u0661\u0660"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "date"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "date": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2010-06-21"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "endDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "endDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2010-07-04"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "2010 Wimbledon Championships \u2013 Men's Doubles",
+                "2010 Wimbledon Championships \u2013 Men's Singles",
+                "2010 Wimbledon Championships \u2013 Mixed Doubles",
+                "2010 Wimbledon Championships \u2013 Women's Doubles",
+                "2010 Wimbledon Championships \u2013 Women's Singles"
+            ],
+            [
+                "2010\u5e74\u6e29\u5e03\u5c14\u767b\u7f51\u7403\u516c\u5f00\u8d5b (zh)",
+                "2010\u5e74\u6e29\u5e03\u5c14\u767b\u7f51\u7403\u9526\u6807\u8d5b (zh)",
+                "Wimbledon 2010 (de)",
+                "Wimbledon 2010 (ro)",
+                "Wimbledon 2010 (it)",
+                "Wimbledon 2010 (es)",
+                "Wimbledon 2010 (fr)",
+                "Wimbledon Championships 2010 (ca)",
+                "\u041e\u0442\u043a\u0440\u0438\u0442\u043e \u043f\u044a\u0440\u0432\u0435\u043d\u0441\u0442\u0432\u043e \u043d\u0430 \u0412\u0435\u043b\u0438\u043a\u043e\u0431\u0440\u0438\u0442\u0430\u043d\u0438\u044f 2010 (bg)",
+                "\u0628\u0637\u0648\u0644\u0629 \u0648\u064a\u0645\u0628\u0644\u062f\u0648\u0646 \u0662\u0660\u0661\u0660 (ar)"
+            ],
+            [
+                "2010-06-21"
+            ],
+            [
+                "2010-07-04"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience",
+        "seed_label": "2011 Andalucia Tennis Experience",
+        "dialogue": [
+            "What is the sub Event related to 2011 Andalucia Tennis Experience?",
+            "When did it start?",
+            "Is there an alternate Name for it?",
+            "When was the end Date of it?",
+            "Has it any sub Event info?"
+        ],
+        "original": [
+            "What is the sub Event related to 2011 Andalucia Tennis Experience?",
+            "When did the 2011 Andalucia Tennis Experience start?",
+            "Is there an alternate Name for the 2011 Andalucia Tennis Experience?",
+            "When was the end Date of the 2011 Andalucia Tennis Experience?",
+            "Has 2011 Andalucia Tennis Experience any sub Event info?"
+        ],
+        "queries": [
+            "SELECT ?subEvent WHERE { <http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/subEvent> ?subEvent . }",
+            "SELECT ?date WHERE { <http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/startDate> ?date }",
+            "ASK WHERE { <http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/alternateName> ?alternateName . }",
+            "SELECT ?endDate\nWHERE { \n<http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/endDate> ?endDate .\n}",
+            "SELECT ?subEvent WHERE { <http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/subEvent> ?subEvent . }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience",
+                    "http://schema.org/subEvent",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience",
+                    "http://schema.org/startDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience",
+                    "http://schema.org/alternateName",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience",
+                    "http://schema.org/endDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience",
+                    "http://schema.org/subEvent",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 3397,
+            "prompt_tokens": 2446,
+            "completion_tokens": 951
+        },
+        "query_status": {
+            "Correct": 5
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "subEvent"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "subEvent": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience_\u2013_Singles"
+                            }
+                        },
+                        {
+                            "subEvent": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience_\u2013_Singles_Qualifying"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "date"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "date": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2011-04-02"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "endDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "endDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2011-04-10"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "subEvent"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "subEvent": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience_\u2013_Singles"
+                            }
+                        },
+                        {
+                            "subEvent": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience_\u2013_Singles_Qualifying"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "2011 Andalucia Tennis Experience \u2013 Singles",
+                "2011 Andalucia Tennis Experience \u2013 Singles Qualifying"
+            ],
+            [
+                "2011-04-02"
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ],
+            [
+                "2011-04-10"
+            ],
+            [
+                "2011 Andalucia Tennis Experience \u2013 Singles",
+                "2011 Andalucia Tennis Experience \u2013 Singles Qualifying"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship",
+        "seed_label": "2011 World Men's Handball Championship",
+        "dialogue": [
+            "When did the 2011 World Men's Handball Championship start?",
+            "Where was it held?",
+            "When did it end?"
+        ],
+        "original": [
+            "When did the 2011 World Men's Handball Championship start?",
+            "Where was the 2011 World Men's Handball Championship held?",
+            "When did the 2011 World Men's Handball Championship end?"
+        ],
+        "queries": [
+            "SELECT ?startDate WHERE { <http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship> <http://schema.org/startDate> ?startDate . }",
+            "SELECT ?location WHERE { <http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship> <http://schema.org/location> ?location }",
+            "SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship> <http://schema.org/endDate> ?endDate . }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship",
+                    "http://schema.org/startDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship",
+                    "http://schema.org/location",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship",
+                    "http://schema.org/endDate",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 2440,
+            "prompt_tokens": 1798,
+            "completion_tokens": 642
+        },
+        "query_status": {
+            "Correct": 3,
+            "In Correct": 1
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "startDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "startDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2011-01-13"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "location"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "location": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Sweden"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "endDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "endDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2011-01-30"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "2011-01-13"
+            ],
+            [
+                "Sweden"
+            ],
+            [
+                "2011-01-30"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain",
+        "seed_label": "2018 Grand Prix de Denain",
+        "dialogue": [
+            "What is the alternate name of 2018 Grand Prix de Denain?",
+            "What type of sport is associated with it?",
+            "Is it part of any super event?",
+            "Who are the competitors in its event?"
+        ],
+        "original": [
+            "What is the alternate name of 2018 Grand Prix de Denain?",
+            "What type of sport is associated with 2018 Grand Prix de Denain?",
+            "Is 2018 Grand Prix de Denain part of any super event?",
+            "Who are the competitors in the 2018 Grand Prix de Denain event?"
+        ],
+        "queries": [
+            "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/alternateName> ?alternateName }",
+            "SELECT ?sportType WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/sport> ?sportType }",
+            "ASK WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/superEvent> ?superEvent }",
+            "SELECT ?competitor WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/competitor> ?competitor . }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain",
+                    "http://schema.org/alternateName",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain",
+                    "http://schema.org/sport",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain",
+                    "http://schema.org/superEvent",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain",
+                    "http://schema.org/competitor",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 3100,
+            "prompt_tokens": 2263,
+            "completion_tokens": 837
+        },
+        "query_status": {
+            "Correct": 4
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "alternateName"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "ar",
+                                "value": "\u062c\u0627\u0626\u0632\u0629 \u062f\u064a\u0646\u064a\u0646 \u0627\u0644\u0643\u0628\u0631\u0649 \u0662\u0660\u0661\u0668"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "sportType"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "sportType": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Road_bicycle_racing"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "competitor"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Alo_Jakin"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Ga\u00ebtan_Bille"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Guillaume_Boivin"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Jan_Tratnik"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Kenny_Dehaes"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Mark_McNally_(cyclist)"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Nikolay_Trusov"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Carlos_Alzate"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Alexandre_Pichot"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Geoffrey_Soupe"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Guillaume_Levarlet"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Matt_Brammeier"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Aim\u00e9_De_Gendt"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Brenton_Jones"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Bruno_Armirail"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/David_Boucher"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Eric_Marcotte"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/J\u00e9r\u00e9my_Leveau"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/J\u00e9r\u00f4me_Mainard"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Lukas_Spengler"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Marc_Sarreau"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Michael_Van_Staeyen"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Pawe\u0142_Franczak"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Peter_Koning"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Przemys\u0142aw_Kasperkiewicz"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Ramon_Sinkeldam"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Romain_Cardis"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Romain_Le_Roux"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Simone_Antonini"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Sjoerd_van_Ginneken"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Beno\u00eet_Cosnefroy"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Bram_Welten"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Damien_Touz\u00e9"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Dries_De_Bondt"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Jimmy_Duquennoy"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Julien_Mortier"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/J\u00e9r\u00e9my_Lecroq"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Kenneth_Vanbilsen"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Martijn_Budding"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Pierre_Barbier"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Sergey_Shilov_(cyclist)"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Aaron_Verwilst"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Adrien_Petit"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Brice_Feillu"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Sergey_Lagutin"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Stijn_Devolder"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Andrea_Pasqualon"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Andrew_Fenn"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Shane_Archbold"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Gatis_Smukulis"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Damien_Gaudin"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Jonas_van_Genechten"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Yoann_Offredo"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Aviv_Yechezkel"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Alexander_Cataford"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Frederik_Backaert"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Iuri_Filosi"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Jimmy_Turgis"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Roman_Maikin"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Tanner_Putt"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Ben_Perry"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Conor_Dunne"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Daniel_Eaton_(cyclist)"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Jonas_Koch"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/L\u00e9o_Vincent"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Polychronis_Tzortzakis"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Simon_Sellier"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Tim_Ariesen"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Valentin_Madouas"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Adrien_Garel"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Alex_Kirsch"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/K\u00e9vin_Le_Cunff"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Mathias_De_Witte"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Adam_Blythe"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Quentin_Jaur\u00e9gui"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Robin_Stenuit"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Sean_De_Bie"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Sylvain_Chavanel"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Yannick_Martinez"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Yoann_Paillot"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Zico_Waeytens"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Julien_Trarieux"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Guillaume_Martin"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Ivan_Rovny"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/2018_BMC_Racing_Team_season"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/2018_Groupama\u2013FDJ_season"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Coen_Vermeltfoort"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Daniel_Hoelgaard"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Dennis_van_Winden"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Franck_Bonnamour"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Jonas_Rickaert"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Kevin_Van_Melsen"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Michael_Carbel"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Rudy_Barbier"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Stijn_Steels"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Tom_Dernies"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Wout_van_Aert"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Benjamin_Declercq"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Brian_van_Goethem"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Floris_Gerts"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Franti\u0161ek_Sisr"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Hamish_Schreurs"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Hugo_Hofstetter"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Julien_Stassen"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Lander_Seynaeve"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Laurent_\u00c9vrard"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Micha\u0142_Paluta"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Nans_Peters"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Nico_Denz"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Piet_Allegaert"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Awet_Gebremedhin"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Bert_De_Backer"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Evgeny_Shalunov"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Jordi_Warlop"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Kevin_De_Jonghe"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Matthias_Legley"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Wouter_Wippert"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Julien_Duval"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Julien_Morice"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Marc_Fournier"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Maxime_Daniel"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Pierre-Luc_P\u00e9richon"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Dimitri_Claeys"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Dmitry_Kozonchuk"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Gediminas_Bagdonas"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Kris_Boeckmans"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Preben_Van_Hecke"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Yohann_G\u00e8ne"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Kamil_Gradek"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Romain_Seigle"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Travis_McCabe"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/2018_AG2R_La_Mondiale_season"
+                            }
+                        },
+                        {
+                            "competitor": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Pawe\u0142_Bernas"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "\u062c\u0627\u0626\u0632\u0629 \u062f\u064a\u0646\u064a\u0646 \u0627\u0644\u0643\u0628\u0631\u0649 \u0662\u0660\u0661\u0668 (ar)"
+            ],
+            [
+                "road bicycle racing"
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ],
+            [
+                "Alo Jakin",
+                "Ga\u00ebtan Bille",
+                "Guillaume Boivin",
+                "Jan Tratnik",
+                "Kenny Dehaes",
+                "Mark McNally",
+                "Nikolay Trusov",
+                "Carlos Alzate",
+                "Alexandre Pichot",
+                "Geoffrey Soupe",
+                "Guillaume Levarlet",
+                "Matthew Brammeier",
+                "Aim\u00e9 De Gendt",
+                "Brenton Jones",
+                "Bruno Armirail",
+                "David Boucher",
+                "Eric Marcotte",
+                "J\u00e9r\u00e9my Leveau",
+                "J\u00e9r\u00f4me Mainard",
+                "Lukas Spengler",
+                "Marc Sarreau",
+                "Michael Van Staeyen",
+                "Pawe\u0142 Franczak",
+                "Peter Koning",
+                "Przemys\u0142aw Kasperkiewicz",
+                "Ramon Sinkeldam",
+                "Romain Cardis",
+                "Romain Le Roux",
+                "Simone Antonini",
+                "Sjoerd van Ginneken",
+                "Beno\u00eet Cosnefroy",
+                "Bram Welten",
+                "Damien Touz\u00e9",
+                "Dries De Bondt",
+                "Jimmy Duquennoy",
+                "Julien Mortier",
+                "J\u00e9r\u00e9my Lecroq",
+                "Kenneth Vanbilsen",
+                "Martijn Budding",
+                "Pierre Barbier",
+                "Sergey Shilov",
+                "Aaron Verwilst",
+                "Adrien Petit",
+                "Brice Feillu",
+                "Sergey Lagutin",
+                "Stijn Devolder",
+                "Andrea Pasqualon",
+                "Andrew Fenn",
+                "Shane Archbold",
+                "Gatis Smukulis",
+                "Damien Gaudin",
+                "Jonas Van Genechten",
+                "Yoann Offredo",
+                "Aviv Yechezkel",
+                "Alexander Cataford",
+                "Frederik Backaert",
+                "Iuri Filosi",
+                "Jimmy Turgis",
+                "Roman Maikin",
+                "Tanner Putt",
+                "Benjamin Perry",
+                "Conor Dunne",
+                "Daniel Eaton",
+                "Jonas Koch",
+                "L\u00e9o Vincent",
+                "Polychr\u00f3nis Tzortz\u00e1kis",
+                "Simon Sellier",
+                "Tim Ariesen",
+                "Valentin Madouas",
+                "Adrien Garel",
+                "Alex Kirsch",
+                "K\u00e9vin Le Cunff",
+                "Mathias De Witte",
+                "Adam Blythe",
+                "Quentin Jauregui",
+                "Robin Stenuit",
+                "Sean De Bie",
+                "Sylvain Chavanel",
+                "Yannick Martinez",
+                "Yoann Paillot",
+                "Zico Waeytens",
+                "Julien Trarieux",
+                "Guillaume Martin",
+                "Ivan Rovny",
+                "BMC Racing 2018",
+                "Groupama-FDJ 2018",
+                "Coen Vermeltfoort",
+                "Daniel Hoelgaard",
+                "Dennis van Winden",
+                "Franck Bonnamour",
+                "Jonas Rickaert",
+                "K\u00e9vin Van Melsen",
+                "Michael Carbel Svendgaard",
+                "Rudy Barbier",
+                "Stijn Steels",
+                "Tom Dernies",
+                "Wout Van Aert",
+                "Benjamin Declercq",
+                "Brian van Goethem",
+                "Floris Gerts",
+                "Franti\u0161ek Sisr",
+                "Hamish Schreurs",
+                "Hugo Hofstetter",
+                "Julien Stassen",
+                "Lander Seynaeve",
+                "Laurent \u00c9vrard",
+                "Micha\u0142 Paluta",
+                "Nans Peters",
+                "Nico Denz",
+                "Piet Allegaert",
+                "Awet Gebremedhin",
+                "Bert De Backer",
+                "Evgeny Shalunov",
+                "Jordi Warlop",
+                "Kevin De Jonghe",
+                "Matthias Legley",
+                "Wouter Wippert",
+                "Julien Duval",
+                "Julien Morice",
+                "Marc Fournier",
+                "Maxime Daniel",
+                "Pierre-Luc P\u00e9richon",
+                "Dimitri Claeys",
+                "Dmitry Kozonchuk",
+                "Gediminas Bagdonas",
+                "Kris Boeckmans",
+                "Preben Van Hecke",
+                "Yohann G\u00e8ne",
+                "Kamil Gradek",
+                "Romain Seigle",
+                "Travis McCabe",
+                "AG2R La Mondiale 2018",
+                "Pawe\u0142 Bernas"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/2018_Paris\u2013Nice",
+        "seed_label": "2018 Paris-Nice",
+        "dialogue": [
+            "What is the alternate name of 2018 Paris-Nice?",
+            "How many competitors did it have?",
+            "Was it an event related to a sport?",
+            "What was the start date of it?",
+            "What was the end date of it?"
+        ],
+        "original": [
+            "What is the alternate name of 2018 Paris-Nice?",
+            "How many competitors did 2018 Paris-Nice have?",
+            "Was 2018 Paris-Nice an event related to a sport?",
+            "What was the start date of 2018 Paris-Nice?",
+            "What was the end date of 2018 Paris-Nice?"
+        ],
+        "queries": [
+            "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/2018_Paris\u2013Nice> <http://schema.org/alternateName> ?alternateName .}",
+            "SELECT (COUNT(?competitor) as ?competitor_count) WHERE { <http://yago-knowledge.org/resource/2018_Paris\u2013Nice> <http://schema.org/competitor> ?competitor }",
+            "ASK WHERE { <http://yago-knowledge.org/resource/2018_Paris\u2013Nice> <http://schema.org/sport> ?o . }",
+            "SELECT ?startDate \nWHERE { \n<http://yago-knowledge.org/resource/2018_Paris\u2013Nice> <http://schema.org/startDate> ?startDate . \n}",
+            "SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/2018_Paris\u2013Nice> <http://schema.org/endDate> ?endDate . }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/2018_Paris\u2013Nice",
+                    "http://schema.org/alternateName",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2018_Paris\u2013Nice",
+                    "http://schema.org/competitor",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2018_Paris\u2013Nice",
+                    "http://schema.org/sport",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2018_Paris\u2013Nice",
+                    "http://schema.org/startDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2018_Paris\u2013Nice",
+                    "http://schema.org/endDate",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 2659,
+            "prompt_tokens": 1928,
+            "completion_tokens": 731
+        },
+        "query_status": {
+            "Correct": 5
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "alternateName"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "ar",
+                                "value": "\u0628\u0627\u0631\u064a\u0633-\u0646\u064a\u0633 \u0662\u0660\u0661\u0668"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "competitor_count"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "competitor_count": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                "value": "18"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "startDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "startDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2018-03-04"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "endDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "endDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2018-03-11"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "\u0628\u0627\u0631\u064a\u0633-\u0646\u064a\u0633 \u0662\u0660\u0661\u0668 (ar)"
+            ],
+            [
+                "18"
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ],
+            [
+                "2018-03-04"
+            ],
+            [
+                "2018-03-11"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/A._A._Heaps",
+        "seed_label": "Abraham Albert Heaps",
+        "dialogue": [
+            "What is the birth place of Abraham Albert Heaps?",
+            "What is his nationality?",
+            "When did he die?",
+            "What are his known languages?",
+            "What is his occupation?"
+        ],
+        "original": [
+            "What is the birth place of Abraham Albert Heaps?",
+            "What is the nationality of Abraham Albert Heaps?",
+            "When did Abraham Albert Heaps die?",
+            "What are the known languages of Abraham Albert Heaps?",
+            "What is the occupation of Abraham Albert Heaps?"
+        ],
+        "queries": [
+            "SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/birthPlace> ?birthPlace . }",
+            "SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/nationality> ?nationality . }",
+            "SELECT ?date WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/deathDate> ?date . }",
+            "SELECT ?language WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/knowsLanguage> ?language .}",
+            "SELECT ?occupation WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/hasOccupation> ?occupation }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/A._A._Heaps",
+                    "http://schema.org/birthPlace",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A._A._Heaps",
+                    "http://schema.org/nationality",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A._A._Heaps",
+                    "http://schema.org/deathDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A._A._Heaps",
+                    "http://schema.org/knowsLanguage",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A._A._Heaps",
+                    "http://schema.org/hasOccupation",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 1930,
+            "prompt_tokens": 1478,
+            "completion_tokens": 452
+        },
+        "query_status": {
+            "Correct": 5
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "birthPlace"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "birthPlace": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Leeds"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "nationality"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "nationality": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Canada"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "date"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "date": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "1954-04-04"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "language"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "language": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/English_language"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "occupation"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "occupation": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Politician"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "Leeds"
+            ],
+            [
+                "Canada"
+            ],
+            [
+                "1954-04-04"
+            ],
+            [
+                "English"
+            ],
+            [
+                "politician"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/A._C._Bonnell",
+        "seed_label": "Allison C. Bonnell",
+        "dialogue": [
+            "What is the nationality of Allison C. Bonnell?",
+            "When was she born?",
+            "Did she have any Occupation?",
+            "What was the death Date of her?"
+        ],
+        "original": [
+            "What is the nationality of Allison C. Bonnell?",
+            "When was Allison C. Bonnell born?",
+            "Did Allison C. Bonnell have any Occupation?",
+            "What was the death Date of Allison C. Bonnell?"
+        ],
+        "queries": [
+            "SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/nationality> ?nationality . }",
+            "SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/birthDate> ?birthDate . }",
+            "ASK WHERE { <http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/hasOccupation> ?o . }",
+            "SELECT ?deathDate\nWHERE { <http://yago-knowledge.org/resource/A._C._Bonnell>  <http://schema.org/deathDate>  ?deathDate . }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/A._C._Bonnell",
+                    "http://schema.org/nationality",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A._C._Bonnell",
+                    "http://schema.org/birthDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A._C._Bonnell",
+                    "http://schema.org/hasOccupation",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A._C._Bonnell",
+                    "http://schema.org/deathDate",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 1879,
+            "prompt_tokens": 1446,
+            "completion_tokens": 433
+        },
+        "query_status": {
+            "Correct": 4
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "nationality"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "nationality": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/United_States"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "birthDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "birthDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "1825-06-07"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "deathDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "deathDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "1875-08-16"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "United States of America"
+            ],
+            [
+                "1825-06-07"
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ],
+            [
+                "1875-08-16"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/A._S._M._Hutchinson",
+        "seed_label": "Arthur Stuart-Menteth Hutchinson",
+        "dialogue": [
+            "What is the birth place of Arthur Stuart-Menteth Hutchinson?",
+            "What is an alternate name for him?",
+            "When did he die?",
+            "What is his given name?",
+            "Where was his birth place?"
+        ],
+        "original": [
+            "What is the birth place of Arthur Stuart-Menteth Hutchinson?",
+            "What is an alternate name for Arthur Stuart-Menteth Hutchinson?",
+            "When did Arthur Stuart-Menteth Hutchinson die?",
+            "What is the given name of Arthur Stuart-Menteth Hutchinson?",
+            "Where was Arthur Stuart-Menteth Hutchinson's birth place?"
+        ],
+        "queries": [
+            "SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/birthPlace> ?birthPlace . }",
+            "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/alternateName> ?alternateName}",
+            "SELECT ?dateOfDeath WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/deathDate> ?dateOfDeath . }",
+            "SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/givenName> ?givenName . }",
+            "SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/birthPlace> ?birthPlace . }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/A._S._M._Hutchinson",
+                    "http://schema.org/birthPlace",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A._S._M._Hutchinson",
+                    "http://schema.org/alternateName",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A._S._M._Hutchinson",
+                    "http://schema.org/deathDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A._S._M._Hutchinson",
+                    "http://schema.org/givenName",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A._S._M._Hutchinson",
+                    "http://schema.org/birthPlace",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 2020,
+            "prompt_tokens": 1508,
+            "completion_tokens": 512
+        },
+        "query_status": {
+            "Correct": 5
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "birthPlace"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "birthPlace": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/India"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "alternateName"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "fr",
+                                "value": "A. S. M. Hutchinson"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "dateOfDeath"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "dateOfDeath": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "1971-03-14"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "givenName"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "givenName": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Arthur"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "birthPlace"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "birthPlace": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/India"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "India"
+            ],
+            [
+                "A. S. M. Hutchinson (fr)"
+            ],
+            [
+                "1971-03-14"
+            ],
+            [
+                "Arthur"
+            ],
+            [
+                "India"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/Abda,_Hungary",
+        "seed_label": "Abda",
+        "dialogue": [
+            "What is the alternate name of Abda?",
+            "Where is it located?",
+            "Is it a geographical location?",
+            "Is it contained within a place?",
+            "How many information are available about its location?"
+        ],
+        "original": [
+            "What is the alternate name of Abda?",
+            "Where is Abda located?",
+            "Is Abda a geographical location?",
+            "Is Abda contained within a place?",
+            "How many information are available about Abda's location?"
+        ],
+        "queries": [
+            "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/alternateName> ?alternateName . }",
+            "SELECT ?location WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/location> ?location }",
+            "ASK { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/geo> ?o }",
+            "ASK WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/containedInPlace> ?place }",
+            "SELECT (COUNT(?info) as ?count) WHERE {<http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/location> ?info .}"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/Abda,_Hungary",
+                    "http://schema.org/alternateName",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Abda,_Hungary",
+                    "http://schema.org/location",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Abda,_Hungary",
+                    "http://schema.org/geo",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Abda,_Hungary",
+                    "http://schema.org/containedInPlace",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Abda,_Hungary",
+                    "http://schema.org/location",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 2996,
+            "prompt_tokens": 2251,
+            "completion_tokens": 745
+        },
+        "query_status": {
+            "Correct": 5
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "alternateName"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "en",
+                                "value": "Br\u00fcckl"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "nl",
+                                "value": "Abda (Hongarije)"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "et",
+                                "value": "Abda vald"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "location"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "location": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Gy\u0151r_District"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "count"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "count": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                "value": "1"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "Br\u00fcckl (en)",
+                "Abda (Hongarije) (nl)",
+                "Abda vald (et)"
+            ],
+            [
+                "Gy\u0151r  District"
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ],
+            [
+                "1"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+        "seed_label": "A Princess of Mars",
+        "dialogue": [
+            "What is the date when 'A Princess of Mars' was created?",
+            "Who is the author of 'It'?",
+            "What is an alternate name for 'It'?",
+            "In what language was 'It' written?",
+            "When was 'It' published?"
+        ],
+        "original": [
+            "What is the date when 'A Princess of Mars' was created?",
+            "Who is the author of 'A Princess of Mars'?",
+            "What is an alternate name for 'A Princess of Mars'?",
+            "In what language was 'A Princess of Mars' written?",
+            "When was 'A Princess of Mars' published?"
+        ],
+        "queries": [
+            "SELECT ?dateCreated WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/dateCreated> ?dateCreated . }",
+            "SELECT ?author WHERE{ <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/author> ?author . }",
+            "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/alternateName> ?alternateName .}",
+            "SELECT ?language WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/inLanguage> ?language . }",
+            "SELECT ?datePublished WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/datePublished> ?datePublished . }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+                    "http://schema.org/dateCreated",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+                    "http://schema.org/author",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+                    "http://schema.org/alternateName",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+                    "http://schema.org/inLanguage",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+                    "http://schema.org/datePublished",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 2583,
+            "prompt_tokens": 1898,
+            "completion_tokens": 685
+        },
+        "query_status": {
+            "Correct": 5
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "dateCreated"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "dateCreated": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#gYear",
+                                "value": "1911"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "author"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "author": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Edgar_Rice_Burroughs"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "alternateName"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "nl",
+                                "value": "A Princess of Mars"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "pt",
+                                "value": "Uma Princesa de Marte"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "en",
+                                "value": "Under the Moons of Mars"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "language"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "language": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/English_language"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "datePublished"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "datePublished": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#gYear",
+                                "value": "1917"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "1911"
+            ],
+            [
+                "Edgar Rice Burroughs"
+            ],
+            [
+                "A Princess of Mars (nl)",
+                "Uma Princesa de Marte (pt)",
+                "Under the Moons of Mars (en)"
+            ],
+            [
+                "English"
+            ],
+            [
+                "1917"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/Abeno_Cues_Town",
+        "seed_label": "Abeno Cues Town",
+        "dialogue": [
+            "What is the alternate name of Abeno Cues Town?",
+            "When was it founded?",
+            "Is it a geo?",
+            "Where is it located?",
+            "What is the place in which it is contained?"
+        ],
+        "original": [
+            "What is the alternate name of Abeno Cues Town?",
+            "When was Abeno Cues Town founded?",
+            "Is Abeno Cues Town a geo?",
+            "Where is Abeno Cues Town located?",
+            "What is the place in which Abeno Cues Town is contained?"
+        ],
+        "queries": [
+            "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Abeno_Cues_Town> <http://schema.org/alternateName> ?alternateName . }",
+            "SELECT ?date WHERE { <http://yago-knowledge.org/resource/Abeno_Cues_Town> <http://schema.org/foundingDate> ?date . }",
+            "ASK { <http://yago-knowledge.org/resource/Abeno_Cues_Town> <http://schema.org/geo> ?o . }",
+            "SELECT ?location WHERE { <http://yago-knowledge.org/resource/Abeno_Cues_Town> <http://schema.org/location> ?location }",
+            "SELECT ?place WHERE { <http://yago-knowledge.org/resource/Abeno_Cues_Town> <http://schema.org/containedInPlace> ?place . }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/Abeno_Cues_Town",
+                    "http://schema.org/alternateName",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Abeno_Cues_Town",
+                    "http://schema.org/foundingDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Abeno_Cues_Town",
+                    "http://schema.org/geo",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Abeno_Cues_Town",
+                    "http://schema.org/location",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Abeno_Cues_Town",
+                    "http://schema.org/containedInPlace",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 1914,
+            "prompt_tokens": 1448,
+            "completion_tokens": 466
+        },
+        "query_status": {
+            "Correct": 5
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "alternateName"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "zh",
+                                "value": "\u963f\u500d\u91ce Q's Mall"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "date"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "date": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2011-04-26"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "location"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "location": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Abeno-ku,_Osaka"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "place"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "place": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Abeno-ku,_Osaka"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "\u963f\u500d\u91ce Q's Mall (zh)"
+            ],
+            [
+                "2011-04-26"
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ],
+            [
+                "Abeno-ku"
+            ],
+            [
+                "Abeno-ku"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+        "seed_label": "2018 Tour of Norway",
+        "dialogue": [
+            "What is the alternate name of 2018 Tour of Norway?",
+            "How many competitors participated in it?",
+            "Was it a super event?",
+            "When did it start?",
+            "What was the end date of it?"
+        ],
+        "original": [
+            "What is the alternate name of 2018 Tour of Norway?",
+            "How many competitors participated in the 2018 Tour of Norway?",
+            "Was the 2018 Tour of Norway a super event?",
+            "When did the 2018 Tour of Norway start?",
+            "What was the end date of the 2018 Tour of Norway?"
+        ],
+        "queries": [
+            "SELECT ?alternateName WHERE {<http://yago-knowledge.org/resource/2018_Tour_of_Norway> <http://schema.org/alternateName> ?alternateName}",
+            "SELECT (COUNT(?competitor) AS ?count) WHERE { <http://yago-knowledge.org/resource/2018_Tour_of_Norway> <http://schema.org/competitor> ?competitor . }",
+            "ASK { <http://yago-knowledge.org/resource/2018_Tour_of_Norway> <http://schema.org/superEvent> ?superEvent. }",
+            "SELECT ?startDate WHERE { <http://yago-knowledge.org/resource/2018_Tour_of_Norway> <http://schema.org/startDate> ?startDate . }",
+            "SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/2018_Tour_of_Norway> <http://schema.org/endDate> ?endDate }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+                    "http://schema.org/alternateName",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+                    "http://schema.org/competitor",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+                    "http://schema.org/superEvent",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+                    "http://schema.org/startDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+                    "http://schema.org/endDate",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 1990,
+            "prompt_tokens": 1489,
+            "completion_tokens": 501
+        },
+        "query_status": {
+            "Correct": 5
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "alternateName"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "da",
+                                "value": "Norge Rundt 2018"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "nl",
+                                "value": "Tour of Norway 2018"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "en",
+                                "value": "Tour of Norway 2018"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "fr",
+                                "value": "Tour of Norway 2018"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "ar",
+                                "value": "\u0637\u0648\u0627\u0641 \u0627\u0644\u0646\u0631\u0648\u064a\u062c \u0662\u0660\u0661\u0668"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "count"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "count": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                "value": "114"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "startDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "startDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2018-05-16"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "endDate"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "endDate": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2018-05-20"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "Norge Rundt 2018 (da)",
+                "Tour of Norway 2018 (nl)",
+                "Tour of Norway 2018 (en)",
+                "Tour of Norway 2018 (fr)",
+                "\u0637\u0648\u0627\u0641 \u0627\u0644\u0646\u0631\u0648\u064a\u062c \u0662\u0660\u0661\u0668 (ar)"
+            ],
+            [
+                "114"
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ],
+            [
+                "2018-05-16"
+            ],
+            [
+                "2018-05-20"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/Aberbargoed_Hospital",
+        "seed_label": "Aberbargoed Hospital",
+        "dialogue": [
+            "When was Aberbargoed Hospital founded?",
+            "Where is it located?",
+            "Is it dissolved?",
+            "What is the geographical information of it?"
+        ],
+        "original": [
+            "When was Aberbargoed Hospital founded?",
+            "Where is Aberbargoed Hospital located?",
+            "Is Aberbargoed Hospital dissolved?",
+            "What is the geographical information of Aberbargoed Hospital?"
+        ],
+        "queries": [
+            "SELECT ?date WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/foundingDate> ?date }",
+            "SELECT ?location WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/location> ?location  }",
+            "ASK WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/dissolutionDate> ?object }",
+            "SELECT ?geographicalInformation WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/geo> ?geographicalInformation . }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/Aberbargoed_Hospital",
+                    "http://schema.org/foundingDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Aberbargoed_Hospital",
+                    "http://schema.org/location",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Aberbargoed_Hospital",
+                    "http://schema.org/dissolutionDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Aberbargoed_Hospital",
+                    "http://schema.org/geo",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 1898,
+            "prompt_tokens": 1441,
+            "completion_tokens": 457
+        },
+        "query_status": {
+            "Correct": 4,
+            "Syntax Error": 1
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "date"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "date": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "1909-12-10"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "location"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "location": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Aberbargoed"
+                            }
+                        },
+                        {
+                            "location": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Wales"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "geographicalInformation"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "geographicalInformation": {
+                                "type": "uri",
+                                "value": "geo:51.6936,-3.2228000000000003"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "1909-12-10"
+            ],
+            [
+                "Aberbargoed",
+                "Wales"
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ],
+            [
+                null
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/Aberbeeg",
+        "seed_label": "Aberbeeg",
+        "dialogue": [
+            "What is an alternate name for Aberbeeg?",
+            "Is it a geographical location?",
+            "Is it contained in a place?"
+        ],
+        "original": [
+            "What is an alternate name for Aberbeeg?",
+            "Is Aberbeeg a geographical location?",
+            "Is Aberbeeg contained in a place?"
+        ],
+        "queries": [
+            "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Aberbeeg> <http://schema.org/alternateName> ?alternateName .}",
+            "ASK WHERE { <http://yago-knowledge.org/resource/Aberbeeg> <http://schema.org/geo> ?o }",
+            "ASK WHERE { <http://yago-knowledge.org/resource/Aberbeeg> <http://schema.org/containedInPlace> ?place }"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/Aberbeeg",
+                    "http://schema.org/alternateName",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Aberbeeg",
+                    "http://schema.org/geo",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Aberbeeg",
+                    "http://schema.org/containedInPlace",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 1362,
+            "prompt_tokens": 1103,
+            "completion_tokens": 259
+        },
+        "query_status": {
+            "Correct": 3
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "alternateName"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "en",
+                                "value": "Aber-big"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "cy",
+                                "value": "Aber-big"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "en",
+                                "value": "Aber-b\u00eeg"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "Aber-big (en)",
+                "Aber-big (cy)",
+                "Aber-b\u00eeg (en)"
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/Star_Tours",
+        "seed_label": "Star Tours",
+        "dialogue": [
+            "When was Star Tours created?",
+            "Who is the director of it?",
+            "Is it based on any source?",
+            "When was it published?",
+            "Who composed the music for it?"
+        ],
+        "original": [
+            "When was Star Tours created?",
+            "Who is the director of Star Tours?",
+            "Is Star Tours based on any source?",
+            "When was Star Tours published?",
+            "Who composed the music for Star Tours?"
+        ],
+        "queries": [
+            "SELECT ?date WHERE { <http://yago-knowledge.org/resource/Star_Tours> <http://schema.org/dateCreated> ?date . }",
+            "\nSELECT ?director WHERE {\n  <http://yago-knowledge.org/resource/Star_Tours> <http://schema.org/director> ?director .\n}",
+            "ASK WHERE { <http://yago-knowledge.org/resource/Star_Tours> <http://schema.org/isBasedOn> ?source . }",
+            "SELECT ?datePublished WHERE { <http://yago-knowledge.org/resource/Star_Tours> <http://schema.org/datePublished> ?datePublished . }",
+            "SELECT ?composer WHERE { <http://yago-knowledge.org/resource/Star_Tours> <http://schema.org/musicBy> ?composer .}"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/Star_Tours",
+                    "http://schema.org/dateCreated",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Star_Tours",
+                    "http://schema.org/director",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Star_Tours",
+                    "http://schema.org/isBasedOn",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Star_Tours",
+                    "http://schema.org/datePublished",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Star_Tours",
+                    "http://schema.org/musicBy",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 2106,
+            "prompt_tokens": 1666,
+            "completion_tokens": 440
+        },
+        "query_status": {
+            "Correct": 5
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "date"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "date": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#gYear",
+                                "value": "1989"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "director"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "director": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Dennis_Muren"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "datePublished"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "datePublished": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#gYear",
+                                "value": "1987"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "composer"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "composer": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/John_Williams"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "1989"
+            ],
+            [
+                "Dennis Muren"
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ],
+            [
+                "1987"
+            ],
+            [
+                "John Williams"
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/Abony",
+        "seed_label": "Abony",
+        "dialogue": [
+            "Is Abony a geographical entity?",
+            "Where is the location of it?",
+            "Is it contained within another place?"
+        ],
+        "original": [
+            "Is Abony a geographical entity?",
+            "Where is the location of Abony?",
+            "Is Abony contained within another place?"
+        ],
+        "queries": [
+            "ASK { <http://yago-knowledge.org/resource/Abony> <http://schema.org/geo> ?o }",
+            "SELECT ?location ?point WHERE { <http://yago-knowledge.org/resource/Abony> <http://schema.org/location> ?location. OPTIONAL { ?location <http://www.w3.org/2003/01/geo/wgs84_pos#lat_long> ?point. }}",
+            "ASK {<http://yago-knowledge.org/resource/Abony> <http://schema.org/containedInPlace> ?object .}"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/Abony",
+                    "http://schema.org/geo",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Abony",
+                    "http://schema.org/location",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/Abony",
+                    "http://schema.org/containedInPlace",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 2753,
+            "prompt_tokens": 2086,
+            "completion_tokens": 667
+        },
+        "query_status": {
+            "In Correct": 1,
+            "Correct": 3
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "location",
+                        "point"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "location": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Cegl\u00e9d_District"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": []
+                },
+                "boolean": true
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "yes",
+                "true",
+                true
+            ],
+            [
+                "Cegl\u00e9d  District"
+            ],
+            [
+                "yes",
+                "true",
+                true
+            ]
+        ]
+    },
+    {
+        "seed_entity": "http://yago-knowledge.org/resource/2019_European_Youth_Olympic_Winter_Festival",
+        "seed_label": "2019 European Youth Olympic Winter Festival",
+        "dialogue": [
+            "What is the alternate name of 2019 European Youth Olympic Winter Festival?",
+            "When did it start?",
+            "Where did it take place?",
+            "When did it end?"
+        ],
+        "original": [
+            "What is the alternate name of 2019 European Youth Olympic Winter Festival?",
+            "When did 2019 European Youth Olympic Winter Festival start?",
+            "Where did 2019 European Youth Olympic Winter Festival take place?",
+            "When did 2019 European Youth Olympic Winter Festival end?"
+        ],
+        "queries": [
+            "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/2019_European_Youth_Olympic_Winter_Festival> <http://schema.org/alternateName> ?alternateName}",
+            "SELECT ?date WHERE { <http://yago-knowledge.org/resource/2019_European_Youth_Olympic_Winter_Festival> <http://schema.org/startDate> ?date }",
+            "SELECT ?location WHERE { <http://yago-knowledge.org/resource/2019_European_Youth_Olympic_Winter_Festival> <http://schema.org/location> ?location }",
+            "\n\tSELECT ?end_date \n\tWHERE {\n\t\t<http://yago-knowledge.org/resource/2019_European_Youth_Olympic_Winter_Festival> <http://schema.org/endDate> ?end_date .\n\t}"
+        ],
+        "triples": [
+            [
+                [
+                    "http://yago-knowledge.org/resource/2019_European_Youth_Olympic_Winter_Festival",
+                    "http://schema.org/alternateName",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2019_European_Youth_Olympic_Winter_Festival",
+                    "http://schema.org/startDate",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2019_European_Youth_Olympic_Winter_Festival",
+                    "http://schema.org/location",
+                    ""
+                ]
+            ],
+            [
+                [
+                    "http://yago-knowledge.org/resource/2019_European_Youth_Olympic_Winter_Festival",
+                    "http://schema.org/endDate",
+                    ""
+                ]
+            ]
+        ],
+        "cost": {
+            "total_tokens": 1766,
+            "prompt_tokens": 1344,
+            "completion_tokens": 422
+        },
+        "query_status": {
+            "Correct": 4
+        },
+        "ground_truths": [
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "alternateName"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "en",
+                                "value": "EYOF2019"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "it",
+                                "value": "EYOF2019"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "nb",
+                                "value": "European Youth Olympic Winter Festival 2019"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "en",
+                                "value": "European Youth Olympic Winter Festival 2019"
+                            }
+                        },
+                        {
+                            "alternateName": {
+                                "type": "literal",
+                                "xml:lang": "it",
+                                "value": "Festival olimpico invernale della giovent\u00f9 europea 2019"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "date"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "date": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2019-02-09"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "location"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "location": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Sarajevo"
+                            }
+                        },
+                        {
+                            "location": {
+                                "type": "uri",
+                                "value": "http://yago-knowledge.org/resource/Isto\u010dno_Sarajevo"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "head": {
+                    "link": [],
+                    "vars": [
+                        "end_date"
+                    ]
+                },
+                "results": {
+                    "distinct": false,
+                    "ordered": true,
+                    "bindings": [
+                        {
+                            "end_date": {
+                                "type": "typed-literal",
+                                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                "value": "2019-02-16"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "ground_truths_labels": [
+            [
+                "EYOF2019 (en)",
+                "EYOF2019 (it)",
+                "European Youth Olympic Winter Festival 2019 (nb)",
+                "European Youth Olympic Winter Festival 2019 (en)",
+                "Festival olimpico invernale della giovent\u00f9 europea 2019 (it)"
+            ],
+            [
+                "2019-02-09"
+            ],
+            [
+                "Sarajevo",
+                "Isto\u010dno Sarajevo"
+            ],
+            [
+                "2019-02-16"
+            ]
+        ]
+    }
+]

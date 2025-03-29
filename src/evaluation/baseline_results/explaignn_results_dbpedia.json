@@ -1,0 +1,5272 @@
+{
+    "questions": [
+        {
+            "id": 0,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the birth place of Antony Cheng?"
+                }
+            ],
+            "query": {
+                "sparql": "\nSELECT ?birthPlace\nWHERE {\n  <http://dbpedia.org/resource/Antony_Cheng> <http://dbpedia.org/property/birthPlace> ?birthPlace\n}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "birthPlace"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "birthPlace": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Vancouver, British Columbia, Canada"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Vancouver"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many former coaches does he have?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (COUNT(?coach) AS ?count) WHERE { <http://dbpedia.org/resource/Antony_Cheng> <http://dbpedia.org/property/formercoach> ?coach . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "count"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "count": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "2"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is his gender?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?gender WHERE { <http://dbpedia.org/resource/Antony_Cheng> <http://xmlns.com/foaf/0.1/gender> ?gender . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "gender"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "gender": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "male"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "male"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who is his choreographer?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?choreographer WHERE { <http://dbpedia.org/resource/Antony_Cheng> <http://dbpedia.org/ontology/choreographer> ?choreographer .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "choreographer"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "choreographer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Joanne_McLeod"
+                                }
+                            },
+                            {
+                                "choreographer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Myke_Gilman"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Antony S Cheng"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is his country of residence?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?country WHERE { <http://dbpedia.org/resource/Antony_Cheng> <http://dbpedia.org/ontology/residence> ?country. }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "country"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "country": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Richmond_Hill,_Ontario"
+                                }
+                            },
+                            {
+                                "country": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Canada"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "France"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the description of Bello Babatounde?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?description WHERE { <http://dbpedia.org/resource/Bello_Babatounde> <http://purl.org/dc/terms/description> ?description }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "description"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "description": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "Footballer"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Benin"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is the gender of he known?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK {<http://dbpedia.org/resource/Bello_Babatounde> <http://xmlns.com/foaf/0.1/gender> ?gender}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "When was he born?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?date WHERE { <http://dbpedia.org/resource/Bello_Babatounde> <http://dbpedia.org/ontology/birthDate> ?date . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                    "value": "1989-10-6"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "6 October 1989"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is his surname?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?surname WHERE { <http://dbpedia.org/resource/Bello_Babatounde> <http://xmlns.com/foaf/0.1/surname> ?surname }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "surname"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "surname": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "Babatounde"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Bello"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Where was he born?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?birthPlace WHERE { <http://dbpedia.org/resource/Bello_Babatounde> <http://dbpedia.org/ontology/birthPlace> ?birthPlace . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "birthPlace"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "birthPlace": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Esan_North-East"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Norristown"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is Jeff Stinco's gender?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?gender WHERE { <http://dbpedia.org/resource/Jeff_Stinco> <http://xmlns.com/foaf/0.1/gender> ?gender . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "gender"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "gender": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "male"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "male"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "When was he born?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?date WHERE { <http://dbpedia.org/resource/Jeff_Stinco> <http://dbpedia.org/ontology/birthDate> ?date . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                    "value": "1978-8-22"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "22 August 1978"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is his surname?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?surname WHERE { <http://dbpedia.org/resource/Jeff_Stinco> <http://xmlns.com/foaf/0.1/surname> ?surname }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "surname"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "surname": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "Stinco"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Jeff"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Where was he born?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?birthPlace WHERE { <http://dbpedia.org/resource/Jeff_Stinco> <http://dbpedia.org/ontology/birthPlace> ?birthPlace }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "birthPlace"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "birthPlace": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Montreal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Montreal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is his given name?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?givenName WHERE { <http://dbpedia.org/resource/Jeff_Stinco> <http://xmlns.com/foaf/0.1/givenName> ?givenName . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "givenName"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "givenName": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "Jeff"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Jeff"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the area associated with Michael Manning?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?area WHERE { <http://dbpedia.org/resource/Michael_Manning_(fetish_artist)> <http://dbpedia.org/property/area> ?area }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "area"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "area": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Writer, Artist"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Mountjoy Prison"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "When was he born?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?birthDate WHERE { <http://dbpedia.org/resource/Michael_Manning_(fetish_artist)> <http://dbpedia.org/property/birthDate> ?birthDate . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "birthDate"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "birthDate": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1963"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "30 December 1940"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is his nationality?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?nationality WHERE { <http://dbpedia.org/resource/Michael_Manning_(fetish_artist)> <http://dbpedia.org/property/nationality> ?nationality }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "nationality"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "nationality": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "American"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "United States of America"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Can you provide a description of him?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?description WHERE { <http://dbpedia.org/resource/Michael_Manning_(fetish_artist)> <http://purl.org/dc/terms/description> ?description . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "description"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "description": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "American artist"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Michael"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is his gender?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?gender WHERE { <http://dbpedia.org/resource/Michael_Manning_(fetish_artist)> <http://xmlns.com/foaf/0.1/gender> ?gender }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "gender"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "gender": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "male"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "male"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the homepage of Bloomberg Radio?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?homepage WHERE { <http://dbpedia.org/resource/Bloomberg_Radio> <http://xmlns.com/foaf/0.1/homepage> ?homepage }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "homepage"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "homepage": {
+                                    "type": "uri",
+                                    "value": "http://www.bloomberg.com/audio/"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Albany"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many areas does it cover?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (COUNT(?area) AS ?count) WHERE {<http://dbpedia.org/resource/Bloomberg_Radio> <http://dbpedia.org/property/area> ?area .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "count"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "count": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Unfortunately, an error occured."
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Does it have a specific format?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <http://dbpedia.org/resource/Bloomberg_Radio> <http://dbpedia.org/property/format> ?format . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is it known by any alias?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <http://dbpedia.org/resource/Bloomberg_Radio> <http://dbpedia.org/ontology/alias> ?alias }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who is the licensee of it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?licensee WHERE { <http://dbpedia.org/resource/Bloomberg_Radio> <http://dbpedia.org/ontology/licensee> ?licensee }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "licensee"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "licensee": {
+                                    "type": "literal",
+                                    "value": "Bloomberg Communications Inc."
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Bloomberg L.P."
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the address of Chapin School?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?address WHERE { <http://dbpedia.org/resource/Chapin_School> <http://dbpedia.org/ontology/address> ?address . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "address"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "address": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "100East End Avenue"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Chicopee"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What type is it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?type WHERE {\n  \t\t\t\t<http://dbpedia.org/resource/Chapin_School> <http://dbpedia.org/ontology/type> ?type\n\t\t\t\t}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Private_school"
+                                }
+                            },
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/University-preparatory_school"
+                                }
+                            },
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Day_school"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Latin"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which city is it located?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?city WHERE { <http://dbpedia.org/resource/Chapin_School> <http://dbpedia.org/ontology/city> ?city . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "city"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "city": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/New_York_City"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Springfield"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 28,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "When was it founded?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?foundingYear WHERE { <http://dbpedia.org/resource/Chapin_School> <http://dbpedia.org/ontology/foundingYear> ?foundingYear }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "foundingYear"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "foundingYear": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#gYear",
+                                    "value": "1901"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "1640"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is its motto?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?motto WHERE { <http://dbpedia.org/resource/Chapin_School> <http://dbpedia.org/ontology/motto> ?motto . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "motto"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "motto": {
+                                    "type": "literal",
+                                    "value": "Bravely and Rightly"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "United States of America"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 30,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the opening year of Abiko Station?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?openingYear WHERE { <http://dbpedia.org/resource/Abiko_Station_(Chiba)> <http://dbpedia.org/ontology/openingYear> ?openingYear . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "openingYear"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "openingYear": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#gYear",
+                                    "value": "1896"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "1896"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many passengers does it have per year?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?passengersPerYear WHERE { <http://dbpedia.org/resource/Abiko_Station_(Chiba)> <http://dbpedia.org/ontology/passengersPerYear> ?passengersPerYear }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "passengersPerYear"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "passengersPerYear": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "30995"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "+7"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 32,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which country is it located?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?country WHERE { <http://dbpedia.org/resource/Abiko_Station_(Chiba)> <http://dbpedia.org/property/country> ?country . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "country"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "country": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Japan"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Japan"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 33,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the address of it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?address WHERE { <http://dbpedia.org/resource/Abiko_Station_(Chiba)> <http://dbpedia.org/ontology/address> ?address }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "address"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "address": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "2 Honch\u014d, Abiko-shi, Chiba-ken 270-1151"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Osaka"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 34,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many connections does it have?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (COUNT(?connections) AS ?numConnections) WHERE { <http://dbpedia.org/resource/Abiko_Station_(Chiba)> <http://dbpedia.org/property/connections> ?connections }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "numConnections"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "numConnections": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "+7"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 35,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is Ala located in any province?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <http://dbpedia.org/resource/Ala,_Trentino> <http://dbpedia.org/ontology/province> ?province }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 36,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the area code for it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?areaCode WHERE { <http://dbpedia.org/resource/Ala,_Trentino> <http://dbpedia.org/ontology/areaCode> ?areaCode }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "areaCode"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "areaCode": {
+                                    "type": "literal",
+                                    "value": "0464"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Italy"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 37,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Does it have a postal code?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <http://dbpedia.org/resource/Ala,_Trentino> <http://dbpedia.org/ontology/postalCode> ?o }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 38,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which country is it located?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?country WHERE { <http://dbpedia.org/resource/Ala,_Trentino> <http://dbpedia.org/ontology/country> ?country .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "country"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "country": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Italy"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Unfortunately, an error occured."
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 39,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the homepage of Bussy-Chardonney?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?homepage WHERE { <http://dbpedia.org/resource/Bussy-Chardonney> <http://xmlns.com/foaf/0.1/homepage> ?homepage .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "homepage"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "homepage": {
+                                    "type": "uri",
+                                    "value": "http://www.bussy-chardonney.ch"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Canton of Vaud"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 40,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many places are associated with it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (COUNT(?place) AS ?count) WHERE { <http://dbpedia.org/resource/Bussy-Chardonney> <http://dbpedia.org/property/places>  ?place . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "count"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "count": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "2"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "021"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 41,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is it a twin town?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK {<http://dbpedia.org/resource/Bussy-Chardonney> <http://dbpedia.org/ontology/twinTown> ?twinTown .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 42,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the total area of it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?area WHERE { <http://dbpedia.org/resource/Bussy-Chardonney> <http://dbpedia.org/ontology/areaTotal> ?area . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "area"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "area": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#double",
+                                    "value": "3.1e+06"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Switzerland"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 43,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What type is Cascades?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?type\nWHERE {\n  <http://dbpedia.org/resource/Cascades,_Tasmania> <http://dbpedia.org/property/type> ?type\n}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "suburb"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "United States of America"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 44,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Which state is it located in?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?state WHERE { <http://dbpedia.org/resource/Cascades,_Tasmania> <http://dbpedia.org/property/state> ?state . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "state"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "state": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "tas"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Virginia"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 45,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is it a city?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <http://dbpedia.org/resource/Cascades,_Tasmania> <http://dbpedia.org/property/city> ?city }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 46,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the postcode of the area?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?postcode WHERE { <http://dbpedia.org/resource/Cascades,_Tasmania> <http://dbpedia.org/property/postcode> ?postcode . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "postcode"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "postcode": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "7004"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Point Defiance Bypass"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 47,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is it located near North East?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <http://dbpedia.org/resource/Cascades,_Tasmania> <http://dbpedia.org/property/nearN> ?nearN . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 48,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who are the inkers of Batman: The Dark Knight?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?inkerName WHERE { <http://dbpedia.org/resource/Batman:_The_Dark_Knight> <http://dbpedia.org/property/inkers> ?inkerName . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "inkerName"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "inkerName": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Scott_Williams_(comics)"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "David Finch"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 49,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many editors worked on it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (COUNT(?editor) AS ?numEditors) WHERE { <http://dbpedia.org/resource/Batman:_The_Dark_Knight> <http://dbpedia.org/property/editors> ?editor }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "numEditors"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "numEditors": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "2"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "+345"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 50,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is it an ongoing series?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <http://dbpedia.org/resource/Batman:_The_Dark_Knight> <http://dbpedia.org/property/ongoing> ?ongoing }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 51,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is its schedule?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?schedule WHERE { <http://dbpedia.org/resource/Batman:_The_Dark_Knight> <http://dbpedia.org/property/schedule> ?schedule }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "schedule"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "schedule": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Monthly"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "18 July 2008"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 52,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who is the writer of it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?writer WHERE { <http://dbpedia.org/resource/Batman:_The_Dark_Knight> <http://dbpedia.org/ontology/writer> ?writer }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "writer"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "writer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Judd_Winick"
+                                }
+                            },
+                            {
+                                "writer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Paul_Jenkins_(writer)"
+                                }
+                            },
+                            {
+                                "writer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/David_Finch_(comics)"
+                                }
+                            },
+                            {
+                                "writer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Joe_Harris_(filmmaker)"
+                                }
+                            },
+                            {
+                                "writer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Gregg_Hurwitz"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "David Finch"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 53,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the founding date of Naval Academy?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?date WHERE { <http://dbpedia.org/resource/Italian_Naval_Academy>  <http://dbpedia.org/ontology/foundingDate> ?date }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                    "value": "1881-11-06"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "10 June 1854"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 54,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Can you provide the latitude of it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?latitude WHERE { <http://dbpedia.org/resource/Italian_Naval_Academy> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ?latitude }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "latitude"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "latitude": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#float",
+                                    "value": "43.527"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "+0"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 55,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who is the officer in charge of it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?officer WHERE { <http://dbpedia.org/resource/Italian_Naval_Academy>  <http://dbpedia.org/ontology/officerInCharge> ?officer . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "officer"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "officer": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Divisional_admiral"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "James Iredell Waddell"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 56,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Does it have a homepage?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK {<http://dbpedia.org/resource/Italian_Naval_Academy> <http://xmlns.com/foaf/0.1/homepage> ?o}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 57,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "It in which region is located?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?region WHERE { <http://dbpedia.org/resource/Italian_Naval_Academy> <http://dbpedia.org/property/location> ?region . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "region"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "region": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Livorno, Italy"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Anne Arundel County"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 58,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the nationality of Billy McNeill?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?nationality WHERE { <http://dbpedia.org/resource/Lisbon_Lions> <http://dbpedia.org/property/nat> ?nationality }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "nationality"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "nationality": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Ireland"
+                                }
+                            },
+                            {
+                                "nationality": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Scotland"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "United Kingdom"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 59,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many current members does he have on the squad?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (COUNT(?player) as ?numPlayers) WHERE { <http://dbpedia.org/resource/Lisbon_Lions> <http://dbpedia.org/ontology/currentMember> ?player }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "numPlayers"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "numPlayers": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "17"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "staff sergeant"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 60,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In what position does he play?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?position WHERE { <http://dbpedia.org/resource/Lisbon_Lions> <http://dbpedia.org/property/pos> ?position . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "position"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "position": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "DF"
+                                }
+                            },
+                            {
+                                "position": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "FW"
+                                }
+                            },
+                            {
+                                "position": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "GK"
+                                }
+                            },
+                            {
+                                "position": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "MF"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "centre back"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 61,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Can he play as a left winger?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <http://dbpedia.org/resource/Lisbon_Lions> <http://dbpedia.org/property/lw> _:var . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "defender"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 62,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "When was the squad number assigned to him?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?date\nWHERE {\n  <http://dbpedia.org/resource/Lisbon_Lions> <http://dbpedia.org/ontology/squadNumber> ?date\n}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "1"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "2"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "3"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "4"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "5"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "6"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "7"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "8"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "9"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "10"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "11"
+                                }
+                            },
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "12"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "+29"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 63,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the scientific classification of Eastern garter snake?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?class WHERE { <http://dbpedia.org/resource/Eastern_garter_snake> <http://dbpedia.org/ontology/genus> ?class }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "class"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "class": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Thamnophis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "snake"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 64,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many subspecies does it have?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (COUNT(?subspecies) as ?count) WHERE { <http://dbpedia.org/resource/Eastern_garter_snake> <http://dbpedia.org/property/subspecies> ?subspecies . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "count"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "count": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "2"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 65,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is there any conservation status information available for it?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <http://dbpedia.org/resource/Eastern_garter_snake> <http://dbpedia.org/ontology/conservationStatus> ?conservationStatus}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 66,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "To which kingdom does it belong?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?kingdom WHERE { <http://dbpedia.org/resource/Eastern_garter_snake> <http://dbpedia.org/ontology/kingdom> ?kingdom . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "kingdom"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "kingdom": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Animal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Thamnophis sirtalis sirtalis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 67,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the order of this snake in the animal kingdom?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?order WHERE { <http://dbpedia.org/resource/Eastern_garter_snake> <http://dbpedia.org/ontology/order> ?order. }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "order"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "order": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Serpentes"
+                                }
+                            },
+                            {
+                                "order": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Squamata"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Thamnophis sirtalis sirtalis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 68,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is Brown mastiff bat the kingdom sorted Animalia?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK\nWHERE {\n  <http://dbpedia.org/resource/Brown_mastiff_bat> <http://dbpedia.org/ontology/kingdom> ?kingdom.\n  FILTER(?kingdom = <http://dbpedia.org/resource/Animalia>)\n}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 69,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the binomial of it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?binomial WHERE { <http://dbpedia.org/resource/Brown_mastiff_bat> <http://dbpedia.org/property/binomial> ?binomial . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "binomial"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "binomial": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Promops nasutus"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Chiroptera"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 70,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many species does it belong to?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (COUNT(?species) AS ?count) WHERE { <http://dbpedia.org/resource/Brown_mastiff_bat> <http://dbpedia.org/property/species> ?species. }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "count"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "count": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "+2"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 71,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the class of it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?class WHERE { <http://dbpedia.org/resource/Brown_mastiff_bat> <http://dbpedia.org/ontology/class> ?class .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "class"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "class": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Mammal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "mammal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 72,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Does it have a conservation status?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <http://dbpedia.org/resource/Brown_mastiff_bat> <http://dbpedia.org/ontology/conservationStatus> ?status .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 73,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the gender of Ron Newman (footballer)?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?gender WHERE { <http://dbpedia.org/resource/Ron_Newman_(footballer)> <http://xmlns.com/foaf/0.1/gender> ?gender }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "gender"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "gender": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "male"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "male"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 74,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "When was he born?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?birthDate WHERE { <http://dbpedia.org/resource/Ron_Newman_(footballer)> <http://dbpedia.org/ontology/birthDate> ?birthDate .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "birthDate"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "birthDate": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                    "value": "1934-1-19"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "10 December 1931"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 75,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Where was he born?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?birthPlace WHERE { <http://dbpedia.org/resource/Ron_Newman_(footballer)> <http://dbpedia.org/ontology/birthPlace> ?birthPlace }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "birthPlace"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "birthPlace": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Fareham"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Fareham"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 76,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is his surname?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?surname WHERE { <http://dbpedia.org/resource/Ron_Newman_(footballer)> <http://xmlns.com/foaf/0.1/surname> ?surname }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "surname"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "surname": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "Newman"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Ron"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 77,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is his given name?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?givenName WHERE { <http://dbpedia.org/resource/Ron_Newman_(footballer)> <http://xmlns.com/foaf/0.1/givenName> ?givenName . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "givenName"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "givenName": {
+                                    "type": "literal",
+                                    "xml:lang": "en",
+                                    "value": "Ron"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Ron"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 78,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the species of Diamond (comics)?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?species WHERE { <http://dbpedia.org/resource/Diamond_(comics)> <http://dbpedia.org/property/species> ?species . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "species"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "species": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Human"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "role-playing video game"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 79,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who are the creators of it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?creator WHERE { <http://dbpedia.org/resource/Diamond_(comics)> <http://dbpedia.org/property/creators> ?creator . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "creator"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "creator": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Chris Matonti"
+                                }
+                            },
+                            {
+                                "creator": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "J.D. Matonti"
+                                }
+                            },
+                            {
+                                "creator": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "Julia Coppola"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Michael S. Diamond"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 80,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is it a hero?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK { <http://dbpedia.org/resource/Diamond_(comics)> <http://dbpedia.org/property/hero> ?object . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 81,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "When did it debut?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?debut_date WHERE { <http://dbpedia.org/resource/Diamond_(comics)> <http://dbpedia.org/property/debut> ?debut_date . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "debut_date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "debut_date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "NEW-GEN #1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "24 January 1941"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 82,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who is the publisher of it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?publisher WHERE { <http://dbpedia.org/resource/Diamond_(comics)> <http://dbpedia.org/property/publisher> ?publisher . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "publisher"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "publisher": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Marvel_Comics"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Nintendo"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 83,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the map size of Chao District?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?mapsize WHERE { <http://dbpedia.org/resource/Chao_District> <http://dbpedia.org/property/mapsize> ?mapsize }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "mapsize"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "mapsize": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "frameless"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "+68"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 84,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "When was it founded?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?founding_date WHERE { <http://dbpedia.org/resource/Chao_District> <http://dbpedia.org/ontology/foundingDate> ?founding_date . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "founding_date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "founding_date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                    "value": "1995-01-04"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "4 January 1995"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 85,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many people live there?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (SUM(?population) as ?totalPopulation) WHERE { <http://dbpedia.org/resource/Chao_District> <http://dbpedia.org/ontology/populationTotal> ?population }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "totalPopulation"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "totalPopulation": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                                    "value": "19220"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "+19220"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 86,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is its type?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?type WHERE { <http://dbpedia.org/resource/Chao_District> <http://dbpedia.org/ontology/type> ?type . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Districts_of_Peru"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Districts of the People's Republic of China"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 87,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What country is it located in?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?country WHERE { <http://dbpedia.org/resource/Chao_District> <http://dbpedia.org/ontology/country> ?country . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "country"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "country": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Peru"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Peru"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 88,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is Brian Robertson a current member?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE {<http://dbpedia.org/resource/Cincinnati_Kids> <http://dbpedia.org/ontology/currentMember> ?member}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 89,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many squad numbers does he have?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (COUNT(?squadNumber) AS ?count) WHERE { <http://dbpedia.org/resource/Cincinnati_Kids> <http://dbpedia.org/ontology/squadNumber> ?squadNumber .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "count"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "count": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "17"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Thin Lizzy"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 90,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What position does he play?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?position WHERE { <http://dbpedia.org/resource/Cincinnati_Kids> <http://dbpedia.org/property/pos> ?position}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "position"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "position": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "DF"
+                                }
+                            },
+                            {
+                                "position": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "FW"
+                                }
+                            },
+                            {
+                                "position": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                                    "value": "GK"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "prop"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 91,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "When was Granada District founded?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?date WHERE { <http://dbpedia.org/resource/Granada_District> <http://dbpedia.org/ontology/foundingDate> ?date . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "date": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                                    "value": "1933-11-03"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "3 November 1933"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 92,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is it a part of any larger entity?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <http://dbpedia.org/resource/Granada_District> <http://dbpedia.org/ontology/isPartOf> ?parentEntity }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 93,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What type of area is it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?type WHERE { <http://dbpedia.org/resource/Granada_District> <http://dbpedia.org/ontology/type> ?type . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://dbpedia.org/resource/Districts_of_Peru"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Peru"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "dataset": {
+        "id": "dbpedia_e11_20_5_original_dialogue"
+    }
+}

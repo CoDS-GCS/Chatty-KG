@@ -1,0 +1,4722 @@
+{
+    "questions": [
+        {
+            "id": 0,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many creators were involved in the publication of Systems of Logic Based on Ordinals.?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (COUNT(?creator) AS ?count) WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#numberOfCreators> ?creator }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "count"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "count": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Alan Turing"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Was it accepted by a school for a thesis?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?accepted. <https://dblp.org/rec/phd/Turing38> ?thesis ?school. }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the primary electronic edition of it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?edition WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?edition . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "edition"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "edition": {
+                                    "type": "uri",
+                                    "value": "https://doi.org/10.1112/plms/s2-45.1.161"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Alan Turing"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "When was it published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?year WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "1938"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "10 January 2012"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Are there any electronic editions other than the primary one for it?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#otherElectronicEdition> ?edition .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the bibliography type of Cooperative Situation Awareness in Transportation.?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?bibtexType WHERE { <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "bibtexType"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "bibtexType": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Phdthesis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "IEEE International Multi-Disciplinary Conference on Cognitive Methods in Situation Awareness and Decision Support, CogSIMA 2012, New Orleans, LA, USA, March 6-8, 2012"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who is the author of it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?author WHERE { <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#authoredBy> ?author }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "author"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/31/1332"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Roland Emmerich"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Does it have an ISBN?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE {\n  <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#isbn> ?isbn\n}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many creators were involved in it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (COUNT(DISTINCT ?creator) AS ?countCreators) WHERE { <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#numberOfCreators> ?creator . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "countCreators"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "countCreators": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "+204"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which year was it published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?year WHERE { <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#yearOfPublication> ?year .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2010"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "2007"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the bibtex Type of 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.'?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?bibtexType WHERE { <https://dblp.org/rec/phd/dnb/Adler12> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "bibtexType"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "bibtexType": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Phdthesis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "string"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What did * they * author?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/rec/phd/dnb/Adler12> <https://dblp.org/rdf/schema#authoredBy> ?author .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Leslie Lamport"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is there an isbn for * them *?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/rec/phd/dnb/Adler12> <https://dblp.org/rdf/schema#isbn> ?isbn . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many creators contributed to * them *?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (COUNT(?creator) as ?numberOfCreators) WHERE { <https://dblp.org/rec/phd/dnb/Adler12> <https://dblp.org/rdf/schema#numberOfCreators> ?creator . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "numberOfCreators"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "numberOfCreators": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Creators Syndicate"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "When were * they * published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?date\nWHERE { <https://dblp.org/rec/phd/dnb/Adler12> <https://dblp.org/rdf/schema#yearOfPublication> ?date . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "date"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "date": {
+                                    "type": "literal",
+                                    "value": "2012"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "1987"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the bibtex Type of Cluster abstraction of graph transformation systems.?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?type WHERE { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#bibtexType> ?type .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Phdthesis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Obscuring Provenance Confidential Information via Graph Transformation"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who authored it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?author WHERE { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#authoredBy> ?author . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "author"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/115/6523"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Luc Moreau"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "How many creators were involved in it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (COUNT(?creator) as ?numCreators) WHERE { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#numberOfCreators> ?creator . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "numCreators"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "numCreators": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "European Mathematical Society"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Does it have any other Electronic Edition?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#otherElectronicEdition> ?x }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "When was it published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?year WHERE { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2015"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "28 October 1990"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the bibtex Type of 'New Data Based Matching Strategies for Visual Motion Estimation.'?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?bibtexType WHERE { <https://dblp.org/rec/phd/dnb/Bailer20> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "bibtexType"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "bibtexType": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Phdthesis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Category:BibTeX"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who is the author of it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?author WHERE { <https://dblp.org/rec/phd/dnb/Bailer20> <https://dblp.org/rdf/schema#authoredBy> ?author . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "author"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/119/1518"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Oren Patashnik"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Does it have any ISBN?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK { <https://dblp.org/rec/phd/dnb/Bailer20> <https://dblp.org/rdf/schema#isbn> ?o . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is the pagination information available for it?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/rec/phd/dnb/Bailer20> <https://dblp.org/rdf/schema#pagination> ?pagination .  FILTER(STRLEN(?pagination) > 0) }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which year was it published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?year \nWHERE { \n<https://dblp.org/rec/phd/dnb/Bailer20> <https://dblp.org/rdf/schema#yearOfPublication> ?year. \n}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2020"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "1985"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the bibtex Type of Modellbasierte Energiekostenanalyse automatisierter Systeme.?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?type WHERE { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#bibtexType> ?type . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Phdthesis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Alexander Fay"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who is the author of it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?authorName WHERE { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#authoredBy> ?authorName . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "authorName"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "authorName": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/32/4820-2"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Unfortunately, an error occured."
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Does it have an ISBN number?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#isbn> ?isbn . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 28,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is there any information on the primary Electronic Edition of it?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?o.}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which year was it published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?year WHERE { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#yearOfPublication> ?year .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2015"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "1985"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 30,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the bibtex Type of Visual attention in primates and for machines - neuronal mechanisms.?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?type WHERE { <https://dblp.org/rec/phd/dnb/Beuth20> <https://dblp.org/rdf/schema#bibtexType> ?type . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Phdthesis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Neural Mechanisms of Selective Visual Attention"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Does it have an isbn?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/rec/phd/dnb/Beuth20> <https://dblp.org/rdf/schema#isbn> ?isbn . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 32,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In what year was it published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?year WHERE { <https://dblp.org/rec/phd/dnb/Beuth20> <https://dblp.org/rdf/schema#yearOfPublication> ?year .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2020"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "1985"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 33,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the bibtex Type of 'Non-Volatile Processor Design for Self-Powered Embedded Systems.'?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?type WHERE { <https://dblp.org/rec/phd/dnb/Biglari22> <https://dblp.org/rdf/schema#bibtexType> ?type }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Phdthesis"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "reference management software"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 34,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the ISBN number of the publication?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?isbn WHERE { <https://dblp.org/rec/phd/dnb/Biglari22> <https://dblp.org/rdf/schema#isbn> ?isbn . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "isbn"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "isbn": {
+                                    "type": "uri",
+                                    "value": "urn:isbn:9783843949699"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "TeX"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 35,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the total number of creators involved in it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT (COUNT(?creator) AS ?total_creators) WHERE { <https://dblp.org/rec/phd/dnb/Biglari22> <https://dblp.org/rdf/schema#numberOfCreators> ?creator . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "total_creators"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "total_creators": {
+                                    "type": "typed-literal",
+                                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+                                    "value": "1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "software bug"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 36,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which school was the thesis of it accepted?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?school WHERE { <https://dblp.org/rec/phd/dnb/Biglari22> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?school . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "school"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "school": {
+                                    "type": "literal",
+                                    "value": "University of Erlangen-Nuremberg, Germany"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "European Mathematical Society"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 37,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the bibtex Type of 'Hybrid neural networks for gasoline blending system modeling.'?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?type WHERE { <https://dblp.org/rec/conf/ijcnn/0001L14> <https://dblp.org/rdf/schema#bibtexType> ?type . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Inproceedings"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Typesetting"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 38,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who authored 'it'?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?author WHERE { <https://dblp.org/rec/conf/ijcnn/0001L14> <https://dblp.org/rdf/schema#authoredBy> ?author . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "author"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/00/3356"
+                                }
+                            },
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/75/3061-1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Oren Patashnik"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 39,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which year was 'it' published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?year WHERE { <https://dblp.org/rec/conf/ijcnn/0001L14> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2014"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "1985"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 40,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is 'it' listed on the Table of Contents page?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/rec/conf/ijcnn/0001L14> <https://dblp.org/rdf/schema#listedOnTocPage> ?tocPage. }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 41,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which proceedings was 'it' published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?proceedings WHERE { <https://dblp.org/rec/conf/ijcnn/0001L14> <https://dblp.org/rdf/schema#publishedIn> ?proceedings . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "proceedings"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "proceedings": {
+                                    "type": "literal",
+                                    "value": "IJCNN"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "1985"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 42,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the type of the publication related to 'Pruning Depthwise Separable Convolutions for MobileNet Compression.'?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?type WHERE { <https://dblp.org/rec/conf/ijcnn/0001LCC20> <https://dblp.org/rdf/schema#bibtexType> ?type }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Inproceedings"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "separable closure"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 43,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who authored it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?author WHERE { <https://dblp.org/rec/conf/ijcnn/0001LCC20> <https://dblp.org/rdf/schema#authoredBy> ?author . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "author"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/59/5103"
+                                }
+                            },
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/116/8913-1"
+                                }
+                            },
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/135/9205"
+                                }
+                            },
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/67/1007"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Lempel\\u2013Ziv\\u2013Welch"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 44,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which year was it published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?year WHERE { <https://dblp.org/rec/conf/ijcnn/0001LCC20> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2020"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "1984"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 45,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Was it published in a book?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/rec/conf/ijcnn/0001LCC20> <https://dblp.org/rdf/schema#publishedIn> ?book . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 46,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Where was i otlisted?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?location WHERE { <https://dblp.org/rec/conf/ijcnn/0001LCC20> <https://dblp.org/rdf/schema#listedOnTocPage> ?location .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "location"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "location": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/db/conf/ijcnn/ijcnn2020"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Unfortunately, an error occured."
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 47,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who authored Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk.?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?author WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> <https://dblp.org/rdf/schema#authoredBy> ?author. }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "author"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/05/6715-1"
+                                }
+                            },
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/07/3794"
+                                }
+                            },
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/62/2655-9"
+                                }
+                            },
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/275/7894"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Metamodelling with artificial neural networks by using high performance computing infrastructures"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 48,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Where was it published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?publicationVenue WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> <https://dblp.org/rdf/schema#publishedIn> ?publicationVenue . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "publicationVenue"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "publicationVenue": {
+                                    "type": "literal",
+                                    "value": "IJCNN"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "1 November 2015"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 49,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is it listed on the Table of Contents page?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> <https://dblp.org/rdf/schema#listedOnTocPage> ?object . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 50,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Was it published as part of a book?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK { <https://dblp.org/rec/conf/ijcnn/0001MR020> <https://dblp.org/rdf/schema#publishedAsPartOf> ?o . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 51,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which year did the event related to \"More Realistic and Efficient Face-Based Mobile Authentication using CNNs.\" take place?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?year WHERE { <https://dblp.org/rec/conf/ijcnn/0001SSPB18> <https://dblp.org/rdf/schema#yearOfEvent> ?year . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2018"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Unfortunately, an error occured."
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 52,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is it listed on the table of contents page?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK { <https://dblp.org/rec/conf/ijcnn/0001SSPB18> <https://dblp.org/rdf/schema#listedOnTocPage> ?object. }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 53,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Where was it published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?publication WHERE { <https://dblp.org/rec/conf/ijcnn/0001SSPB18> <https://dblp.org/rdf/schema#publishedIn> ?publication . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "publication"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "publication": {
+                                    "type": "literal",
+                                    "value": "IJCNN"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Unfortunately, an error occured."
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 54,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What electronic edition is primary for the paper?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?edition WHERE { <https://dblp.org/rec/conf/ijcnn/0001SSPB18> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?edition . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "edition"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "edition": {
+                                    "type": "uri",
+                                    "value": "https://doi.org/10.1109/IJCNN.2018.8489070"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Unfortunately, an error occured."
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 55,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the primary affiliation of Jiaxin Pan?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?affiliation WHERE { <https://dblp.org/pid/02/8828> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "affiliation"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "affiliation": {
+                                    "type": "literal",
+                                    "value": "NTNU - Norwegian University of Science and Technology, Trondheim, Norway"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Sun Yat-sen University"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 56,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Does she have an ORCID?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/pid/02/8828> <https://dblp.org/rdf/schema#orcid> ?orcid . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 57,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is her primary homepage?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?homepage\nWHERE {\n  <https://dblp.org/pid/02/8828> <https://dblp.org/rdf/schema#primaryHomepage> ?homepage .\n}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "homepage"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "homepage": {
+                                    "type": "uri",
+                                    "value": "https://sites.google.com/view/jiaxinpan/"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "pinyin"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 58,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is she associated with any other affiliation?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK { <https://dblp.org/pid/02/8828> <https://dblp.org/rdf/schema#otherAffiliation> ?o .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 59,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the webpage related to her?"
+                }
+            ],
+            "query": {
+                "sparql": "\n\t\tSELECT ?webpage\n\t\tWHERE {\n\t\t\t<https://dblp.org/pid/02/8828> <https://dblp.org/rdf/schema#webpage> ?webpage\n\t \t}\n\t"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "webpage"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "webpage": {
+                                    "type": "uri",
+                                    "value": "https://scholar.google.com/citations?user=n75HJecAAAAJ"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "J. M. Barrie"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 60,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the ORCID of Marian Daun?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?orcid WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#orcid> ?orcid . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "orcid"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "orcid": {
+                                    "type": "uri",
+                                    "value": "https://orcid.org/0000-0002-9156-9731"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "DAUN"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 61,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is his primary full creator name?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?primaryFullName WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?primaryFullName}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "primaryFullName"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "primaryFullName": {
+                                    "type": "literal",
+                                    "value": "Marian Daun"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Johannes Caspers"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 62,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Does he have a primary homepage?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#primaryHomepage> ?homepage .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 63,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the webpage associated with him?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?webpage WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#webpage> ?webpage .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "webpage"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "webpage": {
+                                    "type": "uri",
+                                    "value": "https://dl.acm.org/profile/99658708632"
+                                }
+                            },
+                            {
+                                "webpage": {
+                                    "type": "uri",
+                                    "value": "https://scholar.google.com/citations?user=srSPAToAAAAJ"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "CDU/CSU Bundestag fraction"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 64,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the bibtex type of Sparse Differential Resultant for Laurent Differential Polynomials.?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?type WHERE { <https://dblp.org/rec/journals/focm/0056YG15> <https://dblp.org/rdf/schema#bibtexType> ?type }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Article"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "resultant"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 65,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In what year was it published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?year WHERE { <https://dblp.org/rec/journals/focm/0056YG15> <https://dblp.org/rdf/schema#yearOfPublication> ?year. }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2015"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "1985"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 66,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Was it published in a journal volume?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/rec/journals/focm/0056YG15> <https://dblp.org/rdf/schema#publishedInJournal> ?volume }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 67,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Under which tab was it listed on?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?tab \nWHERE { \n<https://dblp.org/rec/journals/focm/0056YG15> <https://dblp.org/rdf/schema#listedOnTocPage> ?tab \n}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "tab"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "tab": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/db/journals/focm/focm15"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Wikipedia"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 68,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which journal was 'Trust-Region Methods on Riemannian Manifolds.' published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?journal\nWHERE {\n\t<https://dblp.org/rec/journals/focm/AbsilBG07> <https://dblp.org/rdf/schema#publishedInJournal> ?journal.\n}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "journal"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "journal": {
+                                    "type": "literal",
+                                    "value": "Found. Comput. Math."
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Inexact trust-region algorithms on Riemannian manifolds"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 69,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is its pagination?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?pagination WHERE { <https://dblp.org/rec/journals/focm/AbsilBG07> <https://dblp.org/rdf/schema#pagination> ?pagination . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "pagination"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "pagination": {
+                                    "type": "literal",
+                                    "value": "303-330"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Riemannian manifold"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 70,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which year was it published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?year WHERE { <https://dblp.org/rec/journals/focm/AbsilBG07> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2007"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "1913"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 71,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the bibtex Type of Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning.?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?bibtexType WHERE { <https://dblp.org/rec/conf/nips/LairCPDDO19> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "bibtexType"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "bibtexType": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Inproceedings"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "English"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 72,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which year was it published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?year WHERE { <https://dblp.org/rec/conf/nips/LairCPDDO19> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year": {
+                                    "type": "literal",
+                                    "value": "2019"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "1985"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 73,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is it listed on the Table of Content page?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK { <https://dblp.org/rec/conf/nips/LairCPDDO19> <https://dblp.org/rdf/schema#listedOnTocPage> ?tocPage . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 74,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which publication was it included as part of?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?publication \nWHERE { \n  <https://dblp.org/rec/conf/nips/LairCPDDO19> <https://dblp.org/rdf/schema#publishedAsPartOf> ?publication . \n}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "publication"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "publication": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/rec/conf/nips/2019vigil"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "TeX Live"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 75,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the primary affiliation of Gerhard Kramer?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?affiliation WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "affiliation"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "affiliation": {
+                                    "type": "literal",
+                                    "value": "Technical University Munich, Germany"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Lutheranism"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 76,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is he associated with a homepage?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#primaryHomepage> ?obj . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 77,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is his full creator name?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?creatorFullname WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?creatorFullname . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "creatorFullname"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "creatorFullname": {
+                                    "type": "literal",
+                                    "value": "Gerhard Kramer"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Michael"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 78,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Does he have a Wikidata entry?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#wikidata> ?object . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 79,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is his ORCID?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?orcid WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#orcid> ?orcid . FILTER(isIRI(?orcid)) }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "orcid"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "orcid": {
+                                    "type": "uri",
+                                    "value": "https://orcid.org/0000-0002-3904-9181"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Gerhard"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 80,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the ORCID of Yan Zhang 0054?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?orcid WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#orcid> ?orcid . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "orcid"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "orcid": {
+                                    "type": "uri",
+                                    "value": "https://orcid.org/0000-0001-6273-5334"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Zoeng\\u00B9"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 81,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Does he have any other affiliation details?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#otherAffiliation> ?affiliation . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 82,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Is there any primary affiliation associated with him?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 83,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the full name of the primary creator linked to him?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?name WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?name . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "name"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "name": {
+                                    "type": "literal",
+                                    "value": "Yan Zhang"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Mo Yan"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 84,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Does he have any homepage specified?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE {\n  <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryHomepage> ?homepage .\n}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 85,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Who authored Infinite-Dimensional Compressed Sensing and Function Interpolation.?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/Adcock18> <https://dblp.org/rdf/schema#authoredBy> ?author . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "author"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "author": {
+                                    "type": "uri",
+                                    "value": "https://dblp.org/pid/24/8317"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "David Donoho"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 86,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In which journal was it published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?journal WHERE { <https://dblp.org/rec/journals/focm/Adcock18> <https://dblp.org/rdf/schema#publishedInJournal> ?journal . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "journal"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "journal": {
+                                    "type": "literal",
+                                    "value": "Found. Comput. Math."
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "IEEE Transactions on Information Theory"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 87,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "In what year was it published?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?year_pub WHERE { <https://dblp.org/rec/journals/focm/Adcock18> <https://dblp.org/rdf/schema#yearOfPublication> ?year_pub . }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "year_pub"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "year_pub": {
+                                    "type": "literal",
+                                    "value": "2018"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "2006"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 88,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "Was it listed on Table of Contents (TOC) page?"
+                }
+            ],
+            "query": {
+                "sparql": "ASK WHERE { <https://dblp.org/rec/journals/focm/Adcock18> <https://dblp.org/rdf/schema#listedOnTocPage> ?tocPage }"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": []
+                    },
+                    "boolean": true
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 89,
+            "question": [
+                {
+                    "language": "en",
+                    "string": "What is the type of bibliography for it?"
+                }
+            ],
+            "query": {
+                "sparql": "SELECT ?type WHERE { <https://dblp.org/rec/journals/focm/Adcock18> <https://dblp.org/rdf/schema#bibtexType> ?type .}"
+            },
+            "golden_answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "type"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "type": {
+                                    "type": "uri",
+                                    "value": "http://purl.org/net/nknouf/ns/bibtex#Article"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "answers": [
+                {
+                    "head": {
+                        "link": [],
+                        "vars": [
+                            "variable"
+                        ]
+                    },
+                    "results": {
+                        "distinct": false,
+                        "ordered": true,
+                        "bindings": [
+                            {
+                                "variable": {
+                                    "type": "literal",
+                                    "value": "Scopus"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "dataset": {
+        "id": "dblp_e11_20_5_original_dialogue"
+    }
+}
