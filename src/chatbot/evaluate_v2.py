@@ -93,31 +93,31 @@ SPARQL_ENDPOINT = {
     "dbpedia": "http://206.12.95.86:8890/sparql"
 }
 
-# pair of end point, dataset file name
+# pair of end point, dataset file name, ground truth, kgqan results, convinse results, explaignn results
 kg_related_variables = {
     "yago": (
         SPARQL_ENDPOINT.get("yago"),
         "evaluation/data/yago_e11_20_5_original.json",
         "logs/chatbot/kgqanv2_golden/yago_e11_20_5_original.json",
-        "logs/chatbot/exp-yago-dialogue_20250126-180647.json",
-        "../evaluation/baseline_results/convinse_results_yago.json",
-        "../evaluation/baseline_results/explaignn_results_yago.json",
+        "logs/chatbot_v4/exp-yago-dialogue-new-data_20250407-010516.json",
+        "baseline/convinse_results_yago.json",
+        "baseline/explaignn_results_yago.json",
     ),
     "dblp": (
         SPARQL_ENDPOINT.get("dblp"),
         "evaluation/data/dblp_e11_20_5_original.json",
         "logs/chatbot/kgqanv2_golden/dblp_e11_20_5_original.json",
-        "logs/chatbot/exp-dblp-dialogue_20250126-160535.json",
-        "../evaluation/baseline_results/convinse_results_dblp.json",
-        "../evaluation/baseline_results/explaignn_results_dblp.json",
+        "logs/chatbot_v4/exp-dblp-dialogue-new-data_20250407-010954.json",
+        "baseline/convinse_results_dblp.json",
+        "baseline/explaignn_results_dblp.json",
     ),
     "dbpedia": (
         SPARQL_ENDPOINT.get("dbpedia"),
         "evaluation/data/dbpedia_e11_20_5_original.json",
         "logs/chatbot/kgqanv2_golden/dbpedia_e11_20_5_original.json",
-        "logs/chatbot/exp-dbpedia-dialogue_20250126-055631.json",
-        "../evaluation/baseline_results/convinse_results_dbpedia.json",
-        "../evaluation/baseline_results/explaignn_results_dbpedia.json",
+        "logs/chatbot_v4/exp-dbpedia-dialogue-new-data_20250407-010000.json",
+        "baseline/convinse_results_dbpedia.json",
+        "baseline/explaignn_results_dbpedia.json",
     ),
 }
 
@@ -258,7 +258,8 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, kgqan_results, convinse_re
 if __name__ == "__main__":
 
     kg_names = ["dbpedia", "dblp", "yago"]
-    output_dir = "evaluation_v2"
+    # v3 with gpt-3.5 turbo for rephraser, 4 with gpt-4o
+    output_dir = "evaluation_v4"
     for kg_name in kg_names:
         kg_endpoint, dataset_file, ground_results, kgqan_results, convinse_results, explaignn_results = kg_related_variables[kg_name]
         evaluate_v2(kg_name, kg_endpoint, ground_results, kgqan_results, convinse_results, explaignn_results, output_dir)

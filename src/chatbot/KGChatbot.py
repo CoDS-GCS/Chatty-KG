@@ -40,7 +40,7 @@ class InMemoryHistory(BaseChatMessageHistory, BaseModel):
 
 class KGChatbot:
     def __init__(self, kg_name, host):
-        self.openai_model = "gpt-3.5-turbo"
+        self.openai_model = "gpt-4o"
         self.chat_summary = ""
         self.kg_name = kg_name
         self.host = host

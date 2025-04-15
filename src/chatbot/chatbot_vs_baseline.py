@@ -8,6 +8,7 @@ import urllib
 import logging
 from collections import defaultdict
 
+# This is to get Chatty-KG dialogue results
 os.environ["OPENAI_API_KEY"] = ""
 # pair of end point, dataset file name
 kg_related_variables = {
@@ -204,7 +205,7 @@ def run_chatbot_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file_n
 
         # Save results to output file
         timestamp = time.strftime("%Y%m%d-%H%M%S")
-        output_file_name = f"logs/chatbot/{experiment_name}_{timestamp}.json"
+        output_file_name = f"logs/chatbot-v4/{experiment_name}_{timestamp}.json"
         parent_dir = os.path.dirname(output_file_name)
         if not os.path.exists(parent_dir):
             os.makedirs(parent_dir, exist_ok=True)
@@ -319,16 +320,110 @@ def post_transformation(input_dir, output_dir, transformation_fn):
 
         print(f"Processed and saved: {output_file_path}")
 
+def get_uri_label(kg_endpoint, uri):
+    sparql_query = f"""
+    SELECT ?label WHERE {{
+        <{uri}> rdfs:label ?label .
+        FILTER (lang(?label) = "en" || lang(?label) = "")
+    }} LIMIT 1
+    """
+
+    response = evaluate_SPARQL_query(kg_endpoint, sparql_query)
+    result_json = json.loads(response)
+
+    bindings = result_json.get("results", {}).get("bindings", [])
+    if bindings:
+        return bindings[0]["label"]["value"]
+    
+    return None
+
+def get_label(kg_endpoint, binding):
+    """
+    Extract label for a binding value based on its type.
+    """
+    if binding["type"] == "uri":
+        # Option 1: Use pre-fetched label from SPARQL (if available)
+        if "label" in binding:
+            return binding["label"]["value"]
+        # Option 2: Fallback to URI defragmentation
+        # return defrag_uri_without_space(binding["value"])
+        return get_uri_label(kg_endpoint, binding["value"])
+    elif binding["type"] == "typed-literal":
+        return binding["value"]  # Add datatype-specific formatting if needed
+    elif binding["type"] == "literal":
+        # Handle plain literals with optional language tags
+        if "xml:lang" in binding:
+            return f"{binding['value']} ({binding['xml:lang']})"
+        return binding["value"]
+    return ""
+
+def process_sparql_results(kg_endpoint, json_data):
+    """
+    Process SPARQL query JSON results and extract labels.
+    """
+    results = []
+    if "boolean" in json_data:
+        results = ["yes", "true", True] if json_data.get("boolean") == True else ["no", "false", False]
+        return results
+    for result in json_data.get("results", {}).get("bindings", []):
+        # processed_result = {}
+        processed_result = []
+        for var, binding in result.items():
+            # processed_result[var] = get_label(binding)
+        #     processed_result.append(get_label(binding))
+        # results.append(processed_result)
+            results.append(get_label(kg_endpoint, binding))
+    return results
+
+def get_ground_truths(kg_name, kg_endpoint, dataset_file_name, outputfile):
+    try:
+        logger.info(f"Using Knowledge Graph: {kg_name} at endpoint: {kg_endpoint}")
+        
+        data = None
+        # Load dataset
+        with open(dataset_file_name, "r", encoding="utf-8") as dataset_file:
+            data = json.load(dataset_file)
+        
+        results = []
+
+        for idx, obj in enumerate(data.get("data", [])):
+            queries = obj.get("queries")
+            answers = get_answers(kg_endpoint, queries)
+            answers_labels = [process_sparql_results(kg_endpoint, a) for a in answers]
+            results.append(
+                {**obj,"ground_truths":answers, "ground_truths_labels": answers_labels}
+            )
+        
+        parent_dir = os.path.dirname(outputfile)
+        if not os.path.exists(parent_dir):
+            os.makedirs(parent_dir, exist_ok=True)
+        with open(outputfile, "w") as f:
+            json.dump(results, f, indent=4)
+
+
+    except Exception as e:
+        logger.error(f"An error occurred during the experiment: {e}", exc_info=True)
+
+    pass
+
 if __name__ == "__main__":
-    # kg_names = ["dbpedia", "dblp", "yago"]
-    # kg_names = ["yago"]
-    # dialogue_modes = [True]
-    # for dialogue_mode in dialogue_modes:
-    #     for kg_name in kg_names:
-    #         # experiment_name = f"exp-{kg_name}-table-1-10-dialogues"
-    #         experiment_name = f"exp-{kg_name}-{"dialogue" if dialogue_mode else "original"}"
-    #         kg_endpoint, dataset_file = kg_related_variables[kg_name]
-    #         run_chatbot_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file, dialogue_mode)
+    kg_names = ["dbpedia", "yago", "dblp"]
+    dialogue_mode = True
+    for kg_name in kg_names:
+        # experiment_name = f"exp-{kg_name}-table-1-10-dialogues"
+        experiment_name = f"exp-{kg_name}-{"dialogue" if dialogue_mode else "original"}-new-data"
+        kg_endpoint, dataset_file = kg_related_variables[kg_name]
+        run_chatbot_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file, dialogue_mode)
+    
+    # Ground Truth
+    # kg_names = ["dbpedia"]
+    # for kg_name in kg_names:
+    #     kg_endpoint, dataset_file = kg_related_variables[kg_name]
+    #     dataset_file = "/omij/kgqan-old/KGQAn-V2/src/chatbot/convinse_evaluation/dbpedia_gpt4o.json"
+    #     file_name = os.path.basename(dataset_file)
+    #     file = os.path.splitext(file_name)
+    #     outputfile = os.path.join("logs/chatbot/kgqanold_golden", "".join(file))
+    #     get_ground_truths(kg_name, kg_endpoint, dataset_file, outputfile)
     
     # kg_names = ["dbpedia", "dblp", "yago"]
     # for kg_name in kg_names:
@@ -336,4 +431,4 @@ if __name__ == "__main__":
     #     kg_endpoint, dataset_file = kg_related_variables[kg_name]
     #     run_convinse_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file)
 
-    post_transformation("logs/chatbot", "logs/chatbot/ruby", transform_to_ruby_format)
+    # post_transformation("logs/chatbot", "logs/chatbot/ruby", transform_to_ruby_format)

@@ -3,6 +3,7 @@ from langchain_deepseek import ChatDeepSeek
 from langchain_community.llms import VLLMOpenAI
 from langchain_openai import ChatOpenAI
 from langchain_google_vertexai import ChatVertexAI
+from vertexai import init
 #from langchain_ollama import ChatOllama
 
 
@@ -10,16 +11,17 @@ from langchain_google_vertexai import ChatVertexAI
 # openai, -> gpt-3.5-turbo, gpt-4, gpt-4-turbo, gpt-4o
 # google -> gemini-1.5-flash
 # deepseek -> deepseek-chat, deepseek-reasoner
-# vllm -> llama3.1_local, qwen2.5_local, phi_local, llama3.1_instruct_local, mistral_local, codellama_local
+# vllm -> llama3.1_local, qwen2.5_local, phi_local, llama3.1_instruct_local, mistral_local, codellama_local, deepseek_qwen
 
 llm_type = "openai" # Choose From (openai, vllm, google, deepseek)
 model_name = "gpt-4o"
-
 os.environ["DEEPSEEK_API_KEY"] = ""
 os.environ["OPENAI_API_KEY"] = ""
 
 model_to_token_length = {'gpt-3.5-turbo': 16000, 'llama3.1': 2048, "llama3_local": 8192, "llama3.1_local": 8192,
-                         'deepseek-chat': 16000, 'gemini-1.5-flash': 16000, "qwen2.5_local": 34000}
+                         'deepseek-chat': 16000, 'gemini-1.5-flash': 16000, "qwen2.5_local": 34000, 'phi_local': 16000,
+                         'codellama_local': 11000, 'mistral_local': 32000, 'deepseek_qwen': 34000, 'qwen_instruct': 19000,
+                         'vicuna': 4096, 'granite8b_instruct': 120000, 'mistral_nemo': 73000}
 
 
 # TODO Update to create one llm for all pipeline instead of creating a new llm object each request for better memory utlilization

@@ -412,9 +412,8 @@ if __name__ == "__main__":
     for kg_name in kg_names:
         kg_endpoint, input_file = kg_related_variables[kg_name]
         # Convinse Client
-        if not kg_name == "dblp":
-            convinse_client = ConvinseClient()
-            convinse_client.evaluate(kg_name, input_file, kg_endpoint, dialogue_mode, output_file=f"baseline/convinse_results_{kg_name}.json")
+        convinse_client = ConvinseClient()
+        convinse_client.evaluate(kg_name, input_file, kg_endpoint, dialogue_mode, output_file=f"baseline/convinse_results_{kg_name}.json")
 
         # Explaignn Client
         explaignn_client = ExplaignnClient()

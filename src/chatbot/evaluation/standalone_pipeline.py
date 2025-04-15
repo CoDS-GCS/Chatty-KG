@@ -1,6 +1,9 @@
 import json
 import os
 import time
+import sys
+sys.path.append('../')
+sys.path.append('../..')
 from kgqan.kgqan import KGQAn
 
 max_Vs = 1
@@ -17,7 +20,7 @@ kg_related_variables = {"yago": ("http://206.12.95.86:8892/sparql", "data/yago_e
                         }
 
 if __name__ == '__main__':
-    kg_name = 'dblp'
+    kg_name = 'dbpedia'
     endpoint, dataset_file_name = kg_related_variables[kg_name]
     id = 0
     kgqan = KGQAn(n_max_answers=max_answers, n_max_Vs=max_Vs, n_max_Es=max_Es, n_limit_VQuery=limit_VQuery, n_limit_EQuery=limit_EQuery)
@@ -53,7 +56,7 @@ if __name__ == '__main__':
     result = {"dataset": {"id": f'{dataset_id}_standalone'}, "questions": output}
 
     timestr = time.strftime("%Y%m%d-%H%M%S")
-    output_file_name = f'output3/Boolean/{kg_name}_standalone_answers_{timestr}.json'
+    output_file_name = f'output/{kg_name}_standalone_answers_{timestr}.json'
     with open(output_file_name, encoding='utf-8', mode='w') as rfobj:
         json.dump(result, rfobj, indent=4)
         rfobj.write('\n')

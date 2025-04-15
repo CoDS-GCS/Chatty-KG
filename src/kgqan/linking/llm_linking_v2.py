@@ -149,7 +149,6 @@ def vertex_linking(entity, vertex_label_list, vertex_list, json_logger, kg):
             print("Linking OUTPUT======")
             print(output)
             output = json.loads(output)["value"]
-            retry += 1
             output = remove_unneeded_chars(output)
             if output in vertex_label_list:
                 break
@@ -158,6 +157,7 @@ def vertex_linking(entity, vertex_label_list, vertex_list, json_logger, kg):
             print("============Start Parsing Error")
             print(output1)
             print("============End")
+        retry += 1
     if kg not in ['microsoft_academic']:
         candidate_indices = gets_indices_for_label(output, vertex_label_list)
         if candidate_indices is None:
@@ -168,9 +168,12 @@ def vertex_linking(entity, vertex_label_list, vertex_list, json_logger, kg):
             vertex = extract_correct_uri(entity, candidate_indices, vertex_list)
             return vertex, [output]
     else:
-        vertex = vertex_label_list.index(output) if output in vertex_label_list else None
-        vertex = vertex_list[vertex]
-        return [vertex], [output]
+        if output in vertex_label_list:
+            vertex = vertex_label_list.index(output)
+            vertex = vertex_list[vertex]
+            return [vertex], [output]
+        else:
+            return None, None
 
 
 if __name__ == '__main__':
