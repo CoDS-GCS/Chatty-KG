@@ -184,4 +184,5 @@ src/evaluation/output/*
 src/chattykg/question_understanding1/two_step_understanding.py
 src/chattykg/linking/llm_linking.py
 src/chattykg/langchain_filtration.py
+src/chatbot/logs/*
 
