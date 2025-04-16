@@ -419,10 +419,10 @@ if __name__ == "__main__":
     # kg_names = ["dbpedia"]
     # for kg_name in kg_names:
     #     kg_endpoint, dataset_file = kg_related_variables[kg_name]
-    #     dataset_file = "/omij/kgqan-old/KGQAn-V2/src/chatbot/convinse_evaluation/dbpedia_gpt4o.json"
+    #     dataset_file = "/omij/chattykg-old/ChattyKG-V2/src/chatbot/convinse_evaluation/dbpedia_gpt4o.json"
     #     file_name = os.path.basename(dataset_file)
     #     file = os.path.splitext(file_name)
-    #     outputfile = os.path.join("logs/chatbot/kgqanold_golden", "".join(file))
+    #     outputfile = os.path.join("logs/chatbot/chattykgold_golden", "".join(file))
     #     get_ground_truths(kg_name, kg_endpoint, dataset_file, outputfile)
     
     # kg_names = ["dbpedia", "dblp", "yago"]

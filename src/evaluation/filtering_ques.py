@@ -6,7 +6,7 @@ import traceback
 from itertools import count
 from termcolor import colored, cprint
 
-from kgqan.kgqan import KGQAn
+from chattykg.chattykg import ChattyKG
 
 
 max_Vs = 1
@@ -135,8 +135,8 @@ if __name__ == '__main__':
         qald9_test = json.load(f)
     dataset_id = qald9_test['dataset']['id']
 
-    MyKGQAn = KGQAn(n_max_answers=max_answers, n_max_Vs=max_Vs, n_max_Es=max_Es,
-                    n_limit_VQuery=limit_VQuery, n_limit_EQuery=limit_EQuery)
+    chattykg = ChattyKG(n_max_answers=max_answers, n_max_Vs=max_Vs, n_max_Es=max_Es,
+                        n_limit_VQuery=limit_VQuery, n_limit_EQuery=limit_EQuery)
 
     qCount = count(1)
     res = []
@@ -163,10 +163,9 @@ if __name__ == '__main__':
                        attrs=['reverse', 'blink'])
         cprint(f"== {text}  ")
         try:
-            #answers, vertices, predicates, graph = MyKGQAn.ask(question_text=question_text,
-                                                              # answer_type=question['answertype'], question_id=question['id'], knowledge_graph='dbpedia')
-            answers, vertices, predicates, _, _, _ = MyKGQAn.ask(question_text=question_text,
-                                                                                question_id=question['id'], knowledge_graph='lc_quad')
+
+            answers, vertices, predicates, _, _, _ = chattykg.ask(question_text=question_text,
+                                                                  question_id=question['id'], knowledge_graph='lc_quad')
         except Exception as e:
             traceback.print_exc()
             continue

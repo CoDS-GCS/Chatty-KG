@@ -13,7 +13,7 @@ from langchain_core.messages import BaseMessage, AIMessage, HumanMessage
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 from prompts import CLASSIFY_QUESTION_PROMPT_2, CONDENSE_QUESTION_PROMPT_CUSTOM
-from kgqan.kgqan import KGQAn
+from chattykg.chattykg import ChattyKG
 import json
 import requests
 
@@ -24,7 +24,7 @@ max_Es = 21
 max_answers = 41
 limit_VQuery = 600
 limit_EQuery = 300
-kgqan_endpoint = "http://localhost:8899"
+chattykg_endpoint = "http://localhost:8899"
 
 class InMemoryHistory(BaseChatMessageHistory, BaseModel):
     """In memory implementation of chat message history."""
@@ -56,6 +56,7 @@ class KGChatbot:
             print(f"predicted q_type : {q_type}")
             if "non-self-contained" in q_type.lower():
                 question = self.rephrase_question(session_id, question)
+                print("Rephrased Question: ", question)
                 retries -= 1
                 continue
 
@@ -67,8 +68,6 @@ class KGChatbot:
             return answer, values_answer
         return None, None
 
-    # def setup_kgqan(_self, kg_name):
-    #     return KGQAn(_self.host, kg_name)
 
     def setup_llm(_self):
         model = ChatOpenAI(
@@ -86,7 +85,7 @@ class KGChatbot:
 
     def setup_resources(self):
         self.llm = self.setup_llm()
-        self.kgqan_instance = KGQAn(n_max_answers=max_answers, n_max_Vs=max_Vs, n_max_Es=max_Es, n_limit_VQuery=limit_VQuery, n_limit_EQuery=limit_EQuery)
+        self.chattykg_instance = ChattyKG(n_max_answers=max_answers, n_max_Vs=max_Vs, n_max_Es=max_Es, n_limit_VQuery=limit_VQuery, n_limit_EQuery=limit_EQuery)
         # self.conv_buff_memory = ConversationSummaryBufferMemory(
         #     llm=self.llm, memory_key="chat_history", max_token_limit=150
         # )
@@ -118,7 +117,7 @@ class KGChatbot:
         # )
 
     def get_active_kg(self):
-        return self.kgqan_instance
+        return self.chattykg_instance
 
     def get_llm(self):
         return self.llm
@@ -156,7 +155,7 @@ class KGChatbot:
             "knowledge_graph": kg_name,
             "max_answers": max_answers
         }
-        resp = requests.post(kgqan_endpoint, data=json.dumps(payload))
+        resp = requests.post(chattykg_endpoint, data=json.dumps(payload))
         if resp.status_code != 200:
             print(f"ERROR: {resp.status_code}")
             return None, None
@@ -168,7 +167,7 @@ class KGChatbot:
 
     # returns the structured output for evaluation and user values for history and chatbot interface
     def run_query(self, question):
-        answers, _, _, understanding_time, linking_time, execution_time, query_selection_time, num_queries_executed, is_boolean = self.kgqan_instance.ask(question_text=question, question_id=0, knowledge_graph=self.kg_name)
+        answers, _, _, understanding_time, linking_time, execution_time, query_selection_time, num_queries_executed, is_boolean = self.chattykg_instance.ask(question_text=question, question_id=0, knowledge_graph=self.kg_name)
 
         # answers, is_boolean = self.send_request(question, self.kg_name)
         

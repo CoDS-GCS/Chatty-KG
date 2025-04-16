@@ -4,7 +4,7 @@ import time
 import sys
 sys.path.append('../')
 sys.path.append('../..')
-from kgqan.kgqan import KGQAn
+from chattykg.chattykg import ChattyKG
 
 max_Vs = 1
 max_Es = 21
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     kg_name = 'dbpedia'
     endpoint, dataset_file_name = kg_related_variables[kg_name]
     id = 0
-    kgqan = KGQAn(n_max_answers=max_answers, n_max_Vs=max_Vs, n_max_Es=max_Es, n_limit_VQuery=limit_VQuery, n_limit_EQuery=limit_EQuery)
+    chattykg = ChattyKG(n_max_answers=max_answers, n_max_Vs=max_Vs, n_max_Es=max_Es, n_limit_VQuery=limit_VQuery, n_limit_EQuery=limit_EQuery)
     output = list()
     with open(dataset_file_name, 'r') as f:
         data = json.load(f)
@@ -32,7 +32,7 @@ if __name__ == '__main__':
         questions = obj["original"]
         for question in questions:
             answers, _, _, understanding_time, linking_time, execution_time, query_selection_time, num_queries_executed, is_boolean \
-                = kgqan.ask(question_text=question, question_id=id, knowledge_graph=kg_name)
+                = chattykg.ask(question_text=question, question_id=id, knowledge_graph=kg_name)
 
             if is_boolean:
                 bool_value = False

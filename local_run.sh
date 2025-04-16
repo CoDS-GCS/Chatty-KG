@@ -1,6 +1,6 @@
 #!/bin/bash
-# Move to the KGQAn directory
-cd KGQAn
+# Move to the ChattyKg directory
+cd ChattyKg
 # Download the required model and files
 #./data_download.sh local
 # Run the five benchmarks

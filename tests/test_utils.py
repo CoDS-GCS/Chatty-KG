@@ -1,5 +1,5 @@
 import unittest
-from kgqan.nlp import utils
+from chattykg.nlp import utils
 
 
 class TestNlpUtils(unittest.TestCase):

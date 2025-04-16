@@ -15,7 +15,7 @@ case "$1" in
         echo "Waiting for word_embedding_server to load model"
         waittime=300
         sleep $waittime && echo "waited for 300 sec, till word_embd_server loaded model"
-        python -m kgqan.server
+        python -m chattykg.server
         ;;
     evaluation)
         echo "Waiting for word_embedding_server to load model"

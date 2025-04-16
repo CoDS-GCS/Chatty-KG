@@ -93,12 +93,12 @@ SPARQL_ENDPOINT = {
     "dbpedia": "http://206.12.95.86:8890/sparql"
 }
 
-# pair of end point, dataset file name, ground truth, kgqan results, convinse results, explaignn results
+# pair of end point, dataset file name, ground truth, chattykg results, convinse results, explaignn results
 kg_related_variables = {
     "yago": (
         SPARQL_ENDPOINT.get("yago"),
         "evaluation/data/yago_e11_20_5_original.json",
-        "logs/chatbot/kgqanv2_golden/yago_e11_20_5_original.json",
+        "logs/chatbot/chattykgv2_golden/yago_e11_20_5_original.json",
         "logs/chatbot_v4/exp-yago-dialogue-new-data_20250407-010516.json",
         "baseline/convinse_results_yago.json",
         "baseline/explaignn_results_yago.json",
@@ -106,7 +106,7 @@ kg_related_variables = {
     "dblp": (
         SPARQL_ENDPOINT.get("dblp"),
         "evaluation/data/dblp_e11_20_5_original.json",
-        "logs/chatbot/kgqanv2_golden/dblp_e11_20_5_original.json",
+        "logs/chatbot/chattykgv2_golden/dblp_e11_20_5_original.json",
         "logs/chatbot_v4/exp-dblp-dialogue-new-data_20250407-010954.json",
         "baseline/convinse_results_dblp.json",
         "baseline/explaignn_results_dblp.json",
@@ -114,7 +114,7 @@ kg_related_variables = {
     "dbpedia": (
         SPARQL_ENDPOINT.get("dbpedia"),
         "evaluation/data/dbpedia_e11_20_5_original.json",
-        "logs/chatbot/kgqanv2_golden/dbpedia_e11_20_5_original.json",
+        "logs/chatbot/chattykgv2_golden/dbpedia_e11_20_5_original.json",
         "logs/chatbot_v4/exp-dbpedia-dialogue-new-data_20250407-010000.json",
         "baseline/convinse_results_dbpedia.json",
         "baseline/explaignn_results_dbpedia.json",
@@ -162,7 +162,7 @@ def save_results(results, results_data, output_dir):
     logging.info(f"Results saved to {csv_path}")
 
 
-def evaluate_v2(kg_name, kg_endpoint, ground_results, kgqan_results, convinse_results, explaignn_results, output_dir):
+def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse_results, explaignn_results, output_dir):
     pred1, pred5, rankings, ground_truths = None, None, None, None
 
     results = {
@@ -182,17 +182,17 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, kgqan_results, convinse_re
                 "answer": process_sparql_results(kg_endpoint, gt)
             })
 
-    # evaluate kgqan
-    kgqan_data = None
-    with open(kgqan_results, "r") as f:
-        kgqan_data = json.load(f)
+    # evaluate chattykg
+    chattykg_data = None
+    with open(chattykg_results, "r") as f:
+        chattykg_data = json.load(f)
     
-    kgqan_qs = []
-    for qs in kgqan_data.get("data").get("Output"):
+    chattykg_qs = []
+    for qs in chattykg_data.get("data").get("Output"):
         qans = qs.get("answer")
         if not qs.get("answer"):
             qans = [{}]
-        kgqan_qs.append({
+        chattykg_qs.append({
             "question": qs.get("question"),
             "answer": process_sparql_results(kg_endpoint, qans[0])
         })
@@ -226,7 +226,7 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, kgqan_results, convinse_re
         })
     
     print(ground_truth_qs[-4:])
-    print(kgqan_qs[-4:])
+    print(chattykg_qs[-4:])
     print(convinse_qs[-4:])
     print(explaignn_qs[-4:])
     
@@ -243,7 +243,7 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, kgqan_results, convinse_re
     # Compute results
     results = {}
     results_data = {"data":{}}
-    for model_name, model_qs in [("kgqan", kgqan_qs), ("convinse", convinse_qs), ("explaignn", explaignn_qs)]:
+    for model_name, model_qs in [("chattykg", chattykg_qs), ("convinse", convinse_qs), ("explaignn", explaignn_qs)]:
         gts = [gt["answer"] for gt in ground_truth_qs]
         pred1, pred5, rankings = prepare_evaluation_data(model_qs)
         p1, mrr, hit5 = compute_results_v2(pred1, pred5, rankings, gts)
@@ -261,5 +261,5 @@ if __name__ == "__main__":
     # v3 with gpt-3.5 turbo for rephraser, 4 with gpt-4o
     output_dir = "evaluation_v4"
     for kg_name in kg_names:
-        kg_endpoint, dataset_file, ground_results, kgqan_results, convinse_results, explaignn_results = kg_related_variables[kg_name]
-        evaluate_v2(kg_name, kg_endpoint, ground_results, kgqan_results, convinse_results, explaignn_results, output_dir)
+        kg_endpoint, dataset_file, ground_results, chattykg_results, convinse_results, explaignn_results = kg_related_variables[kg_name]
+        evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse_results, explaignn_results, output_dir)

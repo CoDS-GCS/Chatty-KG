@@ -173,15 +173,15 @@ word_embedding/data/*
 
 
 data/*
-src/kgqan/nltk_cache/
-src/kgqan/model/*
-src/kgqan/allen/*
+src/chattykg/nltk_cache/
+src/chattykg/model/*
+src/chattykg/allen/*
 src/allen/*
 src/nltk_cache/
 src/evaluation/output/*
 
 # Old files to not affect the stashs
-src/kgqan/question_understanding1/two_step_understanding.py
-src/kgqan/linking/llm_linking.py
-src/kgqan/langchain_filtration.py
+src/chattykg/question_understanding1/two_step_understanding.py
+src/chattykg/linking/llm_linking.py
+src/chattykg/langchain_filtration.py
 

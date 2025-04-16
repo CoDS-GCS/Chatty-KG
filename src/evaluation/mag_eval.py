@@ -1,17 +1,5 @@
 #!./venv python
 # -*- coding: utf-8 -*-
-"""
-evaluation.py: evaluating KGQAn online service against QALD-3 benchmark
-"""
-___lab__ = "CoDS Lab"
-__copyright__ = "Copyright 2020-29, GINA CODY SCHOOL OF ENGINEERING AND COMPUTER SCIENCE, CONCORDIA UNIVERSITY"
-__credits__ = ["CoDS Lab"]
-__license__ = "GPL"
-__version__ = "0.0.1"
-__maintainer__ = "CODS Lab"
-__email__ = "essam.mansour@concordia.ca"
-__status__ = "debug"
-__created__ = "2020-02-07"
 
 import sys
 import os
@@ -22,7 +10,7 @@ import traceback
 from termcolor import colored, cprint
 from itertools import count
 import xml.etree.ElementTree as Et
-from kgqan.kgqan import KGQAn
+from chattykg.chattykg import ChattyKG
 import csv
 
 file_dir = os.path.dirname(os.path.abspath(__file__))
@@ -55,11 +43,11 @@ if __name__ == '__main__':
     with open(file_name) as f:
         qald9_testset = json.load(f)
     dataset_id = qald9_testset['dataset']['id']
-    MyKGQAn = KGQAn(n_max_answers=max_answers, n_max_Vs=max_Vs, n_max_Es=max_Es,
-                    n_limit_VQuery=limit_VQuery, n_limit_EQuery=limit_EQuery)
+    chattykg = ChattyKG(n_max_answers=max_answers, n_max_Vs=max_Vs, n_max_Es=max_Es,
+                        n_limit_VQuery=limit_VQuery, n_limit_EQuery=limit_EQuery)
     qCount = count(1)
 
-    kgqan_qald9 = {"dataset": {"id": "qald9_ms100"}, "questions": []}
+    chattykg_qald9 = {"dataset": {"id": "qald9_ms100"}, "questions": []}
     for i, question in enumerate(qald9_testset['questions']):
         qc = next(qCount)
         for language_variant_question in question['question']:
@@ -76,8 +64,8 @@ if __name__ == '__main__':
         # question_text = 'When did the Boston Tea Party take place and led by whom?'
         try:
             answers, _, _, understanding_time, linking_time, execution_time, query_selection_time, num_queries_executed, _\
-                = MyKGQAn.ask(question_text=question_text,
-                              question_id=question['id'], knowledge_graph='microsoft_academic')
+                = chattykg.ask(question_text=question_text,
+                               question_id=question['id'], knowledge_graph='microsoft_academic')
         except Exception as e:
             traceback.print_exc()
             continue
@@ -94,7 +82,7 @@ if __name__ == '__main__':
         except:
             question['answers'] = []
 
-        kgqan_qald9['questions'].append(question)
+        chattykg_qald9['questions'].append(question)
 
         et = time.time()
         total_time = total_time + (et - st)
@@ -127,7 +115,7 @@ if __name__ == '__main__':
                       }]
 
     with open(os.path.join(file_dir, f'output/mag.json'), encoding='utf-8', mode='w') as rfobj:
-        json.dump(kgqan_qald9, rfobj)
+        json.dump(chattykg_qald9, rfobj)
         rfobj.write('\n')
 
     field_names = response_time[0].keys()
@@ -135,9 +123,3 @@ if __name__ == '__main__':
         writer = csv.DictWriter(file, fieldnames=field_names)
         writer.writeheader()
         writer.writerows(response_time)
-    
-    # with open(f'output/MyKGQAn_result_{timestr}_MaxAns{max_answers}_MaxVs{max_Vs}_MaxEs{max_Es}'
-    #           f'_limit_VQuery{limit_VQuery}_limit_VQuery{limit_EQuery}_TTime{total_time:.2f}Sec_Avgtime{total_time / qc:.2f}Sec.json',
-    #           encoding='utf-8', mode='w') as rfobj:
-    #     json.dump(kgqan_qald9, rfobj)
-    #     rfobj.write('\n')
