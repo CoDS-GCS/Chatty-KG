@@ -47,11 +47,13 @@ def get_uri_label(kg_endpoint, uri):
     
     return None
 
-def get_label(kg_endpoint, binding):
+def get_label(kg_endpoint, binding, kg_prefix=None):
     """
     Extract label for a binding value based on its type.
     """
     if binding["type"] == "uri":
+        if kg_prefix and kg_prefix not in binding["value"]:
+            return binding["value"]
         # Option 1: Use pre-fetched label from SPARQL (if available)
         if "label" in binding:
             return binding["label"]["value"]
@@ -63,11 +65,12 @@ def get_label(kg_endpoint, binding):
     elif binding["type"] == "literal":
         # Handle plain literals with optional language tags
         if "xml:lang" in binding:
-            return f"{binding['value']} ({binding['xml:lang']})"
+            # return f"{binding['value']} ({binding['xml:lang']})"
+            return f"{binding['value']}"
         return binding["value"]
     return ""
 
-def process_sparql_results(kg_endpoint, json_data):
+def process_sparql_results(kg_endpoint, json_data, kg_prefix=None):
     """
     Process SPARQL query JSON results and extract labels.
     """
@@ -82,7 +85,7 @@ def process_sparql_results(kg_endpoint, json_data):
             # processed_result[var] = get_label(binding)
         #     processed_result.append(get_label(binding))
         # results.append(processed_result)
-            results.append(get_label(kg_endpoint, binding))
+            results.append(get_label(kg_endpoint, binding, kg_prefix))
     return results
 
 
@@ -93,7 +96,7 @@ SPARQL_ENDPOINT = {
     "dbpedia": "http://206.12.95.86:8890/sparql"
 }
 
-# pair of end point, dataset file name, ground truth, chattykg results, convinse results, explaignn results
+# pair of end point, dataset file name, ground truth, chattykg results, convinse results, explaignn results, gpt_results
 kg_related_variables = {
     "yago": (
         SPARQL_ENDPOINT.get("yago"),
@@ -102,6 +105,9 @@ kg_related_variables = {
         "logs/chatbot_v4/exp-yago-dialogue-new-data_20250407-010516.json",
         "baseline/convinse_results_yago.json",
         "baseline/explaignn_results_yago.json",
+        "evaluation/llms/gpt_yago_output.json",
+        "evaluation/llms/gemini_yago_output.json",
+        "evaluation/llms/deepseek_yago_output.json"
     ),
     "dblp": (
         SPARQL_ENDPOINT.get("dblp"),
@@ -110,6 +116,9 @@ kg_related_variables = {
         "logs/chatbot_v4/exp-dblp-dialogue-new-data_20250407-010954.json",
         "baseline/convinse_results_dblp.json",
         "baseline/explaignn_results_dblp.json",
+        "evaluation/llms/gpt_dblp_output.json",
+        "evaluation/llms/gemini_dblp_output.json",
+        "evaluation/llms/deepseek_dblp_output.json"
     ),
     "dbpedia": (
         SPARQL_ENDPOINT.get("dbpedia"),
@@ -118,20 +127,57 @@ kg_related_variables = {
         "logs/chatbot_v4/exp-dbpedia-dialogue-new-data_20250407-010000.json",
         "baseline/convinse_results_dbpedia.json",
         "baseline/explaignn_results_dbpedia.json",
+        "evaluation/llms/gpt_dbpedia_output.json",
+        "evaluation/llms/gemini_dbpedia_output.json",
+        "evaluation/llms/deepseek_dbpedia_output.json"
     ),
 }
 
-def precision_at_1(predictions, ground_truths):
-    correct_count = sum(pred in truth_set for pred, truth_set in zip(predictions, map(set, ground_truths)))
+def precision_at_1(predictions, ground_truths, verbose=True):
+    correct_count = 0
+
+    for i, (pred, truth_list) in enumerate(zip(predictions, ground_truths)):
+        pred_normalized = str(pred).strip().lower()
+        truth_set = set(str(item).strip().lower() for item in truth_list)
+        is_correct = pred_normalized in truth_set
+
+        if verbose:
+            status = "✓" if is_correct else "✗"
+            print(f"[{status}] Example {i}: Prediction = {pred} | Ground Truth = {truth_list}")
+        if is_correct:
+            correct_count += 1
+
     return correct_count / len(predictions)
 
-def mean_reciprocal_rank(rankings):
-    reciprocal_ranks = [1 / rank if rank > 0 else 0 for rank in rankings]
-    return sum(reciprocal_ranks) / len(rankings)
+def hit_at_k(predictions, ground_truths, k=5, verbose=False):
+    hit_count = 0
 
-def hit_at_k(predictions, ground_truths, k=5):
-    hit_count = sum(bool(set(pred[:k]) & set(truth)) for pred, truth in zip(predictions, ground_truths))
+    for i, (pred_list, truth_list) in enumerate(zip(predictions, ground_truths)):
+        pred_set = set(str(p).strip().lower() for p in pred_list[:k])
+        truth_set = set(str(t).strip().lower() for t in truth_list)
+        is_hit = bool(pred_set & truth_set)
+        if is_hit:
+            hit_count += 1
+
+        if verbose:
+            status = "✓" if is_hit else "✗"
+            print(f"[{status}] Example {i}: Top-{k} Predictions = {pred_list[:k]} | Ground Truth = {truth_list}")
+
     return hit_count / len(predictions)
+
+def mean_reciprocal_rank(rankings, verbose=False):
+    reciprocal_ranks = []
+
+    for i, rank in enumerate(rankings):
+        rr = 1 / rank if rank > 0 else 0
+        reciprocal_ranks.append(rr)
+        if verbose:
+            status = "✓" if rank > 0 else "✗"
+            print(f"[{status}] Example {i}: Rank = {rank}, Reciprocal Rank = {rr:.4f}")
+
+    return sum(reciprocal_ranks) / len(reciprocal_ranks)
+
+
 def compute_results_v2(predictions_top_1, predictions_top_5, rankings, ground_truths):
     p_at_1 = precision_at_1(predictions_top_1, ground_truths)
     mrr = mean_reciprocal_rank(rankings)
@@ -162,7 +208,7 @@ def save_results(results, results_data, output_dir):
     logging.info(f"Results saved to {csv_path}")
 
 
-def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse_results, explaignn_results, output_dir):
+def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse_results, explaignn_results, gpt_results, gemini_results, deepseek_results, output_dir):
     pred1, pred5, rankings, ground_truths = None, None, None, None
 
     results = {
@@ -179,7 +225,7 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse
         for q,gt in zip(qs.get("dialogue"), qs.get("ground_truths")):
             ground_truth_qs.append({
                 "question": q,
-                "answer": process_sparql_results(kg_endpoint, gt)
+                "answer": process_sparql_results(kg_endpoint, gt, kg_name)
             })
 
     # evaluate chattykg
@@ -194,7 +240,7 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse
             qans = [{}]
         chattykg_qs.append({
             "question": qs.get("question"),
-            "answer": process_sparql_results(kg_endpoint, qans[0])
+            "answer": process_sparql_results(kg_endpoint, qans[0], kg_name)
         })
 
     # evaluate convinse
@@ -208,7 +254,7 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse
             qans = [{}]
         convinse_qs.append({
             "question": qs.get("question")[0].get("string"),
-            "answer": process_sparql_results(kg_endpoint, qans[0])
+            "answer": process_sparql_results(kg_endpoint, qans[0], kg_name)
         })
     
     # evaluate explaignn
@@ -222,28 +268,78 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse
             qans = [{}]
         explaignn_qs.append({
             "question": qs.get("question")[0].get("string"),
-            "answer": process_sparql_results(kg_endpoint, qans[0])
+            "answer": process_sparql_results(kg_endpoint, qans[0], kg_name)
         })
-    
-    print(ground_truth_qs[-4:])
-    print(chattykg_qs[-4:])
-    print(convinse_qs[-4:])
-    print(explaignn_qs[-4:])
-    
+
+    gpt_data = None
+    with open(gpt_results, "r") as f:
+        gpt_data = json.load(f)
+
+    gpt_qs = []
+    for qs in gpt_data:
+        qans = qs.get("answers")
+        if not qs.get("answers"):
+            qans = [{}]
+        gpt_qs.append({
+            "question": qs.get("question"),
+            "answer": process_sparql_results(kg_endpoint, qans[0], kg_name)
+        })
+
+    gemini_data = None
+    with open(gemini_results, "r") as f:
+        gemini_data = json.load(f)
+
+    gemini_qs = []
+    for qs in gemini_data:
+        qans = qs.get("answers")
+        if not qs.get("answers"):
+            qans = [{}]
+        gemini_qs.append({
+            "question": qs.get("question"),
+            "answer": process_sparql_results(kg_endpoint, qans[0], kg_name)
+        })
+
+    deepseek_data = None
+    with open(deepseek_results, "r") as f:
+        deepseek_data = json.load(f)
+
+    deepseek_qs = []
+    for qs in deepseek_data:
+        qans = qs.get("answers")
+        if not qs.get("answers"):
+            qans = [{}]
+        deepseek_qs.append({
+            "question": qs.get("question"),
+            "answer": process_sparql_results(kg_endpoint, qans[0], kg_name)
+        })
+
+
     # Prepare evaluation inputs
     def prepare_evaluation_data(model_qs):
         predictions_top_1 = [entry["answer"][0] if entry["answer"] else None for entry in model_qs]
         predictions_top_5 = [entry["answer"][:5] for entry in model_qs]
         rankings = [
-            next((i + 1 for i, ans in enumerate(entry["answer"]) if ans in ground_truth), 0)
+            next(
+                (
+                    i + 1
+                    for i, ans in enumerate(entry["answer"])
+                    if str(ans).strip().lower() in {str(gt).strip().lower() for gt in ground_truth}
+                ),
+                0
+            )
             for entry, ground_truth in zip(model_qs, [gt["answer"] for gt in ground_truth_qs])
         ]
+        # print(rankings)
+        # rankings = [
+        #     next((i + 1 for i, ans in enumerate(entry["answer"]) if ans in ground_truth), 0)
+        #     for entry, ground_truth in zip(model_qs, [gt["answer"] for gt in ground_truth_qs])
+        # ]
         return predictions_top_1, predictions_top_5, rankings
 
     # Compute results
     results = {}
     results_data = {"data":{}}
-    for model_name, model_qs in [("chattykg", chattykg_qs), ("convinse", convinse_qs), ("explaignn", explaignn_qs)]:
+    for model_name, model_qs in [("chattykg", chattykg_qs), ("convinse", convinse_qs), ("explaignn", explaignn_qs), ("gpt", gpt_qs), ("gemini", gemini_qs), ("deepseek", deepseek_qs)]:
         gts = [gt["answer"] for gt in ground_truth_qs]
         pred1, pred5, rankings = prepare_evaluation_data(model_qs)
         p1, mrr, hit5 = compute_results_v2(pred1, pred5, rankings, gts)
@@ -261,5 +357,5 @@ if __name__ == "__main__":
     # v3 with gpt-3.5 turbo for rephraser, 4 with gpt-4o
     output_dir = "evaluation_v4"
     for kg_name in kg_names:
-        kg_endpoint, dataset_file, ground_results, chattykg_results, convinse_results, explaignn_results = kg_related_variables[kg_name]
-        evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse_results, explaignn_results, output_dir)
+        kg_endpoint, dataset_file, ground_results, chattykg_results, convinse_results, explaignn_results, gpt_results, gemini_results, deepseek_results = kg_related_variables[kg_name]
+        evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse_results, explaignn_results, gpt_results, gemini_results, deepseek_results, output_dir)
