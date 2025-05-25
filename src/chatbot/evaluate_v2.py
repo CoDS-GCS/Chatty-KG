@@ -107,7 +107,9 @@ kg_related_variables = {
         "baseline/explaignn_results_yago.json",
         "evaluation/llms/gpt_yago_output.json",
         "evaluation/llms/gemini_yago_output.json",
-        "evaluation/llms/deepseek_yago_output.json"
+        "evaluation/llms/deepseek_yago_output.json",
+        "evaluation/llms/phi_local_yago_output.json",
+        "evaluation/llms/qwen_instruct_yago_output.json"
     ),
     "dblp": (
         SPARQL_ENDPOINT.get("dblp"),
@@ -118,7 +120,9 @@ kg_related_variables = {
         "baseline/explaignn_results_dblp.json",
         "evaluation/llms/gpt_dblp_output.json",
         "evaluation/llms/gemini_dblp_output.json",
-        "evaluation/llms/deepseek_dblp_output.json"
+        "evaluation/llms/deepseek_dblp_output.json",
+        "evaluation/llms/phi_local_dblp_output.json",
+        "evaluation/llms/qwen_instruct_dblp_output.json"
     ),
     "dbpedia": (
         SPARQL_ENDPOINT.get("dbpedia"),
@@ -129,11 +133,13 @@ kg_related_variables = {
         "baseline/explaignn_results_dbpedia.json",
         "evaluation/llms/gpt_dbpedia_output.json",
         "evaluation/llms/gemini_dbpedia_output.json",
-        "evaluation/llms/deepseek_dbpedia_output.json"
+        "evaluation/llms/deepseek_dbpedia_output.json",
+        "evaluation/llms/phi_local_dbpedia_output.json",
+        "evaluation/llms/qwen_instruct_dbpedia_output.json"
     ),
 }
 
-def precision_at_1(predictions, ground_truths, verbose=True):
+def precision_at_1(predictions, ground_truths, verbose=False):
     correct_count = 0
 
     for i, (pred, truth_list) in enumerate(zip(predictions, ground_truths)):
@@ -208,7 +214,7 @@ def save_results(results, results_data, output_dir):
     logging.info(f"Results saved to {csv_path}")
 
 
-def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse_results, explaignn_results, gpt_results, gemini_results, deepseek_results, output_dir):
+def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse_results, explaignn_results, gpt_results, gemini_results, deepseek_results, phi_results, qwen_results, output_dir):
     pred1, pred5, rankings, ground_truths = None, None, None, None
 
     results = {
@@ -313,6 +319,34 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse
             "answer": process_sparql_results(kg_endpoint, qans[0], kg_name)
         })
 
+    phi_data = None
+    with open(phi_results, "r") as f:
+        phi_data = json.load(f)
+
+    phi_qs = []
+    for qs in phi_data:
+        qans = qs.get("answers")
+        if not qs.get("answers"):
+            qans = [{}]
+        phi_qs.append({
+            "question": qs.get("question"),
+            "answer": process_sparql_results(kg_endpoint, qans[0], kg_name)
+        })
+    
+    qwen_data = None
+    with open(qwen_results, "r") as f:
+        qwen_data = json.load(f)
+
+    qwen_qs = []
+    for qs in qwen_data:
+        qans = qs.get("answers")
+        if not qs.get("answers"):
+            qans = [{}]
+        qwen_qs.append({
+            "question": qs.get("question"),
+            "answer": process_sparql_results(kg_endpoint, qans[0], kg_name)
+        })
+
 
     # Prepare evaluation inputs
     def prepare_evaluation_data(model_qs):
@@ -339,7 +373,7 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse
     # Compute results
     results = {}
     results_data = {"data":{}}
-    for model_name, model_qs in [("chattykg", chattykg_qs), ("convinse", convinse_qs), ("explaignn", explaignn_qs), ("gpt", gpt_qs), ("gemini", gemini_qs), ("deepseek", deepseek_qs)]:
+    for model_name, model_qs in [("chattykg", chattykg_qs), ("convinse", convinse_qs), ("explaignn", explaignn_qs), ("gpt", gpt_qs), ("gemini", gemini_qs), ("deepseek", deepseek_qs), ("phi", phi_qs), ("qwen", qwen_qs)]:
         gts = [gt["answer"] for gt in ground_truth_qs]
         pred1, pred5, rankings = prepare_evaluation_data(model_qs)
         p1, mrr, hit5 = compute_results_v2(pred1, pred5, rankings, gts)
@@ -355,7 +389,7 @@ if __name__ == "__main__":
 
     kg_names = ["dbpedia", "dblp", "yago"]
     # v3 with gpt-3.5 turbo for rephraser, 4 with gpt-4o
-    output_dir = "evaluation_v4"
+    output_dir = "evaluation_v7"
     for kg_name in kg_names:
-        kg_endpoint, dataset_file, ground_results, chattykg_results, convinse_results, explaignn_results, gpt_results, gemini_results, deepseek_results = kg_related_variables[kg_name]
-        evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse_results, explaignn_results, gpt_results, gemini_results, deepseek_results, output_dir)
+        kg_endpoint, dataset_file, ground_results, chattykg_results, convinse_results, explaignn_results, gpt_results, gemini_results, deepseek_results, phi_results, qwen_results = kg_related_variables[kg_name]
+        evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse_results, explaignn_results, gpt_results, gemini_results, deepseek_results, phi_results, qwen_results, output_dir)

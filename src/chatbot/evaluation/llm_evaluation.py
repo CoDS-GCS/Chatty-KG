@@ -1,4 +1,5 @@
 from langchain_openai import ChatOpenAI
+from langchain_community.llms import VLLMOpenAI
 from langchain_core.prompts.prompt import PromptTemplate
 from langchain.schema.output_parser import StrOutputParser
 from langchain_google_vertexai import ChatVertexAI
@@ -6,11 +7,12 @@ from langchain_deepseek import ChatDeepSeek
 
 import json
 import os
+import time
 
 os.environ["OPENAI_API_KEY"] = ""
 os.environ["DEEPSEEK_API_KEY"] = ""
 
-def evaluate_dialogue(dialogue, llm):
+def evaluate_dialogue(dialogue, llm, timeout):
     prompt = PromptTemplate.from_template(
 """
 You are given a dialogue consisting of multiple questions. Return the answers to each question.
@@ -38,7 +40,9 @@ Response:```json"""
 
     # Run the chain
     response = chain.invoke({"questions": dialogue})
-    print(response)
+    if timeout:
+        time.sleep(30)
+    #print(response)
     response = response.replace("```json", "").replace("```", "")
     try:
         answers_json = json.loads(response)
@@ -46,7 +50,7 @@ Response:```json"""
     except json.JSONDecodeError:
         print("LLM returned invalid JSON:")
         print(response)
-        return None
+        return {}
 
 def process_llm_output(start_id, original_questions, llm_answers):
     """
@@ -66,6 +70,8 @@ def process_llm_output(start_id, original_questions, llm_answers):
     for i, question in enumerate(original_questions):
         question_number = str(i + 1)
         llm_answer_list = llm_answers.get(question_number, [])
+        if len(llm_answer_list) == 1:
+            llm_answer_list = llm_answer_list[0].split(',')
         formatted_answer = {
             "head": {"link": [], "vars": ["variable"]},
             "results": {
@@ -105,16 +111,18 @@ def get_llm(llm_name):
         llm = ChatVertexAI(model='gemini-2.0-flash',temperature=0,max_tokens=None, do_sample= True)
     elif llm_name == 'deepseek':
         llm = ChatDeepSeek(model="deepseek-chat", temperature=0, max_retries=2)
+    elif llm_name == 'phi_local' or llm_name == 'qwen_instruct':
+        llm = VLLMOpenAI(openai_api_key="EMPTY",openai_api_base="http://localhost:5000/v1", model_name=llm_name, model_kwargs={"stop": ["```"]}, temperature=0)
     return llm
 
 if __name__ == '__main__':
     kgs = {"dbpedia": 'data/dbpedia_e11_20_5_original.json', "yago": 'data/yago_e11_20_5_original.json', "dblp": 'data/dblp_e11_20_5_original.json'}
-    llms = ['gpt', 'gemini', 'deepseek']
-
+    llms = ['gpt', 'gemini', 'deepseek', 'phi_local', 'qwen_instruct']
     for llm_name in llms:
         llm = get_llm(llm_name)
         for kg in kgs:
             file_name = kgs[kg]
+            print(f"Start {llm_name} {kg}")
             output_file = f"llms/{llm_name}_{kg}_output.json"
             output_data = []
 
@@ -130,7 +138,7 @@ if __name__ == '__main__':
                 for index, q in enumerate(original_questions):
                     dialogue_str += f"{index+1}) {q}\n"
 
-                llm_answers = evaluate_dialogue(dialogue_str, llm)
+                llm_answers = evaluate_dialogue(dialogue_str, llm, llm_name=='gemini')
                 processed_output = process_llm_output(id, original_questions, llm_answers)
                 output_data.extend(processed_output)
 
@@ -138,5 +146,6 @@ if __name__ == '__main__':
                 id += len(original_questions)
 
             write_json_file(output_data, output_file)
+            print(f"End {llm_name} {kg}")
 
 

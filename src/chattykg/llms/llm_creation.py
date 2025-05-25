@@ -13,18 +13,16 @@ from vertexai import init
 # deepseek -> deepseek-chat, deepseek-reasoner
 # vllm -> llama3.1_local, qwen2.5_local, phi_local, llama3.1_instruct_local, mistral_local, codellama_local, deepseek_qwen
 
-# vllm -> llama3.1_local, qwen2.5_local, phi_local, llama3.1_instruct_local, mistral_local, codellama_local
-
-llm_type = "google" # Choose From (openai, vllm, google, deepseek)
-model_name = "gemini-2.0-flash"
-
+llm_type = "openai" # Choose From (openai, vllm, google, deepseek)
+model_name = "gpt-4o"
 os.environ["DEEPSEEK_API_KEY"] = ""
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = ""
 
 model_to_token_length = {'gpt-3.5-turbo': 16000, 'llama3.1': 2048, "llama3_local": 8192, "llama3.1_local": 8192,
                          'deepseek-chat': 16000, 'gemini-1.5-flash': 16000, "qwen2.5_local": 34000, 'phi_local': 16000,
                          'codellama_local': 11000, 'mistral_local': 32000, 'deepseek_qwen': 34000, 'qwen_instruct': 19000,
-                         'vicuna': 4096, 'granite8b_instruct': 120000, 'mistral_nemo': 73000}
+                         'vicuna': 4096, 'granite8b_instruct': 120000, 'mistral_nemo': 73000, "gemma2_instruct": 8192,
+                         'gemma3_instruct': 120000, 'gemma3_local': 120000, 'gemma2_local': 8192}
 
 
 # TODO Update to create one llm for all pipeline instead of creating a new llm object each request for better memory utlilization
