@@ -1,7 +1,7 @@
 from chatbot.prompts import CLASSIFY_QUESTION_PROMPT_2, CONDENSE_QUESTION_PROMPT_CUSTOM
 from chattykg.question import Question
-import State
-import utils
+from .State import State
+from . import utils
 import json
 from langchain_core.messages import AIMessage, HumanMessage
 from chattykg.logger import logger
@@ -10,6 +10,7 @@ from chattykg.linking.llm_linking_v2 import vertex_linking
 from chattykg.vertex import Vertex
 from chattykg.filtration.llm_filtrationv2 import choose_question_from_keywords
 import SPARQLBurger.SPARQLQueryBuilder as SparqlQB
+
 
 
 
@@ -81,7 +82,7 @@ def perform_linking(state: State):
         # chosen_uri = [uris[chosen_vertex_index]]
         state.get_json_logger().set("Linking_vertex", chosen_uri)
         updated_vertex = Vertex(
-            state.get_n_max_Vs(), chosen_uri, chosen_label, state.get_sparql_end_point, state.get_n_limit_EQuery()
+            state.get_n_max_Vs(), chosen_uri, chosen_label, state.get_sparql_end_point(), state.get_n_limit_EQuery()
         )
         URIs_chosen = updated_vertex.get_vertex_uris()
         # URIs_chosen = remove_duplicates(URIs_sorted)[:self.n_max_Vs]
@@ -202,12 +203,14 @@ def evaluate_star_queries_predicate_based(state: State):
         sparqls_triples.append(possible_answer.triples)
     if len(sparqls) == 0:
         return
-    queries_indices = choose_question_from_keywords(state.get_question_text(), sparqls, sparqls_triples, state.get_json_logger)
+    queries_indices = choose_question_from_keywords(state.get_question_text(), sparqls, sparqls_triples, state.get_json_logger())
     # self.query_selection_end = time.time()
     # self.num_queries_executed = len(queries_indices)
     for index in queries_indices:
         try:
             sparql_query = sparqls[index]
+            #TODO: Orogat: Add the Query to the state object
+            print(f"SPARQL Query: {sparql_query}")
             result = state.get_sparql_end_point().evaluate_SPARQL_query(sparql_query)
             v_result = json.loads(result)
             if "results" in v_result:

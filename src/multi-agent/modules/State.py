@@ -9,6 +9,30 @@ from chattykg.chattykg import knowledge_graph_to_uri
 from chattykg.json_logger import JsonLogger
 from chattykg.sparql_end_points.EndPoint import EndPoint
 from chattykg.sparql_end_points.XML_EndPoint import XML_EndPoint
+from dotenv import load_dotenv
+from pathlib import Path
+import os
+from dotenv import load_dotenv, find_dotenv
+import os
+from llm_config.llm_setup import get_llm
+
+# from pathlib import Path
+
+# def get_openai_key():
+#     current_path = Path(__file__).resolve()
+
+#     for parent in [current_path] + list(current_path.parents):
+#         env_path = parent / ".env"
+#         if env_path.exists():
+#             with env_path.open("r") as f:
+#                 for line in f:
+#                     if line.strip().startswith("OPENAI_API_KEY="):
+#                         return line.strip().split("=", 1)[1].strip().strip('"').strip("'")
+
+#     raise ValueError("OPENAI_API_KEY not found in any .env file up the directory tree.")
+
+
+
 
 
 class InMemoryHistory(BaseChatMessageHistory, BaseModel):
@@ -26,32 +50,36 @@ class InMemoryHistory(BaseChatMessageHistory, BaseModel):
 
 class State:
     def __init__(self, knowledge_graph, n_limit_VQuery, n_max_Vs, n_limit_EQuery, n_max_Es, n_max_answers, filtration_enabled):
-        self.string_output_parser = StrOutputParser()
-        self.chatbot_llm = ChatOpenAI(model="gpt-4o", temperature=0.5)
-        self.store = {}
 
+        self.string_output_parser = StrOutputParser()
+        self.chatbot_llm = get_llm(model_name="gpt-4o")
+
+        self.store = {}
         self.json_logger = JsonLogger()
-        # (Question Object not the question text)
-        self.question = None
-        self.target_variable = None
+        
+        # Initialize all attributes before using them
+        self.filtration_enabled = filtration_enabled
         self.knowledge_graph = knowledge_graph
-        self.sparql_end_point = self.set_up_sparql_endpoint(knowledge_graph)
         self.n_max_Vs = n_max_Vs
         self.n_max_Es = n_max_Es
         self.n_limit_VQuery = n_limit_VQuery
         self.n_limit_EQuery = n_limit_EQuery
         self.n_max_answers = n_max_answers
-        self.filteration_enabled = filtration_enabled
+        
+        # Initialize objects that depend on other attributes
+        self.question = None
+        self.target_variable = None
+        self.sparql_end_point = self.set_up_sparql_endpoint(knowledge_graph)
 
 
     def set_up_sparql_endpoint(self, knowledge_graph):
         if knowledge_graph in ["open_citations"]:
             sparql_end_point = XML_EndPoint(
-                knowledge_graph, knowledge_graph_to_uri[knowledge_graph], self.filteration_enabled
+                knowledge_graph, knowledge_graph_to_uri[knowledge_graph], self.filtration_enabled
             )
         else:
             sparql_end_point = EndPoint(
-                knowledge_graph, knowledge_graph_to_uri[knowledge_graph], self.filteration_enabled
+                knowledge_graph, knowledge_graph_to_uri[knowledge_graph], self.filtration_enabled
             )
         return sparql_end_point
 

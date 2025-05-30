@@ -21,6 +21,7 @@ Navigate to your project folder and activate the virtual environment:
 ```bash
 cd ~/CHATTY-KG
 source agentEnv/bin/activate
+source ~/Chatty-KG-Project/agentEnv/bin/activate # for ne folder structure
 ```
 
 git
@@ -56,6 +57,14 @@ If you've updated `requirements.txt`, reinstall packages:
 ```bash
 pip install -r requirements.txt
 ```
+
+
+## Run the BERT server
+```bash
+cd word_embedding
+python server.py
+```
+
 
 ## 5. Run the code
 ```bash
