@@ -5,7 +5,8 @@ from langchain_openai import ChatOpenAI
 from langchain_google_vertexai import ChatVertexAI
 from vertexai import init
 #from langchain_ollama import ChatOllama
-
+from pathlib import Path
+from langchain_openai import ChatOpenAI
 
 # Possible Selections
 # openai, -> gpt-3.5-turbo, gpt-4, gpt-4-turbo, gpt-4o
@@ -16,7 +17,31 @@ from vertexai import init
 llm_type = "openai" # Choose From (openai, vllm, google, deepseek)
 model_name = "gpt-4o"
 os.environ["DEEPSEEK_API_KEY"] = ""
-os.environ["OPENAI_API_KEY"] = ""
+# os.environ["OPENAI_API_KEY"] = ""
+
+
+# Singleton variables
+_openai_key = None
+_llm = None
+
+def get_openai_key():
+    global _openai_key
+    if _openai_key is None:
+        current_path = Path(__file__).resolve()
+
+        for parent in [current_path] + list(current_path.parents):
+            env_path = parent / ".env"
+            if env_path.exists():
+                with env_path.open("r") as f:
+                    for line in f:
+                        if line.strip().startswith("OPENAI_API_KEY="):
+                            _openai_key = line.strip().split("=", 1)[1].strip().strip('"').strip("'")
+                            return _openai_key
+
+        raise ValueError("OPENAI_API_KEY not found in any .env file up the directory tree.")
+    return _openai_key
+
+
 
 model_to_token_length = {'gpt-3.5-turbo': 16000, 'llama3.1': 2048, "llama3_local": 8192, "llama3.1_local": 8192,
                          'deepseek-chat': 16000, 'gemini-1.5-flash': 16000, "qwen2.5_local": 34000, 'phi_local': 16000,
@@ -46,7 +71,7 @@ def get_vllm_llm():
     return llm
 
 def get_openAI_llm():
-    llm = ChatOpenAI(model=model_name, temperature=0)
+    llm = ChatOpenAI(model=model_name, temperature=0, openai_api_key=get_openai_key())
     return llm
 
 def get_google_llm():

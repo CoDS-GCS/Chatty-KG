@@ -1,8 +1,8 @@
 from langgraph.graph import StateGraph, END
-from agents.chat_agent import chat_agent
-from agents.qir_agent import qir_agent
-from agents.ambiguity_resolver import ambiguity_resolver_agent
-from agents.query_agent import query_agent
+from multi_agent.agents.chat_agent import chat_agent
+from multi_agent.agents.qir_agent import qir_agent
+from multi_agent.agents.ambiguity_resolver import ambiguity_resolver_agent
+from multi_agent.agents.query_agent import query_agent
 from shared.state import AgentState
 
 # -------------------------

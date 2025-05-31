@@ -203,6 +203,10 @@ class Question:
         for node in self.query_graph.nodes():
             if node == node_label:
                 return node
+            
+    # Print the Question object formatted aj
+    def __str__(self):
+        return f"Question(text={self._question_text},\n id={self._id},\n answer_type={self._answer_type},\n answer_datatype={self._answer_datatype},\n parse_components={self._parse_components},\n possible_answers={self._possible_answers},\n triple_list={self.triple_list})"
 
 
 class Answer:

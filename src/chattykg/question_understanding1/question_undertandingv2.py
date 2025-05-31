@@ -5,8 +5,9 @@ import traceback
 
 from langchain_core.prompts.prompt import PromptTemplate
 
-from chattykg.llms.llm_creation import get_llm, llm_type
+from chattykg.llms.llm_creation import llm_type
 from chattykg.llms.prompts import question_understanding_template_v3_cot
+from llm_config.llm_setup import get_llm
 
 def remove_duplicate_triples(input):
     triples = input["triples"]
@@ -125,7 +126,7 @@ def get_understanding(question, json_logger):
         input_variables=["question"],
         template=template,
     )
-    llm = get_llm()
+    llm = get_llm(model_name="gpt-4o")
     final_prompt = prompt.format(question=question)
     # print(final_prompt)
     chain = prompt | llm

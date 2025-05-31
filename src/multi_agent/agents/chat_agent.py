@@ -1,9 +1,11 @@
 import json
 from langchain.schema import SystemMessage, HumanMessage
 from shared.state import AgentState
-from agents.qir_agent import qir_agent
-from agents.query_agent import query_agent
+from multi_agent.agents.qir_agent import qir_agent
+from multi_agent.agents.query_agent import query_agent
 from langgraph.graph import END
+
+
 
 
 def chat_agent(state: AgentState) -> AgentState:

@@ -3,6 +3,21 @@ from typing import List, Tuple, Dict
 from langchain.schema import SystemMessage, HumanMessage
 from shared.state import AgentState
 import re
+import sys
+import os
+
+# Add the src directory to Python path
+src_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+sys.path.insert(0, src_dir)
+
+from ..modules.modules import (
+    classify_question,
+    get_qir_from_question,
+    rephrase_question,
+    perform_linking,
+    query_selection_execution
+)
+from ..modules.State import State
 
 def qir_agent(state: AgentState) -> AgentState:
     print("\n🔍 QIR Agent:")
