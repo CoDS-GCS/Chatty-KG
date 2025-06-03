@@ -21,11 +21,13 @@ Navigate to your project folder and activate the virtual environment:
 ```bash
 cd ~/CHATTY-KG
 source agentEnv/bin/activate
-source ~/Chatty-KG-Project/agentEnv/bin/activate # for ne folder structure
+source ~/Chatty-KG/agentEnv/bin/activate # for ne folder structure
 ```
-
+```bash
 git
 token: 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
+```
+
 
 ---
 
@@ -68,5 +70,6 @@ python server.py
 
 ## 5. Run the code
 ```bash
-python3 agent_test.py
+python -m multi_agent.main
+python -m multi_agent.modules.test_modules
 ```

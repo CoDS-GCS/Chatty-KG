@@ -1,4 +1,4 @@
-from shared.state import AgentState
+from multi_agent.shared.state import AgentState
 from multi_agent.utils.graph_builder import build_langgraph
 import pprint
 
@@ -9,6 +9,7 @@ if __name__ == "__main__":
 
     chat_history = []
 
+    question_id = 1
     while True:
         user_input = input("\nYou: ").strip()
         if user_input.lower() == "exit":
@@ -17,6 +18,8 @@ if __name__ == "__main__":
 
         # Create a clean state for this turn
         state = AgentState(
+            session_id="12345",
+            question_id=question_id,
             question=user_input,
             chat_history=chat_history.copy(),
             query_done=False,
@@ -25,10 +28,12 @@ if __name__ == "__main__":
             route="chat_agent",
             sparql_query=None,
             query_result=None,
-            qir=None,
             resolved_question=None,
-            ambiguity_resolver_done=False
+            ambiguity_resolver_done=False,
+            query_graph=None
         )
+
+        question_id += 1
 
         # Run the graph and extract final state
         graph = build_langgraph()

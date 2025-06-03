@@ -96,7 +96,7 @@ def clean_predicate(predicate):
 
     if is_camel_case(predicate):
         predicate = camel_to_normal(predicate)
-        print("Fixed Predicate: " + predicate)
+        # print("Fixed Predicate: " + predicate)
     return predicate
 
 def prepare_output_list(llm_output):
@@ -157,8 +157,8 @@ def get_understanding(question, json_logger):
             json_logger.set("Understanding", output)
         if metadata is not None:
             json_logger.add_cost("Understanding" ,metadata)
-    print("Understanding OUTPUT======")
-    print(output)
+    # print("Understanding OUTPUT======")
+    # print(output)
 
     return prepare_output_list(output)
 

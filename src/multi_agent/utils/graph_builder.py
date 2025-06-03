@@ -3,7 +3,7 @@ from multi_agent.agents.chat_agent import chat_agent
 from multi_agent.agents.qir_agent import qir_agent
 from multi_agent.agents.ambiguity_resolver import ambiguity_resolver_agent
 from multi_agent.agents.query_agent import query_agent
-from shared.state import AgentState
+from multi_agent.shared.state import AgentState
 
 # -------------------------
 # Build LangGraph

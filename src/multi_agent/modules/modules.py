@@ -209,14 +209,17 @@ def evaluate_star_queries_predicate_based(state: State):
     for index in queries_indices:
         try:
             sparql_query = sparqls[index]
+            state.append_sparql_query(sparql_query)
             #TODO: Orogat: Add the Query to the state object
             print(f"SPARQL Query: {sparql_query}")
             result = state.get_sparql_end_point().evaluate_SPARQL_query(sparql_query)
             v_result = json.loads(result)
             if "results" in v_result:
                 v_result = utils.postprocess_answer_if_needed(v_result, state.get_target_variable())
+                results=v_result["results"]
+                vars=v_result["head"]["vars"]
                 state.get_answers_at_index(index).update(
-                    results=v_result["results"], vars=v_result["head"]["vars"]
+                    results=results, vars=vars
                 )
                 # self.question.possible_answers[index].update(
                 #     results=v_result["results"], vars=v_result["head"]["vars"]

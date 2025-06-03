@@ -70,6 +70,7 @@ class State:
         self.question = None
         self.target_variable = None
         self.sparql_end_point = self.set_up_sparql_endpoint(knowledge_graph)
+        self.sparql_query = []
 
 
     def set_up_sparql_endpoint(self, knowledge_graph):
@@ -113,6 +114,9 @@ class State:
     def get_query_graph(self):
         return self.question.query_graph
 
+    def set_query_graph(self, query_graph):
+        self.question.query_graph = query_graph
+
     def get_knowledge_graph(self):
         return self.knowledge_graph
 
@@ -140,11 +144,27 @@ class State:
     def get_answers(self):
         return self.question.possible_answers[: self.n_max_answers]
 
+
+    def get_answer_values(self):
+        answer_values = [answer.json() for answer in self.question.possible_answers[: self.n_max_answers]]
+        all_bindings = []
+        for answer in answer_values:
+            if answer['results'] and answer['results']['bindings']:
+                all_bindings.extend(answer['results']['bindings'])
+
+        return all_bindings
+
     def get_answers_at_index(self, index):
         return self.question.possible_answers[index]
 
     def get_answer_datatype(self):
         return self.question.answer_datatype
+
+    def get_sparql_query(self):
+        return self.sparql_query
+
+    def append_sparql_query(self, sparql_query):
+        self.sparql_query.append(sparql_query)
 
     #  Adding this to not break the code, but it looks like that we only use the boolean datatype in our current version of the system.
     def detect_question_and_answer_type(self):

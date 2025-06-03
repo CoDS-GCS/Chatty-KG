@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 from typing import Optional, Dict, Any, List
+import networkx as nx
 
 
 # -------------------------
@@ -8,6 +9,8 @@ from typing import Optional, Dict, Any, List
 @dataclass
 class AgentState:
     question: str
+    session_id: str = "12345"
+    question_id: str = "1"
     chat_history: List[Dict[str, str]] = field(default_factory=list)
     resolved_question: Optional[str] = None
     sparql_query: Optional[str] = None
@@ -16,5 +19,5 @@ class AgentState:
     qir_done: bool = False
     has_been_resolved: bool = False
     query_done: bool = False
-    qir: Optional[Dict[str, Any]] = None
     route: Optional[str] = "chat_agent"
+    query_graph: Optional[nx.MultiGraph] = field(default_factory=nx.MultiGraph)
