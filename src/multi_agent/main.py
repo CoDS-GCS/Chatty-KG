@@ -1,6 +1,11 @@
 from multi_agent.shared.state import AgentState
 from multi_agent.utils.graph_builder import build_langgraph
 import pprint
+from multi_agent.modules.State import State
+
+
+
+
 
 
 if __name__ == "__main__":
@@ -16,12 +21,23 @@ if __name__ == "__main__":
             print("Goodbye!")
             break
 
+        kg_graph_state = State(
+            knowledge_graph="dbpedia",  # Using dbpedia as it's a valid knowledge graph
+            n_limit_VQuery=600,
+            n_max_Vs=1,
+            n_limit_EQuery=25,
+            n_max_Es=21,
+            n_max_answers=41,
+            filtration_enabled=True
+        )
+
         # Create a clean state for this turn
         state = AgentState(
             session_id="12345",
             question_id=question_id,
             question=user_input,
             chat_history=chat_history.copy(),
+            kg_graph_state=kg_graph_state,
             query_done=False,
             qir_done=False,
             has_been_resolved=False,

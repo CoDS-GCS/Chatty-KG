@@ -17,23 +17,8 @@ def accept_wrapper(sock):
 
 
 def main():
-#    args_parser = argparse.ArgumentParser()
-#    args_parser.add_argument(
-#        "--data_dir",
-#        help='data directory path',
-#        required=True,
-#    )
-#    args_parser.add_argument(
-#        "--word_embed_file",
-#        help='wiki embeddings filename inside data_dir path',
-#        required=True,
-#    )
-#
-#    args = args_parser.parse_args()
-    # wiki_word_embed_path = os.path.join(args.data_dir, args.word_embed_file)
-    wiki_word_embed_path = os.path.join("data", "wiki-news-300d-1M.txt")
-    print(wiki_word_embed_path)
-    wiki_model_from_path(wiki_word_embed_path)
+    # Initialize the model with BERT embeddings
+    wiki_model_from_path(None)  # Pass None to use BERT embeddings
 
     # host, port = sys.argv[1], int(sys.argv[2])
     host, port = "0.0.0.0", 9600
@@ -70,5 +55,5 @@ def main():
 
 
 if __name__ == "__main__":
-    print("in main word embedding....")
+    print("Starting word embedding server with BERT embeddings...")
     main()

@@ -21,26 +21,15 @@ from ..modules.modules import (
 from ..modules.State import State
 
 
-#Todo: Orogat: How to make state a global variable between all files?
-state_global = State(
-            knowledge_graph="dbpedia",  # Using dbpedia as it's a valid knowledge graph
-            n_limit_VQuery=600,
-            n_max_Vs=1,
-            n_limit_EQuery=25,
-            n_max_Es=21,
-            n_max_answers=41,
-            filtration_enabled=True
-        )
-
-def is_question_self_contained(question: str) -> bool:
-    result = classify_question(question, state_global).lower().strip()
+def is_question_self_contained(question: str, kg_graph_state: State) -> bool:
+    result = classify_question(question, kg_graph_state).lower().strip()
     return result == "self-contained"
 
 def qir_agent(state: AgentState) -> AgentState:
     print("\n🔍 QIR Agent:")
     question = state.question
 
-    if  not state.ambiguity_resolver_done and not is_question_self_contained(question) and len(state.chat_history) > 0:
+    if  not state.ambiguity_resolver_done and not is_question_self_contained(question, state.kg_graph_state) and len(state.chat_history) > 0:
         print(" - Processing question:", question)
         print(" - Question is not self-contained. Routing to Ambiguity Resolver...")
         state.route = "ambiguity_resolver_agent"
@@ -58,7 +47,7 @@ def qir_agent(state: AgentState) -> AgentState:
         # TODO: This should be the QIR code
         session_id = state.session_id
         # First add some chat history
-        chat_history = state_global.get_by_session_id(state.session_id)
+        chat_history = state.kg_graph_state.get_by_session_id(state.session_id)
         for message in state.chat_history:
             if message["role"] == "user":
                 chat_history.add_messages([
@@ -73,9 +62,9 @@ def qir_agent(state: AgentState) -> AgentState:
         # Test with a follow-up question
         question = state.resolved_question
         question_id = state.question_id
-        result = get_qir_from_question(question, question_id, state_global)
+        result = get_qir_from_question(question, question_id, state.kg_graph_state)
     
-        query_graph = state_global.get_query_graph()
+        query_graph = state.kg_graph_state.get_query_graph()
         state.query_graph = query_graph
         print(f" - Query graph: {state.query_graph}")
 

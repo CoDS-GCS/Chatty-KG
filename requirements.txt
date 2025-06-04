@@ -20,3 +20,11 @@ langchain_community
 langchain-openai
 langchain_deepseek
 langchain_google_vertexai
+# Multi-agents libraries
+langchain-ollama>=0.0.1
+ollama>=0.1.6
+python-dotenv>=1.0.0
+openai  # required by langchain for some default models/tools
+tiktoken  # useful for token counting with LLMs
+faiss-cpu
+langgraph>=0.0.15

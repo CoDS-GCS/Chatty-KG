@@ -9,17 +9,22 @@ import torch
 
 
 class WordEmbeddings:
-    def __init__(self, model_path):
+    def __init__(self, model_path=None):
         self.model_path = model_path
         self.w = None
         self.vocab = None
         self.ivocab = None
-        self.vector_feature_size = 0
+        self.vector_feature_size = 300  # BERT embeddings are 768, but we'll use first 300 dimensions
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
         self.model = BertModel.from_pretrained('bert-base-uncased')
+        if model_path and os.path.exists(model_path):
+            self.load_model()
 
     def load_model(self):
-        self.w, self.vocab, self.ivocab = self.load_vocab()
+        if self.model_path and os.path.exists(self.model_path):
+            self.w, self.vocab, self.ivocab = self.load_vocab()
+        else:
+            print("Using BERT embeddings as fallback")
 
     def load_vocab(self):
         with open(self.model_path, "r", encoding='utf8') as f:
@@ -58,12 +63,10 @@ class WordEmbeddings:
         return sim
 
     def get_embedding_for_word(self, word):
-        # print("vocab", )
-        # print(len(vocab))
-        if word in self.vocab:
-            return self.w[self.vocab[word], :]
-        else:
-            return None
+        # Try to get BERT embedding first
+        vec = self.get_bert_embedding(word)[:300]
+        vec = vec.astype(float)
+        return vec
 
     def mwe_semantic_distance(self, vs1, vs2):
         cmp_count = 0
@@ -71,17 +74,12 @@ class WordEmbeddings:
         for v1 in vs1:
             for v2 in vs2:
                 cmp_count += 1
-                if v1 is None:
-                    # TODO: use minimum edit distance
-                    sims.append(0.0)
-                    continue
-                if v2 is None:
+                if v1 is None or v2 is None:
                     sims.append(0.0)
                     continue
                 sim = np.dot(v1, v2.T) / (np.linalg.norm(v1) * np.linalg.norm(v2))
                 sims.append(sim)
-        else:
-            return statistics.mean(sims)
+        return statistics.mean(sims)
 
     def get_embedding_for_mwe(self, mwe):
         mwe = mwe.translate(str.maketrans("", "", string.punctuation))
@@ -89,14 +87,10 @@ class WordEmbeddings:
         mwe_vecs = list()
 
         for w in words:
-            if w in self.vocab:
-                mwe_vecs.append(self.w[self.vocab[w], :])
-            else:
-                vec = self.get_bert_embedding(w)[:300]
-                vec.astype(float)
-                mwe_vecs.append(vec)
-        else:
-            return mwe_vecs
+            vec = self.get_bert_embedding(w)[:300]
+            vec = vec.astype(float)
+            mwe_vecs.append(vec)
+        return mwe_vecs
 
     def get_bert_embedding(self, text):
         # Tokenize the input text and convert to input IDs
@@ -116,20 +110,15 @@ class WordEmbeddings:
 
 
 if __name__ == "__main__":
-    # get_embedding_for_mwe: Gets embeddings of words
-    # mwe_semantic_distance: Gets semantic similarity between two vectors
-    wiki_word_embed_path = os.path.join("data", "wiki-news-300d-1M.txt")
-    wiki_model = WordEmbeddings(
-        wiki_word_embed_path
-    )
-    wiki_model.load_model()
-    print("Done loading")
+    # Test the embeddings
+    model = WordEmbeddings()
+    print("Testing BERT embeddings...")
     print(
-        "ss: "
+        "Similarity between 'wife' and 'spouse': "
         + str(
-            wiki_model.mwe_semantic_distance(
-                wiki_model.get_embedding_for_mwe('wife'),
-                wiki_model.get_embedding_for_mwe('spouse'),
-            )
+            model.mwe_semantic_distance(
+                model.get_embedding_for_mwe('wife'),
+                model.get_embedding_for_mwe('spouse'),
             )
         )
+    )

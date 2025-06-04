@@ -17,7 +17,17 @@ def request_semantic_affinity(word_1, word_2):
 
 def wiki_model_from_path(model_path):
     global wiki_model
-    if os.path.exists(model_path):
+    if model_path is None:
+        print("Using BERT embeddings")
+        wiki_model = WordEmbeddings()
+        wiki_model.load_model()
+        print("Done loading BERT model")
+        print("Testing word-embedding functionality")
+        score = request_semantic_affinity("world", "globe")
+        print(f"Similarity between 'world' and 'globe': {score}")
+        score = request_semantic_affinity("albania", "albania")
+        print(f"Similarity between 'albania' and 'albania': {score}")
+    elif os.path.exists(model_path):
         print(f"Model loading from {model_path}")
         wiki_model = WordEmbeddings(model_path)
         wiki_model.load_model()

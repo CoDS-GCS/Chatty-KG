@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Optional, Dict, Any, List
 import networkx as nx
-
+from multi_agent.modules.State import State
 
 # -------------------------
 # Agent State Definition
@@ -15,6 +15,7 @@ class AgentState:
     resolved_question: Optional[str] = None
     sparql_query: Optional[str] = None
     query_result: Optional[str] = None
+    kg_graph_state: Optional[State] = None
     ambiguity_resolver_done: bool = False
     qir_done: bool = False
     has_been_resolved: bool = False
