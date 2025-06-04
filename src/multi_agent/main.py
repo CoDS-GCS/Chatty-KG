@@ -46,7 +46,8 @@ if __name__ == "__main__":
             query_result=None,
             resolved_question=None,
             ambiguity_resolver_done=False,
-            query_graph=None
+            query_graph=None,
+            matching_done=False
         )
 
         question_id += 1

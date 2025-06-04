@@ -11,11 +11,7 @@ src_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 sys.path.insert(0, src_dir)
 
 from ..modules.modules import (
-    classify_question,
-    get_qir_from_question,
-    rephrase_question,
-    perform_linking,
-    query_selection_execution
+    rephrase_question
 )
 
 

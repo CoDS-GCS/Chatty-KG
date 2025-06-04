@@ -20,5 +20,6 @@ class AgentState:
     qir_done: bool = False
     has_been_resolved: bool = False
     query_done: bool = False
+    matching_done: bool = False
     route: Optional[str] = "chat_agent"
     query_graph: Optional[nx.MultiGraph] = field(default_factory=nx.MultiGraph)
