@@ -12,11 +12,13 @@ class AgentState:
     session_id: str = "12345"
     question_id: str = "1"
     chat_history: List[Dict[str, str]] = field(default_factory=list)
+    system_mode: str = "Dialogue"
     resolved_question: Optional[str] = None
     sparql_query: Optional[str] = None
     query_result: Optional[str] = None
     kg_graph_state: Optional[State] = None
     ambiguity_resolver_done: bool = False
+    ambiguity_resolver_tries: int = 0
     qir_done: bool = False
     has_been_resolved: bool = False
     query_done: bool = False

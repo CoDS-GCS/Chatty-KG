@@ -18,9 +18,14 @@ from ..modules.modules import (
 
 def ambiguity_resolver_agent(state: AgentState) -> AgentState:
     print("\n🧩 Ambiguity Resolver Agent:")
-    print(" - Resolving:", state.question)
+    
 
-    resolved = state.question
+    if state.ambiguity_resolver_tries > 1:
+        resolved = state.resolved_question
+    else:
+        resolved = state.question
+
+    print(" - Resolving:", resolved)
 
     # First add some chat history
     chat_history = state.kg_graph_state.get_by_session_id(state.session_id)

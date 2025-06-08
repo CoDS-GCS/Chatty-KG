@@ -37,6 +37,7 @@ if __name__ == "__main__":
             question_id=question_id,
             question=user_input,
             chat_history=chat_history.copy(),
+            system_mode = "Dialogue", # Use 'Dialogue' to activate the Resolver Ambiguity Agent; any other value to deactivate it.
             kg_graph_state=kg_graph_state,
             query_done=False,
             qir_done=False,
@@ -47,7 +48,8 @@ if __name__ == "__main__":
             resolved_question=None,
             ambiguity_resolver_done=False,
             query_graph=None,
-            matching_done=False
+            matching_done=False,
+            ambiguity_resolver_tries=0
         )
 
         question_id += 1
