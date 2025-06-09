@@ -10,7 +10,7 @@ from chattykg.linking.llm_linking_v2 import vertex_linking
 from chattykg.vertex import Vertex
 from chattykg.filtration.llm_filtrationv2 import choose_question_from_keywords
 import SPARQLBurger.SPARQLQueryBuilder as SparqlQB
-
+import time
 
 
 
@@ -38,15 +38,19 @@ def rephrase_question(session_id, question, state: State):
 # Input is question and question id.
 #  Output is an object of type Question (chattykg.question)
 def get_qir_from_question(question, question_id, state: State):
+    understanding_start = time.time()
     current_question = Question(
         question_text=question, question_id=question_id, logger=logger, json_logger=state.get_json_logger()
     )
+    understanding_end = time.time()
     state.set_question(current_question)
     state.detect_question_and_answer_type()
+    state.set_understanding_time(understanding_end - understanding_start)
     return current_question
 
 
 def perform_linking(state: State):
+    linking_start = time.time()
     query_graph = state.get_query_graph()
     for entity in query_graph:
         if utils.is_variable(entity):
@@ -132,11 +136,17 @@ def perform_linking(state: State):
         logger.log_info(
             f"[GRAPH EDGES WITH URIs:] {query_graph.edges(data=True)}"
         )
+    linking_end = time.time()
+    state.set_linking_time(linking_end - linking_start)
 
 
 def query_selection_execution(state: State):
+    execution_start = time.time()
+    query_selection_start = time.time()
     generate_queries_new(state)
-    evaluate_star_queries_predicate_based(state)
+    evaluate_star_queries_predicate_based(state, query_selection_start)
+    execution_end = time.time()
+    state.set_execution_time(execution_end - execution_start)
 
 
 # Updates chat history after answering the question
@@ -192,7 +202,7 @@ def generate_queries_new(state: State):
         #     triples=triples
         #     )
 
-def evaluate_star_queries_predicate_based(state: State):
+def evaluate_star_queries_predicate_based(state: State, query_selection_start):
     sparqls = list()
     sparqls_triples = list()
     for i, possible_answer in enumerate(
@@ -204,8 +214,10 @@ def evaluate_star_queries_predicate_based(state: State):
     if len(sparqls) == 0:
         return
     queries_indices = choose_question_from_keywords(state.get_question_text(), sparqls, sparqls_triples, state.get_json_logger())
-    # self.query_selection_end = time.time()
-    # self.num_queries_executed = len(queries_indices)
+    query_selection_end = time.time()
+    num_queries_executed = len(queries_indices)
+    state.set_query_selection_time(query_selection_end - query_selection_start)
+    state.set_num_executed_queries(num_queries_executed)
     for index in queries_indices:
         try:
             sparql_query = sparqls[index]

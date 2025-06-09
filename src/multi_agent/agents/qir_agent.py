@@ -26,8 +26,7 @@ def qir_agent(state: AgentState) -> AgentState:
     print("\n🔍 QIR Agent:")
     question = state.question
 
-
-    if state.system_mode.lower() == "dialogue" and not is_question_self_contained(question, state.kg_graph_state) and len(state.chat_history) > 0 and state.ambiguity_resolver_tries<3:
+    if state.system_mode.lower() == "dialogue" and not is_question_self_contained(question, state.kg_graph_state) and len(state.kg_graph_state.get_chat_history(state.session_id).messages) > 0 > 0 and state.ambiguity_resolver_tries<3:
         state.ambiguity_resolver_tries += 1
         print(f" - Question is not self-contained. Routing (try {state.ambiguity_resolver_tries}/3) to Ambiguity Resolver...")
         state.route = "ambiguity_resolver_agent"
@@ -39,21 +38,22 @@ def qir_agent(state: AgentState) -> AgentState:
         else:
             print(" - Question is self-contained.")
             state.resolved_question = question
-
-        session_id = state.session_id
-        # First add some chat history
-        chat_history = state.kg_graph_state.get_by_session_id(state.session_id)
-        for message in state.chat_history:
-            if message["role"] == "user":
-                chat_history.add_messages([
-                    HumanMessage(content=message["content"])
-                ])
-            else:
-                chat_history.add_messages([
-                    AIMessage(content=message["content"])
-                ])
         
-        
+        # # TODO: This should be the QIR code
+        # session_id = state.session_id
+        # # First add some chat history
+        # chat_history = state.kg_graph_state.get_by_session_id(state.session_id)
+        # for message in state.chat_history:
+        #     if message["role"] == "user":
+        #         chat_history.add_messages([
+        #             HumanMessage(content=message["content"])
+        #         ])
+        #     else:
+        #         chat_history.add_messages([
+        #             AIMessage(content=message["content"])
+        #         ])
+        #
+        #
         # Test with a follow-up question
         question = state.resolved_question
         question_id = state.question_id

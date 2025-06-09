@@ -65,7 +65,12 @@ class State:
         self.n_limit_VQuery = n_limit_VQuery
         self.n_limit_EQuery = n_limit_EQuery
         self.n_max_answers = n_max_answers
-        
+        self.understanding_time = 0
+        self.linking_time = 0
+        self.execution_time = 0
+        self.query_selection_time = 0
+        self.num_executed_queries = 0
+
         # Initialize objects that depend on other attributes
         self.question = None
         self.target_variable = None
@@ -117,6 +122,21 @@ class State:
     def set_query_graph(self, query_graph):
         self.question.query_graph = query_graph
 
+    def set_understanding_time(self, understanding_time):
+        self.understanding_time = understanding_time
+
+    def set_linking_time(self, linking_time):
+        self.linking_time = linking_time
+
+    def set_execution_time(self, execution_time):
+        self.execution_time = execution_time
+
+    def set_query_selection_time(self, query_selection_time):
+        self.query_selection_time = query_selection_time
+
+    def set_num_executed_queries(self, num_executed_queries):
+        self.num_executed_queries = num_executed_queries
+
     def get_knowledge_graph(self):
         return self.knowledge_graph
 
@@ -144,6 +164,21 @@ class State:
     def get_answers(self):
         return self.question.possible_answers[: self.n_max_answers]
 
+    def get_understanding_time(self):
+        return self.understanding_time
+
+    def get_linking_time(self):
+        return self.linking_time
+
+    def get_execution_time(self):
+        return self.execution_time
+
+    def get_query_selection_time(self):
+        return self.query_selection_time
+
+    def get_num_executed_queries(self):
+        return self.num_executed_queries
+
 
     def get_answer_values(self):
         answer_values = [answer.json() for answer in self.question.possible_answers[: self.n_max_answers]]
@@ -165,6 +200,12 @@ class State:
 
     def append_sparql_query(self, sparql_query):
         self.sparql_query.append(sparql_query)
+
+    def is_boolean_question(self):
+        return self.question.answer_datatype == "boolean"
+
+    def get_chat_history(self, session_id):
+        return self.get_by_session_id(session_id)
 
     #  Adding this to not break the code, but it looks like that we only use the boolean datatype in our current version of the system.
     def detect_question_and_answer_type(self):

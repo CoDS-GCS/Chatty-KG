@@ -4,7 +4,9 @@ from multi_agent.shared.state import AgentState
 from multi_agent.agents.qir_agent import qir_agent
 from multi_agent.agents.query_agent import query_agent
 from langgraph.graph import END
-
+from ..modules.modules import (
+    update_history
+)
 
 # Test Example:
 # Dialogue Questions:
@@ -16,6 +18,7 @@ def chat_agent(state: AgentState) -> AgentState:
 
     if state.query_done:
         print(" - Query done. Ending flow and returning to main loop.")
+        update_history(state.session_id, state.question, state.resolved_question, state.kg_graph_state)
         state.route = END  # This will stop the graph
     elif state.qir_done:
         print(" - QIR complete. Routing to Query Agent...")

@@ -13,6 +13,26 @@ from ..modules.modules import (
     query_selection_execution
 )
 
+def prepare_evaluation_result(answers, is_boolean):
+    answers = [
+        answer.json() for answer in answers
+    ]
+    if is_boolean:
+        bool_value = False
+        for answer in answers:
+            bool_value = answer['boolean'] or bool_value
+        output = [{'boolean': bool_value}]
+    else:
+        all_bindings = list()
+        for answer in answers:
+            if answer['results'] and answer['results']['bindings']:
+                all_bindings.extend(answer['results']['bindings'])
+
+        for binding in all_bindings:
+            key = list(binding.keys())[0]
+        output = [{'results': {'bindings': all_bindings}}]
+    return output
+
 
 def query_agent(state: AgentState) -> AgentState:
     print("\n🧾 Query Agent:")
@@ -48,6 +68,7 @@ def query_agent(state: AgentState) -> AgentState:
 
 
     state.query_result = result
+    state.evaluation_result = prepare_evaluation_result(state.kg_graph_state.get_answers(), state.kg_graph_state.is_boolean_question())
     state.query_done = True
     state.route = "chat_agent"
     return state

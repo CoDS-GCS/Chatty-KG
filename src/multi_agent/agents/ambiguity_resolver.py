@@ -28,16 +28,16 @@ def ambiguity_resolver_agent(state: AgentState) -> AgentState:
     print(" - Resolving:", resolved)
 
     # First add some chat history
-    chat_history = state.kg_graph_state.get_by_session_id(state.session_id)
-    for message in state.chat_history:
-        if message["role"] == "user":
-            chat_history.add_messages([
-                HumanMessage(content=message["content"])
-            ])
-        else:
-            chat_history.add_messages([
-                AIMessage(content=message["content"])
-            ])
+    # chat_history = state.kg_graph_state.get_by_session_id(state.session_id)
+    # for message in state.chat_history:
+    #     if message["role"] == "user":
+    #         chat_history.add_messages([
+    #             HumanMessage(content=message["content"])
+    #         ])
+    #     else:
+    #         chat_history.add_messages([
+    #             AIMessage(content=message["content"])
+    #         ])
     
     # Now test rephrasing
     resolved = rephrase_question(state.session_id, resolved, state.kg_graph_state)
