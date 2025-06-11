@@ -11,13 +11,18 @@ from chattykg.vertex import Vertex
 from chattykg.filtration.llm_filtrationv2 import choose_question_from_keywords
 import SPARQLBurger.SPARQLQueryBuilder as SparqlQB
 import time
+from langchain_openai import ChatOpenAI
 
 
 
 # Input: Question
 # Output: q_type: <non-self-contained, self-contained>
 def classify_question(question, state: State):
-    classify_question_chain = CLASSIFY_QUESTION_PROMPT_2 | state.get_chatbot_llm() | state.get_string_output_parser()
+    llm = ChatOpenAI(
+        model_name="gpt-3.5-turbo",
+        temperature=0.5,
+    )
+    classify_question_chain = CLASSIFY_QUESTION_PROMPT_2 | llm | state.get_string_output_parser()
     q_type = classify_question_chain.invoke(
         {"question": question},
     )
@@ -29,7 +34,11 @@ def classify_question(question, state: State):
 # Requires handling of chat history
 #  Session id should be unique per dialogue
 def rephrase_question(session_id, question, state: State):
-    rephrase_question_chain = CONDENSE_QUESTION_PROMPT_CUSTOM | state.get_chatbot_llm() | state.get_string_output_parser()
+    llm = ChatOpenAI(
+        model_name="gpt-3.5-turbo",
+        temperature=0.5,
+    )
+    rephrase_question_chain = CONDENSE_QUESTION_PROMPT_CUSTOM | llm | state.get_string_output_parser()
     chat_history = state.get_by_session_id(session_id)
     question = rephrase_question_chain.invoke({"question": question, "chat_history": chat_history})
     return question
@@ -129,13 +138,13 @@ def perform_linking(state: State):
         query_graph[source][destination][key]["uris"].extend(
             URIs_chosen
         )
-    else:
-        logger.log_info(
-            f"[GRAPH NODES WITH URIs:] {query_graph.nodes(data=True)}"
-        )
-        logger.log_info(
-            f"[GRAPH EDGES WITH URIs:] {query_graph.edges(data=True)}"
-        )
+    # else:
+        # logger.log_info(
+        #     f"[GRAPH NODES WITH URIs:] {query_graph.nodes(data=True)}"
+        # )
+        # logger.log_info(
+        #     f"[GRAPH EDGES WITH URIs:] {query_graph.edges(data=True)}"
+        # )
     linking_end = time.time()
     state.set_linking_time(linking_end - linking_start)
 
@@ -223,7 +232,7 @@ def evaluate_star_queries_predicate_based(state: State, query_selection_start):
             sparql_query = sparqls[index]
             state.append_sparql_query(sparql_query)
             #TODO: Orogat: Add the Query to the state object
-            print(f"SPARQL Query: {sparql_query}")
+            # print(f"SPARQL Query: {sparql_query}")
             result = state.get_sparql_end_point().evaluate_SPARQL_query(sparql_query)
             v_result = json.loads(result)
             if "results" in v_result:

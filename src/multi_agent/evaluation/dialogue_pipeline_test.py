@@ -48,6 +48,7 @@ if __name__ == '__main__':
                 question_id=id,
                 question=d_question,
                 chat_history=chat_history,
+                system_mode="Dialogue",
                 kg_graph_state=kg_graph_state,
                 query_done=False,
                 qir_done=False,
@@ -58,7 +59,8 @@ if __name__ == '__main__':
                 resolved_question=None,
                 ambiguity_resolver_done=False,
                 query_graph=None,
-                matching_done=False
+                matching_done=False,
+                ambiguity_resolver_tries=0
             )
 
             try:

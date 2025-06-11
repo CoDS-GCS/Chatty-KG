@@ -20,25 +20,26 @@ from ..modules.State import State
 
 def is_question_self_contained(question: str, kg_graph_state: State) -> bool:
     result = classify_question(question, kg_graph_state).lower().strip()
-    return result == "self-contained"
+    return not "non-self-contained" in result.lower()
+    # return result == "self-contained"
 
 def qir_agent(state: AgentState) -> AgentState:
     print("\n🔍 QIR Agent:")
-    question = state.question
+    # question = state.question
+    question = state.resolved_question if state.resolved_question else state.question
 
-    if state.system_mode.lower() == "dialogue" and not is_question_self_contained(question, state.kg_graph_state) and len(state.kg_graph_state.get_chat_history(state.session_id).messages) > 0 > 0 and state.ambiguity_resolver_tries<3:
-        state.ambiguity_resolver_tries += 1
-        print(f" - Question is not self-contained. Routing (try {state.ambiguity_resolver_tries}/3) to Ambiguity Resolver...")
-        state.route = "ambiguity_resolver_agent"
-
-    
+    if state.system_mode.lower() == "dialogue":
+        is_standalone = is_question_self_contained(question, state.kg_graph_state)
+        if not is_standalone and state.ambiguity_resolver_tries<3:
+            state.ambiguity_resolver_tries += 1
+            print(
+                f" - Question is not self-contained. Routing (try {state.ambiguity_resolver_tries}/3) to Ambiguity Resolver...")
+            state.route = "ambiguity_resolver_agent"
+            return state
+        state.resolved_question = question
     else:
-        if state.system_mode.lower() == "dialogue" and state.ambiguity_resolver_done:
-            print(f" - Converting question [{state.resolved_question}] to Query Intermediate Representation...")
-        else:
-            print(" - Question is self-contained.")
-            state.resolved_question = question
-        
+        print(" - Question is self-contained.")
+        state.resolved_question = question
         # # TODO: This should be the QIR code
         # session_id = state.session_id
         # # First add some chat history
@@ -55,26 +56,26 @@ def qir_agent(state: AgentState) -> AgentState:
         #
         #
         # Test with a follow-up question
-        question = state.resolved_question
-        question_id = state.question_id
-        result = get_qir_from_question(question, question_id, state.kg_graph_state)
-    
-        query_graph = state.kg_graph_state.get_query_graph()
-        state.query_graph = query_graph
-        print(f" - Query graph: {state.query_graph}")
+    question = state.resolved_question
+    question_id = state.question_id
+    result = get_qir_from_question(question, question_id, state.kg_graph_state)
 
-        print(" - [GRAPH NODES WITH URIs:]")
-        for node in query_graph.nodes(data=True):
-            print(f"\t\t{node}")
+    query_graph = state.kg_graph_state.get_query_graph()
+    state.query_graph = query_graph
+    # print(f" - Query graph: {state.query_graph}")
+    #
+    # print(" - [GRAPH NODES WITH URIs:]")
+    # for node in query_graph.nodes(data=True):
+    #     print(f"\t\t{node}")
+    #
+    # print(f" - [GRAPH EDGES WITH URIs:]")
+    # for edge in query_graph.edges(data=True):
+    #     print(f"\t\t{edge}")
 
-        print(f" - [GRAPH EDGES WITH URIs:]")
-        for edge in query_graph.edges(data=True):
-            print(f"\t\t{edge}")
-        
 
-        state.qir_done = True
-        state.route = "chat_agent"
-        print(" - QIR complete. Routing back to Chat Agent.")
+    state.qir_done = True
+    state.route = "chat_agent"
+    print(" - QIR complete. Routing back to Chat Agent.")
     return state
 
 
