@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
     with open(dataset_file_name, 'r') as f:
         data = json.load(f)
-        output = []
+    output = []
 
     dialogue_num = 0
     for obj in data["data"]:
