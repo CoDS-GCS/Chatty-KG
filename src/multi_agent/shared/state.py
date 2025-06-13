@@ -26,3 +26,4 @@ class AgentState:
     route: Optional[str] = "chat_agent"
     query_graph: Optional[nx.MultiGraph] = field(default_factory=nx.MultiGraph)
     evaluation_result: Optional[List[Dict]] = None
+    evaluation_user_values: Optional[List] = None

@@ -21,17 +21,21 @@ def prepare_evaluation_result(answers, is_boolean):
         bool_value = False
         for answer in answers:
             bool_value = answer['boolean'] or bool_value
+        user_values = [bool_value]
         output = [{'boolean': bool_value}]
     else:
         all_bindings = list()
+        user_values = set()
         for answer in answers:
             if answer['results'] and answer['results']['bindings']:
                 all_bindings.extend(answer['results']['bindings'])
 
         for binding in all_bindings:
             key = list(binding.keys())[0]
+            user_values.add(binding[key]['value'])
+        user_values = list(user_values)
         output = [{'results': {'bindings': all_bindings}}]
-    return output
+    return output, user_values
 
 
 def query_agent(state: AgentState) -> AgentState:
@@ -68,7 +72,9 @@ def query_agent(state: AgentState) -> AgentState:
 
 
     state.query_result = result
-    state.evaluation_result = prepare_evaluation_result(state.kg_graph_state.get_answers(), state.kg_graph_state.is_boolean_question())
+    evaluation_result, evaluation_user_values = prepare_evaluation_result(state.kg_graph_state.get_answers(), state.kg_graph_state.is_boolean_question())
+    state.evaluation_result = evaluation_result
+    state.evaluation_user_values = evaluation_user_values
     state.query_done = True
     state.route = "chat_agent"
     return state
