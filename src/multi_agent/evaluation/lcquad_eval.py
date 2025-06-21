@@ -2,11 +2,12 @@ import os
 import json
 import time
 import traceback
-import csv
-import argparse
 from termcolor import colored, cprint
 from itertools import count
 import xml.etree.ElementTree as Et
+import csv
+import argparse
+
 import sys
 
 sys.path.append('..')
@@ -18,14 +19,18 @@ from multi_agent.shared.state import AgentState
 from multi_agent.utils.graph_builder import build_langgraph
 from multi_agent.modules.State import State
 
+
+
 file_dir = os.path.dirname(os.path.abspath(__file__))
-file_name = "../../evaluation/qald9/qald-9-test-multilingual_1.json"
+
+file_name = os.path.join(file_dir, "../../evaluation/lcquad1/lcquad-qaldformat-test2.json")
+indices_file_test = os.path.join(file_dir, "../../evaluation/lcquad1/TestingIDs_LCQuAD1.txt")
 
 if __name__ == '__main__':
     root_element = Et.Element('dataset')
     root_element.set('id', 'dbpedia-test')
-    root_element.append(Et.Comment('created by CoDS Lab'))
-
+    author_comment = Et.Comment(f'created by CoDS Lab')
+    root_element.append(author_comment)
     timestr = time.strftime("%Y%m%d-%H%M%S")
     total_time = 0
     total_understanding_time = 0
@@ -39,40 +44,60 @@ if __name__ == '__main__':
     parser.add_argument("--filter", type=str, default="True", help="argument to enable filtration")
     args = parser.parse_args()
     filter = args.filter.lower() == 'true'
-    json_logger = JsonLogger(log_file="qald_chattykg_json_log.json")
+    json_logger = JsonLogger(log_file="lcquad_chattykg_json_log.json")
+
+    # The main param:
+    # max no of vertices and edges to annotate the PGP
+    # max no of SPARQL queries to be generated from PGP
+    max_Vs = 1
+    max_Es = 21
+    max_answers = 41
+    limit_VQuery = 600
+    limit_EQuery = 300
+
+    indices = []
+    with open(indices_file_test) as(f):
+        for line in f:
+            indices.append(int(line))
 
     with open(file_name) as f:
         qald9_testset = json.load(f)
     dataset_id = qald9_testset['dataset']['id']
-
     qCount = count(1)
+
     chattykg_qald9 = {"dataset": {"id": dataset_id}, "questions": []}
     graph = build_langgraph()
-
     for i, question in enumerate(qald9_testset['questions']):
+
+        # if int(question['id']) not in [5]:
+        #     continue
+        if int(question['id']) not in indices:
+            continue
+
         qc = next(qCount)
-        # if qc == 5:
-        #     break
-        for lang_q in question['question']:
-            if lang_q['language'] == 'en':
-                question_text = lang_q['string'].strip()
+        # question_text = ''
+        for language_variant_question in question['question']:
+            if language_variant_question['language'] == 'en':
+                question_text = language_variant_question['string'].strip()
                 break
 
-        text = colored(f"[PROCESSING: ] Question count: {qc}, ID {question['id']}  >>> {question_text}", 'blue', attrs=['reverse', 'blink'])
+        text = colored(f"[PROCESSING: ] Question count: {qc}, ID {question['id']}  >>> {question_text}", 'blue',
+                       attrs=['reverse', 'blink'])
         cprint(f"== {text}  ")
 
         st = time.time()
+        # question_text = 'Which movies starring Brad Pitt were directed by Guy Ritchie?'
+        # question_text = 'When did the Boston Tea Party take place and led by whom?'
         try:
             kg_graph_state = State(
-                knowledge_graph='dbpedia',
+                knowledge_graph='lc_quad',
                 n_limit_VQuery=600,
                 n_max_Vs=1,
                 n_limit_EQuery=25,
                 n_max_Es=21,
                 n_max_answers=41,
                 filtration_enabled=True,
-                json_logger=json_logger
-            )
+                json_logger=json_logger)
 
             state = AgentState(
                 session_id=question['id'],
@@ -93,13 +118,13 @@ if __name__ == '__main__':
                 matching_done=False,
                 ambiguity_resolver_tries=0
             )
-
             raw_state = graph.invoke(state)
             final_state = AgentState(**dict(raw_state))
 
             answers = [
                 answer.json() for answer in kg_graph_state.get_answers()
             ]
+
             all_bindings = list()
             for answer in answers:
                 if answer['results'] and answer['results']['bindings']:
@@ -118,58 +143,50 @@ if __name__ == '__main__':
             execution_time = kg_graph_state.get_execution_time()
             query_selection_time = kg_graph_state.get_query_selection_time()
             num_queries_executed = kg_graph_state.get_num_executed_queries()
-
         except Exception:
             traceback.print_exc()
             continue
 
-        # try:
-        #     if 'results' in question['answers'][0]:
-        #         question['answers'][0]['results']['bindings'] = all_bindings.copy()
-        #         all_bindings.clear()
-        # except:
-        #     question['answers'] = []
-
         chattykg_qald9['questions'].append(question)
 
         et = time.time()
-        total_time += (et - st)
-        total_understanding_time += understanding_time
-        total_linking_time += linking_time
+        total_time = total_time + (et - st)
+        total_understanding_time = total_understanding_time + understanding_time
+        total_linking_time = total_linking_time + linking_time
         if execution_time < 100:
-            total_execution_time += execution_time
-            total_query_selection_time += query_selection_time
-            total_query_execution_time += (execution_time - query_selection_time)
-        total_num_queries_executed += num_queries_executed
+            total_execution_time = total_execution_time + execution_time
+            total_query_selection_time = total_query_selection_time + query_selection_time
+            total_query_execution_time = total_query_execution_time + (execution_time - query_selection_time)
+        total_num_queries_executed = total_num_queries_executed + num_queries_executed
 
         text = colored(f'[DONE!! in {et - st:.2f} SECs]', 'green', attrs=['bold', 'reverse', 'blink', 'dark'])
         cprint(f"== {text} ==")
 
+        # break
     text1 = colored(f'total_time = [{total_time:.2f} sec]', 'yellow', attrs=['reverse', 'blink'])
     text2 = colored(f'avg time = [{total_time / qc:.2f} sec]', 'yellow', attrs=['reverse', 'blink'])
     cprint(f"== QALD 9 Statistics : {qc} questions, Total Time == {text1}, Average Time == {text2} ")
-    cprint(f"== Understanding : {qc} questions, Total Time == {total_understanding_time}, Average Time == {(total_understanding_time / qc)*1000} ms")
-    cprint(f"== Linking : {qc} questions, Total Time == {total_linking_time}, Average Time == {(total_linking_time / qc)*1000} ms")
-    cprint(f"== Execution : {qc} questions, Total Time == {total_execution_time}, Average Time == {(total_execution_time / qc)*1000} ms")
-    cprint(f"== Query Selection : {qc} questions, Total Time == {total_query_selection_time}, Average Time == {(total_query_selection_time / qc)*1000} ms")
-    cprint(f"== Query Execution : {qc} questions, Total Time == {total_query_execution_time}, Average Time == {(total_query_execution_time / qc)*1000} ms")
+    cprint(f"== Understanding : {qc} questions, Total Time == {total_understanding_time}, Average Time == {(total_understanding_time / qc)*1000} ")
+    cprint(f"== Linking : {qc} questions, Total Time == {total_linking_time}, Average Time == {(total_linking_time / qc)*1000} ")
+    cprint(f"== Execution : {qc} questions, Total Time == {total_execution_time}, Average Time == {(total_execution_time / qc)*1000} ")
+    cprint(f"== Query Selection : {qc} questions, Total Time == {total_query_selection_time}, Average Time == {(total_query_selection_time / qc) * 1000} ms")
+    cprint(f"== Query Execution : {qc} questions, Total Time == {total_query_execution_time}, Average Time == {(total_query_execution_time / qc) * 1000} ms")
     cprint(f"== Queries Executed : {qc} questions, Total Number == {total_num_queries_executed}, Average Number == {(total_num_queries_executed / qc)}")
+    response_time = [{"Question Understanding": (total_understanding_time / qc) * 1000,
+                      "Linking": (total_linking_time / qc) * 1000,
+                      "Execution": (total_execution_time / qc) * 1000,
+                      "Query Selection": (total_query_selection_time / qc) * 1000,
+                      "Query Execution": (total_query_execution_time / qc) * 1000,
+                      "Number of queries": total_num_queries_executed / qc
+                      }]
 
-    response_time = [{
-        "Question Understanding": (total_understanding_time / qc) * 1000,
-        "Linking": (total_linking_time / qc) * 1000,
-        "Execution": (total_execution_time / qc) * 1000,
-        "Query Selection": (total_query_selection_time / qc) * 1000,
-        "Query Execution": (total_query_execution_time / qc) * 1000,
-        "Number of queries": total_num_queries_executed / qc
-    }]
-
-    with open(os.path.join(file_dir, f'output/qald.json'), encoding='utf-8', mode='w') as rfobj:
+    with open(os.path.join(file_dir, f'output/lcquad.json'), encoding='utf-8', mode='w') as rfobj:
         json.dump(chattykg_qald9, rfobj)
         rfobj.write('\n')
 
     field_names = response_time[0].keys()
-    with open(os.path.join(file_dir, f'output/qald_response_time_ms.csv'), mode='w', newline='') as file:
+    with open(os.path.join(file_dir, f'output/lcquad_response_time_ms.csv'), mode='w', newline='') as file:
         writer = csv.DictWriter(file, fieldnames=field_names)
         writer.writeheader()
         writer.writerows(response_time)
+

@@ -47,6 +47,8 @@ def rephrase_question(session_id, question, state: State):
 # Input is question and question id.
 #  Output is an object of type Question (chattykg.question)
 def get_qir_from_question(question, question_id, state: State):
+    state.get_json_logger().set("question_id", question_id)
+    state.get_json_logger().set("question_text", question)
     understanding_start = time.time()
     current_question = Question(
         question_text=question, question_id=question_id, logger=logger, json_logger=state.get_json_logger()
@@ -156,6 +158,7 @@ def query_selection_execution(state: State):
     evaluate_star_queries_predicate_based(state, query_selection_start)
     execution_end = time.time()
     state.set_execution_time(execution_end - execution_start)
+    state.get_json_logger().log()
 
 
 # Updates chat history after answering the question

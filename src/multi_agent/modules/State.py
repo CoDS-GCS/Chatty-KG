@@ -49,13 +49,13 @@ class InMemoryHistory(BaseChatMessageHistory, BaseModel):
 
 
 class State:
-    def __init__(self, knowledge_graph, n_limit_VQuery, n_max_Vs, n_limit_EQuery, n_max_Es, n_max_answers, filtration_enabled):
+    def __init__(self, knowledge_graph, n_limit_VQuery, n_max_Vs, n_limit_EQuery, n_max_Es, n_max_answers, filtration_enabled, json_logger):
 
         self.string_output_parser = StrOutputParser()
         self.chatbot_llm = get_llm(model_name="gpt-4o")
 
         self.store = {}
-        self.json_logger = JsonLogger()
+        self.json_logger = json_logger
         
         # Initialize all attributes before using them
         self.filtration_enabled = filtration_enabled
