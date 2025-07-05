@@ -147,7 +147,8 @@ def get_understanding(question, json_logger):
             output = extract_json_from_output(output)
             if validate_output(output, question):
                 break
-        except:
+        except Exception:
+            traceback.print_exc()
             print("============Start Parsing Error")
             print(output)
             print("============End")

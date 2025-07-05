@@ -39,12 +39,14 @@ if __name__ == '__main__':
     total_query_selection_time = 0
     total_query_execution_time = 0
     total_num_queries_executed = 0
+    llm_name = "glm"
+
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--filter", type=str, default="True", help="argument to enable filtration")
     args = parser.parse_args()
     filter = args.filter.lower() == 'true'
-    json_logger = JsonLogger(log_file="lcquad_chattykg_json_log.json")
+    json_logger = JsonLogger(log_file=f"output/{llm_name}/lcquad_chattykg_json_log.json")
 
     # The main param:
     # max no of vertices and edges to annotate the PGP
@@ -180,12 +182,12 @@ if __name__ == '__main__':
                       "Number of queries": total_num_queries_executed / qc
                       }]
 
-    with open(os.path.join(file_dir, f'output/lcquad.json'), encoding='utf-8', mode='w') as rfobj:
+    with open(os.path.join(file_dir, f'output/{llm_name}/lcquad.json'), encoding='utf-8', mode='w') as rfobj:
         json.dump(chattykg_qald9, rfobj)
         rfobj.write('\n')
 
     field_names = response_time[0].keys()
-    with open(os.path.join(file_dir, f'output/lcquad_response_time_ms.csv'), mode='w', newline='') as file:
+    with open(os.path.join(file_dir, f'output/{llm_name}/lcquad_response_time_ms.csv'), mode='w', newline='') as file:
         writer = csv.DictWriter(file, fieldnames=field_names)
         writer.writeheader()
         writer.writerows(response_time)

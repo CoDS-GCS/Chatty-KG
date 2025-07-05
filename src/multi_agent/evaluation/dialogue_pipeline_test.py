@@ -2,6 +2,10 @@ import json
 import os
 import time
 import traceback
+import sys
+
+sys.path.append('../')
+sys.path.append('../..')
 
 from multi_agent.shared.state import AgentState
 from multi_agent.utils.graph_builder import build_langgraph
@@ -16,7 +20,7 @@ kg_related_variables = {
 
 # How to add Kgs
 if __name__ == '__main__':
-    kg_name = 'dblp'
+    kg_name = 'dbpedia'
     endpoint, dataset_file_name = kg_related_variables[kg_name]
     graph = build_langgraph()
     id = 0

@@ -205,7 +205,7 @@ def run_chatbot_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file_n
 
         # Save results to output file
         timestamp = time.strftime("%Y%m%d-%H%M%S")
-        output_file_name = f"logs/chatbot-v4/{experiment_name}_{timestamp}.json"
+        output_file_name = f"logs/chatbot-test/{experiment_name}_{timestamp}.json"
         parent_dir = os.path.dirname(output_file_name)
         if not os.path.exists(parent_dir):
             os.makedirs(parent_dir, exist_ok=True)
@@ -407,7 +407,8 @@ def get_ground_truths(kg_name, kg_endpoint, dataset_file_name, outputfile):
     pass
 
 if __name__ == "__main__":
-    kg_names = ["dbpedia", "yago", "dblp"]
+    #kg_names = ["dbpedia", "yago", "dblp"]
+    kg_names = ["dblp"]
     dialogue_mode = True
     for kg_name in kg_names:
         # experiment_name = f"exp-{kg_name}-table-1-10-dialogues"

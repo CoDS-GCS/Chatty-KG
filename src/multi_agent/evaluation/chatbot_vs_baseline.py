@@ -4,6 +4,9 @@ import os
 import time
 import traceback
 
+sys.path.append('..')
+sys.path.append('../..')
+
 import requests
 # from KGChatbot import KGChatbot
 import urllib

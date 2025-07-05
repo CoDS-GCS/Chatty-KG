@@ -115,7 +115,7 @@ kg_related_variables = {
         SPARQL_ENDPOINT.get("dblp"),
         "evaluation/data/dblp_e11_20_5_original.json",
         "logs/chatbot/chattykgv2_golden/dblp_e11_20_5_original.json",
-        "logs/chatbot_v4/exp-dblp-dialogue-new-data_20250407-010954.json",
+        "logs/chatbot-test/exp-dblp-dialogue-new-data_20250613-223059.json",
         "baseline/convinse_results_dblp.json",
         "baseline/explaignn_results_dblp.json",
         "evaluation/llms/gpt_dblp_output.json",
@@ -374,6 +374,7 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse
     results = {}
     results_data = {"data":{}}
     for model_name, model_qs in [("chattykg", chattykg_qs), ("convinse", convinse_qs), ("explaignn", explaignn_qs), ("gpt", gpt_qs), ("gemini", gemini_qs), ("deepseek", deepseek_qs), ("phi", phi_qs), ("qwen", qwen_qs)]:
+    #for model_name, model_qs in [("chattykg", chattykg_qs)]:
         gts = [gt["answer"] for gt in ground_truth_qs]
         pred1, pred5, rankings = prepare_evaluation_data(model_qs)
         p1, mrr, hit5 = compute_results_v2(pred1, pred5, rankings, gts)
@@ -388,6 +389,7 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse
 if __name__ == "__main__":
 
     kg_names = ["dbpedia", "dblp", "yago"]
+    # kg_names = ["dbpedia"]
     # v3 with gpt-3.5 turbo for rephraser, 4 with gpt-4o
     output_dir = "evaluation_v7"
     for kg_name in kg_names:

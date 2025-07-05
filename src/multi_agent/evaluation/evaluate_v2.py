@@ -102,7 +102,7 @@ kg_related_variables = {
         SPARQL_ENDPOINT.get("yago"),
         "../../chatbot/evaluation/data/yago_e11_20_5_original.json",
         "../../chatbot/logs/chatbot/chattykgv2_golden/yago_e11_20_5_original.json",
-        "output/dialogue/exp-yago-dialogue-new.json",
+        "output/dialogue/exp-yago-dialogue-new-data.json",
         "output/dialogue/convinse_results_yago.json",
         "output/dialogue/explaignn_results_yago.json",
         "output/dialogue/gpt_yago_output.json",
@@ -114,12 +114,12 @@ kg_related_variables = {
     "dblp": (
         SPARQL_ENDPOINT.get("dblp"),
         "../../chatbot/evaluation/evaluation/data/dblp_e11_20_5_original.json",
-        "../../chatbot/evaluation/logs/chatbot/chattykgv2_golden/dblp_e11_20_5_original.json",
+        "../../chatbot/logs/chatbot/chattykgv2_golden/dblp_e11_20_5_original.json",
         "output/dialogue/exp-dblp-dialogue-new-data.json",
         "output/dialogue/convinse_results_dblp.json",
         "output/dialogue/explaignn_results_dblp.json",
         "output/dialogue/gpt_dblp_output.json",
-        "output/dialogue/emini_dblp_output.json",
+        "output/dialogue/gemini_dblp_output.json",
         "output/dialogue/deepseek_dblp_output.json",
         "output/dialogue/phi_local_dblp_output.json",
         "output/dialogue/qwen_instruct_dblp_output.json"

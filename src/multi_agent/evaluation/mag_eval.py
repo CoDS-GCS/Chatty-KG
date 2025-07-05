@@ -39,6 +39,7 @@ if __name__ == '__main__':
     total_query_selection_time = 0
     total_query_execution_time = 0
     total_num_queries_executed = 0
+    llm_name="glm"
 
     # The main param:
     # max no of vertices and edges to annotate the PGP
@@ -49,7 +50,7 @@ if __name__ == '__main__':
     limit_VQuery = 400
     limit_EQuery = 200
 
-    json_logger = JsonLogger(log_file="mag_chattykg_json_log.json")
+    json_logger = JsonLogger(log_file=f"output/{llm_name}/mag_chattykg_json_log.json")
     with open(file_name) as f:
         qald9_testset = json.load(f)
     dataset_id = qald9_testset['dataset']['id']
@@ -163,12 +164,12 @@ if __name__ == '__main__':
                       "Number of queries": total_num_queries_executed / qc
                       }]
 
-    with open(os.path.join(file_dir, f'output/mag.json'), encoding='utf-8', mode='w') as rfobj:
+    with open(os.path.join(file_dir, f'output/{llm_name}/mag.json'), encoding='utf-8', mode='w') as rfobj:
         json.dump(chattykg_qald9, rfobj)
         rfobj.write('\n')
 
     field_names = response_time[0].keys()
-    with open(os.path.join(file_dir, f'output/mag_response_time_ms.csv'), mode='w', newline='') as file:
+    with open(os.path.join(file_dir, f'output/{llm_name}/mag_response_time_ms.csv'), mode='w', newline='') as file:
         writer = csv.DictWriter(file, fieldnames=field_names)
         writer.writeheader()
         writer.writerows(response_time)

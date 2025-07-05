@@ -44,6 +44,7 @@ Do not include explanations or extra text. Only return the JSON array.
 
         chat_history.append(HumanMessage(content=q))
         response = llm(chat_history)
+        #response = llm.invoke(chat_history)
 
         if timeout:
             time.sleep(30)
@@ -222,8 +223,10 @@ def process_llm_output_v1(start_id, original_questions, llm_answers):
     for i, question in enumerate(original_questions):
         # question_number = str(i + 1)
         llm_answer_list = llm_answers.get(i, [])
+        if isinstance(llm_answer_list, int):
+            llm_answer_list = [str(llm_answer_list)]
         if len(llm_answer_list) == 1:
-            llm_answer_list = llm_answer_list[0].split(',')
+            llm_answer_list = llm_answer_list[0].split(',') if llm_answer_list[0] is not None else []
         formatted_answer = {
             "head": {"link": [], "vars": ["variable"]},
             "results": {
@@ -266,17 +269,17 @@ def get_llm(llm_name):
     elif llm_name == 'deepseek':
         llm = ChatDeepSeek(model="deepseek-chat", temperature=0, max_retries=2)
     elif llm_name == 'phi_local' or llm_name == 'qwen_instruct':
-        llm = VLLMOpenAI(openai_api_key="EMPTY", openai_api_base="http://localhost:5000/v1", model_name=llm_name,
-                         model_kwargs={"stop": ["```"]}, temperature=0)
+        llm = ChatOpenAI(openai_api_key="EMPTY", openai_api_base="http://localhost:5000/v1", model_name=llm_name,
+                         temperature=0)
     return llm
 
 
 if __name__ == '__main__':
     kgs = {"dbpedia": '../../chatbot/evaluation/data/dbpedia_e11_20_5_original.json', "yago": '../../chatbot/evaluation/data/yago_e11_20_5_original.json',
            "dblp": '../../chatbot/evaluation/data/dblp_e11_20_5_original.json'}
-    # kgs = {"dbpedia": '../../chatbot/evaluation/data/dbpedia_e11_20_5_original.json'}
+    # kgs = {"dblp": '../../chatbot/evaluation/data/dblp_e11_20_5_original.json'}
     llms = ['gpt', 'gemini', 'deepseek', 'phi_local', 'qwen_instruct']
-    # llms = ['gpt']
+    # llms = ['qwen_instruct']
     for llm_name in llms:
         llm = get_llm(llm_name)
         for kg in kgs:
