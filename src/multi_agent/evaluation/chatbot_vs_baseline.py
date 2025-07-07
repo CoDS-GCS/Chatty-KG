@@ -2,36 +2,45 @@ import sys
 import json
 import os
 import time
+import traceback
+
+sys.path.append('..')
+sys.path.append('../..')
+
 import requests
-from KGChatbot import KGChatbot
+# from KGChatbot import KGChatbot
 import urllib
 import logging
 from collections import defaultdict
 
+from multi_agent.shared.state import AgentState
+from multi_agent.utils.graph_builder import build_langgraph
+from multi_agent.modules.State import State
+
 # This is to get Chatty-KG dialogue results
-os.environ["OPENAI_API_KEY"] = ""
+# os.environ["OPENAI_API_KEY"] = ""
 # pair of end point, dataset file name
 kg_related_variables = {
     "yago": (
         "http://206.12.95.86:8892/sparql",
-        "evaluation/data/yago_e11_20_5_original.json",
+        "../../chatbot/evaluation/data/yago_e11_20_5_original.json",
     ),
     "dblp": (
         "http://206.12.95.86:8894/sparql",
-        "evaluation/data/dblp_e11_20_5_original.json",
+        "../../chatbot/evaluation/data/dblp_e11_20_5_original.json",
     ),
     "dbpedia": (
         "http://206.12.95.86:8890/sparql",
-        "evaluation/data/dbpedia_e11_20_5_original.json",
+        "../../chatbot/evaluation/data/dbpedia_e11_20_5_original.json",
     ),
 }
-
 
 logger = logging.getLogger("chatbot_vs_baseline")
 logger.setLevel(logging.INFO)
 file_handler = logging.FileHandler("evaluation.log")
 file_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
 logger.addHandler(file_handler)
+
 
 def normalize(answer):
     # Check if the answer is a whole number (integer in string format)
@@ -43,10 +52,12 @@ def normalize(answer):
         # Strip whitespace and decode URL-encoded characters
         return urllib.parse.unquote(answer.strip())
 
+
 def fscore(precision, recall):
     if precision == 0 and recall == 0:
         return 0
     return 2 * (precision * recall) / (precision + recall)
+
 
 def compute_results(results):
     sum_precision = 0
@@ -100,6 +111,7 @@ def compute_results(results):
 
     return measures
 
+
 def process_answers_user(answers_user):
     result = set()
     print(answers_user)
@@ -113,17 +125,19 @@ def process_answers_user(answers_user):
 
     return list(result)
 
+
 def process_gold_answers(golden_answer):
     result = set()
     if "results" in golden_answer and "bindings" in golden_answer["results"]:
         for bind in golden_answer["results"]["bindings"]:
             for key, value in bind.items():
-                value =  value['value']
+                value = value['value']
                 result.add(normalize(value))
     elif "boolean" in golden_answer:
         result.add(golden_answer["boolean"])
 
     return list(result)
+
 
 def compare_single_answer(answers_user, answers_gold):
     results = {}
@@ -143,6 +157,7 @@ def compare_single_answer(answers_user, answers_gold):
 
     return results
 
+
 def evaluate_SPARQL_query(endpoint, query):
     payload = {
         "default-graph-uri": "",
@@ -159,6 +174,7 @@ def evaluate_SPARQL_query(endpoint, query):
         return '{"head":{"vars":[]}, "results":{"bindings": []}, "status":414 }'
     return query_response.text
 
+
 def get_answers(endpoint, queries):
     answers = []
     for query in queries:
@@ -167,19 +183,23 @@ def get_answers(endpoint, queries):
         answers.append(result_json)
     return answers
 
+
 def run_chatbot_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file_name, dialogue_mode=True):
     try:
         logger.info(f"Starting experiment: {experiment_name}")
         logger.info(f"Using Knowledge Graph: {kg_name} at endpoint: {kg_endpoint}")
-        
+
         # Load dataset
         with open(dataset_file_name, "r", encoding="utf-8") as dataset_file:
             data = json.load(dataset_file)
-        
+
+        graph = build_langgraph()
+
         # Initialize chatbot
-        chatbot = KGChatbot(kg_name, kg_endpoint)
+        # chatbot = KGChatbot(kg_name, kg_endpoint)
         output = []
         results = []
+        dialogue_num = 0
 
         # Process each dialogue in the dataset
         for idx, obj in enumerate(data.get("data", [])):
@@ -188,24 +208,67 @@ def run_chatbot_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file_n
             answers = get_answers(kg_endpoint, queries)
             if dialogue_mode:
                 questions = obj.get("dialogue", [])
+            chat_history = []
+            kg_graph_state = State(
+                knowledge_graph=kg_name,
+                n_limit_VQuery=600,
+                n_max_Vs=1,
+                n_limit_EQuery=25,
+                n_max_Es=21,
+                n_max_answers=41,
+                filtration_enabled=True
+            )
             for question, golden_answer in zip(questions, answers):
-                answer, values = chatbot.ask_question(idx, question)
+                state = AgentState(
+                    session_id=str(dialogue_num),
+                    question_id=str(idx),
+                    question=question,
+                    chat_history=chat_history,
+                    system_mode="Dialogue",
+                    kg_graph_state=kg_graph_state,
+                    query_done=False,
+                    qir_done=False,
+                    has_been_resolved=False,
+                    route="chat_agent",
+                    sparql_query=None,
+                    query_result=None,
+                    resolved_question=None,
+                    ambiguity_resolver_done=False,
+                    query_graph=None,
+                    matching_done=False,
+                    ambiguity_resolver_tries=0
+                )
+                raw_state = graph.invoke(state)
+                final_state = AgentState(**dict(raw_state))
+
+                answer = final_state.evaluation_result
+                values = final_state.evaluation_user_values
+
+                # output.append({
+                #     'id': id,
+                #     'question': question,
+                #     'answers': answer
+                # })
+                chat_history = state.kg_graph_state.get_chat_history(str(dialogue_num))
                 print(f"QUE- {question}")
                 print(f"ANS:VAL - {answer}:{values}")
                 result = compare_single_answer(values, golden_answer)
                 results.append(result)
-                question_output = {"id":idx, "question": question, "queries": queries, "golden_answer": golden_answer,"answer": answer, "result": result}
+                question_output = {"id": idx, "question": question, "queries": queries, "golden_answer": golden_answer,
+                                   "answer": answer, "result": result}
                 output.append(question_output)
-        
+            dialogue_num += 1
+
         # Prepare result structure
         dataset_id = os.path.splitext(os.path.basename(dataset_file_name))[0]
         evaluation_metrics = compute_results(results)
         output = {"Output": output, "Metrics": evaluation_metrics}
-        evaluation_results = {"dataset": {"id": f"{dataset_id}_{"dialogue" if dialogue_mode else "original"}"}, "data": output}
+        evaluation_results = {"dataset": {"id": f"{dataset_id}_{"dialogue" if dialogue_mode else "original"}"},
+                              "data": output}
 
         # Save results to output file
         timestamp = time.strftime("%Y%m%d-%H%M%S")
-        output_file_name = f"logs/chatbot-test/{experiment_name}_{timestamp}.json"
+        output_file_name = f"output/dialogue/{experiment_name}.json"
         parent_dir = os.path.dirname(output_file_name)
         if not os.path.exists(parent_dir):
             os.makedirs(parent_dir, exist_ok=True)
@@ -215,7 +278,9 @@ def run_chatbot_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file_n
         logger.info(f"Experiment completed successfully. Results saved to {output_file_name}")
 
     except Exception as e:
+        traceback.print_exc()
         logger.error(f"An error occurred during the experiment: {e}", exc_info=True)
+
 
 def run_convinse_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file_name):
     try:
@@ -225,7 +290,7 @@ def run_convinse_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file_
         # Load dataset
         with open(dataset_file_name, "r", encoding="utf-8") as dataset_file:
             data = json.load(dataset_file)
-        
+
         # Initialize chatbot
         chatbot = KGChatbot(kg_name, kg_endpoint)
         output = []
@@ -242,14 +307,16 @@ def run_convinse_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file_
                 answer, values = chatbot.ask_question(idx, question)
                 result = compare_single_answer(values, golden_answer)
                 results.append(result)
-                question_output = {"id":idx, "question": question, "queries": queries, "golden_answer": golden_answer,"answer": answer, "result": result}
+                question_output = {"id": idx, "question": question, "queries": queries, "golden_answer": golden_answer,
+                                   "answer": answer, "result": result}
                 output.append(question_output)
-        
+
         # Prepare result structure
         dataset_id = os.path.splitext(os.path.basename(dataset_file_name))[0]
         evaluation_metrics = compute_results(results)
         output = {"Output": output, "Metrics": evaluation_metrics}
-        evaluation_results = {"dataset": {"id": f"{dataset_id}_{"dialogue" if dialogue_mode else "original"}"}, "data": output}
+        evaluation_results = {"dataset": {"id": f"{dataset_id}_{"dialogue" if dialogue_mode else "original"}"},
+                              "data": output}
 
         # Save results to output file
         timestamp = time.strftime("%Y%m%d-%H%M%S")
@@ -261,6 +328,7 @@ def run_convinse_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file_
 
     except Exception as e:
         logger.error(f"An error occurred during the experiment: {e}", exc_info=True)
+
 
 def transform_to_ruby_format(data):
     transformed_data = {}
@@ -278,19 +346,19 @@ def transform_to_ruby_format(data):
             "answers": answer
         })
         queries_dict[q["id"]] = q["queries"]
-    
+
     qid = 0
     final_questions = []
     for id, qs in questions_dict.items():
         queries = queries_dict.get(id)
-        for q,query in zip(qs,queries):
+        for q, query in zip(qs, queries):
             final_questions.append({
                 "id": qid,
                 "query": {"sparql": query},
                 **q
             })
             qid += 1
-    
+
     transformed_data["questions"] = final_questions
 
     return transformed_data
@@ -299,7 +367,7 @@ def transform_to_ruby_format(data):
 def post_transformation(input_dir, output_dir, transformation_fn):
     if not os.path.exists(input_dir):
         raise ValueError(f"Input directory '{input_dir}' does not exist.")
-    
+
     files = [f for f in os.listdir(input_dir) if f.endswith(".json")]
     if not files:
         raise ValueError(f"No JSON files found in input directory '{input_dir}'.")
@@ -320,6 +388,7 @@ def post_transformation(input_dir, output_dir, transformation_fn):
 
         print(f"Processed and saved: {output_file_path}")
 
+
 def get_uri_label(kg_endpoint, uri):
     sparql_query = f"""
     SELECT ?label WHERE {{
@@ -334,7 +403,7 @@ def get_uri_label(kg_endpoint, uri):
     bindings = result_json.get("results", {}).get("bindings", [])
     if bindings:
         return bindings[0]["label"]["value"]
-    
+
     return None
 
 def get_label(kg_endpoint, binding):
@@ -366,24 +435,20 @@ def process_sparql_results(kg_endpoint, json_data):
         results = ["yes", "true", True] if json_data.get("boolean") == True else ["no", "false", False]
         return results
     for result in json_data.get("results", {}).get("bindings", []):
-        # processed_result = {}
-        processed_result = []
         for var, binding in result.items():
-            # processed_result[var] = get_label(binding)
-        #     processed_result.append(get_label(binding))
-        # results.append(processed_result)
             results.append(get_label(kg_endpoint, binding))
     return results
+
 
 def get_ground_truths(kg_name, kg_endpoint, dataset_file_name, outputfile):
     try:
         logger.info(f"Using Knowledge Graph: {kg_name} at endpoint: {kg_endpoint}")
-        
+
         data = None
         # Load dataset
         with open(dataset_file_name, "r", encoding="utf-8") as dataset_file:
             data = json.load(dataset_file)
-        
+
         results = []
 
         for idx, obj in enumerate(data.get("data", [])):
@@ -391,9 +456,9 @@ def get_ground_truths(kg_name, kg_endpoint, dataset_file_name, outputfile):
             answers = get_answers(kg_endpoint, queries)
             answers_labels = [process_sparql_results(kg_endpoint, a) for a in answers]
             results.append(
-                {**obj,"ground_truths":answers, "ground_truths_labels": answers_labels}
+                {**obj, "ground_truths": answers, "ground_truths_labels": answers_labels}
             )
-        
+
         parent_dir = os.path.dirname(outputfile)
         if not os.path.exists(parent_dir):
             os.makedirs(parent_dir, exist_ok=True)
@@ -406,30 +471,12 @@ def get_ground_truths(kg_name, kg_endpoint, dataset_file_name, outputfile):
 
     pass
 
+
 if __name__ == "__main__":
-    #kg_names = ["dbpedia", "yago", "dblp"]
-    kg_names = ["dblp"]
+    kg_names = ["dbpedia", "yago", "dblp"]
+    # kg_names = ["dbpedia"]
     dialogue_mode = True
     for kg_name in kg_names:
-        # experiment_name = f"exp-{kg_name}-table-1-10-dialogues"
         experiment_name = f"exp-{kg_name}-{"dialogue" if dialogue_mode else "original"}-new-data"
         kg_endpoint, dataset_file = kg_related_variables[kg_name]
         run_chatbot_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file, dialogue_mode)
-    
-    # Ground Truth
-    # kg_names = ["dbpedia"]
-    # for kg_name in kg_names:
-    #     kg_endpoint, dataset_file = kg_related_variables[kg_name]
-    #     dataset_file = "/omij/chattykg-old/ChattyKG-V2/src/chatbot/convinse_evaluation/dbpedia_gpt4o.json"
-    #     file_name = os.path.basename(dataset_file)
-    #     file = os.path.splitext(file_name)
-    #     outputfile = os.path.join("logs/chatbot/chattykgold_golden", "".join(file))
-    #     get_ground_truths(kg_name, kg_endpoint, dataset_file, outputfile)
-    
-    # kg_names = ["dbpedia", "dblp", "yago"]
-    # for kg_name in kg_names:
-    #     experiment_name = f"exp-{kg_name}-table-1-10-dialogues"
-    #     kg_endpoint, dataset_file = kg_related_variables[kg_name]
-    #     run_convinse_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file)
-
-    # post_transformation("logs/chatbot", "logs/chatbot/ruby", transform_to_ruby_format)

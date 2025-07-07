@@ -89,7 +89,7 @@ def process_sparql_results(kg_endpoint, json_data, kg_prefix=None):
     return results
 
 
-os.environ["OPENAI_API_KEY"] = ""
+# os.environ["OPENAI_API_KEY"] = ""
 SPARQL_ENDPOINT = {
     "yago": "http://206.12.95.86:8892/sparql",
     "dblp": "http://206.12.95.86:8894/sparql",
@@ -100,42 +100,42 @@ SPARQL_ENDPOINT = {
 kg_related_variables = {
     "yago": (
         SPARQL_ENDPOINT.get("yago"),
-        "evaluation/data/yago_e11_20_5_original.json",
-        "logs/chatbot/chattykgv2_golden/yago_e11_20_5_original.json",
-        "logs/chatbot_v4/exp-yago-dialogue-new-data_20250407-010516.json",
-        "baseline/convinse_results_yago.json",
-        "baseline/explaignn_results_yago.json",
-        "evaluation/llms/gpt_yago_output.json",
-        "evaluation/llms/gemini_yago_output.json",
-        "evaluation/llms/deepseek_yago_output.json",
-        "evaluation/llms/phi_local_yago_output.json",
-        "evaluation/llms/qwen_instruct_yago_output.json"
+        "../../chatbot/evaluation/data/yago_e11_20_5_original.json",
+        "../../chatbot/logs/chatbot/chattykgv2_golden/yago_e11_20_5_original.json",
+        "output/dialogue/exp-yago-dialogue-new-data.json",
+        "output/dialogue/convinse_results_yago.json",
+        "output/dialogue/explaignn_results_yago.json",
+        "output/dialogue/gpt_yago_output.json",
+        "output/dialogue/gemini_yago_output.json",
+        "output/dialogue/deepseek_yago_output.json",
+        "output/dialogue/phi_local_yago_output.json",
+        "output/dialogue/qwen_instruct_yago_output.json"
     ),
     "dblp": (
         SPARQL_ENDPOINT.get("dblp"),
-        "evaluation/data/dblp_e11_20_5_original.json",
-        "logs/chatbot/chattykgv2_golden/dblp_e11_20_5_original.json",
-        "logs/chatbot-test/exp-dblp-dialogue-new-data_20250613-223059.json",
-        "baseline/convinse_results_dblp.json",
-        "baseline/explaignn_results_dblp.json",
-        "evaluation/llms/gpt_dblp_output.json",
-        "evaluation/llms/gemini_dblp_output.json",
-        "evaluation/llms/deepseek_dblp_output.json",
-        "evaluation/llms/phi_local_dblp_output.json",
-        "evaluation/llms/qwen_instruct_dblp_output.json"
+        "../../chatbot/evaluation/evaluation/data/dblp_e11_20_5_original.json",
+        "../../chatbot/logs/chatbot/chattykgv2_golden/dblp_e11_20_5_original.json",
+        "output/dialogue/exp-dblp-dialogue-new-data.json",
+        "output/dialogue/convinse_results_dblp.json",
+        "output/dialogue/explaignn_results_dblp.json",
+        "output/dialogue/gpt_dblp_output.json",
+        "output/dialogue/gemini_dblp_output.json",
+        "output/dialogue/deepseek_dblp_output.json",
+        "output/dialogue/phi_local_dblp_output.json",
+        "output/dialogue/qwen_instruct_dblp_output.json"
     ),
     "dbpedia": (
         SPARQL_ENDPOINT.get("dbpedia"),
-        "evaluation/data/dbpedia_e11_20_5_original.json",
-        "logs/chatbot/chattykgv2_golden/dbpedia_e11_20_5_original.json",
-        "logs/chatbot_v4/exp-dbpedia-dialogue-new-data_20250407-010000.json",
-        "baseline/convinse_results_dbpedia.json",
-        "baseline/explaignn_results_dbpedia.json",
-        "evaluation/llms/gpt_dbpedia_output.json",
-        "evaluation/llms/gemini_dbpedia_output.json",
-        "evaluation/llms/deepseek_dbpedia_output.json",
-        "evaluation/llms/phi_local_dbpedia_output.json",
-        "evaluation/llms/qwen_instruct_dbpedia_output.json"
+        "../../chatbot/evaluation/data/dbpedia_e11_20_5_original.json",
+        "../../chatbot/logs/chatbot/chattykgv2_golden/dbpedia_e11_20_5_original.json",
+        "output/dialogue/exp-dbpedia-dialogue-new-data.json",
+        "output/dialogue/convinse_results_dbpedia.json",
+        "output/dialogue/explaignn_results_dbpedia.json",
+        "output/dialogue/gpt_dbpedia_output.json",
+        "output/dialogue/gemini_dbpedia_output.json",
+        "output/dialogue/deepseek_dbpedia_output.json",
+        "output/dialogue/phi_local_dbpedia_output.json",
+        "output/dialogue/qwen_instruct_dbpedia_output.json"
     ),
 }
 
@@ -332,7 +332,7 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse
             "question": qs.get("question"),
             "answer": process_sparql_results(kg_endpoint, qans[0], kg_name)
         })
-    
+
     qwen_data = None
     with open(qwen_results, "r") as f:
         qwen_data = json.load(f)
@@ -374,7 +374,7 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse
     results = {}
     results_data = {"data":{}}
     for model_name, model_qs in [("chattykg", chattykg_qs), ("convinse", convinse_qs), ("explaignn", explaignn_qs), ("gpt", gpt_qs), ("gemini", gemini_qs), ("deepseek", deepseek_qs), ("phi", phi_qs), ("qwen", qwen_qs)]:
-    #for model_name, model_qs in [("chattykg", chattykg_qs)]:
+    # for model_name, model_qs in [("gpt", gpt_qs)]:
         gts = [gt["answer"] for gt in ground_truth_qs]
         pred1, pred5, rankings = prepare_evaluation_data(model_qs)
         p1, mrr, hit5 = compute_results_v2(pred1, pred5, rankings, gts)
@@ -391,7 +391,8 @@ if __name__ == "__main__":
     kg_names = ["dbpedia", "dblp", "yago"]
     # kg_names = ["dbpedia"]
     # v3 with gpt-3.5 turbo for rephraser, 4 with gpt-4o
-    output_dir = "evaluation_v7"
+    # output_dir = "evaluation_v7"
+    output_dir = "evaluation_test"
     for kg_name in kg_names:
         kg_endpoint, dataset_file, ground_results, chattykg_results, convinse_results, explaignn_results, gpt_results, gemini_results, deepseek_results, phi_results, qwen_results = kg_related_variables[kg_name]
         evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse_results, explaignn_results, gpt_results, gemini_results, deepseek_results, phi_results, qwen_results, output_dir)

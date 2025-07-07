@@ -87,7 +87,7 @@ def choose_question_from_keywords(question, query_list, triples_list, json_logge
     if len(predicate_list) == 0:
         return list()
     final_prompt = prompt.format(question=question, predicate_list=predicate_list)
-    print(final_prompt)
+    # print(final_prompt)
     llm = get_llm()
     chain = prompt | llm
     output, metadata = None, None

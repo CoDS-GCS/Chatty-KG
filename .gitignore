@@ -20,6 +20,10 @@ word_embedding/wiki-news-300d-1M.txt.zip
 word_embedding/wiki-news-300d-1M.vec
 .idea/
 
+# Project specific
+agentEnv/
+first_time_setup.md
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -119,9 +119,6 @@ if __name__ == "__main__":
     # get_embedding_for_mwe: Gets embeddings of words
     # mwe_semantic_distance: Gets semantic similarity between two vectors
     wiki_word_embed_path = os.path.join("data", "wiki-news-300d-1M.txt")
-    wiki_model = WordEmbeddings(
-        wiki_word_embed_path
-    )
     wiki_model.load_model()
     print("Done loading")
     print(

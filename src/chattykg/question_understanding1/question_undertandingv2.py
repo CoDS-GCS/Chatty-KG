@@ -5,8 +5,9 @@ import traceback
 
 from langchain_core.prompts.prompt import PromptTemplate
 
-from chattykg.llms.llm_creation import get_llm, llm_type
+from chattykg.llms.llm_creation import llm_type, get_llm
 from chattykg.llms.prompts import question_understanding_template_v3_cot
+# from llm_config.llm_setup import get_llm
 
 def remove_duplicate_triples(input):
     triples = input["triples"]
@@ -95,7 +96,7 @@ def clean_predicate(predicate):
 
     if is_camel_case(predicate):
         predicate = camel_to_normal(predicate)
-        print("Fixed Predicate: " + predicate)
+        # print("Fixed Predicate: " + predicate)
     return predicate
 
 def prepare_output_list(llm_output):
@@ -125,6 +126,7 @@ def get_understanding(question, json_logger):
         input_variables=["question"],
         template=template,
     )
+    # llm = get_llm(model_name="gpt-4o")
     llm = get_llm()
     final_prompt = prompt.format(question=question)
     # print(final_prompt)
@@ -145,7 +147,8 @@ def get_understanding(question, json_logger):
             output = extract_json_from_output(output)
             if validate_output(output, question):
                 break
-        except:
+        except Exception:
+            traceback.print_exc()
             print("============Start Parsing Error")
             print(output)
             print("============End")
