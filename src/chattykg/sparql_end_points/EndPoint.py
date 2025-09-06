@@ -14,30 +14,56 @@ class EndPoint:
         self.knowledge_graph = knowledge_graph
         self.filtration_enabled = filtration_enabled
 
+    # def evaluate_SPARQL_query(self, query: str):
+    #     payload = {
+    #         "default-graph-uri": "",
+    #         "query": query,
+    #         "format": "application/json",
+    #         "CXML_redir_for_subjs": "121",
+    #         "CXML_redir_for_hrefs": "",
+    #         "timeout": "40000",
+    #         "debug": "on",
+    #         "run": "+Run+Query+",
+    #     }
+
+    #     query_response = requests.get(self.link, params=payload)
+    #     print(query_response.text)
+    #     print(self.link, self.knowledge_graph, self.filtration_enabled)
+    #     print
+    #     if query_response.status_code in [414]:
+    #         return '{"head":{"vars":[]}, "results":{"bindings": []}, "status":414 }'
+    #     return query_response.text
+
+
+
     def evaluate_SPARQL_query(self, query: str):
-        payload = {
-            "default-graph-uri": "",
-            "query": query,
-            "format": "application/json",
-            "CXML_redir_for_subjs": "121",
-            "CXML_redir_for_hrefs": "",
-            "timeout": "40000",
-            "debug": "on",
-            "run": "+Run+Query+",
-        }
-        # From public https://dbpedia.org/sparql
-        # query_response = requests.get(f'https://dbpedia.org/sparql', params=payload)
+        if self.knowledge_graph == "wikidata":
+            # Special handling for Wikidata public endpoint
+            headers = {"Accept": "application/sparql-results+json"}
+            query_response = requests.get(
+                self.link, params={"query": query}, headers=headers
+            )
+        else:
+            # Default handling for DBpedia, YAGO, etc.
+            payload = {
+                "default-graph-uri": "",
+                "query": query,
+                "format": "application/json",
+                "CXML_redir_for_subjs": "121",
+                "CXML_redir_for_hrefs": "",
+                "timeout": "40000",
+                "debug": "on",
+                "run": "+Run+Query+",
+            }
+            query_response = requests.get(self.link, params=payload)
 
-        # From local http://localhost:8890/sparql
-        # query_response = requests.get(f'http://localhost:8890/sparql', params=payload)
+        print(query_response.text)
+        print(self.link, self.knowledge_graph, self.filtration_enabled)
 
-        # Moh Saleem'recommened DBpedia dataset: http://206.12.92.210:8890/sparql/
-        # query_response = requests.get(f'http://206.12.92.210:8890/sparql', params=payload)
-
-        query_response = requests.get(self.link, params=payload)
         if query_response.status_code in [414]:
             return '{"head":{"vars":[]}, "results":{"bindings": []}, "status":414 }'
         return query_response.text
+
 
     # Returns 3 objects:
     # 1) boolean indicating if the answer type is compatible with the answer)
@@ -55,10 +81,45 @@ class EndPoint:
 
         return True, v_result, True, types
 
+    # def get_names_and_uris(self, entity_query):
+    #     entity_result = json.loads(self.evaluate_SPARQL_query(entity_query))
+    #     uris, names = self.extract_resource_name(entity_result["results"]["bindings"])
+    #     return uris, names
+    
+
+    
+
     def get_names_and_uris(self, entity_query):
-        entity_result = json.loads(self.evaluate_SPARQL_query(entity_query))
-        uris, names = self.extract_resource_name(entity_result["results"]["bindings"])
+        """
+        Run the entity query and return (uris, names).
+        Special case for Wikidata: use direct requests.get()
+        instead of evaluate_SPARQL_query, and extract ?item / ?itemLabel.
+        """
+        print("knowledge_graph", self.knowledge_graph)
+        if self.knowledge_graph == "wikidata":
+            url = "https://query.wikidata.org/sparql"
+            headers = {"Accept": "application/sparql-results+json"}
+            resp = requests.get(url, params={"query": entity_query}, headers=headers)
+            resp.raise_for_status()
+            entity_result = resp.json()
+
+            bindings = entity_result.get("results", {}).get("bindings", [])
+            print("bindings", bindings)
+            uris = [b["uri"]["value"] for b in bindings if "uri" in b]
+            names = [b["label"]["value"] for b in bindings if "label" in b]
+            print("uris", uris, "names", names)
+            return uris, names
+
+        else:
+            # Use the existing pipeline for other KGs
+            entity_result = json.loads(self.evaluate_SPARQL_query(entity_query))
+            uris, names = self.extract_resource_name(entity_result["results"]["bindings"])
+        print("uris", uris, "names", names)
         return uris, names
+
+
+
+
 
     def check_if_answers_type_compatible(self, result, answer_datatype):
         if not answer_datatype or "results" not in result:
@@ -143,21 +204,141 @@ class EndPoint:
         resource_name = re.sub(r"(:|_|\(|\))", " ", resource_name)
         return resource_name, skip
 
-    def get_predicates_and_their_names(self, subj=None, obj=None, nlimit: int = 100):
-        if subj and obj:
-            q = sparqls.sparql_query_to_get_predicates_when_subj_and_obj_are_known(
-                subj, obj, limit=nlimit
-            )
-            uris, names = self.execute_sparql_query_and_get_uri_and_name_lists(q)
-        elif subj:
-            q = sparqls.make_top_predicates_sbj_query(subj, limit=nlimit)
-            uris, names = self.execute_sparql_query_and_get_uri_and_name_lists(q)
-        elif obj:
-            q = sparqls.make_top_predicates_obj_query(obj, limit=nlimit)
-            uris, names = self.execute_sparql_query_and_get_uri_and_name_lists(q)
-        else:
-            raise Exception
+    # def get_predicates_and_their_names(self, subj=None, obj=None, nlimit: int = 100):
+    #     if subj and obj:
+    #         q = sparqls.sparql_query_to_get_predicates_when_subj_and_obj_are_known(
+    #             subj, obj, limit=nlimit
+    #         )
+    #         uris, names = self.execute_sparql_query_and_get_uri_and_name_lists(q)
+    #     elif subj:
+    #         q = sparqls.make_top_predicates_sbj_query(subj, limit=nlimit)
+    #         uris, names = self.execute_sparql_query_and_get_uri_and_name_lists(q)
+    #     elif obj:
+    #         q = sparqls.make_top_predicates_obj_query(obj, limit=nlimit)
+    #         uris, names = self.execute_sparql_query_and_get_uri_and_name_lists(q)
+    #     else:
+    #         raise Exception
 
+    #     escaped_names = [
+    #         "22-rdf-syntax-ns",
+    #         "rdf-schema",
+    #         "owl",
+    #         "wiki Page External Link",
+    #         "wiki Page ID",
+    #         "wiki Page Revision ID",
+    #         "is Primary Topic Of",
+    #         "subject",
+    #         "type",
+    #         "prov",
+    #         "wiki Page Disambiguates",
+    #         "wiki Page Redirects",
+    #         "primary Topic",
+    #         "wiki Articles",
+    #         "hypernym",
+    #         "aliases",
+    #         "was Derived From",
+    #         "label",
+    #         "see Also",
+    #         "comment",
+    #         "same As",
+    #         "different From",
+    #         "first",
+    #         "has identifier,"
+    #         "wikipedia",
+    #         "wikidata"
+    #     ]
+    #     filtered_uris = []
+    #     filtered_names = []
+    #     for i in range(len(names)):
+    #         if names[i] not in escaped_names:
+    #             filtered_names.append(names[i])
+    #             filtered_uris.append(uris[i])
+
+    #     return filtered_uris, filtered_names
+
+
+    import requests
+
+    def get_predicates_and_their_names(self, subj=None, obj=None, nlimit: int = 100):
+        if self.knowledge_graph == "wikidata":
+            # --- Special handling for Wikidata ---
+            if subj:
+                # q = f"""
+                # SELECT DISTINCT ?p ?pLabel WHERE {{
+                # <{subj}> ?p ?o .
+                # ?prop wikibase:directClaim ?p .
+                # SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }}
+                # }}
+                # LIMIT {nlimit}
+                # """
+                q= f"""
+                SELECT ?p ?pLabel ?propLabel ?b ?bLabel
+                WHERE
+                {{
+                <{subj}> ?p ?o .
+
+                SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }} 
+                ?prop wikibase:directClaim ?p .
+                }} 
+                LIMIT {nlimit}
+                """
+            elif obj:
+                # q = f"""
+                # SELECT DISTINCT ?p ?pLabel WHERE {{
+                # ?s ?p <{obj}> .
+                # ?prop wikibase:directClaim ?p .
+                # SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }}
+                # }}
+                # LIMIT {nlimit}
+                # """
+                q= f"""
+                SELECT ?p ?pLabel ?propLabel ?b ?bLabel
+                WHERE
+                {{
+                ?s ?p <{obj}> .
+
+                SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }} 
+                ?prop wikibase:directClaim ?p .
+                }} 
+                LIMIT {nlimit}
+                """
+
+                
+
+            else:
+                raise Exception("Need subj or obj for predicate query")
+
+            # Run against Wikidata endpoint
+            url = "https://query.wikidata.org/sparql"
+            headers = {"Accept": "application/sparql-results+json"}
+            
+            print("query", q)
+            resp = requests.get(url, params={"query": q}, headers=headers)
+            resp.raise_for_status()
+            result = resp.json()
+            print("result", result)
+            bindings = result.get("results", {}).get("bindings", [])
+            print("bindings", bindings)
+            uris = [b["p"]["value"] for b in bindings if "p" in b]
+            names = [b["propLabel"]["value"] for b in bindings if "propLabel" in b]
+            print("Predicates: uris", uris, "names", names)
+
+        else:
+            # --- Default handling for DBpedia, YAGO, etc. ---
+            if subj and obj:
+                q = sparqls.sparql_query_to_get_predicates_when_subj_and_obj_are_known(
+                    subj, obj, limit=nlimit
+                )
+            elif subj:
+                q = sparqls.make_top_predicates_sbj_query(subj, limit=nlimit)
+            elif obj:
+                q = sparqls.make_top_predicates_obj_query(obj, limit=nlimit)
+            else:
+                raise Exception
+
+            uris, names = self.execute_sparql_query_and_get_uri_and_name_lists(q)
+
+        # Filter out noisy predicates
         escaped_names = [
             "22-rdf-syntax-ns",
             "rdf-schema",
@@ -182,18 +363,18 @@ class EndPoint:
             "same As",
             "different From",
             "first",
-            "has identifier,"
+            "has identifier",
             "wikipedia",
             "wikidata"
         ]
-        filtered_uris = []
-        filtered_names = []
-        for i in range(len(names)):
-            if names[i] not in escaped_names:
-                filtered_names.append(names[i])
-                filtered_uris.append(uris[i])
+        filtered_uris, filtered_names = [], []
+        for u, n in zip(uris, names):
+            if n not in escaped_names:
+                filtered_uris.append(u)
+                filtered_names.append(n)
 
         return filtered_uris, filtered_names
+
 
     def execute_sparql_query_and_get_uri_and_name_lists(self, q):
         cprint(f"== SPARQL Q Find E: {q}")

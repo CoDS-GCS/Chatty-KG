@@ -108,6 +108,27 @@ def make_keyword_unordered_search_query_with_type_yago(keywords_string: str, lim
           f"}}  LIMIT {limit} }}  "\
           f"?uri rdfs:label ?label.  }}"
 
+def make_entity_search_query_wikidata(entity, limit=100):
+    """
+    Create a SPARQL query for Wikidata entity search using the mwapi service.
+    Works with the public Wikidata endpoint (https://query.wikidata.org/sparql).
+    Returns entity URI (?item) and English label (?itemLabel).
+    """
+    return f"""
+            SELECT DISTINCT ?uri ?label WHERE {{
+            SERVICE wikibase:mwapi {{
+                bd:serviceParam wikibase:endpoint "www.wikidata.org";
+                                wikibase:api "EntitySearch";
+                                mwapi:search "{entity}";
+                                mwapi:language "en" .
+                ?uri wikibase:apiOutputItem mwapi:item .
+                ?label wikibase:apiOutputItem mwapi:label .
+            }}
+            }}
+            LIMIT {limit}
+            """
+
+
 def make_Ms_academic_query(keywords_string: str, limit=500):
     keywords_string = keywords_string.replace(',', '')
     keywords_string = keywords_string.replace('.', '')

@@ -12,10 +12,18 @@ from multi_agent.utils.graph_builder import build_langgraph
 from multi_agent.modules.State import State
 
 
+# kg_related_variables = {
+#     "yago": ("http://206.12.95.86:8892/sparql", "../../chatbot/evaluation/data/yago_e11_20_5_original.json"),
+#     "dblp": ("http://206.12.95.86:8894/sparql", "../../chatbot/evaluation/data/dblp_e11_20_5_original.json"),
+#     "dbpedia": ("http://206.12.95.86:8890/sparql", "../../chatbot/evaluation/data/dbpedia_e11_20_5_original.json"),
+#     "wikidata": ("https://query.wikidata.org/sparql", "../../chatbot/evaluation/data/dbpedia_e11_20_5_original.json"),
+# }
+
 kg_related_variables = {
-    "yago": ("http://206.12.95.86:8892/sparql", "../../chatbot/evaluation/data/yago_e11_20_5_original.json"),
-    "dblp": ("http://206.12.95.86:8894/sparql", "../../chatbot/evaluation/data/dblp_e11_20_5_original.json"),
-    "dbpedia": ("http://206.12.95.86:8890/sparql", "../../chatbot/evaluation/data/dbpedia_e11_20_5_original.json"),
+    "yago": ("http://206.12.95.86:8892/sparql", "src/chatbot/evaluation/data/yago_e11_20_5_original.json"),
+    "dblp": ("http://206.12.95.86:8894/sparql", "src/chatbot/evaluation/data/dblp_e11_20_5_original.json"),
+    "dbpedia": ("http://206.12.95.86:8890/sparql", "src/chatbot/evaluation/data/dbpedia_e11_20_5_original.json"),
+    "wikidata": ("https://query.wikidata.org/sparql", "src/chatbot/evaluation/data//dbpedia_e11_20_5_original.json"),
 }
 
 # How to add Kgs

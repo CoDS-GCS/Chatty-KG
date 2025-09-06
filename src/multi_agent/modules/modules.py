@@ -76,7 +76,7 @@ def perform_linking(state: State):
             logger.log_error(
                 f"Error at 'extract_possible_V_and_E' method with v_query value of {entity_query} "
             )
-            # traceback.print_exc()
+            traceback.print_exc()
             continue
         if len(uris) == 0:
             continue

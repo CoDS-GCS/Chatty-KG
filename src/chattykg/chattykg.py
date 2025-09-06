@@ -53,6 +53,7 @@ knowledge_graph_to_uri = {
     "fact_forge": "http://factforge.net/sparql",
     "bgee": "https://bgee.org/sparql",
     "dblp": "http://206.12.95.86:8894/sparql",
+    "wikidata": "https://query.wikidata.org/sparql",
 }
 
 json_logger = JsonLogger()

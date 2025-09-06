@@ -22,6 +22,9 @@ def get_entity_query_for_kg(entity, knowledge_graph, n_limit_VQuery):
     elif knowledge_graph in ['yago']:
         entity_query = sparqls.make_keyword_unordered_search_query_with_type_yago(
             entity, limit=n_limit_VQuery)
+    elif knowledge_graph in ['wikidata']:
+        entity_query = sparqls.make_entity_search_query_wikidata(
+            entity, limit=n_limit_VQuery)
     else:
         entity_query = sparqls.make_keyword_unordered_search_query_with_type(
             entity, limit=n_limit_VQuery

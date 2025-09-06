@@ -9,7 +9,7 @@ from chattykg.chattykg import ChattyKG
 from chattykg.logger import logger
 
 hostName = "0.0.0.0"
-serverPort = 8899
+serverPort = 9600
 
 max_Vs = 1
 max_Es = 10
