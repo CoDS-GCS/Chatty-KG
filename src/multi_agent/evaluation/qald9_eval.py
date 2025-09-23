@@ -14,6 +14,7 @@ sys.path.append('..')
 sys.path.append('../..')
 
 from chattykg.json_logger import JsonLogger
+from multi_agent.agents.translate_question import translate_question
 
 from multi_agent.shared.state import AgentState
 from multi_agent.utils.graph_builder import build_langgraph
@@ -35,7 +36,7 @@ if __name__ == '__main__':
     total_query_selection_time = 0
     total_query_execution_time = 0
     total_num_queries_executed = 0
-    llm_name = "glm"
+    llm_name = "gpt-4o"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--filter", type=str, default="True", help="argument to enable filtration")
@@ -59,7 +60,7 @@ if __name__ == '__main__':
             if lang_q['language'] == 'en':
                 question_text = lang_q['string'].strip()
                 break
-
+        question_text = translate_question(question_text)
         text = colored(f"[PROCESSING: ] Question count: {qc}, ID {question['id']}  >>> {question_text}", 'blue', attrs=['reverse', 'blink'])
         cprint(f"== {text}  ")
 
