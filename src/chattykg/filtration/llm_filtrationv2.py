@@ -73,8 +73,23 @@ def prepare_keywords_list(triples_list):
                     output += name + ', '
     return output[: len(output) - 2], predicate_to_query_id
 
+def prepare_keywords_list_wikidata(triples_list, predicate_map):
+    predicate_to_query_id = {}
+    output = ""
+    for i, triples in enumerate(triples_list):
+        for triple in triples:
+            # name = get_name(triple[1][0])
+            name = predicate_map[triple[1][0]]
+            if name != "" and not len(name) == 1:
+                if name in predicate_to_query_id:
+                    predicate_to_query_id[name].append(i)
+                else:
+                    predicate_to_query_id[name] = [i]
+                    output += name + ', '
+    return output[: len(output) - 2], predicate_to_query_id
 
-def choose_question_from_keywords(question, query_list, triples_list, json_logger):
+
+def choose_question_from_keywords(question, query_list, triples_list, json_logger, predicate_map, kg_name):
     return_result = list()
 
     template = query_selection_template_v5
@@ -83,7 +98,10 @@ def choose_question_from_keywords(question, query_list, triples_list, json_logge
         input_variables=["question", "predicate_list"],
         template=template,
     )
-    predicate_list, predicate_to_query_id = prepare_keywords_list(triples_list)
+    if kg_name in ['wikidata']:
+        predicate_list, predicate_to_query_id = prepare_keywords_list_wikidata(triples_list, predicate_map)
+    else:
+        predicate_list, predicate_to_query_id = prepare_keywords_list(triples_list)
     if len(predicate_list) == 0:
         return list()
     final_prompt = prompt.format(question=question, predicate_list=predicate_list)

@@ -1,3 +1,5 @@
+from typing import Any
+
 from chattykg import sparqls
 import chattykg.embeddings_client as w2v
 import operator
@@ -32,9 +34,10 @@ def get_entity_query_for_kg(entity, knowledge_graph, n_limit_VQuery):
     return entity_query
 
 
-def __get_chosen_URIs_for_relation(relation: str, uris: list, names: list, n_max_Es: int) -> list:
+def __get_chosen_URIs_for_relation(relation: str, uris: list, names: list, n_max_Es: int) -> list | tuple[
+    list, list]:
     if not uris:
-        return uris
+        return uris, []
 
     scores = __compute_semantic_similarity_between_single_word_and_word_list(
         relation, names
@@ -43,8 +46,13 @@ def __get_chosen_URIs_for_relation(relation: str, uris: list, names: list, n_max
     l1, l2, l3 = list(zip(*uris))
     URIs_with_scores = list(zip(l1, l2, l3, scores))
     URIs_with_scores.sort(key=operator.itemgetter(3), reverse=True)
-    # print("Edges with scores")
-    return remove_duplicates(URIs_with_scores)[:n_max_Es]
+    chosen = remove_duplicates(URIs_with_scores)[: n_max_Es]
+
+    # Get names for the chosen URIs based on original index
+    chosen_names = [names[l1.index(uri)] for uri, _, _, _ in chosen]
+
+    return chosen, chosen_names
+    # return remove_duplicates(URIs_with_scores)[:n_max_Es]
 
 
 def __compute_semantic_similarity_between_single_word_and_word_list(

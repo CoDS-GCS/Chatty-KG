@@ -8,6 +8,7 @@ from typing import List
 from chattykg.chattykg import knowledge_graph_to_uri
 from chattykg.json_logger import JsonLogger
 from chattykg.sparql_end_points.EndPoint import EndPoint
+from chattykg.sparql_end_points.Wikidata_Endpoint import WikidataEndPoint
 from chattykg.sparql_end_points.XML_EndPoint import XML_EndPoint
 from dotenv import load_dotenv
 from pathlib import Path
@@ -76,11 +77,16 @@ class State:
         self.target_variable = None
         self.sparql_end_point = self.set_up_sparql_endpoint(knowledge_graph)
         self.sparql_query = []
+        self.predicate_map = {}
 
 
     def set_up_sparql_endpoint(self, knowledge_graph):
         if knowledge_graph in ["open_citations"]:
             sparql_end_point = XML_EndPoint(
+                knowledge_graph, knowledge_graph_to_uri[knowledge_graph], self.filtration_enabled
+            )
+        elif knowledge_graph in ["wikidata"]:
+            sparql_end_point = WikidataEndPoint(
                 knowledge_graph, knowledge_graph_to_uri[knowledge_graph], self.filtration_enabled
             )
         else:
@@ -137,6 +143,9 @@ class State:
     def set_num_executed_queries(self, num_executed_queries):
         self.num_executed_queries = num_executed_queries
 
+    def set_predicate_map(self, predicate_map):
+        self.predicate_map = predicate_map
+
     def get_knowledge_graph(self):
         return self.knowledge_graph
 
@@ -178,6 +187,9 @@ class State:
 
     def get_num_executed_queries(self):
         return self.num_executed_queries
+
+    def get_predicate_map(self):
+        return self.predicate_map
 
 
     def get_answer_values(self):

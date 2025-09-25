@@ -1,3 +1,5 @@
+import traceback
+
 from chatbot.prompts import CLASSIFY_QUESTION_PROMPT_2, CONDENSE_QUESTION_PROMPT_CUSTOM
 from chattykg.question import Question
 from .State import State
@@ -134,12 +136,14 @@ def perform_linking(state: State):
                 uris.extend(uris_destination)
                 names.extend(names_destination)
 
-        URIs_chosen = utils.__get_chosen_URIs_for_relation(relation, uris, names, state.get_n_max_Es())
+        URIs_chosen, chosen_names = utils.__get_chosen_URIs_for_relation(relation, uris, names, state.get_n_max_Es())
         # print("Edges CHosen")
         # print(URIs_chosen)
         query_graph[source][destination][key]["uris"].extend(
             URIs_chosen
         )
+        predicate_map = map_uris_to_names(URIs_chosen, chosen_names)
+        state.set_predicate_map(predicate_map)
     # else:
         # logger.log_info(
         #     f"[GRAPH NODES WITH URIs:] {query_graph.nodes(data=True)}"
@@ -225,7 +229,7 @@ def evaluate_star_queries_predicate_based(state: State, query_selection_start):
         sparqls_triples.append(possible_answer.triples)
     if len(sparqls) == 0:
         return
-    queries_indices = choose_question_from_keywords(state.get_question_text(), sparqls, sparqls_triples, state.get_json_logger())
+    queries_indices = choose_question_from_keywords(state.get_question_text(), sparqls, sparqls_triples, state.get_json_logger(), state.get_predicate_map(), state.get_knowledge_graph())
     query_selection_end = time.time()
     num_queries_executed = len(queries_indices)
     state.set_query_selection_time(query_selection_end - query_selection_start)
@@ -369,3 +373,16 @@ def generate_sparql_query_new(star_query, state):
         select_query.set_where_pattern(graph_pattern=where_pattern)
         return select_query.get_text(), node_uris, relation_uris, triples
 
+
+def map_uris_to_names(chosen: list, chosen_names: list) -> dict:
+    """
+    Create a dictionary mapping each URI to its corresponding name.
+
+    Args:
+        chosen (list): list of tuples (uri, vertex, True, score)
+        chosen_names (list): list of names aligned with chosen
+
+    Returns:
+        dict: {uri: name, ...}
+    """
+    return {uri: name for (uri, _, _, _), name in zip(chosen, chosen_names)}

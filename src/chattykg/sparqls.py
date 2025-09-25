@@ -114,20 +114,33 @@ def make_entity_search_query_wikidata(entity, limit=100):
     Works with the public Wikidata endpoint (https://query.wikidata.org/sparql).
     Returns entity URI (?item) and English label (?itemLabel).
     """
+    # return f"""
+    #         SELECT DISTINCT ?uri ?label WHERE {{
+    #         SERVICE wikibase:mwapi {{
+    #             bd:serviceParam wikibase:endpoint "www.wikidata.org";
+    #                             wikibase:api "EntitySearch";
+    #                             mwapi:search "{entity}";
+    #                             mwapi:language "en" .
+    #             ?uri wikibase:apiOutputItem mwapi:item .
+    #             ?label wikibase:apiOutputItem mwapi:label .
+    #         }}
+    #         }}
+    #         LIMIT {limit}
+    #         """
     return f"""
-            SELECT DISTINCT ?uri ?label WHERE {{
-            SERVICE wikibase:mwapi {{
-                bd:serviceParam wikibase:endpoint "www.wikidata.org";
-                                wikibase:api "EntitySearch";
-                                mwapi:search "{entity}";
-                                mwapi:language "en" .
-                ?uri wikibase:apiOutputItem mwapi:item .
-                ?label wikibase:apiOutputItem mwapi:label .
-            }}
-            }}
-            LIMIT {limit}
-            """
-
+                SELECT DISTINCT ?uri ?label WHERE {{
+                SERVICE wikibase:mwapi {{
+                    bd:serviceParam wikibase:endpoint "www.wikidata.org";
+                                    wikibase:api "EntitySearch";
+                                    mwapi:search "{entity}";
+                                    mwapi:language "en" .
+                    ?uri wikibase:apiOutputItem mwapi:item .
+                }}
+                ?uri rdfs:label ?label .
+                FILTER (LANG(?label) = "en")
+                }}
+                LIMIT {limit}
+                """
 
 def make_Ms_academic_query(keywords_string: str, limit=500):
     keywords_string = keywords_string.replace(',', '')
@@ -171,6 +184,18 @@ def make_top_predicates_sbj_query(uri, limit=1000):
     # return f"select distinct ?p where {{ <{uri}> ?p ?o . }}  LIMIT {limit}"
     return f"select distinct ?p where {{ <{uri}> ?p ?o . }}"
 
+def make_top_predicates_sbj_query_wikidata(uri, limit=1000):
+    return f"""
+        SELECT ?p ?pLabel ?propLabel ?b ?bLabel
+        WHERE
+        {{
+        <{uri}> ?p ?o .
+
+        SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }} 
+        ?prop wikibase:directClaim ?p .
+        }} 
+    """
+
 def get_connected_predicate(uri):
     return f"select count(distinct ?p) as ?p_count where {{ <{uri}> ?p ?o . }}"
 
@@ -178,10 +203,33 @@ def sparql_query_to_get_predicates_when_subj_and_obj_are_known(subj_uri, obj_uri
     # return f"select distinct ?p where {{ <{subj_uri}> ?p <{obj_uri}> . }}  LIMIT {limit}"
     return f"select distinct ?p where {{ <{subj_uri}> ?p <{obj_uri}> . }}"
 
+def sparql_query_to_get_predicates_when_subj_and_obj_are_known_wikidata(subj_uri, obj_uri, limit=1000):
+    return f"""
+        SELECT ?p ?pLabel ?propLabel ?b ?bLabel
+        WHERE
+        {{
+        <{subj_uri}> ?p <{obj_uri}> .
+
+        SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }} 
+        ?prop wikibase:directClaim ?p .
+        }} 
+    """
 def make_top_predicates_obj_query(uri, limit=1000):
     # return f"select ?p ?p2 where {{ ?s ?p <{uri}> . optional {{ ?s ?p2 ?o }} }} LIMIT {limit}"
     #return f"select distinct ?p where {{ ?s ?p <{uri}> . }} LIMIT {limit}"
     return f"select distinct ?p where {{ ?s ?p <{uri}> . }} "
+
+def make_top_predicates_obj_query_wikidata(uri, limit=1000):
+    return f"""
+        SELECT ?p ?pLabel ?propLabel ?b ?bLabel
+        WHERE
+        {{
+        ?s ?p <{uri}> .
+
+        SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }} 
+        ?prop wikibase:directClaim ?p .
+        }} 
+    """
 
 
 def construct_yesno_answers_query(sbj_uri, prd_uri, obj_uri):

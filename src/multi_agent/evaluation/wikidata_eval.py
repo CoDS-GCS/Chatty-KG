@@ -14,13 +14,15 @@ sys.path.append('..')
 sys.path.append('../..')
 
 from chattykg.json_logger import JsonLogger
+# from multi_agent.agents.translate_question import translate_question
 
 from multi_agent.shared.state import AgentState
 from multi_agent.utils.graph_builder import build_langgraph
 from multi_agent.modules.State import State
 
 file_dir = os.path.dirname(os.path.abspath(__file__))
-file_name = "../../evaluation/qald9/qald-9-test-multilingual_1.json"
+# file_name = "../../evaluation/wikidata/annotated_wd_data_test_answerable.json"
+file_name = "../../evaluation/wikidata/qald_9_plus_test_wikidata.json"
 
 if __name__ == '__main__':
     root_element = Et.Element('dataset')
@@ -45,28 +47,28 @@ if __name__ == '__main__':
 
     with open(file_name) as f:
         qald9_testset = json.load(f)
-    dataset_id = qald9_testset['dataset']['id']
-
+    # dataset_id = qald9_testset['dataset']['id']
+    dataset_id = "qald_9_plus_test_wikidata"
     qCount = count(1)
     chattykg_qald9 = {"dataset": {"id": dataset_id}, "questions": []}
     graph = build_langgraph()
 
     for i, question in enumerate(qald9_testset['questions']):
         qc = next(qCount)
-        # if qc == 5:
+        # if qc == 2:
         #     break
         for lang_q in question['question']:
             if lang_q['language'] == 'en':
                 question_text = lang_q['string'].strip()
                 break
-
+        # question_text = translate_question(question_text)
         text = colored(f"[PROCESSING: ] Question count: {qc}, ID {question['id']}  >>> {question_text}", 'blue', attrs=['reverse', 'blink'])
         cprint(f"== {text}  ")
 
         st = time.time()
         try:
             kg_graph_state = State(
-                knowledge_graph='dbpedia',
+                knowledge_graph='wikidata',
                 n_limit_VQuery=600,
                 n_max_Vs=1,
                 n_limit_EQuery=25,
@@ -166,12 +168,12 @@ if __name__ == '__main__':
         "Number of queries": total_num_queries_executed / qc
     }]
 
-    with open(os.path.join(file_dir, f'output/{llm_name}/qald.json'), encoding='utf-8', mode='w') as rfobj:
+    with open(os.path.join(file_dir, f'output/{llm_name}/wikidata3.json'), encoding='utf-8', mode='w') as rfobj:
         json.dump(chattykg_qald9, rfobj)
         rfobj.write('\n')
 
     field_names = response_time[0].keys()
-    with open(os.path.join(file_dir, f'output/{llm_name}/qald_response_time_ms.csv'), mode='w', newline='') as file:
+    with open(os.path.join(file_dir, f'output/{llm_name}/wikidata_response_time_ms.csv'), mode='w', newline='') as file:
         writer = csv.DictWriter(file, fieldnames=field_names)
         writer.writeheader()
         writer.writerows(response_time)
