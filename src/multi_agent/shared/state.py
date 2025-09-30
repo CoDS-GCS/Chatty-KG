@@ -16,6 +16,8 @@ class AgentState:
     resolved_question: Optional[str] = None
     sparql_query: Optional[str] = None
     query_result: Optional[str] = None
+    final_answer: Optional[str] = None
+    answer_mode: Optional[str] = None
     kg_graph_state: Optional[State] = None
     ambiguity_resolver_done: bool = False
     ambiguity_resolver_tries: int = 0

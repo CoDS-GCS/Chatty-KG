@@ -71,3 +71,13 @@ CONDENSE_QUESTION_PROMPT_CUSTOM = PromptTemplate(
     Follow Up Input: {question}
     Standalone question:""",
 )
+
+
+FINAL_ANSWER_REFORMALIZATION_PROMPT = PromptTemplate(
+    input_variables=["question", "answers"],
+    template="""Given a question and its structured answer extracted from the Knowledge Graph. Convert the structured answers to an equivalent natural language answer suitable for human conversation
+
+    Question: {question}
+    Answers: {answers}
+    Reformalized Answer:""",
+)

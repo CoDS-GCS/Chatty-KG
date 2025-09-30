@@ -38,6 +38,7 @@ if __name__ == "__main__":
             question=user_input,
             chat_history=chat_history.copy(),
             system_mode = "Dialogue", # Use 'Dialogue' to activate the Resolver Ambiguity Agent; any other value to deactivate it.
+            answer_mode = "Formulated", # Use 'Formulated' to activate the Final Answer part; any other value to deactivate it.
             kg_graph_state=kg_graph_state,
             query_done=False,
             qir_done=False,
@@ -45,6 +46,7 @@ if __name__ == "__main__":
             route="chat_agent",
             sparql_query=None,
             query_result=None,
+            final_answer=None,
             resolved_question=None,
             ambiguity_resolver_done=False,
             query_graph=None,
@@ -69,5 +71,7 @@ if __name__ == "__main__":
         # Output final answer and state
         print("\n📦 Final Agent State:")
         pp.pprint(final_state)
+
+        print(f"Final Answer: {state.final_answer}")
 
         print("\n🎯 Finished. Ask another question or type 'exit'.")

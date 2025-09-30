@@ -70,6 +70,7 @@ python server.py
 
 ## 5. Run the code
 ```bash
+cd src
 python -m multi_agent.main
 python -m multi_agent.modules.test_modules
 ```
