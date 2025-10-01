@@ -1,6 +1,6 @@
 import traceback
 
-from chatbot.prompts import CLASSIFY_QUESTION_PROMPT_2, CONDENSE_QUESTION_PROMPT_CUSTOM
+from chatbot.prompts import CLASSIFY_QUESTION_PROMPT_2, CONDENSE_QUESTION_PROMPT_CUSTOM, FINAL_ANSWER_REFORMALIZATION_PROMPT
 from chattykg.question import Question
 from .State import State
 from . import utils
@@ -169,6 +169,24 @@ def query_selection_execution(state: State):
 def update_history(session_id, original_question, rephrased_question, state: State):
     chat_history = state.get_by_session_id(session_id)
     chat_history.add_messages([HumanMessage(original_question), AIMessage(rephrased_question)])
+
+# Test Example:
+# Dialogue Questions:
+# - What is the birth place of Antony Cheng?, Answer: Vancouver, British Columbia, Canada
+#  - What is his country of residence?, Answer: http://dbpedia.org/resource/Richmond_Hill,_Ontario, http://dbpedia.org/resource/Canada
+
+def reformalize_final_answer(question: str, answers: list) -> str:
+    print(f"reformalize_final_answer: \nquestion: {question}\nanswer:{answers}")
+    llm = ChatOpenAI(
+        model_name="gpt-3.5-turbo",
+        temperature=0.3,  # low randomness for consistent reformalization
+    )
+    chain = FINAL_ANSWER_REFORMALIZATION_PROMPT | llm
+    result = chain.invoke({"question": question, "answers": answers})
+    # Extract only the text
+    if hasattr(result, "content"):
+        return result.content
+    return str(result)
 
 
 #------------------------------------------------------------------------ Helper functions

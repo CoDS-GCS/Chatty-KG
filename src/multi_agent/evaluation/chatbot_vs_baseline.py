@@ -225,6 +225,7 @@ def run_chatbot_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file_n
                     question=question,
                     chat_history=chat_history,
                     system_mode="Dialogue",
+                    answer_mode="Not Formulated",
                     kg_graph_state=kg_graph_state,
                     query_done=False,
                     qir_done=False,

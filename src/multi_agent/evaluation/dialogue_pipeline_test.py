@@ -61,6 +61,7 @@ if __name__ == '__main__':
                 question=d_question,
                 chat_history=chat_history,
                 system_mode="Dialogue",
+                answer_mode="Not Formulated",
                 kg_graph_state=kg_graph_state,
                 query_done=False,
                 qir_done=False,

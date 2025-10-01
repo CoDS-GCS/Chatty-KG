@@ -72,6 +72,6 @@ if __name__ == "__main__":
         print("\n📦 Final Agent State:")
         pp.pprint(final_state)
 
-        print(f"Final Answer: {state.final_answer}")
+        print(f"Final Answer: {final_state.final_answer}")
 
         print("\n🎯 Finished. Ask another question or type 'exit'.")

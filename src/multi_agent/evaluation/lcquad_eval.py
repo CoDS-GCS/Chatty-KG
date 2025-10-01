@@ -107,6 +107,7 @@ if __name__ == '__main__':
                 question=question_text,
                 chat_history=[],
                 system_mode="Standalone",
+                answer_mode="Not Formulated",
                 kg_graph_state=kg_graph_state,
                 query_done=False,
                 qir_done=False,
