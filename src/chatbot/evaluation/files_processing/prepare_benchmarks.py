@@ -1,10 +1,21 @@
 import json
+import time
+
 import requests
 
 kg_related_variables = {"yago": ("http://206.12.95.86:8892/sparql", "../data/yago_e11_20_5_original.json"),
                         "dblp": ("http://206.12.95.86:8894/sparql", "../data/dblp_e11_20_5_original.json"),
                         "dbpedia": ("http://206.12.95.86:8890/sparql", "../data/dbpedia_e11_20_5_original.json"),
+                        "wikidata": ("https://query.wikidata.org/sparql", "../data/wikidata_subgraph_summarized_20_5_simplified.json"),
                         }
+
+
+def evaluate_SPARQL_query_wikidata(endpoint, query: str):
+    headers = {"Accept": "application/sparql-results+json"}
+    query_response = requests.get(endpoint, params={"query": query}, headers=headers)
+    if query_response.status_code in [414]:
+        return '{"head":{"vars":[]}, "results":{"bindings": []}, "status":414 }'
+    return query_response.text
 
 def evaluate_SPARQL_query(endpoint, query):
     payload = {
@@ -34,7 +45,11 @@ if __name__ == '__main__':
     id = 0
     for instance in data['data']:
         for dialogue, standalone, query in zip(instance['dialogue'], instance['original'], instance['queries']):
-            result = evaluate_SPARQL_query(endpoint, query)
+            if dataset == "wikidata":
+                result = evaluate_SPARQL_query_wikidata(endpoint, query)
+                time.sleep(2)
+            else:
+                result = evaluate_SPARQL_query(endpoint, query)
             result_json = json.loads(result)
 
             dialogue_instance = {'id': id, 'question': dialogue, 'answers': [result_json]}

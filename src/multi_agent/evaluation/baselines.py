@@ -4,6 +4,13 @@ import urllib
 import os
 import time
 
+def evaluate_SPARQL_query_wikidata(endpoint_url, query: str):
+    headers = {"Accept": "application/sparql-results+json"}
+    query_response = requests.get(endpoint_url, params={"query": query}, headers=headers)
+    if query_response.status_code in [414]:
+        return '{"head":{"vars":[]}, "results":{"bindings": []}, "status":414 }'
+    return query_response.text
+
 
 def normalize(answer):
     # Check if the answer is a whole number (integer in string format)
@@ -137,6 +144,14 @@ def get_answers(endpoint, queries):
         answers.append(result_json)
     return answers
 
+def get_answers_wikidata(endpoint, queries):
+    answers = []
+    for query in queries:
+        result = evaluate_SPARQL_query_wikidata(endpoint, query)
+        result_json = json.loads(result)
+        answers.append(result_json)
+    return answers
+
 class APIClient:
     def __init__(self, base_url, client_name, headers):
         self.base_url = base_url
@@ -229,10 +244,15 @@ class APIClient:
         output2 = []
         output3 = []
         qid = 0
+        errors = 0
         for idx, obj in enumerate(data.get("data", [])):
             questions = obj.get("original")
             queries = obj.get("queries")
-            answers = get_answers(kg_endpoint, queries)
+            if kg_name == 'wikidata':
+                answers = get_answers_wikidata(kg_endpoint, queries)
+            else:
+                answers = get_answers(kg_endpoint, queries)
+
             if dialogue_mode:
                 questions = obj.get("dialogue", [])
             
@@ -251,8 +271,33 @@ class APIClient:
 
                 # Process the response
                 result = self.process_response(response, question, history_questions, history_answers)
-                result["api_answer"] = result.get("answer",None)
-                result["answer"] = self.post_processing(qid,result)
+                if result:
+                    result["api_answer"] = result.get("answer",None)
+                    result["answer"] = self.post_processing(qid,result)
+                else:
+                    errors += 1
+                    comparison_result = compare_single_answer([], golden_answer)
+                    results.append(comparison_result)
+                    question_output = {
+                        "id": qid,
+                        "question": question,
+                        "query": query,
+                        "golden_answer": golden_answer,
+                        "answer": [],
+                        "api_answer": [],
+                        "result": comparison_result
+                    }
+                    output.append(question_output)
+                    question_output2 = {
+                        "id": qid,
+                        "question": [{"language": "en", "string": question}],
+                        "query": {"sparql": query},
+                        "golden_answers": [golden_answer],
+                        "answers": []
+                    }
+                    output2.append(question_output2)
+                    history_questions.append(question)
+                    history_answers.append([])
                 if result:
                     comparison_result = compare_single_answer(result["api_answer"]["label"], golden_answer)
                     results.append(comparison_result)
@@ -403,10 +448,14 @@ kg_related_variables = {
         "http://206.12.95.86:8890/sparql",
         "../../chatbot/evaluation/data/dbpedia_e11_20_5_original.json",
     ),
+    "wikidata": (
+        "https://query.wikidata.org/sparql",
+        "../../chatbot/evaluation/data/wikidata_subgraph_summarized_20_5_simplified.json"
+    )
 }
 
 if __name__ == "__main__":
-    kg_names = ["dblp", "yago", "dbpedia"]
+    kg_names = ["dblp", "yago", "dbpedia", "wikidata"]
     dialogue_mode = True
 
     for kg_name in kg_names:

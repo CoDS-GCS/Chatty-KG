@@ -1,10 +1,19 @@
 import os
+import time
+
 import requests
 import csv
 import json
 import logging
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
+def evaluate_SPARQL_query_wikidata(endpoint_url, query: str):
+    headers = {"Accept": "application/sparql-results+json"}
+    query_response = requests.get(endpoint_url, params={"query": query}, headers=headers)
+    if query_response.status_code in [414]:
+        return '{"head":{"vars":[]}, "results":{"bindings": []}, "status":414 }'
+    return query_response.text
 
 def evaluate_SPARQL_query(endpoint, query):
     payload = {
@@ -30,7 +39,7 @@ def get_answers(endpoint, queries):
         answers.append(result_json)
     return answers
 
-def get_uri_label(kg_endpoint, uri):
+def get_uri_label(kg_endpoint, uri, kg_name):
     sparql_query = f"""
     SELECT ?label WHERE {{
         <{uri}> rdfs:label ?label .
@@ -38,7 +47,11 @@ def get_uri_label(kg_endpoint, uri):
     }} LIMIT 1
     """
 
-    response = evaluate_SPARQL_query(kg_endpoint, sparql_query)
+    if kg_name == 'wikidata':
+        response = evaluate_SPARQL_query_wikidata(kg_endpoint, sparql_query)
+        time.sleep(1)
+    else:
+        response = evaluate_SPARQL_query(kg_endpoint, sparql_query)
     result_json = json.loads(response)
 
     bindings = result_json.get("results", {}).get("bindings", [])
@@ -59,7 +72,7 @@ def get_label(kg_endpoint, binding, kg_prefix=None):
             return binding["label"]["value"]
         # Option 2: Fallback to URI defragmentation
         # return defrag_uri_without_space(binding["value"])
-        return get_uri_label(kg_endpoint, binding["value"])
+        return get_uri_label(kg_endpoint, binding["value"], kg_prefix)
     elif binding["type"] == "typed-literal":
         return binding["value"]  # Add datatype-specific formatting if needed
     elif binding["type"] == "literal":
@@ -137,9 +150,23 @@ kg_related_variables = {
         "output/dialogue/phi_local_dbpedia_output.json",
         "output/dialogue/qwen_instruct_dbpedia_output.json"
     ),
+"wikidata": (
+        "https://query.wikidata.org/sparql",
+        "../../chatbot/evaluation/data/wikidata_subgraph_summarized_20_5_simplified.json",
+        "../../chatbot/logs/chatbot/chattykgv2_golden/wikidata_e11_20_5_original_3.json",
+        "output/dialogue3/exp-wikidata-dialogue-new-data.json",
+        "output/dialogue3/convinse_results_wikidata.json",
+        "output/dialogue3/explaignn_results_wikidata.json",
+        "output/dialogue3/gpt_wikidata_output.json",
+        "output/dialogue3/gemini_wikidata_output.json",
+        "output/dialogue3/deepseek_wikidata_output.json",
+        "output/dialogue3/phi_local_wikidata_output.json",
+        "output/dialogue3/qwen_instruct_wikidata_output.json"
+    ),
+
 }
 
-def precision_at_1(predictions, ground_truths, verbose=False):
+def precision_at_1(predictions, ground_truths, verbose=True):
     correct_count = 0
 
     for i, (pred, truth_list) in enumerate(zip(predictions, ground_truths)):
@@ -388,7 +415,7 @@ def evaluate_v2(kg_name, kg_endpoint, ground_results, chattykg_results, convinse
 
 if __name__ == "__main__":
 
-    kg_names = ["dbpedia", "dblp", "yago"]
+    kg_names = ["dbpedia", "dblp", "yago", "wikidata"]
     # kg_names = ["dbpedia"]
     # v3 with gpt-3.5 turbo for rephraser, 4 with gpt-4o
     # output_dir = "evaluation_v7"

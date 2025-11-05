@@ -33,6 +33,10 @@ kg_related_variables = {
         "http://206.12.95.86:8890/sparql",
         "../../chatbot/evaluation/data/dbpedia_e11_20_5_original.json",
     ),
+    'wikidata': (
+        "https://query.wikidata.org/sparql",
+        "../../chatbot/evaluation/data/wikidata_subgraph_summarized_20_5_simplified.json",
+    )
 }
 
 logger = logging.getLogger("chatbot_vs_baseline")
@@ -157,6 +161,12 @@ def compare_single_answer(answers_user, answers_gold):
 
     return results
 
+def evaluate_SPARQL_query_wikidata(endpoint_url, query: str):
+    headers = {"Accept": "application/sparql-results+json"}
+    query_response = requests.get(endpoint_url, params={"query": query}, headers=headers)
+    if query_response.status_code in [414]:
+        return '{"head":{"vars":[]}, "results":{"bindings": []}, "status":414 }'
+    return query_response.text
 
 def evaluate_SPARQL_query(endpoint, query):
     payload = {
@@ -179,6 +189,14 @@ def get_answers(endpoint, queries):
     answers = []
     for query in queries:
         result = evaluate_SPARQL_query(endpoint, query)
+        result_json = json.loads(result)
+        answers.append(result_json)
+    return answers
+
+def get_answers_wikidata(endpoint, queries):
+    answers = []
+    for query in queries:
+        result = evaluate_SPARQL_query_wikidata(endpoint, query)
         result_json = json.loads(result)
         answers.append(result_json)
     return answers
@@ -454,7 +472,10 @@ def get_ground_truths(kg_name, kg_endpoint, dataset_file_name, outputfile):
 
         for idx, obj in enumerate(data.get("data", [])):
             queries = obj.get("queries")
-            answers = get_answers(kg_endpoint, queries)
+            if kg_name == 'wikidata':
+                answers = get_answers_wikidata(kg_endpoint, queries)
+            else:
+                answers = get_answers(kg_endpoint, queries)
             answers_labels = [process_sparql_results(kg_endpoint, a) for a in answers]
             results.append(
                 {**obj, "ground_truths": answers, "ground_truths_labels": answers_labels}
@@ -468,16 +489,17 @@ def get_ground_truths(kg_name, kg_endpoint, dataset_file_name, outputfile):
 
 
     except Exception as e:
+        traceback.print_exc()
         logger.error(f"An error occurred during the experiment: {e}", exc_info=True)
-
-    pass
 
 
 if __name__ == "__main__":
-    kg_names = ["dbpedia", "yago", "dblp"]
-    # kg_names = ["dbpedia"]
+    # kg_names = ["dbpedia", "yago", "dblp", "wikidata"]
+    kg_names = ["dbpedia"]
     dialogue_mode = True
     for kg_name in kg_names:
         experiment_name = f"exp-{kg_name}-{"dialogue" if dialogue_mode else "original"}-new-data"
         kg_endpoint, dataset_file = kg_related_variables[kg_name]
         run_chatbot_evaluation(experiment_name, kg_name, kg_endpoint, dataset_file, dialogue_mode)
+        # outputfile = "../../chatbot/logs/chatbot/chattykgv2_golden/wikidata_e11_20_5_original.json"
+        # get_ground_truths(kg_name, kg_endpoint, dataset_file, outputfile)

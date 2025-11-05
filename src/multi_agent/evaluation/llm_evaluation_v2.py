@@ -276,7 +276,7 @@ def get_llm(llm_name):
 
 if __name__ == '__main__':
     kgs = {"dbpedia": '../../chatbot/evaluation/data/dbpedia_e11_20_5_original.json', "yago": '../../chatbot/evaluation/data/yago_e11_20_5_original.json',
-           "dblp": '../../chatbot/evaluation/data/dblp_e11_20_5_original.json'}
+           "dblp": '../../chatbot/evaluation/data/dblp_e11_20_5_original.json', "wikidata": '../../chatbot/evaluation/data/wikidata_subgraph_summarized_20_5_simplified.json'}
     # kgs = {"dblp": '../../chatbot/evaluation/data/dblp_e11_20_5_original.json'}
     llms = ['gpt', 'gemini', 'deepseek', 'phi_local', 'qwen_instruct']
     # llms = ['qwen_instruct']

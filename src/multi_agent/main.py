@@ -38,7 +38,7 @@ if __name__ == "__main__":
             question=user_input,
             chat_history=chat_history.copy(),
             system_mode = "Dialogue", # Use 'Dialogue' to activate the Resolver Ambiguity Agent; any other value to deactivate it.
-            answer_mode = "Formulated", # Use 'Formulated' to activate the Final Answer part; any other value to deactivate it.
+            answer_mode = "Not Formulated", # Use 'Formulated' to activate the Final Answer part; any other value to deactivate it.
             kg_graph_state=kg_graph_state,
             query_done=False,
             qir_done=False,

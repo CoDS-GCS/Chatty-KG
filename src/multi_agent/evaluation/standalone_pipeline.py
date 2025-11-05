@@ -22,6 +22,7 @@ import traceback
 kg_related_variables = {"yago": ("http://206.12.95.86:8892/sparql", "../../chatbot/evaluation/data/yago_e11_20_5_original.json"),
                         "dblp": ("http://206.12.95.86:8894/sparql", "../../chatbot/evaluation/data/dblp_e11_20_5_original.json"),
                         "dbpedia": ("http://206.12.95.86:8890/sparql", "../../chatbot/evaluation/data/dbpedia_e11_20_5_original.json"),
+                        "wikidata": ("https://query.wikidata.org/sparql", "../../chatbot/evaluation/data/wikidata_subgraph_summarized_20_5_simplified.json"),
                         }
 
 if __name__ == '__main__':

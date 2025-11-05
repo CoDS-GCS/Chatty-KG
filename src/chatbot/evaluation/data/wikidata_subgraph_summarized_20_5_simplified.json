@@ -1,0 +1,1424 @@
+{
+    "seeds_used": 26,
+    "data": [
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q67",
+            "seed_label": "Airbus",
+            "dialogue": [
+                "Who is the chief executive officer of Airbus?",
+                "How many people are employed by it?",
+                "What organization is the parent organization or unit of it?",
+                "Does it have an official website?",
+                "In what year did it begin its operations?"
+            ],
+            "original": [
+                "Who is the chief executive officer of Airbus?",
+                "How many people are employed by Airbus?",
+                "What organization is the parent organization or unit of Airbus?",
+                "Does Airbus have an official website?",
+                "In what year did Airbus begin its operations?"
+            ],
+            "queries": [
+                "SELECT ?ceo WHERE { <http://www.wikidata.org/entity/Q67> <http://www.wikidata.org/prop/direct/P169> ?ceo. }",
+                "SELECT ?number_of_employees WHERE { <http://www.wikidata.org/entity/Q67> <http://www.wikidata.org/prop/direct/P1128> ?number_of_employees . }",
+                "SELECT ?organization WHERE { wd:Q67 wdt:P749 ?organization . }",
+                "ASK { wd:Q67 wdt:P856 ?website }",
+                "SELECT ?inceptionYear WHERE { <http://www.wikidata.org/entity/Q67> <http://www.wikidata.org/prop/direct/P571> ?inceptionYear. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q67",
+                        "http://www.wikidata.org/prop/direct/P169",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q67",
+                        "http://www.wikidata.org/prop/direct/P1128",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q67",
+                        "http://www.wikidata.org/prop/direct/P749",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q67",
+                        "http://www.wikidata.org/prop/direct/P856",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q67",
+                        "http://www.wikidata.org/prop/direct/P571",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 10011,
+                "prompt_tokens": 9576,
+                "completion_tokens": 435
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q49257",
+            "seed_label": "African Blood Brotherhood",
+            "dialogue": [
+                "Who founded the African Blood Brotherhood?",
+                "Was it dissolved or demolished at a specific date?",
+                "How many identifiers are mentioned for it in the subgraph?",
+                "In what location was it formed?",
+                "What sources describe it?"
+            ],
+            "original": [
+                "Who founded the African Blood Brotherhood?",
+                "Was African Blood Brotherhood dissolved or demolished at a specific date?",
+                "How many identifiers are mentioned for the African Blood Brotherhood in the subgraph?",
+                "In what location was the African Blood Brotherhood formed?",
+                "What sources describe the African Blood Brotherhood?"
+            ],
+            "queries": [
+                "SELECT ?founder WHERE { wd:Q49257 wdt:P112 ?founder. }",
+                "ASK WHERE { <http://www.wikidata.org/entity/Q49257> <http://www.wikidata.org/prop/direct/P576> ?date }",
+                "SELECT (COUNT(?identifier) AS ?count) WHERE { { <http://www.wikidata.org/entity/Q49257> <http://www.wikidata.org/prop/direct/P646> ?identifier. } UNION { <http://www.wikidata.org/entity/Q49257> <http://www.wikidata.org/prop/direct/P1417> ?identifier. } UNION { <http://www.wikidata.org/entity/Q49257> <http://www.wikidata.org/prop/direct/P3417> ?identifier. } UNION { <http://www.wikidata.org/entity/Q49257> <http://www.wikidata.org/prop/direct/P6723> ?identifier. } }",
+                "SELECT ?location WHERE { wd:Q49257 wdt:P740 ?location . }",
+                "SELECT ?source WHERE { wd:Q49257 wdt:P1343 ?source . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q49257",
+                        "http://www.wikidata.org/prop/direct/P112",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q49257",
+                        "http://www.wikidata.org/prop/direct/P576",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q49257",
+                        "http://www.wikidata.org/prop/direct/P646",
+                        ""
+                    ],
+                    [
+                        "http://www.wikidata.org/entity/Q49257",
+                        "http://www.wikidata.org/prop/direct/P1417",
+                        ""
+                    ],
+                    [
+                        "http://www.wikidata.org/entity/Q49257",
+                        "http://www.wikidata.org/prop/direct/P3417",
+                        ""
+                    ],
+                    [
+                        "http://www.wikidata.org/entity/Q49257",
+                        "http://www.wikidata.org/prop/direct/P6723",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q49257",
+                        "http://www.wikidata.org/prop/direct/P740",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q49257",
+                        "http://www.wikidata.org/prop/direct/P1343",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4177,
+                "prompt_tokens": 3598,
+                "completion_tokens": 579
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q49330",
+            "seed_label": "Doctors Without Borders",
+            "dialogue": [
+                "Does Doctors Without Borders have any participation remarked in its records?",
+                "Who is the chief executive officer of the humanitarian organization it known as?",
+                "Was there an organization founded as a segment or unit within the framework of it?",
+                "What was the inception year for the entity known as it?"
+            ],
+            "original": [
+                "Does Doctors Without Borders have any participation remarked in its records?",
+                "Who is the chief executive officer of the humanitarian organization Doctors Without Borders known as?",
+                "Was there an organization founded as a segment or unit within the framework of Doctors Without Borders?",
+                "What was the inception year for the entity known as Doctors Without Borders?"
+            ],
+            "queries": [
+                "ASK WHERE { wd:Q49330 wdt:P1344 ?participation }",
+                "SELECT ?ceo WHERE { wd:Q49330 wdt:P169 ?ceo . }",
+                "ASK WHERE { wd:Q49330 wdt:P355 ?organization . }",
+                "SELECT ?inception WHERE { wd:Q49330 wdt:P571 ?inception . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q49330",
+                        "http://www.wikidata.org/prop/direct/P1344",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q49330",
+                        "http://www.wikidata.org/prop/direct/P169",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q49330",
+                        "http://www.wikidata.org/prop/direct/P355",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q49330",
+                        "http://www.wikidata.org/prop/direct/P571",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 10473,
+                "prompt_tokens": 9972,
+                "completion_tokens": 501
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q152153",
+            "seed_label": "Medica Mondiale",
+            "dialogue": [
+                "What type of entity is Medica Mondiale classified as?",
+                "Does it have a documented inception year?",
+                "What is the primary location of its headquarters?"
+            ],
+            "original": [
+                "What type of entity is Medica Mondiale classified as?",
+                "Does Medica Mondiale have a documented inception year?",
+                "What is the primary location of Medica Mondiale's headquarters?"
+            ],
+            "queries": [
+                "SELECT ?entityType WHERE { wd:Q152153 wdt:P31 ?entityType. }",
+                "ASK WHERE { wd:Q152153 wdt:P571 ?inceptionYear }",
+                "SELECT ?location WHERE { wd:Q152153 wdt:P159 ?location . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q152153",
+                        "http://www.wikidata.org/prop/direct/P31",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q152153",
+                        "http://www.wikidata.org/prop/direct/P571",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q152153",
+                        "http://www.wikidata.org/prop/direct/P159",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 5310,
+                "prompt_tokens": 4864,
+                "completion_tokens": 446
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 2
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q24075",
+            "seed_label": "Godzilla",
+            "dialogue": [
+                "What genre is Godzilla classified as?",
+                "Is it followed by another production?",
+                "Who is the director of photography for it?",
+                "In which language was it originally produced?",
+                "What award has it received, if any?"
+            ],
+            "original": [
+                "What genre is Godzilla classified as?",
+                "Is Godzilla followed by another production?",
+                "Who is the director of photography for Godzilla?",
+                "In which language was Godzilla originally produced?",
+                "What award has Godzilla received, if any?"
+            ],
+            "queries": [
+                "SELECT ?genre WHERE { wd:Q24075 wdt:P136 ?genre . }",
+                "ASK WHERE { wd:Q24075 wdt:P156 ?production. }",
+                "SELECT ?photographer WHERE { wd:Q24075 wdt:P344 ?photographer . }",
+                "SELECT ?language WHERE { wd:Q24075 wdt:P364 ?language . }",
+                "SELECT ?award WHERE { wd:Q24075 wdt:P166 ?award . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q24075",
+                        "http://www.wikidata.org/prop/direct/P136",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q24075",
+                        "http://www.wikidata.org/prop/direct/P156",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q24075",
+                        "http://www.wikidata.org/prop/direct/P344",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q24075",
+                        "http://www.wikidata.org/prop/direct/P364",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q24075",
+                        "http://www.wikidata.org/prop/direct/P166",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 11376,
+                "prompt_tokens": 11001,
+                "completion_tokens": 375
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q24154",
+            "seed_label": "Van Diemen's Land",
+            "dialogue": [
+                "What is the publication date for Van Diemen's Land?",
+                "Did it have a director?",
+                "In what narrative location was it set?",
+                "Who contributed to the cinematography of it?"
+            ],
+            "original": [
+                "What is the publication date for Van Diemen's Land?",
+                "Did Van Diemen's Land have a director?",
+                "In what narrative location was Van Diemen's Land set?",
+                "Who contributed to the cinematography of Van Diemen's Land?"
+            ],
+            "queries": [
+                "SELECT ?publication_date WHERE { <http://www.wikidata.org/entity/Q24154> <http://www.wikidata.org/prop/direct/P577> ?publication_date . }",
+                "ASK WHERE { <http://www.wikidata.org/entity/Q24154> <http://www.wikidata.org/prop/direct/P57> ?director . }",
+                "SELECT ?location WHERE { wd:Q24154 wdt:P840 ?location . }",
+                "SELECT ?person WHERE { wd:Q24154 wdt:P57 ?person . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q24154",
+                        "http://www.wikidata.org/prop/direct/P577",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q24154",
+                        "http://www.wikidata.org/prop/direct/P57",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q24154",
+                        "http://www.wikidata.org/prop/direct/P840",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q24154",
+                        "http://www.wikidata.org/prop/direct/P57",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 9020,
+                "prompt_tokens": 7878,
+                "completion_tokens": 1142
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q24196",
+            "seed_label": "The Hidden Face",
+            "dialogue": [
+                "What genre does 'The Hidden Face' belong to?",
+                "Who composed the music for it?",
+                "In which country was it originally released?",
+                "What format was used to distribute it?"
+            ],
+            "original": [
+                "What genre does 'The Hidden Face' belong to?",
+                "Who composed the music for 'The Hidden Face'?",
+                "In which country was 'The Hidden Face' originally released?",
+                "What format was used to distribute 'The Hidden Face'?"
+            ],
+            "queries": [
+                "SELECT ?genre WHERE { wd:Q24196 wdt:P136 ?genre . }",
+                "SELECT ?composer WHERE { wd:Q24196 wdt:P86 ?composer. }",
+                "SELECT ?country WHERE { wd:Q24196 wdt:P495 ?country. }",
+                "SELECT ?format WHERE { <http://www.wikidata.org/entity/Q24196> <http://www.wikidata.org/prop/direct/P437> ?format . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q24196",
+                        "http://www.wikidata.org/prop/direct/P136",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q24196",
+                        "http://www.wikidata.org/prop/direct/P86",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q24196",
+                        "http://www.wikidata.org/prop/direct/P495",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q24196",
+                        "http://www.wikidata.org/prop/direct/P437",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 7363,
+                "prompt_tokens": 6995,
+                "completion_tokens": 368
+            },
+            "query_status": {
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q127286",
+            "seed_label": "Words for the Dying",
+            "dialogue": [
+                "What is the genre of 'Words for the Dying'?",
+                "Who were responsible for producing it?",
+                "Does it have associated record label information?",
+                "When was it originally published?",
+                "Who were the performers on it?"
+            ],
+            "original": [
+                "What is the genre of 'Words for the Dying'?",
+                "Who were responsible for producing 'Words for the Dying'?",
+                "Does 'Words for the Dying' have associated record label information?",
+                "When was 'Words for the Dying' originally published?",
+                "Who were the performers on 'Words for the Dying'?"
+            ],
+            "queries": [
+                "SELECT ?genre WHERE { wd:Q127286 wdt:P136 ?genre . }",
+                "SELECT ?producer WHERE { wd:Q127286 wdt:P162 ?producer . }",
+                "ASK WHERE { <http://www.wikidata.org/entity/Q127286> <http://www.wikidata.org/prop/direct/P264> ?label. }",
+                "SELECT ?publication_date WHERE { wd:Q127286 wdt:P577 ?publication_date . }",
+                "SELECT ?performer WHERE { <http://www.wikidata.org/entity/Q127286> <http://www.wikidata.org/prop/direct/P175> ?performer . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127286",
+                        "http://www.wikidata.org/prop/direct/P136",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127286",
+                        "http://www.wikidata.org/prop/direct/P162",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127286",
+                        "http://www.wikidata.org/prop/direct/P264",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127286",
+                        "http://www.wikidata.org/prop/direct/P577",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127286",
+                        "http://www.wikidata.org/prop/direct/P175",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4131,
+                "prompt_tokens": 3698,
+                "completion_tokens": 433
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q127288",
+            "seed_label": "Slow Dazzle",
+            "dialogue": [
+                "What is the genre of Slow Dazzle?",
+                "Who is the producer of it?",
+                "In what language is it composed?",
+                "What format was used to distribute it?",
+                "Can you give the publication date of it?"
+            ],
+            "original": [
+                "What is the genre of Slow Dazzle?",
+                "Who is the producer of Slow Dazzle?",
+                "In what language is Slow Dazzle composed?",
+                "What format was used to distribute Slow Dazzle?",
+                "Can you give the publication date of Slow Dazzle?"
+            ],
+            "queries": [
+                "SELECT ?genre WHERE { wd:Q127288 wdt:P136 ?genre . }",
+                "SELECT ?producer WHERE { <http://www.wikidata.org/entity/Q127288> <http://www.wikidata.org/prop/direct/P162> ?producer . }",
+                "SELECT ?language WHERE { <http://www.wikidata.org/entity/Q127288> <http://www.wikidata.org/prop/direct/P407> ?language . }",
+                "SELECT ?format WHERE { <http://www.wikidata.org/entity/Q127288> <http://www.wikidata.org/prop/direct/P437> ?format . }",
+                "SELECT ?publicationDate WHERE { wd:Q127288 wdt:P577 ?publicationDate . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127288",
+                        "http://www.wikidata.org/prop/direct/P136",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127288",
+                        "http://www.wikidata.org/prop/direct/P162",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127288",
+                        "http://www.wikidata.org/prop/direct/P407",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127288",
+                        "http://www.wikidata.org/prop/direct/P437",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127288",
+                        "http://www.wikidata.org/prop/direct/P577",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4602,
+                "prompt_tokens": 4157,
+                "completion_tokens": 445
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q127290",
+            "seed_label": "Helen of Troy",
+            "dialogue": [
+                "What languages is Helen of Troy available in?",
+                "Who are the performers involved in her?",
+                "How is she categorized as a creative work?",
+                "Was she part of another work?",
+                "When was she released?"
+            ],
+            "original": [
+                "What languages is Helen of Troy available in?",
+                "Who are the performers involved in Helen of Troy?",
+                "How is Helen of Troy categorized as a creative work?",
+                "Was Helen of Troy part of another work?",
+                "When was Helen of Troy released?"
+            ],
+            "queries": [
+                "SELECT DISTINCT ?language WHERE { <http://www.wikidata.org/entity/Q127290> <http://www.wikidata.org/prop/direct/P407> ?language . }",
+                "SELECT DISTINCT ?performers WHERE { wd:Q127290 wdt:P175 ?performers . }",
+                "SELECT ?category WHERE { wd:Q127290 wdt:P7937 ?category . }",
+                "ASK WHERE { wd:Q127290 wdt:P361 ?work. }",
+                "SELECT ?releaseDate WHERE { <http://www.wikidata.org/entity/Q127290> <http://www.wikidata.org/prop/direct/P577> ?releaseDate . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127290",
+                        "http://www.wikidata.org/prop/direct/P407",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127290",
+                        "http://www.wikidata.org/prop/direct/P175",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127290",
+                        "http://www.wikidata.org/prop/direct/P7937",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127290",
+                        "http://www.wikidata.org/prop/direct/P361",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127290",
+                        "http://www.wikidata.org/prop/direct/P577",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3957,
+                "prompt_tokens": 3536,
+                "completion_tokens": 421
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q127317",
+            "seed_label": "New Sensations",
+            "dialogue": [
+                "What genre does New Sensations belong to?",
+                "Does it have an associated MusicBrainz release group ID?",
+                "How many distinct formats is it available in for distribution?",
+                "When was it published?",
+                "Which record label is it released under?"
+            ],
+            "original": [
+                "What genre does New Sensations belong to?",
+                "Does the entity New Sensations have an associated MusicBrainz release group ID?",
+                "How many distinct formats is New Sensations available in for distribution?",
+                "When was New Sensations published?",
+                "Which record label is New Sensations released under?"
+            ],
+            "queries": [
+                "SELECT ?genre WHERE { wd:Q127317 wdt:P136 ?genre . }",
+                "ASK {\n  wd:Q127317 wdt:P436 ?mbid .\n}",
+                "SELECT (COUNT(DISTINCT ?format) AS ?count) WHERE { wd:Q127317 wdt:P437 ?format . }",
+                "SELECT ?publicationDate WHERE { wd:Q127317 wdt:P577 ?publicationDate . }",
+                "SELECT ?recordLabel WHERE { <http://www.wikidata.org/entity/Q127317> <http://www.wikidata.org/prop/direct/P264> ?recordLabel . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127317",
+                        "http://www.wikidata.org/prop/direct/P136",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127317",
+                        "http://www.wikidata.org/prop/direct/P436",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127317",
+                        "http://www.wikidata.org/prop/direct/P437",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127317",
+                        "http://www.wikidata.org/prop/direct/P577",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q127317",
+                        "http://www.wikidata.org/prop/direct/P264",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4209,
+                "prompt_tokens": 3784,
+                "completion_tokens": 425
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q436023",
+            "seed_label": "Old Mint",
+            "dialogue": [
+                "Which country is associated with the Old Mint?",
+                "Is it used as a form of any instances?",
+                "Where is it administratively located?",
+                "What makes it distinct based on any heritage designation?",
+                "Is there any documented difference between it and another known subject or entity?"
+            ],
+            "original": [
+                "Which country is associated with the Old Mint?",
+                "Is the Old Mint used as a form of any instances?",
+                "Where is the Old Mint administratively located?",
+                "What makes the Old Mint distinct based on any heritage designation?",
+                "Is there any documented difference of the Old Mint from another known subject or entity?"
+            ],
+            "queries": [
+                "SELECT ?country WHERE { <http://www.wikidata.org/entity/Q436023> <http://www.wikidata.org/prop/direct/P17> ?country . }",
+                "ASK WHERE { wd:Q436023 wdt:P31 ?instance . }",
+                "SELECT ?location WHERE {<http://www.wikidata.org/entity/Q436023> <http://www.wikidata.org/prop/direct/P131> ?location.}",
+                "SELECT ?heritageDesignation WHERE { wd:Q436023 wdt:P1435 ?heritageDesignation . }",
+                "ASK WHERE { ?entity <http://www.wikidata.org/prop/direct/P1889> <http://www.wikidata.org/entity/Q436023> . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436023",
+                        "http://www.wikidata.org/prop/direct/P17",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436023",
+                        "http://www.wikidata.org/prop/direct/P31",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436023",
+                        "http://www.wikidata.org/prop/direct/P131",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436023",
+                        "http://www.wikidata.org/prop/direct/P1435",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436023",
+                        "http://www.wikidata.org/prop/direct/P1889",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3907,
+                "prompt_tokens": 3431,
+                "completion_tokens": 476
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q436055",
+            "seed_label": "Alte Oberfinanzdirektion Hamburg",
+            "dialogue": [
+                "Does the Alte Oberfinanzdirektion Hamburg have a specific heritage designation?",
+                "What street address can it be found at?",
+                "Is there an image associated with it?",
+                "In which administrative territorial entity is it located?"
+            ],
+            "original": [
+                "Does the Alte Oberfinanzdirektion Hamburg have a specific heritage designation?",
+                "What street address can the Alte Oberfinanzdirektion Hamburg be found at?",
+                "Is there an image associated with the Alte Oberfinanzdirektion Hamburg entity?",
+                "In which administrative territorial entity is the Alte Oberfinanzdirektion Hamburg located?"
+            ],
+            "queries": [
+                "ASK WHERE { <http://www.wikidata.org/entity/Q436055> <http://www.wikidata.org/prop/direct/P1435> ?heritageDesignation . }",
+                "SELECT ?address WHERE { wd:Q436055 wdt:P6375 ?address . }",
+                "ASK WHERE { <http://www.wikidata.org/entity/Q436055> <http://www.wikidata.org/prop/direct/P18> ?image }",
+                "SELECT ?entity WHERE { wd:Q436055 wdt:P131 ?entity. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436055",
+                        "http://www.wikidata.org/prop/direct/P1435",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436055",
+                        "http://www.wikidata.org/prop/direct/P6375",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436055",
+                        "http://www.wikidata.org/prop/direct/P18",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436055",
+                        "http://www.wikidata.org/prop/direct/P131",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4225,
+                "prompt_tokens": 3668,
+                "completion_tokens": 557
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q436110",
+            "seed_label": "Alte Post",
+            "dialogue": [
+                "What entity is Alte Post located within?",
+                "Is it a designated heritage site?",
+                "In which country can it be found?",
+                "How many identifiers does it have mentioned in its details?",
+                "Is there a Google Knowledge Graph ID associated with it?"
+            ],
+            "original": [
+                "What entity is Alte Post located within?",
+                "Is Alte Post a designated heritage site?",
+                "In which country can Alte Post be found?",
+                "How many identifiers does Alte Post have mentioned in its details?",
+                "Is there a Google Knowledge Graph ID associated with Alte Post?"
+            ],
+            "queries": [
+                "SELECT ?entity WHERE { <http://www.wikidata.org/entity/Q436110> <http://www.wikidata.org/prop/direct/P131> ?entity . }",
+                "ASK WHERE { wd:Q436110 wdt:P1435 ?designation . }",
+                "SELECT ?country WHERE { wd:Q436110 wdt:P17 ?country . }",
+                "SELECT (COUNT(?identifier) AS ?count) WHERE { wd:Q436110 wdt:P2671 ?identifier . }",
+                "ASK { wd:Q436110 wdt:P2671 ?kgid. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436110",
+                        "http://www.wikidata.org/prop/direct/P131",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436110",
+                        "http://www.wikidata.org/prop/direct/P1435",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436110",
+                        "http://www.wikidata.org/prop/direct/P17",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436110",
+                        "http://www.wikidata.org/prop/direct/P2671",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436110",
+                        "http://www.wikidata.org/prop/direct/P2671",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3554,
+                "prompt_tokens": 3145,
+                "completion_tokens": 409
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q119179",
+            "seed_label": "Disney Channel Games",
+            "dialogue": [
+                "How many episodes does 'Disney Channel Games' have?",
+                "What language is it originally in?",
+                "When did it first start?",
+                "Who was the developer of it?"
+            ],
+            "original": [
+                "How many episodes does 'Disney Channel Games' have?",
+                "What language is 'Disney Channel Games' originally in?",
+                "When did 'Disney Channel Games' first start?",
+                "Who was the developer of 'Disney Channel Games'?"
+            ],
+            "queries": [
+                "SELECT ?numberOfEpisodes WHERE { wd:Q119179 wdt:P1113 ?numberOfEpisodes . }",
+                "SELECT ?language WHERE { \n  wd:Q119179 wdt:P364 ?language . \n}",
+                "SELECT ?startDate WHERE { wd:Q119179 wdt:P580 ?startDate . } ORDER BY ASC(?startDate) LIMIT 1",
+                "SELECT ?developer WHERE { <http://www.wikidata.org/entity/Q119179> <http://www.wikidata.org/prop/direct/P178> ?developer . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q119179",
+                        "http://www.wikidata.org/prop/direct/P1113",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q119179",
+                        "http://www.wikidata.org/prop/direct/P364",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q119179",
+                        "http://www.wikidata.org/prop/direct/P580",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q119179",
+                        "http://www.wikidata.org/prop/direct/P178",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4346,
+                "prompt_tokens": 3937,
+                "completion_tokens": 409
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q18528",
+            "seed_label": "Woking F.C.",
+            "dialogue": [
+                "In which country is Woking F.C. based?",
+                "Does it have an official website?",
+                "When was it founded or established?",
+                "What is the home venue for it?",
+                "Who is the head coach of it?"
+            ],
+            "original": [
+                "In which country is Woking F.C. based?",
+                "Does Woking F.C. have an official website?",
+                "When was Woking F.C. founded or established?",
+                "What is the home venue for Woking F.C.?",
+                "Who is the head coach of Woking F.C.?"
+            ],
+            "queries": [
+                "SELECT ?country WHERE { <http://www.wikidata.org/entity/Q18528> <http://www.wikidata.org/prop/direct/P17> ?country . }",
+                "ASK WHERE { <http://www.wikidata.org/entity/Q18528> <http://www.wikidata.org/prop/direct/P856> ?website }",
+                "SELECT ?date WHERE { <http://www.wikidata.org/entity/Q18528> <http://www.wikidata.org/prop/direct/P571> ?date . }",
+                "SELECT ?venue WHERE { wd:Q18528 wdt:P115 ?venue . }",
+                "SELECT ?headCoach WHERE { wd:Q18528 wdt:P286 ?headCoach . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q18528",
+                        "http://www.wikidata.org/prop/direct/P17",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q18528",
+                        "http://www.wikidata.org/prop/direct/P856",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q18528",
+                        "http://www.wikidata.org/prop/direct/P571",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q18528",
+                        "http://www.wikidata.org/prop/direct/P115",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q18528",
+                        "http://www.wikidata.org/prop/direct/P286",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4939,
+                "prompt_tokens": 4521,
+                "completion_tokens": 418
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q152518",
+            "seed_label": "Burning Man",
+            "dialogue": [
+                "Who founded the Burning Man?",
+                "What type of entity is it considered?",
+                "Is it associated with an official website?",
+                "When was it officially opened?",
+                "Does it have a logo image?"
+            ],
+            "original": [
+                "Who founded the Burning Man?",
+                "What type of entity is Burning Man considered?",
+                "Is Burning Man associated with an official website?",
+                "When was Burning Man officially opened?",
+                "Does Burning Man have a logo image?"
+            ],
+            "queries": [
+                "SELECT ?founder WHERE { wd:Q152518 wdt:P112 ?founder . }",
+                "SELECT ?entityType WHERE { <http://www.wikidata.org/entity/Q152518> <http://www.wikidata.org/prop/direct/P31> ?entityType. }",
+                "ASK { <http://www.wikidata.org/entity/Q152518> <http://www.wikidata.org/prop/direct/P856> ?website }",
+                "SELECT ?inception WHERE { <http://www.wikidata.org/entity/Q152518> <http://www.wikidata.org/prop/direct/P1619> ?inception . }",
+                "ASK { wd:Q152518 wdt:P18 ?image }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q152518",
+                        "http://www.wikidata.org/prop/direct/P112",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q152518",
+                        "http://www.wikidata.org/prop/direct/P31",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q152518",
+                        "http://www.wikidata.org/prop/direct/P856",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q152518",
+                        "http://www.wikidata.org/prop/direct/P1619",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q152518",
+                        "http://www.wikidata.org/prop/direct/P18",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 16815,
+                "prompt_tokens": 6639,
+                "completion_tokens": 10176
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q190430",
+            "seed_label": "German Central Bone Marrow Donor Register",
+            "dialogue": [
+                "What is the country associated with the German Central Bone Marrow Donor Register?",
+                "Where is the headquarters of it located?",
+                "Can you visit an official website for it for more information?",
+                "What was the inception date or year of it?",
+                "Is there a specific VIAF cluster ID linked to it?"
+            ],
+            "original": [
+                "What is the country associated with the German Central Bone Marrow Donor Register?",
+                "Where is the headquarters of the German Central Bone Marrow Donor Register located?",
+                "Can you visit an official website for the German Central Bone Marrow Donor Register for more information?",
+                "What was the inception date or year of the German Central Bone Marrow Donor Register?",
+                "Is there a specific VIAF cluster ID linked to the German Central Bone Marrow Donor Register?"
+            ],
+            "queries": [
+                "SELECT ?country WHERE { wd:Q190430 wdt:P17 ?country . }",
+                "SELECT ?location WHERE { <http://www.wikidata.org/entity/Q190430> <http://www.wikidata.org/prop/direct/P159> ?location . }",
+                "SELECT ?officialWebsite WHERE { wd:Q190430 wdt:P856 ?officialWebsite . }",
+                "SELECT ?inception WHERE { <http://www.wikidata.org/entity/Q190430> <http://www.wikidata.org/prop/direct/P571> ?inception . }",
+                "ASK WHERE { wd:Q190430 wdt:P214 ?viafId. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q190430",
+                        "http://www.wikidata.org/prop/direct/P17",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q190430",
+                        "http://www.wikidata.org/prop/direct/P159",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q190430",
+                        "http://www.wikidata.org/prop/direct/P856",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q190430",
+                        "http://www.wikidata.org/prop/direct/P571",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q190430",
+                        "http://www.wikidata.org/prop/direct/P214",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 11112,
+                "prompt_tokens": 4571,
+                "completion_tokens": 6541
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q436120",
+            "seed_label": "Alte Poststation Wimbern",
+            "dialogue": [
+                "What is the heritage designation of Alte Poststation Wimbern?",
+                "Is there a Commons category associated with it?",
+                "In which administrative territorial entity is it located?",
+                "Does it have a coordinate location provided?"
+            ],
+            "original": [
+                "What is the heritage designation of Alte Poststation Wimbern?",
+                "Is there a Commons category associated with Alte Poststation Wimbern?",
+                "In which administrative territorial entity is Alte Poststation Wimbern located?",
+                "Does Alte Poststation Wimbern have a coordinate location provided?"
+            ],
+            "queries": [
+                "SELECT ?heritageDesignation WHERE { wd:Q436120 wdt:P1435 ?heritageDesignation . }",
+                "ASK WHERE { wd:Q436120 wdt:P373 ?category . }",
+                "SELECT ?entity WHERE { <http://www.wikidata.org/entity/Q436120> <http://www.wikidata.org/prop/direct/P131> ?entity . }",
+                "ASK WHERE { wd:Q436120 wdt:P625 ?coordinate_location. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436120",
+                        "http://www.wikidata.org/prop/direct/P1435",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436120",
+                        "http://www.wikidata.org/prop/direct/P373",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436120",
+                        "http://www.wikidata.org/prop/direct/P131",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q436120",
+                        "http://www.wikidata.org/prop/direct/P625",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3914,
+                "prompt_tokens": 3393,
+                "completion_tokens": 521
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://www.wikidata.org/entity/Q32217",
+            "seed_label": "Soldier Boyz",
+            "dialogue": [
+                "What kind of work is Soldier Boyz an instance of?",
+                "Who is the director associated with it?",
+                "Does it have a Rotten Tomatoes ID?",
+                "In what year was the movie published?"
+            ],
+            "original": [
+                "What kind of work is Soldier Boyz an instance of?",
+                "Who is the director associated with Soldier Boyz?",
+                "Does Soldier Boyz have a Rotten Tomatoes ID?",
+                "In what year was the movie Soldier Boyz published?"
+            ],
+            "queries": [
+                "SELECT ?workType WHERE { wd:Q32217 wdt:P31 ?workType . }",
+                "SELECT ?person WHERE { wd:Q32217 wdt:P57 ?person. }",
+                "ASK WHERE { wd:Q32217 wdt:P1258 ?rtID . }",
+                "SELECT ?publicationYear WHERE { wd:Q32217 wdt:P577 ?publicationYear . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q32217",
+                        "http://www.wikidata.org/prop/direct/P31",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q32217",
+                        "http://www.wikidata.org/prop/direct/P57",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q32217",
+                        "http://www.wikidata.org/prop/direct/P1258",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://www.wikidata.org/entity/Q32217",
+                        "http://www.wikidata.org/prop/direct/P577",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 8573,
+                "prompt_tokens": 7647,
+                "completion_tokens": 926
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "Who is": 6,
+            "How many": 5,
+            "What organization": 1,
+            "Does it": 8,
+            "In what": 5,
+            "Who founded": 2,
+            "Was it": 1,
+            "What sources": 1,
+            "Does Doctors": 1,
+            "Was there": 1,
+            "What was": 2,
+            "What type": 2,
+            "What is": 7,
+            "What genre": 3,
+            "Is it": 4,
+            "In which": 6,
+            "What award": 1,
+            "Did it": 1,
+            "Who contributed": 1,
+            "Who composed": 1,
+            "What format": 2,
+            "Who were": 2,
+            "When was": 5,
+            "Can you": 2,
+            "What languages": 1,
+            "Who are": 1,
+            "How is": 1,
+            "Was she": 1,
+            "Which record": 1,
+            "Which country": 1,
+            "Where is": 2,
+            "What makes": 1,
+            "Is there": 5,
+            "Does the": 1,
+            "What street": 1,
+            "What entity": 1,
+            "What language": 1,
+            "When did": 1,
+            "Who was": 1,
+            "What kind": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 6800.7,
+                "prompt_tokens": 5500.55,
+                "completion_tokens": 1300.15
+            },
+            "Minimum": {
+                "total_tokens": 3554,
+                "prompt_tokens": 3145,
+                "completion_tokens": 368
+            },
+            "Maximum": {
+                "total_tokens": 16815,
+                "prompt_tokens": 11001,
+                "completion_tokens": 10176
+            },
+            "Total": {
+                "total_tokens": 136014,
+                "prompt_tokens": 110011,
+                "completion_tokens": 26003
+            }
+        },
+        "execution": {
+            "Correct": 91,
+            "In Correct": 6,
+            "Syntax Error": 2
+        }
+    },
+    "cost": {
+        "total_tokens": 201280,
+        "prompt_tokens": 150988,
+        "completion_tokens": 50292
+    },
+    "total_time": 734.5209202766418,
+    "average_time": 36.72604601383209,
+    "Context Length Error": 0,
+    "Question Validation Error": 0,
+    "Question Json Error": 0,
+    "Triples Validation Error": 0,
+    "Triples Json Error": 5,
+    "Sparql Validation Error": 1,
+    "Sparql Json Error": 0,
+    "Dialogue Validation Error": 0,
+    "Dialogue Json Error": 0
+}

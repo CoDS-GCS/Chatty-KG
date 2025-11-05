@@ -79,7 +79,10 @@ def prepare_keywords_list_wikidata(triples_list, predicate_map):
     for i, triples in enumerate(triples_list):
         for triple in triples:
             # name = get_name(triple[1][0])
-            name = predicate_map[triple[1][0]]
+            if triple[1][0] in predicate_map:
+                name = predicate_map[triple[1][0]]
+            else:
+                continue
             if name != "" and not len(name) == 1:
                 if name in predicate_to_query_id:
                     predicate_to_query_id[name].append(i)
