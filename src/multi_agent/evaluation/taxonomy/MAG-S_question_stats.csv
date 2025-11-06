@@ -1,0 +1,101 @@
+id,class,word,num_words
+0,WH,What,7
+1,WH,What,5
+2,WH,What,7
+3,WH,What,6
+4,Count,How many,7
+5,Count,How many,8
+6,WH,Which,13
+7,Boolean,Are the,17
+8,Imperative,Give,7
+9,Boolean,Is,9
+10,WH,What,6
+11,Count,How many,7
+12,Count,How many,7
+13,Count,How many,7
+14,Imperative,Give,6
+15,WH,What,9
+16,WH,When,6
+17,WH,What,8
+18,Imperative,Return,7
+19,WH,Where,5
+20,Imperative,Return,9
+21,Imperative,Give,8
+22,Imperative,Name,5
+23,Imperative,Name,6
+24,Imperative,Name,5
+25,Imperative,Name,6
+26,Count,How many,7
+27,Noun,Darrin,7
+28,WH,What,6
+29,WH,What,8
+30,WH,Which,8
+31,Count,How many,7
+32,Count,How many,7
+33,Count,How many,6
+34,How,How,6
+35,WH,What,10
+36,Count,How many,13
+37,WH,Who,9
+38,Noun,Microsoft,11
+39,Imperative,Name,7
+40,How,How,13
+41,WH,What,8
+42,WH,Who,12
+43,Imperative,Name,9
+44,Imperative,Name,8
+45,WH,What,7
+46,Imperative,Give,8
+47,Noun,Babak,8
+48,Noun,Goto,7
+49,WH,When,8
+50,WH,What,15
+51,WH,What,13
+52,Imperative,Name,18
+53,Imperative,List,11
+54,WH,What,11
+55,Imperative,Show,8
+56,WH,What,9
+57,How,How,12
+58,Imperative,Name,7
+59,Imperative,Give,7
+60,How,How,10
+61,WH,What,9
+62,WH,What,8
+63,Imperative,Name,8
+64,WH,What,8
+65,WH,When,7
+66,Imperative,Name,8
+67,Count,How many,8
+68,Imperative,Give,4
+69,Noun,Darrin,9
+70,Imperative,List,7
+71,Noun,The concept,12
+72,Imperative,Name,9
+73,Count,How many,7
+74,WH,When,6
+75,Imperative,Return,9
+76,Count,How many,7
+77,WH,From where,10
+78,Imperative,Name,7
+79,WH,What,8
+80,Imperative,Name,8
+81,WH,What,9
+82,WH,When,7
+83,Noun,A Theory,15
+84,Count,How many,10
+85,WH,Which,11
+86,WH,Who,6
+87,Count,How many,13
+88,WH,What,14
+89,WH,What,16
+90,How,How,12
+91,WH,From where,13
+92,Imperative,Give,8
+93,Count,How many,6
+94,WH,What,10
+95,WH,What,8
+96,WH,Which,8
+97,Count,How many,5
+98,WH,What,9
+99,WH,What,10

@@ -1,0 +1,101 @@
+id,class,word,num_words
+0,WH,What,7
+1,Imperative,Name,14
+2,Count,How many,11
+3,WH,What,8
+4,WH,What,15
+5,WH,Which,7
+6,WH,What,16
+7,Imperative,State,12
+8,Noun,Doe-slam:,11
+9,WH,What,7
+10,WH,What,6
+11,Imperative,Give,12
+12,WH,What,8
+13,Imperative,Name,8
+14,Count,How many,12
+15,WH,What,7
+16,Imperative,Name,7
+17,Noun,Ordinal-measure,10
+18,Count,How many,16
+19,Count,How many,12
+20,Count,How many,10
+21,Imperative,Name,7
+22,WH,What,13
+23,Count,How many,6
+24,Noun,A New,12
+25,WH,What,8
+26,WH,Which,7
+27,Imperative,Give,7
+28,Imperative,Name,9
+29,Imperative,Give,12
+30,WH,What,7
+31,WH,Which,7
+32,WH,What,16
+33,Imperative,Give,5
+34,WH,What,6
+35,Noun,Simple,9
+36,WH,What,9
+37,WH,What,9
+38,WH,What,9
+39,Count,How many,9
+40,WH,What,7
+41,Imperative,Return,15
+42,Noun,On the,14
+43,WH,What,15
+44,Imperative,Name,12
+45,WH,What,5
+46,Imperative,List,7
+47,Imperative,Give,6
+48,Imperative,Give,11
+49,Imperative,Name,7
+50,Imperative,Give,8
+51,WH,What,8
+52,Imperative,Return,6
+53,Imperative,Name,9
+54,WH,What,10
+55,WH,What,7
+56,Imperative,Name,7
+57,Imperative,Return,8
+58,Imperative,Show,7
+59,Imperative,State,10
+60,Noun,Rolf,7
+61,Imperative,Return,6
+62,Imperative,Give,6
+63,WH,What,6
+64,Imperative,Name,7
+65,Imperative,Name,7
+66,Imperative,Return,11
+67,Noun,A Dynamic,21
+68,Imperative,Give,12
+69,Imperative,Return,6
+70,WH,What,8
+71,WH,What,7
+72,WH,What,9
+73,WH,What,13
+74,Imperative,Name,12
+75,Count,How many,11
+76,Noun,Predicting,12
+77,Imperative,Name,11
+78,Imperative,Return,9
+79,WH,What,12
+80,Noun,Active perception,11
+81,Imperative,Give,13
+82,WH,What,9
+83,WH,Which,7
+84,WH,What,11
+85,WH,What,8
+86,Imperative,Name,7
+87,Imperative,Name,8
+88,Imperative,Name,17
+89,Imperative,Name,13
+90,WH,What,9
+91,Imperative,Give,10
+92,Imperative,Name,14
+93,Noun,"Crowds,",14
+94,WH,What,12
+95,Noun,Tunneling,11
+96,Noun,The Transmission,10
+97,Imperative,Return,12
+98,Noun,On the,11
+99,Imperative,Return,11

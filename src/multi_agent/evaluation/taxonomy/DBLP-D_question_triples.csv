@@ -1,0 +1,114 @@
+"id","question","sparql"
+"0","How many creators were involved in the publication of Systems of Logic Based on Ordinals.?","SELECT (COUNT(?creator) AS ?count) WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#numberOfCreators> ?creator }"
+"1","Was Systems of Logic Based on Ordinals. accepted by a school for a thesis?","ASK WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?accepted. <https://dblp.org/rec/phd/Turing38> ?thesis ?school. }"
+"2","What is the primary electronic edition of Systems of Logic Based on Ordinals.?","SELECT ?edition WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?edition . }"
+"3","When was Systems of Logic Based on Ordinals. published?","SELECT ?year WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }"
+"4","Are there any electronic editions other than the primary one for Systems of Logic Based on Ordinals.?","ASK WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#otherElectronicEdition> ?edition .}"
+"5","What is the bibliography type of Cooperative Situation Awareness in Transportation.?","SELECT ?bibtexType WHERE { <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType . }"
+"6","Who is the author of Cooperative Situation Awareness in Transportation.?","SELECT ?author WHERE { <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#authoredBy> ?author }"
+"7","Does Cooperative Situation Awareness in Transportation. have an ISBN?","ASK WHERE {
+  <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#isbn> ?isbn
+}"
+"8","How many creators were involved in Cooperative Situation Awareness in Transportation.?","SELECT (COUNT(DISTINCT ?creator) AS ?countCreators) WHERE { <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#numberOfCreators> ?creator . }"
+"9","In which year was Cooperative Situation Awareness in Transportation. published?","SELECT ?year WHERE { <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#yearOfPublication> ?year .}"
+"10","What is the bibtex Type of 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.'?","SELECT ?bibtexType WHERE { <https://dblp.org/rec/phd/dnb/Adler12> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType . }"
+"11","Was 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.' authored by?","ASK WHERE { <https://dblp.org/rec/phd/dnb/Adler12> <https://dblp.org/rdf/schema#authoredBy> ?author .}"
+"12","Is there an isbn for 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.'?","ASK WHERE { <https://dblp.org/rec/phd/dnb/Adler12> <https://dblp.org/rdf/schema#isbn> ?isbn . }"
+"13","How many creators contributed to 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.'?","SELECT (COUNT(?creator) as ?numberOfCreators) WHERE { <https://dblp.org/rec/phd/dnb/Adler12> <https://dblp.org/rdf/schema#numberOfCreators> ?creator . }"
+"14","When was 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.' published?","SELECT ?date
+WHERE { <https://dblp.org/rec/phd/dnb/Adler12> <https://dblp.org/rdf/schema#yearOfPublication> ?date . }"
+"15","What is the bibtex Type of Cluster abstraction of graph transformation systems.?","SELECT ?type WHERE { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#bibtexType> ?type .}"
+"16","Who authored Cluster abstraction of graph transformation systems.?","SELECT ?author WHERE { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#authoredBy> ?author . }"
+"17","How many creators were involved in Cluster abstraction of graph transformation systems.?","SELECT (COUNT(?creator) as ?numCreators) WHERE { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#numberOfCreators> ?creator . }"
+"18","Does Cluster abstraction of graph transformation systems. have any other Electronic Edition?","ASK { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#otherElectronicEdition> ?x }"
+"19","When was Cluster abstraction of graph transformation systems. published?","SELECT ?year WHERE { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }"
+"20","What is the bibtex Type of 'New Data Based Matching Strategies for Visual Motion Estimation.'?","SELECT ?bibtexType WHERE { <https://dblp.org/rec/phd/dnb/Bailer20> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType . }"
+"21","Who is the author of 'New Data Based Matching Strategies for Visual Motion Estimation.'?","SELECT ?author WHERE { <https://dblp.org/rec/phd/dnb/Bailer20> <https://dblp.org/rdf/schema#authoredBy> ?author . }"
+"22","Does 'New Data Based Matching Strategies for Visual Motion Estimation.' have any ISBN?","ASK { <https://dblp.org/rec/phd/dnb/Bailer20> <https://dblp.org/rdf/schema#isbn> ?o . }"
+"23","Is the pagination information available for 'New Data Based Matching Strategies for Visual Motion Estimation.'?","ASK WHERE { <https://dblp.org/rec/phd/dnb/Bailer20> <https://dblp.org/rdf/schema#pagination> ?pagination .  FILTER(STRLEN(?pagination) > 0) }"
+"24","In which year was 'New Data Based Matching Strategies for Visual Motion Estimation.' published?","SELECT ?year 
+WHERE { 
+<https://dblp.org/rec/phd/dnb/Bailer20> <https://dblp.org/rdf/schema#yearOfPublication> ?year. 
+}"
+"25","What is the bibtex Type of Modellbasierte Energiekostenanalyse automatisierter Systeme.?","SELECT ?type WHERE { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#bibtexType> ?type . }"
+"26","Who is the author of Modellbasierte Energiekostenanalyse automatisierter Systeme.?","SELECT ?authorName WHERE { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#authoredBy> ?authorName . }"
+"27","Does Modellbasierte Energiekostenanalyse automatisierter Systeme. have an ISBN number?","ASK WHERE { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#isbn> ?isbn . }"
+"28","Is there any information on the primary Electronic Edition of Modellbasierte Energiekostenanalyse automatisierter Systeme.?","ASK { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?o.}"
+"29","In which year was Modellbasierte Energiekostenanalyse automatisierter Systeme. published?","SELECT ?year WHERE { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#yearOfPublication> ?year .}"
+"30","What is the bibtex Type of Visual attention in primates and for machines - neuronal mechanisms.?","SELECT ?type WHERE { <https://dblp.org/rec/phd/dnb/Beuth20> <https://dblp.org/rdf/schema#bibtexType> ?type . }"
+"31","Does Visual attention in primates and for machines - neuronal mechanisms. have an isbn?","ASK WHERE { <https://dblp.org/rec/phd/dnb/Beuth20> <https://dblp.org/rdf/schema#isbn> ?isbn . }"
+"32","In what year was Visual attention in primates and for machines - neuronal mechanisms. published?","SELECT ?year WHERE { <https://dblp.org/rec/phd/dnb/Beuth20> <https://dblp.org/rdf/schema#yearOfPublication> ?year .}"
+"33","What is the bibtex Type of 'Non-Volatile Processor Design for Self-Powered Embedded Systems.'?","SELECT ?type WHERE { <https://dblp.org/rec/phd/dnb/Biglari22> <https://dblp.org/rdf/schema#bibtexType> ?type }"
+"34","What is the ISBN number of the publication 'Non-Volatile Processor Design for Self-Powered Embedded Systems.'?","SELECT ?isbn WHERE { <https://dblp.org/rec/phd/dnb/Biglari22> <https://dblp.org/rdf/schema#isbn> ?isbn . }"
+"35","What is the total number of creators involved in 'Non-Volatile Processor Design for Self-Powered Embedded Systems.'?","SELECT (COUNT(?creator) AS ?total_creators) WHERE { <https://dblp.org/rec/phd/dnb/Biglari22> <https://dblp.org/rdf/schema#numberOfCreators> ?creator . }"
+"36","In which school was the thesis of 'Non-Volatile Processor Design for Self-Powered Embedded Systems.' accepted?","SELECT ?school WHERE { <https://dblp.org/rec/phd/dnb/Biglari22> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?school . }"
+"37","What is the bibtex Type of 'Hybrid neural networks for gasoline blending system modeling.'?","SELECT ?type WHERE { <https://dblp.org/rec/conf/ijcnn/0001L14> <https://dblp.org/rdf/schema#bibtexType> ?type . }"
+"38","Who authored 'Hybrid neural networks for gasoline blending system modeling.'?","SELECT ?author WHERE { <https://dblp.org/rec/conf/ijcnn/0001L14> <https://dblp.org/rdf/schema#authoredBy> ?author . }"
+"39","In which year was 'Hybrid neural networks for gasoline blending system modeling.' published?","SELECT ?year WHERE { <https://dblp.org/rec/conf/ijcnn/0001L14> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }"
+"40","Is 'Hybrid neural networks for gasoline blending system modeling.' listed on the Table of Contents page?","ASK WHERE { <https://dblp.org/rec/conf/ijcnn/0001L14> <https://dblp.org/rdf/schema#listedOnTocPage> ?tocPage. }"
+"41","In which proceedings was 'Hybrid neural networks for gasoline blending system modeling.' published?","SELECT ?proceedings WHERE { <https://dblp.org/rec/conf/ijcnn/0001L14> <https://dblp.org/rdf/schema#publishedIn> ?proceedings . }"
+"42","What is the type of the publication related to 'Pruning Depthwise Separable Convolutions for MobileNet Compression.'?","SELECT ?type WHERE { <https://dblp.org/rec/conf/ijcnn/0001LCC20> <https://dblp.org/rdf/schema#bibtexType> ?type }"
+"43","Who authored 'Pruning Depthwise Separable Convolutions for MobileNet Compression.'?","SELECT ?author WHERE { <https://dblp.org/rec/conf/ijcnn/0001LCC20> <https://dblp.org/rdf/schema#authoredBy> ?author . }"
+"44","In which year was 'Pruning Depthwise Separable Convolutions for MobileNet Compression.' published?","SELECT ?year WHERE { <https://dblp.org/rec/conf/ijcnn/0001LCC20> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }"
+"45","Was 'Pruning Depthwise Separable Convolutions for MobileNet Compression.' published in a book?","ASK WHERE { <https://dblp.org/rec/conf/ijcnn/0001LCC20> <https://dblp.org/rdf/schema#publishedIn> ?book . }"
+"46","Where was 'Pruning Depthwise Separable Convolutions for MobileNet Compression.' listed?","SELECT ?location WHERE { <https://dblp.org/rec/conf/ijcnn/0001LCC20> <https://dblp.org/rdf/schema#listedOnTocPage> ?location .}"
+"47","Who authored Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk.?","SELECT ?author WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> <https://dblp.org/rdf/schema#authoredBy> ?author. }"
+"48","Where was Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk. published?","SELECT ?publicationVenue WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> <https://dblp.org/rdf/schema#publishedIn> ?publicationVenue . }"
+"49","Is Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk. listed on the Table of Contents page?","ASK WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> <https://dblp.org/rdf/schema#listedOnTocPage> ?object . }"
+"50","Was Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk. published as part of a book?","ASK { <https://dblp.org/rec/conf/ijcnn/0001MR020> <https://dblp.org/rdf/schema#publishedAsPartOf> ?o . }"
+"51","In which year did the event related to ""More Realistic and Efficient Face-Based Mobile Authentication using CNNs."" take place?","SELECT ?year WHERE { <https://dblp.org/rec/conf/ijcnn/0001SSPB18> <https://dblp.org/rdf/schema#yearOfEvent> ?year . }"
+"52","Is ""More Realistic and Efficient Face-Based Mobile Authentication using CNNs."" listed on the table of contents page?","ASK { <https://dblp.org/rec/conf/ijcnn/0001SSPB18> <https://dblp.org/rdf/schema#listedOnTocPage> ?object. }"
+"53","Where was ""More Realistic and Efficient Face-Based Mobile Authentication using CNNs."" published?","SELECT ?publication WHERE { <https://dblp.org/rec/conf/ijcnn/0001SSPB18> <https://dblp.org/rdf/schema#publishedIn> ?publication . }"
+"54","What electronic edition is primary for the paper ""More Realistic and Efficient Face-Based Mobile Authentication using CNNs.""?","SELECT ?edition WHERE { <https://dblp.org/rec/conf/ijcnn/0001SSPB18> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?edition . }"
+"55","What is the primary affiliation of Jiaxin Pan?","SELECT ?affiliation WHERE { <https://dblp.org/pid/02/8828> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation .}"
+"56","Does Jiaxin Pan have an ORCID?","ASK WHERE { <https://dblp.org/pid/02/8828> <https://dblp.org/rdf/schema#orcid> ?orcid . }"
+"57","What is the primary homepage of Jiaxin Pan?","SELECT ?homepage
+WHERE {
+  <https://dblp.org/pid/02/8828> <https://dblp.org/rdf/schema#primaryHomepage> ?homepage .
+}"
+"58","Is Jiaxin Pan associated with any other affiliation?","ASK { <https://dblp.org/pid/02/8828> <https://dblp.org/rdf/schema#otherAffiliation> ?o .}"
+"59","What is the webpage related to Jiaxin Pan?","SELECT ?webpage
+		WHERE {
+			<https://dblp.org/pid/02/8828> <https://dblp.org/rdf/schema#webpage> ?webpage
+	 	}"
+"60","What is the ORCID of Marian Daun?","SELECT ?orcid WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#orcid> ?orcid . }"
+"61","What is the primary full creator name of Marian Daun?","SELECT ?primaryFullName WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?primaryFullName}"
+"62","Does Marian Daun have a primary homepage?","ASK WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#primaryHomepage> ?homepage .}"
+"63","What is the webpage associated with Marian Daun?","SELECT ?webpage WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#webpage> ?webpage .}"
+"64","What is the bibtex type of Sparse Differential Resultant for Laurent Differential Polynomials.?","SELECT ?type WHERE { <https://dblp.org/rec/journals/focm/0056YG15> <https://dblp.org/rdf/schema#bibtexType> ?type }"
+"65","In what year was Sparse Differential Resultant for Laurent Differential Polynomials. published?","SELECT ?year WHERE { <https://dblp.org/rec/journals/focm/0056YG15> <https://dblp.org/rdf/schema#yearOfPublication> ?year. }"
+"66","Was Sparse Differential Resultant for Laurent Differential Polynomials. published in a journal volume?","ASK WHERE { <https://dblp.org/rec/journals/focm/0056YG15> <https://dblp.org/rdf/schema#publishedInJournal> ?volume }"
+"67","Under which tab was Sparse Differential Resultant for Laurent Differential Polynomials. listed on?","SELECT ?tab 
+WHERE { 
+<https://dblp.org/rec/journals/focm/0056YG15> <https://dblp.org/rdf/schema#listedOnTocPage> ?tab 
+}"
+"68","In which journal was 'Trust-Region Methods on Riemannian Manifolds.' published?","SELECT ?journal
+WHERE {
+	<https://dblp.org/rec/journals/focm/AbsilBG07> <https://dblp.org/rdf/schema#publishedInJournal> ?journal.
+}"
+"69","What is the pagination of 'Trust-Region Methods on Riemannian Manifolds.'?","SELECT ?pagination WHERE { <https://dblp.org/rec/journals/focm/AbsilBG07> <https://dblp.org/rdf/schema#pagination> ?pagination . }"
+"70","In which year was 'Trust-Region Methods on Riemannian Manifolds.' published?","SELECT ?year WHERE { <https://dblp.org/rec/journals/focm/AbsilBG07> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }"
+"71","What is the bibtex Type of Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning.?","SELECT ?bibtexType WHERE { <https://dblp.org/rec/conf/nips/LairCPDDO19> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType }"
+"72","In which year was Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning. published?","SELECT ?year WHERE { <https://dblp.org/rec/conf/nips/LairCPDDO19> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }"
+"73","Is Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning. listed on the Table of Content page?","ASK { <https://dblp.org/rec/conf/nips/LairCPDDO19> <https://dblp.org/rdf/schema#listedOnTocPage> ?tocPage . }"
+"74","In which publication was Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning. included as part of?","SELECT ?publication 
+WHERE { 
+  <https://dblp.org/rec/conf/nips/LairCPDDO19> <https://dblp.org/rdf/schema#publishedAsPartOf> ?publication . 
+}"
+"75","What is the primary affiliation of Gerhard Kramer?","SELECT ?affiliation WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation . }"
+"76","Is Gerhard Kramer associated with a homepage?","ASK { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#primaryHomepage> ?obj . }"
+"77","What is the full creator name for Gerhard Kramer?","SELECT ?creatorFullname WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?creatorFullname . }"
+"78","Does Gerhard Kramer have a Wikidata entry?","ASK WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#wikidata> ?object . }"
+"79","What is the ORCID of Gerhard Kramer?","SELECT ?orcid WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#orcid> ?orcid . FILTER(isIRI(?orcid)) }"
+"80","What is the ORCID of Yan Zhang 0054?","SELECT ?orcid WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#orcid> ?orcid . }"
+"81","Does Yan Zhang 0054 have any other affiliation details?","ASK WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#otherAffiliation> ?affiliation . }"
+"82","Is there any primary affiliation associated with Yan Zhang 0054?","ASK { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation }"
+"83","What is the full name of the primary creator linked to Yan Zhang 0054?","SELECT ?name WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?name . }"
+"84","Does Yan Zhang 0054 have any homepage specified?","ASK WHERE {
+  <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryHomepage> ?homepage .
+}"
+"85","Who authored Infinite-Dimensional Compressed Sensing and Function Interpolation.?","SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/Adcock18> <https://dblp.org/rdf/schema#authoredBy> ?author . }"
+"86","In which journal was Infinite-Dimensional Compressed Sensing and Function Interpolation. published?","SELECT ?journal WHERE { <https://dblp.org/rec/journals/focm/Adcock18> <https://dblp.org/rdf/schema#publishedInJournal> ?journal . }"
+"87","In what year was Infinite-Dimensional Compressed Sensing and Function Interpolation. published?","SELECT ?year_pub WHERE { <https://dblp.org/rec/journals/focm/Adcock18> <https://dblp.org/rdf/schema#yearOfPublication> ?year_pub . }"
+"88","Was Infinite-Dimensional Compressed Sensing and Function Interpolation. listed on Table of Contents (TOC) page?","ASK WHERE { <https://dblp.org/rec/journals/focm/Adcock18> <https://dblp.org/rdf/schema#listedOnTocPage> ?tocPage }"
+"89","What is the type of bibliography for Infinite-Dimensional Compressed Sensing and Function Interpolation.?","SELECT ?type WHERE { <https://dblp.org/rec/journals/focm/Adcock18> <https://dblp.org/rdf/schema#bibtexType> ?type .}"

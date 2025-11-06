@@ -1,0 +1,92 @@
+id,class,word,num_words
+0,WH,Who,8
+1,Count,How many,7
+2,WH,What,10
+3,Boolean,Does,6
+4,WH,In what,8
+5,WH,Who,6
+6,Boolean,Was,11
+7,Count,How many,13
+8,WH,In what,9
+9,WH,What,7
+10,Boolean,Does,11
+11,WH,Who,15
+12,Boolean,Was,17
+13,WH,What,13
+14,WH,What,9
+15,Boolean,Does,8
+16,WH,What,9
+17,WH,What,6
+18,Boolean,Is,6
+19,WH,Who,8
+20,WH,In which,7
+21,WH,What,7
+22,WH,What,9
+23,Boolean,Did,7
+24,WH,In what,9
+25,WH,Who,9
+26,WH,What,8
+27,WH,Who,8
+28,WH,In which,9
+29,WH,What,9
+30,WH,What,9
+31,WH,Who,9
+32,Boolean,Does,10
+33,WH,When,8
+34,WH,Who,9
+35,WH,What,7
+36,WH,Who,7
+37,WH,In what,7
+38,WH,What,8
+39,Boolean,Can,9
+40,WH,What,8
+41,WH,Who,9
+42,How,How,10
+43,Boolean,Was,8
+44,WH,When,6
+45,WH,What,7
+46,Boolean,Does,12
+47,Count,How many,11
+48,WH,When,5
+49,WH,Which,8
+50,WH,Which,8
+51,Boolean,Is,11
+52,WH,Where,7
+53,WH,What,11
+54,Boolean,Is,15
+55,Boolean,Does,10
+56,WH,What,11
+57,Boolean,Is,11
+58,WH,In which,11
+59,WH,What,7
+60,Boolean,Is,7
+61,WH,In which,8
+62,Count,How many,11
+63,Boolean,Is,11
+64,Count,How many,8
+65,WH,What,8
+66,WH,When,7
+67,WH,Who,8
+68,WH,In which,7
+69,Boolean,Does,7
+70,WH,When,7
+71,WH,What,8
+72,WH,Who,8
+73,WH,Who,5
+74,WH,What,8
+75,Boolean,Is,8
+76,WH,When,6
+77,Boolean,Does,7
+78,WH,What,13
+79,WH,Where,13
+80,Boolean,Can,17
+81,WH,What,15
+82,Boolean,Is,16
+83,WH,What,9
+84,Boolean,Is,10
+85,WH,In which,10
+86,Boolean,Does,9
+87,WH,What,10
+88,WH,Who,8
+89,Boolean,Does,8
+90,WH,In what,9
