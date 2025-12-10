@@ -10,7 +10,7 @@ wsl.exe -d Ubuntu
 ```
 
 - **Username**: `aorogat`  
-- **Password**: `ahamo@2020936`
+- **Password**: `xxxxxxxxxxx`
 
 ---
 
@@ -22,10 +22,6 @@ Navigate to your project folder and activate the virtual environment:
 cd ~/CHATTY-KG
 source agentEnv/bin/activate
 source ~/Chatty-KG/agentEnv/bin/activate # for ne folder structure
-```
-```bash
-git
-token: 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
 ```
 
 
@@ -72,4 +68,5 @@ python server.py
 ```bash
 python -m multi_agent.main
 python -m multi_agent.modules.test_modules
+
 ```
