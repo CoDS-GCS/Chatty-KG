@@ -1,3 +1,5 @@
+from chattykg.chattykg import json_logger
+from chattykg.json_logger import JsonLogger
 from multi_agent.shared.state import AgentState
 from multi_agent.utils.graph_builder import build_langgraph
 import pprint
@@ -28,7 +30,8 @@ if __name__ == "__main__":
             n_limit_EQuery=25,
             n_max_Es=21,
             n_max_answers=41,
-            filtration_enabled=True
+            filtration_enabled=True,
+            json_logger = JsonLogger()
         )
 
         # Create a clean state for this turn
