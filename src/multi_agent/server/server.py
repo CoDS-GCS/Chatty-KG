@@ -248,12 +248,10 @@ def _ask(payload):
     if not question:
         raise ValueError("Missing required field: 'question'")
 
-    # Lazy init: start chat on first ask
     if KG_GRAPH_STATE is None:
         kg_name = payload.get("knowledge_graph", DEFAULT_KG)
         _start_chat(kg_name)
 
-    # history comes from kg_graph_state; pass a copy
     try:
         history = KG_GRAPH_STATE.get_chat_history(ACTIVE_SESSION_ID) or []
     except Exception:
@@ -264,7 +262,7 @@ def _ask(payload):
         question_id=QUESTION_ID,
         question=question,
         chat_history=history.copy(),
-        system_mode=SYSTEM_MODE,          # fixed
+        system_mode=SYSTEM_MODE,
         kg_graph_state=KG_GRAPH_STATE,
         query_done=False,
         qir_done=False,
@@ -279,12 +277,34 @@ def _ask(payload):
         ambiguity_resolver_tries=0
     )
 
+    # --- NEW: capture SPARQL list length before this turn ---
+    pre_sparql_len = 0
+    try:
+        existing_sparql = getattr(KG_GRAPH_STATE, "sparql_query", None)
+        if isinstance(existing_sparql, list):
+            pre_sparql_len = len(existing_sparql)
+        elif isinstance(existing_sparql, str):
+            pre_sparql_len = 1
+    except Exception:
+        pre_sparql_len = 0
+
     raw_state = GRAPH.invoke(state)
     final_state = AgentState(**dict(raw_state))
 
+    # --- NEW: keep only current-turn SPARQL queries ---
+    all_sparql_queries = getattr(final_state, "sparql_query", None)
+    if isinstance(all_sparql_queries, list):
+        current_turn_sparql = all_sparql_queries[pre_sparql_len:]
+    elif isinstance(all_sparql_queries, str):
+        # if a single string is returned, treat it as current turn
+        current_turn_sparql = [all_sparql_queries]
+    else:
+        current_turn_sparql = []
+
     query_graph = getattr(final_state, "query_graph", None)
-    sparql_queries = getattr(final_state, "sparql_query", None)
-    qir_triples, entities, relations = _extract_qir_intermediate(query_graph, sparql_queries)
+
+    # IMPORTANT: use current-turn queries here, not all historical queries
+    qir_triples, entities, relations = _extract_qir_intermediate(query_graph, current_turn_sparql)
 
     kg_state = final_state.kg_graph_state
     executed_query_count = kg_state.get_num_executed_queries()
@@ -302,18 +322,17 @@ def _ask(payload):
         "status": "ok",
         "question_id": QUESTION_ID,
         "answer": final_state.query_result,
-        "sparql_query": sparql_queries,
+        "sparql_query": current_turn_sparql,   # <-- changed
         "resolved_question": getattr(final_state, "resolved_question", None),
         "qir": qir_triples,
         "entities": entities,
-        "relations": relations,
+        "relations": relations,                # now filtered against current-turn query only
         "answer_count": answer_count,
         "executed_query_count": executed_query_count,
         "timing": timing,
     }
     QUESTION_ID += 1
     return resp
-
 
 class ChattyKGHandler(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
