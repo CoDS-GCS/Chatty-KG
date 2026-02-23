@@ -47,6 +47,7 @@ import argparse
 import io
 import json
 import traceback
+import re
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from typing import Any, Dict, Optional
 from chattykg.json_logger import JsonLogger
@@ -76,6 +77,114 @@ MAX_ES = 21
 MAX_ANSWERS = 41
 FILTRATION_ENABLED = True
 
+def _extract_executed_relation_uris(sparql_query):
+    """
+    Extract predicate URIs from executed SPARQL query string(s).
+    Returns a set of predicate URIs.
+    """
+    if not sparql_query:
+        return set()
+
+    queries = sparql_query if isinstance(sparql_query, list) else [sparql_query]
+    predicate_uris = set()
+
+    pattern = re.compile(r'(?:<[^>]+>|\?[A-Za-z_]\w*)\s+<([^>]+)>\s+(?:<[^>]+>|\?[A-Za-z_]\w*)')
+
+    for q in queries:
+        if not isinstance(q, str):
+            continue
+        for pred in pattern.findall(q):
+            predicate_uris.add(pred)
+
+    return predicate_uris
+
+def _extract_qir_intermediate(query_graph, sparql_query=None):
+    """
+    Return intermediate outputs:
+    - qir: [{subject, predicate, object}]
+    - entities: [{label, uris}]
+    - relations: [{label, uris: [{relation, entity, direction, score}]}]
+
+    relations are filtered to only predicates actually executed in SPARQL.
+    """
+    if query_graph is None:
+        return [], [], []
+
+    executed_relation_uris = _extract_executed_relation_uris(sparql_query)
+
+    qir_triples = []
+
+    # label -> set(uris)
+    entities_map = {}
+    # predicate label -> list of relation candidate objects
+    relations_map = {}
+
+    for u, v, attrs in query_graph.edges(data=True):
+        attrs = attrs or {}
+
+        u_attrs = query_graph.nodes[u] if u in query_graph.nodes else {}
+        v_attrs = query_graph.nodes[v] if v in query_graph.nodes else {}
+
+        subject = u_attrs.get("label", u)
+        obj = v_attrs.get("label", v)
+        predicate = attrs.get("relation", "")
+
+        qir_triples.append({
+            "subject": subject,
+            "predicate": predicate,
+            "object": obj
+        })
+
+        # Collect entity URIs (variables may have no URIs)
+        for label, node_attrs in [(subject, u_attrs), (obj, v_attrs)]:
+            if label not in entities_map:
+                entities_map[label] = set()
+
+            for uri in node_attrs.get("uris", []) or []:
+                entities_map[label].add(uri)
+
+        # Initialize relation bucket
+        if predicate not in relations_map:
+            relations_map[predicate] = []
+
+        # Filter relation candidates to only executed predicates, while preserving metadata
+        for item in attrs.get("uris", []) or []:
+            # Expected format: [predicate_uri, entity_uri, direction_bool, score]
+            if not isinstance(item, (list, tuple)) or len(item) < 1:
+                continue
+
+            predicate_uri = item[0]
+            if executed_relation_uris and predicate_uri not in executed_relation_uris:
+                continue
+
+            relation_obj = {
+                "relation": item[0] if len(item) > 0 else None,
+                "entity": item[1] if len(item) > 1 else None,
+                "direction": ("incoming" if item[2] else "outgoing") if len(item) > 2 else None,
+                "score": item[3] if len(item) > 3 else None,
+            }
+
+            relations_map[predicate].append(relation_obj)
+
+    entities = []
+    for label in sorted(entities_map.keys()):
+        entities.append({
+            "label": label,
+            "uris": sorted(entities_map[label])  # [] for variables / unmatched
+        })
+
+    relations = []
+    for label in sorted(relations_map.keys()):
+        # Optional: sort by score descending (None last)
+        rel_items = relations_map[label]
+        rel_items.sort(key=lambda x: (x["score"] is not None, x["score"] if x["score"] is not None else -1), reverse=True)
+
+        relations.append({
+            "label": label,
+            "uris": rel_items
+        })
+
+    return qir_triples, entities, relations
 
 def _json_response(handler: BaseHTTPRequestHandler, status: int, payload: Dict[str, Any]) -> None:
     data = json.dumps(payload).encode("utf-8")
@@ -173,12 +282,34 @@ def _ask(payload):
     raw_state = GRAPH.invoke(state)
     final_state = AgentState(**dict(raw_state))
 
+    query_graph = getattr(final_state, "query_graph", None)
+    sparql_queries = getattr(final_state, "sparql_query", None)
+    qir_triples, entities, relations = _extract_qir_intermediate(query_graph, sparql_queries)
+
+    kg_state = final_state.kg_graph_state
+    executed_query_count = kg_state.get_num_executed_queries()
+    answer_value = final_state.query_result
+    answer_count = len(answer_value) if isinstance(answer_value, list) else (0 if answer_value in (None, "", {}) else 1)
+
+    timing = {
+        "understanding_time": kg_state.get_understanding_time(),
+        "linking_time": kg_state.get_linking_time(),
+        "query_selection_time": kg_state.get_query_selection_time(),
+        "execution_time": kg_state.get_execution_time(),
+    }
+
     resp = {
         "status": "ok",
         "question_id": QUESTION_ID,
         "answer": final_state.query_result,
-        "sparql_query": getattr(final_state, "sparql_query", None),
+        "sparql_query": sparql_queries,
         "resolved_question": getattr(final_state, "resolved_question", None),
+        "qir": qir_triples,
+        "entities": entities,
+        "relations": relations,
+        "answer_count": answer_count,
+        "executed_query_count": executed_query_count,
+        "timing": timing,
     }
     QUESTION_ID += 1
     return resp
